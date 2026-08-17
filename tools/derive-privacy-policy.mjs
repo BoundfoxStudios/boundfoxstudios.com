@@ -1,6 +1,8 @@
 import { readFileSync, writeFileSync } from 'node:fs';
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const root = '/Users/manuelrauber/projects/private/boundfoxstudios.com';
+const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const source = readFileSync(`${root}/docs/legal/privacy-policy.source.html`, 'utf8');
 
 const body = source.slice(source.indexOf('<h4>Datenschutzerklärung</h4>'));
