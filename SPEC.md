@@ -38,19 +38,19 @@ Success looks like:
 
 ## 2. Tech Stack
 
-| Concern | Choice |
-|---|---|
-| Framework | Angular 22.1 (standalone, signals, zoneless, OnPush) |
-| Language | TypeScript 6.0, `strict` (TS 6 default), `strictTemplates` (Angular default) |
-| Styling | Tailwind CSS v4 via `@tailwindcss/postcss`, tokens in `@theme` |
-| Build | `@angular/build:application`, `outputMode: "static"` |
-| i18n | `@angular/localize` (`$localize`), XLIFF 2.0, compile-time inlining |
-| Data | Node prebuild script → committed JSON → statically imported |
-| Tests | Vitest via `@angular/build:unit-test` |
-| Lint | ESLint 10 + `angular-eslint` 22 + `typescript-eslint` |
-| Format | Prettier 3 + organize-attributes, css-order, tailwindcss plugins |
-| Hooks | lefthook 2 + commitlint (Conventional Commits) |
-| CI/CD | GitHub Actions → `SamKirkland/FTP-Deploy-Action` → Plesk/Apache |
+| Concern      | Choice                                                                                                        |
+| ------------ | ------------------------------------------------------------------------------------------------------------- |
+| Framework    | Angular 22.1 (standalone, signals, zoneless, OnPush)                                                          |
+| Language     | TypeScript 6.0, `strict` (TS 6 default), `strictTemplates` (Angular default)                                  |
+| Styling      | Tailwind CSS v4 via `@tailwindcss/postcss`, tokens in `@theme`                                                |
+| Build        | `@angular/build:application`, `outputMode: "static"`                                                          |
+| i18n         | `@angular/localize` (`$localize`), XLIFF 2.0, compile-time inlining                                           |
+| Data         | Node prebuild script → committed JSON → statically imported                                                   |
+| Tests        | Vitest via `@angular/build:unit-test`                                                                         |
+| Lint         | ESLint 10 + `angular-eslint` 22 + `typescript-eslint`                                                         |
+| Format       | Prettier 3 + organize-attributes, css-order, tailwindcss plugins                                              |
+| Hooks        | lefthook 2 + commitlint (Conventional Commits)                                                                |
+| CI/CD        | GitHub Actions → `SamKirkland/FTP-Deploy-Action` → Plesk/Apache                                               |
 | Runtime deps | Angular + `@angular/cdk` (overlay and focus trap for the mobile menu). No Octokit, no Express, no UI library. |
 
 Component prefix is `bfs` (`bfs-root`, `bfs-project-card`, …).
@@ -101,11 +101,11 @@ the English translation a hard dependency of the first green build, not a follow
 
 The site shows release information for three repositories:
 
-| Repository | Source | Fallback |
-|---|---|---|
-| `BoundfoxStudios/lehrgrapht` | latest **tag** (`releases/latest` is 404 — it has no releases) | build fails |
-| `BoundfoxStudios/mat` | latest **release** | — |
-| `BoundfoxStudios/flugwacht` | latest **release** (none today) | "In Entwicklung" |
+| Repository                   | Source                                                         | Fallback         |
+| ---------------------------- | -------------------------------------------------------------- | ---------------- |
+| `BoundfoxStudios/lehrgrapht` | latest **tag** (`releases/latest` is 404 — it has no releases) | build fails      |
+| `BoundfoxStudios/mat`        | latest **release**                                             | —                |
+| `BoundfoxStudios/flugwacht`  | latest **release** (none today)                                | "In Entwicklung" |
 
 **Approach: a Node prebuild script writes `github-data.json`, which the app imports statically.**
 
@@ -175,15 +175,15 @@ Route paths are English and **identical in both locales** — Angular's localize
 router URL locale-relative, so the language switcher is `subPath + routerUrl` with no mapping
 table. Five of the six already exist on the live site and stay untouched.
 
-| Route | German | English | Live today |
-|---|---|---|---|
-| `/` | Startseite | Home | ✅ keep |
-| `/apps-and-games/` | Apps & Spiele | Apps & Games | ⚠️ live as `/games/` → 301 |
-| `/support/` | Unterstützen | Support | ✅ keep |
-| `/socials/` | Socials | Socials | ✅ keep |
-| `/legal-details-imprint/` | Impressum | Imprint | ✅ keep |
-| `/privacy-policy/` | Datenschutz | Privacy Policy | ✅ keep |
-| `/404/` | Fehler 404 | Not found | new, `noindex` |
+| Route                     | German        | English        | Live today                 |
+| ------------------------- | ------------- | -------------- | -------------------------- |
+| `/`                       | Startseite    | Home           | ✅ keep                    |
+| `/apps-and-games/`        | Apps & Spiele | Apps & Games   | ⚠️ live as `/games/` → 301 |
+| `/support/`               | Unterstützen  | Support        | ✅ keep                    |
+| `/socials/`               | Socials       | Socials        | ✅ keep                    |
+| `/legal-details-imprint/` | Impressum     | Imprint        | ✅ keep                    |
+| `/privacy-policy/`        | Datenschutz   | Privacy Policy | ✅ keep                    |
+| `/404/`                   | Fehler 404    | Not found      | new, `noindex`             |
 
 English lives under `/en/…` — as it already does today.
 
@@ -196,15 +196,15 @@ language switch is avoidable.
 The old WordPress site has ~20 public URLs per locale (Yoast sitemap, snapshotted before
 cutover). Everything not in the table above needs a rule:
 
-| Old | New | Code |
-|---|---|---|
-| `/games/` | `/apps-and-games/` | 301 |
-| `/courses/`, `/2d-space-shooter-course/`, `/blender-course/`, `/blender-shading-kurs/`, `/spiele-programmieren-mit-unity-kurs-gratis/` | `/` | 301 |
-| `/shops/`, `/spreadshop/` | `/support/` | 301 |
-| 3 blog posts, `/category/company/`, 6 `/tag/*`, `/author/manuel-rauber/` | `/` | 301 |
-| `/feed/`, `/comments/feed/`, `/wp-json/`, `/wp-content/`, `/wp-includes/`, `/xmlrpc.php` | — | 410 |
-| Yoast sitemaps (`sitemap_index.xml`, `*-sitemap.xml`) | `/sitemap.xml` | 301 |
-| `/press/index.php` | preserved, not part of the Angular route space | — |
+| Old                                                                                                                                    | New                                            | Code |
+| -------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- | ---- |
+| `/games/`                                                                                                                              | `/apps-and-games/`                             | 301  |
+| `/courses/`, `/2d-space-shooter-course/`, `/blender-course/`, `/blender-shading-kurs/`, `/spiele-programmieren-mit-unity-kurs-gratis/` | `/`                                            | 301  |
+| `/shops/`, `/spreadshop/`                                                                                                              | `/support/`                                    | 301  |
+| 3 blog posts, `/category/company/`, 6 `/tag/*`, `/author/manuel-rauber/`                                                               | `/`                                            | 301  |
+| `/feed/`, `/comments/feed/`, `/wp-json/`, `/wp-content/`, `/wp-includes/`, `/xmlrpc.php`                                               | —                                              | 410  |
+| Yoast sitemaps (`sitemap_index.xml`, `*-sitemap.xml`)                                                                                  | `/sitemap.xml`                                 | 301  |
+| `/press/index.php`                                                                                                                     | preserved, not part of the Angular route space | —    |
 
 Each rule is mirrored under `/en/`.
 
@@ -436,19 +436,19 @@ something in the design handoff or an earlier assumption.
 
 ## 12. Decisions
 
-| # | Decision | Outcome |
-|---|---|---|
-| D1 | Build-time data source | **Prebuild script** (§3.2). One API call, no Octokit, no `process.env` in the bundle |
-| D2 | Kicker contrast | **Keep `#ffa726`.** Brand colour, not negotiable. Documented deviation (§11.6) |
-| D3 | Focus ring | **Surface-scoped token**: `#171717` on light surfaces, `#ffc107` on dark, one `focus-visible:outline-2` utility everywhere |
-| D4 | Mobile navigation | **Burger menu built on `@angular/cdk`**, fully specified in §3.4 |
-| D5 | Tahu | **Keep it.** Licensed for commercial use, evidence in `docs/licenses/tahu.md` |
-| D6 | Course and blog content | **Not carried over.** Only the six pages in the handoff. Old URLs 301 to `/` (§4) |
-| D7 | FTP target | `server-dir: /` — a dedicated FTP account is rooted at the right directory |
-| D8 | Staging | **None.** Verification is local via `npm run preview` before merging to `main` |
-| D9 | `x-default` hreflang | **German** — matches the apex and the primary audience |
-| D10 | Legal pages in English | **German text under `/en/`** plus one English notice; only the German version is legally binding |
-| D11 | Measurement | **None.** No client-side script of any kind. Cloudflare's zone analytics exist as a byproduct of the CDN and are not part of the site |
+| #   | Decision                      | Outcome                                                                                                                                                                        |
+| --- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| D1  | Build-time data source        | **Prebuild script** (§3.2). One API call, no Octokit, no `process.env` in the bundle                                                                                           |
+| D2  | Kicker contrast               | **Keep `#ffa726`.** Brand colour, not negotiable. Documented deviation (§11.6)                                                                                                 |
+| D3  | Focus ring                    | **Surface-scoped token**: `#171717` on light surfaces, `#ffc107` on dark, one `focus-visible:outline-2` utility everywhere                                                     |
+| D4  | Mobile navigation             | **Burger menu built on `@angular/cdk`**, fully specified in §3.4                                                                                                               |
+| D5  | Tahu                          | **Keep it.** Licensed for commercial use, evidence in `docs/licenses/tahu.md`                                                                                                  |
+| D6  | Course and blog content       | **Not carried over.** Only the six pages in the handoff. Old URLs 301 to `/` (§4)                                                                                              |
+| D7  | FTP target                    | `server-dir: /` — a dedicated FTP account is rooted at the right directory                                                                                                     |
+| D8  | Staging                       | **None.** Verification is local via `npm run preview` before merging to `main`                                                                                                 |
+| D9  | `x-default` hreflang          | **German** — matches the apex and the primary audience                                                                                                                         |
+| D10 | Legal pages in English        | **German text under `/en/`** plus one English notice; only the German version is legally binding                                                                               |
+| D11 | Measurement                   | **None.** No client-side script of any kind. Cloudflare's zone analytics exist as a byproduct of the CDN and are not part of the site                                          |
 | D12 | Translation catalogue tooling | `ng-extract-i18n-merge` with `newTranslationTargetsBlank: "omit"` — the default copies the German source into new targets and would ship German into `/en/` with a green build |
 
 ### Awaiting delivery, not decision
@@ -465,18 +465,18 @@ something in the design handoff or an earlier assumption.
 
 Build order. Each milestone is independently verifiable.
 
-| # | Milestone | Contains | Depends on |
-|---|---|---|---|
-| M1 | Foundation | Public-repo readiness, static build switch, `bfs` prefix, ESLint/Prettier/lefthook/commitlint, CI workflows, `.gitignore` for the handoff folder, delete scaffold spec | — |
-| M2 | Design System | Tailwind `@theme` tokens, self-hosted fonts, icon and image pipeline, focus system, `docs/components.md` + component library | M1 |
-| M3 | Shell | Header, footer, wrapped-nav polish, routing, i18n setup, language switcher, SEO service + TitleStrategy, 404 page | M2 |
-| M4 | GitHub Data | Prebuild script, typed accessor, repository cards, fallback behaviour | M1 |
-| M5 | Pages | Home, Apps & Games, Support, Socials | M3, M4 |
-| M6 | Legal & Content | Imprint, privacy policy, Bug-A-Ball crops, legal review | M3 |
-| M7 | English Locale | Extraction, translation per page, `i18nMissingTranslation` green | M5, M6 |
-| M8 | SEO & Generation | sitemap, robots, JSON-LD, favicons, OG images, `verify-dist`, Lighthouse CI | M3 |
-| M9 | Deploy & Migration | `.htaccess`, redirect map, FTP deploy, nightly job, Cloudflare/TLS | M1, M3, M4, M8 |
-| M10 | Launch | Cutover runbook, staging verification, rollback plan, Search Console | all |
+| #   | Milestone          | Contains                                                                                                                                                               | Depends on     |
+| --- | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- |
+| M1  | Foundation         | Public-repo readiness, static build switch, `bfs` prefix, ESLint/Prettier/lefthook/commitlint, CI workflows, `.gitignore` for the handoff folder, delete scaffold spec | —              |
+| M2  | Design System      | Tailwind `@theme` tokens, self-hosted fonts, icon and image pipeline, focus system, `docs/components.md` + component library                                           | M1             |
+| M3  | Shell              | Header, footer, wrapped-nav polish, routing, i18n setup, language switcher, SEO service + TitleStrategy, 404 page                                                      | M2             |
+| M4  | GitHub Data        | Prebuild script, typed accessor, repository cards, fallback behaviour                                                                                                  | M1             |
+| M5  | Pages              | Home, Apps & Games, Support, Socials                                                                                                                                   | M3, M4         |
+| M6  | Legal & Content    | Imprint, privacy policy, Bug-A-Ball crops, legal review                                                                                                                | M3             |
+| M7  | English Locale     | Extraction, translation per page, `i18nMissingTranslation` green                                                                                                       | M5, M6         |
+| M8  | SEO & Generation   | sitemap, robots, JSON-LD, favicons, OG images, `verify-dist`, Lighthouse CI                                                                                            | M3             |
+| M9  | Deploy & Migration | `.htaccess`, redirect map, FTP deploy, nightly job, Cloudflare/TLS                                                                                                     | M1, M3, M4, M8 |
+| M10 | Launch             | Cutover runbook, staging verification, rollback plan, Search Console                                                                                                   | all            |
 
 M4 and M9 can start in parallel with M2/M3. M7 blocks the first green production build, since
 a missing translation fails the build.

@@ -7,7 +7,7 @@ const source = readFileSync(`${root}/docs/legal/privacy-policy.source.html`, 'ut
 
 const body = source.slice(source.indexOf('<h4>Datenschutzerklärung</h4>'));
 
-const sectionStart = (number) => {
+const sectionStart = number => {
   const index = body.indexOf(`<h4>${number}. `);
   if (index === -1) {
     throw new Error(`section ${number} not found`);
@@ -30,7 +30,13 @@ if (removed.includes('Rechtsgrundlage der Verarbeitung')) {
 let result = body.slice(0, removedFrom) + body.slice(removedTo);
 
 // Renumber the trailing sections 8..12 down to 6..10.
-for (const [from, to] of [[8, 6], [9, 7], [10, 8], [11, 9], [12, 10]]) {
+for (const [from, to] of [
+  [8, 6],
+  [9, 7],
+  [10, 8],
+  [11, 9],
+  [12, 10],
+]) {
   const heading = `<h4>${from}. `;
   if (!result.includes(heading)) {
     throw new Error(`heading ${from} missing before renumbering`);
@@ -83,6 +89,15 @@ const header = `<!--
 
 writeFileSync(`${root}/docs/legal/privacy-policy.final.html`, header + result);
 
-const sections = [...result.matchAll(/<h4>(\d+)\. ([^<]+)<\/h4>/g)].map((match) => `${match[1]}. ${match[2]}`);
+const sections = [...result.matchAll(/<h4>(\d+)\. ([^<]+)<\/h4>/g)].map(
+  match => `${match[1]}. ${match[2]}`,
+);
 console.log(sections.join('\n'));
-console.log(`\nwords: ${result.replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length}`);
+console.log(
+  `\nwords: ${
+    result
+      .replace(/<[^>]+>/g, ' ')
+      .split(/\s+/)
+      .filter(Boolean).length
+  }`,
+);

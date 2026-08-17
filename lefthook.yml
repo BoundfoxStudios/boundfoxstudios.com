@@ -1,0 +1,22 @@
+# Jobs run sequentially on purpose: eslint --fix and prettier --write touch the
+# same files, and `parallel: true` lets one overwrite the other's result.
+pre-commit:
+  skip:
+    - merge
+    - rebase
+  jobs:
+    - name: Lint
+      glob:
+        - '*.ts'
+        - '*.html'
+      run: npx eslint --fix --no-warn-ignored {staged_files}
+      stage_fixed: true
+
+    - name: Format staged files
+      run: npx prettier --write --ignore-unknown {staged_files}
+      stage_fixed: true
+
+commit-msg:
+  jobs:
+    - name: Lint commit message
+      run: npx commitlint --edit {1}

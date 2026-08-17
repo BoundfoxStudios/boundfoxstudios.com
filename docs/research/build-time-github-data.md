@@ -1,4 +1,5 @@
 ## RECOMMENDATION
+
 ## Verdict: take design (b) — a Node prebuild script writing `github-data.json`, imported statically.
 
 Design (a) works — I proved it end to end — but it hits the GitHub API **N+1 times** (once per prerendered route plus once for route extraction). Measured: 21 fetch rounds for 20 routes. Design (b) hits it once, builds 5x faster, and keeps the token structurally incapable of reaching the browser bundle.
@@ -22,7 +23,7 @@ Everything below was executed against a real copy of your workspace (`projects/w
 }
 ```
 
-**Critical gotcha I verified:** `options.prerender = !!options.server` (`@angular/build/src/builders/application/options.js:123`). If you delete `server` along with `ssr`, the build *silently succeeds with exit 0* and emits a bare CSR shell — no prerendered content at all. I confirmed this: `grep "lehrgrapht-tag: 1.7.0" index.html` → 0 matches.
+**Critical gotcha I verified:** `options.prerender = !!options.server` (`@angular/build/src/builders/application/options.js:123`). If you delete `server` along with `ssr`, the build _silently succeeds with exit 0_ and emits a bare CSR shell — no prerendered content at all. I confirmed this: `grep "lehrgrapht-tag: 1.7.0" index.html` → 0 matches.
 
 You can then delete `projects/website/src/server.ts`, the `serve:ssr:website` script, and the `express` + `@types/express` dependencies.
 
@@ -66,7 +67,7 @@ const request = async (path, { allow404 = false } = {}) => {
   return response.json();
 };
 
-const repositoryCard = async (fullName) => {
+const repositoryCard = async fullName => {
   const repo = await request(`repos/${fullName}`);
 
   return {
@@ -77,25 +78,26 @@ const repositoryCard = async (fullName) => {
   };
 };
 
-const latestRelease = async (fullName) => {
+const latestRelease = async fullName => {
   const release = await request(`repos/${fullName}/releases/latest`, { allow404: true });
   return release && { tagName: release.tag_name, publishedAt: release.published_at };
 };
 
-const latestTag = async (fullName) => {
+const latestTag = async fullName => {
   const tags = await request(`repos/${fullName}/tags?per_page=1`);
   return tags[0] ? { name: tags[0].name } : null;
 };
 
-const [lehrgrapht, mat, flugwacht, lehrgraphtTag, matRelease, flugwachtRelease] =
-  await Promise.all([
+const [lehrgrapht, mat, flugwacht, lehrgraphtTag, matRelease, flugwachtRelease] = await Promise.all(
+  [
     repositoryCard('BoundfoxStudios/lehrgrapht'),
     repositoryCard('BoundfoxStudios/mat'),
     repositoryCard('BoundfoxStudios/flugwacht'),
     latestTag('BoundfoxStudios/lehrgrapht'),
     latestRelease('BoundfoxStudios/mat'),
     latestRelease('BoundfoxStudios/flugwacht'),
-  ]);
+  ],
+);
 
 const data = {
   generatedAt: new Date().toISOString(),
@@ -118,6 +120,7 @@ console.log(`  flugwacht release: ${data.flugwacht.latestRelease?.tagName ?? '(n
 ```
 
 Real output today:
+
 ```
   lehrgrapht tag:    1.7.0
   mat release:       v1.0.0
@@ -182,12 +185,18 @@ export class ProjectCards {
 ```
 
 Verified prerendered output (route `/r7` of 20):
+
 ```html
-<app-root ng-version="22.1.2" ngh="1" ng-server-context="ssg">
+<app-root
+  ng-version="22.1.2"
+  ngh="1"
+  ng-server-context="ssg"
+>
   <p>lehrgrapht-tag: 1.7.0</p>
   <p>mat-release: v1.0.0</p>
   <p>flugwacht: Coming soon</p>
-  <p>flugwacht-desc: A deliberately minimal flight tracker…</p>
+  <p>flugwacht-desc: A deliberately minimal flight tracker…</p></app-root
+>
 ```
 
 ---
@@ -225,10 +234,10 @@ Verified: `npm run build` → fetches → prerenders 20 routes → exit 0, with 
   env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-- run: npx ng build   # prebuild already ran above; ng build alone avoids a second fetch
+- run: npx ng build # prebuild already ran above; ng build alone avoids a second fetch
 ```
 
-Keep default `permissions` (or `contents: read`) — reading *public* repos needs no extra grant.
+Keep default `permissions` (or `contents: read`) — reading _public_ repos needs no extra grant.
 
 ---
 
@@ -239,17 +248,38 @@ If you'd rather make a single request, this GraphQL query returns everything, an
 ```graphql
 query {
   lehrgrapht: repository(owner: "BoundfoxStudios", name: "lehrgrapht") {
-    description pushedAt primaryLanguage { name }
-    refs(refPrefix: "refs/tags/", first: 1,
-         orderBy: { field: TAG_COMMIT_DATE, direction: DESC }) { nodes { name } }
+    description
+    pushedAt
+    primaryLanguage {
+      name
+    }
+    refs(refPrefix: "refs/tags/", first: 1, orderBy: { field: TAG_COMMIT_DATE, direction: DESC }) {
+      nodes {
+        name
+      }
+    }
   }
   mat: repository(owner: "BoundfoxStudios", name: "mat") {
-    description pushedAt primaryLanguage { name }
-    latestRelease { tagName publishedAt }
+    description
+    pushedAt
+    primaryLanguage {
+      name
+    }
+    latestRelease {
+      tagName
+      publishedAt
+    }
   }
   flugwacht: repository(owner: "BoundfoxStudios", name: "flugwacht") {
-    description pushedAt primaryLanguage { name }
-    latestRelease { tagName publishedAt }
+    description
+    pushedAt
+    primaryLanguage {
+      name
+    }
+    latestRelease {
+      tagName
+      publishedAt
+    }
   }
 }
 ```
@@ -268,9 +298,10 @@ It does work. Two rules make it safe, both verified:
 Add a module-level promise cache to cut N+1 down to one fetch per worker thread — but that only bounds it to `min(routeCount, maxThreads)`, which is CPU-dependent, not 1.
 
 ## FINDINGS
+
 - Q1 — CONFIRMED: prerendering with outputMode 'static' fully executes server-side code at build time. Source: node_modules/@angular/build/src/utils/server-rendering/render-worker.js loads main.server.mjs and calls ɵgetOrCreateAngularServerApp({allowStaticRouteRender:true}).handle(new Request(...)) inside a Node worker thread. Empirically: my provideAppInitializer ran, isPlatformBrowser() returned false, a real fetch() to api.github.com succeeded, and the fetched values (lehrgrapht 1.7.0, mat v1.0.0) were baked into every prerendered HTML file. Output carries ng-server-context="ssg".
 - Q1 GOTCHA: the `server` entry in angular.json is what enables prerendering, not `outputMode`. In options.js:123 the builder does `options.prerender = !!options.server`. With outputMode 'static' and no `server` entry, the build succeeds with exit 0 but emits an empty CSR shell — silent, no warning. `ssr.entry` is only required for outputMode 'server' (options.js:108-113) and must be removed for static.
-- Q2 — CONFIRMED: TransferState is embedded in the prerendered HTML as <script id="ng-state" type="application/json">, present identically in index.html and every route file. Verified content: {"github-data":{"lehrgraphtTag":"1.7.0","matRelease":"v1.0.0","flugwachtRelease":null,...},"__nghData__":[...]}.
+- Q2 — CONFIRMED: TransferState is embedded in the prerendered HTML as <script id="ng-state" type="application/json">, present identically in index.html and every route file. Verified content: {"github-data":{"lehrgraphtTag":"1.7.0","matRelease":"v1.0.0","flugwachtRelease":null,...},"**nghData**":[...]}.
 - Q2 NUANCE: TransferState serialization is NOT dependent on hydration. I built with provideClientHydration() removed and a server-only initializer writing TransferState — the ng-state script was still emitted with the full payload. So TransferState works either way.
 - Q2 — provideClientHydration IS still worth keeping. Without it the prerendered markup carries no ngh attributes, no <!--nghm--> marker, and no hydration annotations; Angular destroys and re-creates the whole DOM at bootstrap, causing a visible flash/CLS even for a site whose only interactivity is a menu toggle. Cost is negligible. Keep it. withEventReplay() is optional and only matters if clicks can land before hydration finishes.
 - Q3 — process.env DOES work in the prerender/server bundle: process.env['PROBE_GITHUB_TOKEN'] resolved to its real value during prerendering. tsconfig.app.json already ships "types": ["node"], so it typechecks with no change.
@@ -292,6 +323,7 @@ Add a module-level promise cache to cut N+1 down to one fetch per worker thread 
 - Live data check today: lehrgrapht releases/latest returns 404 (it has tags but no releases) → the tags endpoint is genuinely required for it; mat latest release is v1.0.0; flugwacht releases/latest returns 404 → the 'Coming soon' fallback is live right now, not hypothetical.
 
 ## RISKS
+
 - Deleting `server` from angular.json along with `ssr` silently disables prerendering — build exits 0 and ships an empty CSR shell. Mitigation: keep `server: projects/website/src/main.server.ts`, and add a CI smoke test that greps the built index.html for a known string, e.g. `grep -q 'BoundfoxStudios' dist/website/browser/index.html || exit 1`.
 - If you go with design (a) anyway: process.env has no esbuild shim and will land verbatim in the browser bundle the moment the file containing it becomes reachable from a component import, producing a ReferenceError only at hydration — invisible in the prerendered HTML and easy to miss. Mitigation: keep the initializer in its own file, register it only in app.config.server.ts, and add a CI assertion `! grep -q 'process\.env' dist/website/browser/main-*.js`.
 - Committing github-data.json means the repo copy goes stale between builds. Mitigation: CI regenerates it before every build and does not commit back, so deployed output is always fresh while local dev stays offline-capable. Optionally add a scheduled workflow that refreshes and commits it weekly so the repo copy does not drift far.
