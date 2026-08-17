@@ -1,0 +1,8 @@
+{
+  "tailwindCSS.experimental.configFile": "projects/website/src/styles.css",
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true
+}
