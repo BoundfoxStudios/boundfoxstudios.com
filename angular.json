@@ -11,7 +11,7 @@
       "schematics": {},
       "root": "projects/website",
       "sourceRoot": "projects/website/src",
-      "prefix": "app",
+      "prefix": "bfs",
       "architect": {
         "build": {
           "builder": "@angular/build:application",
