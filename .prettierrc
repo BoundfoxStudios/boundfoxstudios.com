@@ -1,6 +1,14 @@
 {
   "printWidth": 100,
   "singleQuote": true,
+  "trailingComma": "all",
+  "arrowParens": "avoid",
+  "bracketSameLine": false,
+  "semi": true,
+  "singleAttributePerLine": true,
+  "quoteProps": "as-needed",
+  "cssDeclarationSorterKeepOverrides": false,
+  "tailwindStylesheet": "./projects/website/src/styles.css",
   "overrides": [
     {
       "files": "*.html",
@@ -8,5 +16,10 @@
         "parser": "angular"
       }
     }
+  ],
+  "plugins": [
+    "prettier-plugin-organize-attributes",
+    "prettier-plugin-css-order",
+    "prettier-plugin-tailwindcss"
   ]
 }
