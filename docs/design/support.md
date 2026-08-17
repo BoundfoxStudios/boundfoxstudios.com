@@ -422,21 +422,21 @@ Schrift-Asset: `_ds/boundfox-studios-design-system-0747e2df-62fc-4fe1-bbd4-f0e97
   <main class="flex-1">
     <!-- A: Hero -->
     <section class="mx-auto max-w-6xl px-6 pt-16 pb-2">
-      <p class="text-orange mb-2 text-xs font-bold tracking-widest uppercase">Community</p>
+      <p class="mb-2 text-xs font-bold tracking-widest text-orange uppercase">Community</p>
       <h1
-        class="font-display m-0 text-[clamp(40px,5.5vw,60px)] leading-none font-normal tracking-wide text-neutral-900"
+        class="m-0 font-display text-[clamp(40px,5.5vw,60px)] leading-none font-normal tracking-wide text-neutral-900"
       >
         UNTERSTÜTZE UNS
       </h1>
       <p class="mt-3 max-w-[620px] text-lg leading-relaxed text-pretty">…</p>
-      <p class="font-script text-orange mt-4 text-[44px] leading-none">Danke!</p>
+      <p class="mt-4 font-script text-[44px] leading-none text-orange">Danke!</p>
     </section>
 
     <!-- B: Kostenfrei -->
     <section class="mx-auto max-w-6xl px-6 pt-12 pb-4">
       <div class="mb-2 flex items-center gap-4">
         <h2
-          class="font-display m-0 text-2xl leading-none font-normal tracking-wide text-neutral-900"
+          class="m-0 font-display text-2xl leading-none font-normal tracking-wide text-neutral-900"
         >
           KOSTENFREI UNTERSTÜTZEN
         </h2>
@@ -446,10 +446,10 @@ Schrift-Asset: `_ds/boundfox-studios-design-system-0747e2df-62fc-4fe1-bbd4-f0e97
 
       <div class="grid grid-cols-[repeat(auto-fit,minmax(min(300px,100%),1fr))] gap-6">
         <a
-          class="hover:border-amber flex flex-col gap-3 rounded-xl border border-neutral-200 bg-white p-6 text-neutral-700 shadow-md transition-colors duration-150 ease-in-out hover:text-neutral-700"
+          class="flex flex-col gap-3 rounded-xl border border-neutral-200 bg-white p-6 text-neutral-700 shadow-md transition-colors duration-150 ease-in-out hover:border-amber hover:text-neutral-700"
           href="https://github.com/BoundfoxStudios"
         >
-          <span class="bg-yellow flex size-11 items-center justify-center rounded-lg">
+          <span class="flex size-11 items-center justify-center rounded-lg bg-yellow">
             <svg
               class="size-6 fill-neutral-900"
               viewBox="0 0 24 24"
@@ -458,11 +458,11 @@ Schrift-Asset: `_ds/boundfox-studios-design-system-0747e2df-62fc-4fe1-bbd4-f0e97
               …
             </svg>
           </span>
-          <h3 class="font-display m-0 text-2xl leading-none tracking-wide text-neutral-900">
+          <h3 class="m-0 font-display text-2xl leading-none tracking-wide text-neutral-900">
             GITHUB
           </h3>
           <p class="m-0 text-sm leading-relaxed">…</p>
-          <span class="text-link mt-auto text-sm font-bold"
+          <span class="mt-auto text-sm font-bold text-link"
             >Zur Organisation <span aria-hidden="true">→</span></span
           >
         </a>
@@ -482,7 +482,7 @@ Schrift-Asset: `_ds/boundfox-studios-design-system-0747e2df-62fc-4fe1-bbd4-f0e97
         >
           <span class="flex size-11 items-center justify-center rounded-lg bg-neutral-900">
             <svg
-              class="fill-yellow size-[22px]"
+              class="size-[22px] fill-yellow"
               viewBox="0 0 24 24"
               aria-hidden="true"
             >
