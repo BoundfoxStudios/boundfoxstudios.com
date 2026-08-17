@@ -4,6 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start:en": "ng serve --configuration=en",
+    "preview": "npm run build && npx http-server dist/website/browser -p 4300 -c-1",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
