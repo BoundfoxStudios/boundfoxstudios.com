@@ -9,7 +9,7 @@ contradicts `SPEC.md`, SPEC wins unless a row says explicitly that it corrects S
 
 ## For Manu
 
-Fourteen items need you. Everything else in this document is decided and needs no input.
+Thirteen items need you. Everything else in this document is decided and needs no input.
 
 ### Repository (blocks M1 and all CI work)
 
@@ -66,19 +66,19 @@ Fourteen items need you. Everything else in this document is decided and needs n
   channel and add `info@boundfoxstudios.com` as a second owner. Sitemap submission happens after
   cutover, not now.
 
-### Texts and judgements (blocks M6)
+### Processor record (internal — blocks nothing)
+
+Both legal texts arrived on 2026-08-17 and ship verbatim from `docs/legal/`, so the text items
+that used to block M6 are done: no sign-off round is needed for a text you supplied yourself, and
+the address and the VAT number come from that same file. The two answers below feed **only**
+`docs/privacy-processors.md`, an internal document — the shipped privacy text names no processor,
+because the instruction was to take the supplied wording verbatim. Answer when convenient.
 
 - **Hosting provider name and registered seat**, exactly as in the hosting contract (e.g.
-  "Hetzner Online GmbH, Gunzenhausen"). It is the only blank left in the rewritten privacy §3 —
-  a privacy policy must name the processor. No default exists; everything else in §3 is written.
+  "Hetzner Online GmbH, Gunzenhausen") — the open cell in the record's hoster row.
 - **Two DPA dates.** Cloudflare → Legal/DPA: the acceptance date. Hoster: download the
   AV-Vertrag into `docs/legal/` and note its date. Both go into the prepared table in
   `docs/privacy-processors.md`; the agent fills everything else in.
-- **Sign off the reconciled privacy text and the imprint facts.** The agent posts the complete
-  German text of all six privacy sections in the PR description; you (or your lawyer) confirm it
-  in a PR review comment. In the same comment confirm that `Flamingoweg 68, 70378 Stuttgart` and
-  `DE294345223` are still current. Manu supplies the final texts for both pages; they replace the
-  draft content behind the existing i18n ids without touching code.
 
 ---
 
@@ -202,24 +202,26 @@ Fourteen items need you. Everything else in this document is decided and needs n
 |---|---|---|
 | Legal layout | Base layer | Already written in M2. Do not re-add it; add the criterion that the mailto link computes to `rgb(161 98 7)` with no `text-decoration` and turns `#ffa726` on hover after 150ms. |
 | Legal layout | Component shape | One component only, no `LegalSection`: `projects/website/src/app/ui/legal-page/legal-page.ts`, selector `bfs-legal-page`, OnPush, one input `proseLang = input<string \| null>(null)`, template `<section class="mx-auto max-w-[760px] px-6 pt-16 pb-18"><ng-content select="[legalNotice]" /><div [attr.lang]="proseLang()"><ng-content /></div></section>`. No `max-w-legal` token (M2's arbitrary-value rule). Headings and paragraphs stay literal utility strings in the two page templates. Add one row to `docs/components.md`. |
-| Imprint | Message chunking | Exactly 13 units: `imprint.title`; `imprint.company.title` + `.body` (one `<p>`, three literal `<br />` → placeholders); `imprint.contact.title`; `imprint.vat.title`; `imprint.content-liability.title/.body`; `imprint.link-liability.title/.body`; `imprint.copyright.title/.body`; plus the three contact runs in *Copy*. The e-mail address, the domain text and the VAT number carry **no** i18n attribute — they are locale-invariant literals. Drop the design keys `imprint.contact.email`, `.website` and `imprint.vat.number`. |
-| Imprint | Trailing-space labels | Author label runs as `E-Mail:&nbsp;` / `Internet:&nbsp;`. Angular's whitespace removal deletes a trailing space; `&nbsp;` renders identically and survives the XLIFF round trip. |
+| Imprint | Structure and marking | The page renders `docs/legal/imprint.source.md` as supplied: three `<h2>` — `Angaben gemäß § 5 TMG`, `Kontaktdaten`, `Haftungsausschluss` — three `<h3>` under the last one (`Verantwortlichkeit für Inhalte`, `Haftung für Links`, `Urheberrecht`), and the VAT sentence as a headingless paragraph between `Kontaktdaten` and `Haftungsausschluss`. No message chunking: `imprint.title` is the only marked string on the page (*Conventions › i18n*). The design's §4 key table (`imprint.company.*`, `imprint.contact.*`, `imprint.vat.*`, `imprint.content-liability.*`, `imprint.link-liability.*`, `imprint.copyright.*`) is retired in full — its headings are the designer's placeholders and differ from the supplied ones. |
+| Imprint | Trailing-space labels | Author the label runs as `E-Mail:&nbsp;` / `Internetadresse:&nbsp;` — Angular's whitespace removal deletes a real trailing space before the link. That is the whole reason now; the prose is unmarked, so there is no XLIFF round trip to survive. |
 | Imprint | Header "legal" state | `bfs-site-header` has no `active` input (M3 dropped it deliberately). Criterion becomes: on both legal routes no nav link carries `text-yellow`, `border-yellow` or `aria-current="page"` — `grep -c 'aria-current' dist/website/browser/legal-details-imprint/index.html` returns 0. |
-| Imprint | "final wording" gate | `docs/design/imprint.md` §4 **is** the final wording (it is anbieterkennzeichnung under § 5 DDG and already live). Criterion: the rendered copy is byte-identical to §4, including „GEMÄSS", the spaced „§ 5" and „§ 27 a". Manu's address/VAT confirmation is a PR comment, not a blocking gate. |
+| Imprint | "final wording" gate | `docs/legal/imprint.source.md` **is** the final wording — not `docs/design/imprint.md` §4, which is the designer's placeholder and differs in wording and headings. Criterion: the rendered copy is byte-identical to the source file, including the spaced „§ 5" and „§ 27 a", asserted by `tools/verify-legal-text.mjs` (see *Privacy › Text gate*). The file cites § 5 TMG and §§ 8 bis 10 TMG where the provider-identification duty has been § 5 DDG / §§ 7–10 DDG since 14 May 2024; per `docs/legal/README.md` it ships as supplied — **flagged for Manu, not blocking**, and never silently "corrected" in passing. Manu's address/VAT confirmation is no longer a gate at all: the file is his. |
 | Both legal pages | Folder names | Folders are named after the page, not the URL: rename M3's stubs to `pages/imprint/` (`imprint.ts`, class `Imprint`, selector `bfs-imprint`) and `pages/privacy-policy/` (`PrivacyPolicy`, `bfs-privacy-policy`); update `loadComponent` paths in the same commit. Route paths are unchanged. |
-| Both legal pages | Verification | `npm run lint`; `npm run preview:de` for the German page; `npm run preview:draft` when the `/en/` rendering has to be seen before M7. The unconditional both-locale green build is asserted in M7. |
-| Both legal pages | Handoff comparison | Reword to "if `design_handoff_website_redesign/` is present locally, compare side by side; otherwise `docs/design/imprint.md` §3 is authoritative", and name the numbers to measure at 1280/768/375px: section width capped at 760px, padding 64/24/72px, H1 60px → 40px, H1→H2 40px, H2→P 12px, P→next H2 32px, body line-height 26px, all headings computed weight 400. |
-| Privacy | Draft badge | Not built at all. The reconciled text lands in the same milestone and nothing deploys before M10. Drop the `privacy.draft-badge` unit and the `bfs-badge` usage, give the H1 `m-0`, keep the first H2 at `mt-10`. Criterion: no badge and no `privacy.draft-badge` id exist; H1 → first H2 is 40px. Record the intentional delta to `Datenschutz.dc.html` in the PR. |
-| Privacy | "Stand" line | `projects/website/src/app/pages/privacy-policy/privacy-last-updated.ts` exporting `PRIVACY_LAST_UPDATED = '2026-08-01'` (the reconciliation PR bumps it to its own merge date). Template: `<p class="mt-8 text-sm text-neutral-600" i18n="@@privacy.last-updated">Stand: {{ lastUpdated \| date: 'MMMM y' : 'UTC' }}</p>`. The explicit `'UTC'` argument is mandatory — without it the month flips in negative-offset build environments. |
-| Privacy | Byte-exact greps | `grep -cP 'z\.\xC2\xA0B\.'` and `grep -cP '15\xE2\x80\x9321'` (plain `grep` does not interpret `\xNN`). Author the source as `z.&nbsp;B.`. |
+| Both legal pages | Verification | `npm run lint`; `npm run verify:legal`; `npm run preview:de` for the German page; `npm run preview:draft` when the `/en/` rendering has to be seen before M7. The unconditional both-locale green build is asserted in M7. |
+| Both legal pages | Handoff comparison | Reword to "if `design_handoff_website_redesign/` is present locally, compare side by side; otherwise `docs/design/imprint.md` §3 is authoritative", and name the numbers to measure at 1280/768/375px: section width capped at 760px, padding 64/24/72px, H1 60px → 40px, H1→H2 40px, H2→P 12px, P→next H2 32px, body line-height 26px, all headings computed weight 400. On the privacy page the intro paragraphs sit between H1 and the first H2, so measure H1→P 24px and P→first H2 40px there; the comparison is layout only, never copy. |
+| Privacy | Page structure | The content is `docs/legal/privacy-policy.final.html`, verbatim: H1 `Datenschutzerklärung`, three intro paragraphs, then ten numbered sections as `<h2>`. The generator's flat `<h4>` levels are markup, not meaning — the eleven lettered definitions in §1 and the nine lettered rights in §5 become `<h3>`, so the outline is h1 → 10× h2 → 20× h3. The two outer `<ul style="list-style: none">` wrappers carry no list semantics (they only hold the lettered blocks) and are dropped; the three real enumerations inside §5 b), d) and e) stay `<ul>`. Letter prefixes keep their letter with the generator's run of spaces collapsed to one (`a) personenbezogene Daten`). §6 and §9 hold two resp. three paragraphs inside a single `<p>`, separated by bare newlines — split them into real `<p>` elements; that is markup, not wording. The closing generator-attribution paragraph and its two external links ship with the text. `docs/design/privacy.md` supplies the **layout only**; its §4 copy table is dead. |
+| Privacy | Text gate | `tools/verify-legal-text.mjs` (exposed as `npm run verify:legal`; from M8 on it runs in the CI `build` job next to `verify:dist`) compares the whitespace-normalised text content of the prose wrapper in `privacy-policy/index.html` and `legal-details-imprint/index.html` against `docs/legal/privacy-policy.final.html` and `docs/legal/imprint.source.md`, in both locales — four comparisons, all four must be identical. That replaces every hand-counted copy criterion on these two pages: a dropped sentence, a smart-quote mangled by an editor or an accidental `/en/` divergence all fail loudly. |
+| Privacy | Rhythm of the new elements | The design only ever styled H1, one H2 level and a lone paragraph. Extending it: consecutive paragraphs get `mt-4` (16px, `--space-4`), the first paragraph after the H1 `mt-6`; H2 keeps `mt-10 mb-3` (first) / `mt-8 mb-3` (rest) at `font-display text-2xl leading-none tracking-wide text-neutral-900`; H3 is the same treatment one step down, `mt-6 mb-2 … text-lg`; enumerations are `mt-4 list-disc space-y-1 pl-6` with body-scale items. Criterion: H1 → first paragraph 24px, H2 → H2 rhythm unchanged from `docs/design/privacy.md` §3.1, and no heading below H2 uses a font size not in that list. |
+| Privacy | Draft badge | Not built at all — the supplied text is final, not a draft. Drop the `privacy.draft-badge` unit and the `bfs-badge` usage, give the H1 `m-0`. Criterion: no badge and no `privacy.draft-badge` id exist. Record the intentional delta to `Datenschutz.dc.html` in the PR. |
+| Privacy | "Stand" line | `projects/website/src/app/pages/privacy-policy/privacy-last-updated.ts` exporting `PRIVACY_LAST_UPDATED = '2026-08-17'` — the day the text was supplied. It moves only when the text itself changes, never on a merge date. Template: `<p class="mt-8 text-sm text-neutral-600" i18n="@@privacy.last-updated">Stand: {{ lastUpdated \| date: 'MMMM y' : 'UTC' }}</p>`. The explicit `'UTC'` argument is mandatory — without it the month flips in negative-offset build environments. |
+| Privacy | Byte-exact greps | Both old greps are deleted: the supplied text writes `z.B.` without a space and contains no `15–21`. Outside the umlauts its only non-ASCII characters are six em dashes (U+2014) and one `„…“` pair, so the surviving spot check is `grep -c '„betroffene Person“'` = 1 plus zero U+00A0 anywhere on the page. Never re-author `z.B.` as `z.&nbsp;B.` — the wording ships as supplied. The real gate is `npm run verify:legal` in the *Text gate* row. |
 | Privacy | Cookie criterion | Split: in M6 assert `npm run build && grep -RIl 'Set-Cookie\|document.cookie' dist/ \|\| echo clean` and the recorded Cloudflare zone settings. The live `curl -sI https://boundfoxstudios.com/ \| grep -i set-cookie` check moves to the M10 post-launch pass (the hostname still serves WordPress during M6). |
-| Privacy reconciliation | §2 and measurement | Amend `@@privacy.essentials.body` (see *Copy*) so it is true whether or not Cloudflare's server-side statistics are read, and pre-decide measurement as **none — no beacon, nothing collected in the page** (SPEC D11). If M10 ever chooses a beacon, §2 and §3 reopen in the same commit. |
-| Privacy reconciliation | §3 text | `@@privacy.hosting.body` in *Langtexte*, with the provider slot filled from Manu's one-line answer. Heading `3. Hosting & Server-Logfiles` unchanged. |
-| Privacy reconciliation | Processor record | The agent commits `docs/privacy-processors.md` pre-filled: a table (Auftragsverarbeiter, Zweck, Datenkategorien, AV-Vertrag, Akzeptiert am) with the Cloudflare row complete except the date (`https://www.cloudflare.com/cloudflare-customer-dpa/`) and the hoster row awaiting name, link and date, plus a section "Cloudflare-Zone-Einstellungen (Stand YYYY-MM-DD): Bot Fight Mode aus · Managed Challenge nicht verwendet · Web Analytics aus". |
-| Privacy reconciliation | Definition of done | The agent posts the complete reconciled German text (all six sections) in the PR description as one copyable block; Manu confirms in a PR review comment; the agent then sets `PRIVACY_LAST_UPDATED` to the merge date and ticks the SPEC §12 bullet. |
+| Privacy reconciliation | What is left of the issue | **It no longer touches the public text.** Manu's wording ships verbatim, so nothing is amended, no provider slot is filled, and neither Cloudflare nor the hoster is named on the page — that was the explicit instruction, and `docs/legal/README.md` records it. Measurement stays pre-decided as **none — no beacon, nothing collected in the page** (SPEC D11), which is a statement about the site, not about the policy. Only a future beacon reopens the published text; a new processor alone changes the internal record below. |
+| Privacy reconciliation | Processor record | The agent commits `docs/privacy-processors.md` pre-filled: a table (Auftragsverarbeiter, Zweck, Datenkategorien, AV-Vertrag, Akzeptiert am) with the Cloudflare row complete except the date (`https://www.cloudflare.com/cloudflare-customer-dpa/`) and the hoster row awaiting name, link and date, plus a section "Cloudflare-Zone-Einstellungen (Stand YYYY-MM-DD): Bot Fight Mode aus · Managed Challenge nicht verwendet · Web Analytics aus". The file is internal documentation only — nothing in it is published, and no cell in it can change a rendered page. |
+| Privacy reconciliation | Definition of done | No sign-off round: Manu supplied the text, so there is nothing to post for confirmation. The issue closes when `docs/privacy-processors.md` is committed (hoster cells named as open, not invented) and the SPEC §12 bullet is ticked. `PRIVACY_LAST_UPDATED` stays at the supply date. |
 | Legal pages in English | The decision itself | **Option B**, recorded as SPEC §12 **D10**: German text under `/en/` plus one English notice; only the German version is legally binding. Delete the "Legal pages in English" bullet from "Still open". Canonical and the three hreflang links stay exactly as the `SeoService` emits them. |
 | Legal pages in English | Notice DOM | `@if (!isGermanLocale) { <p legalNotice class="m-0 mb-6 text-sm text-neutral-600" i18n="@@legal.german-only-notice">…</p> }` — projected into the `legalNotice` slot, which sits **outside** the `lang`-marked wrapper. Both page components carry `private readonly localeId = inject(LOCALE_ID); protected readonly isGermanLocale = this.localeId.startsWith('de');` and bind `[proseLang]="isGermanLocale ? null : 'de'"`. |
-| Legal pages in English | Page furniture vs prose | The notice and the "Stand" line get real English targets; every other `imprint.*` / `privacy.*` target is byte-identical to its source. |
+| Legal pages in English | Page furniture vs prose | Only furniture is marked at all, so **every** legal unit gets a real English target: `privacy.title`, `imprint.title`, `privacy.last-updated`, `legal.german-only-notice` and the two `seo.*` pairs. `messages.en.xlf` never contains a byte-identical copy of German prose — the prose is unmarked and renders the same under `/en/` by construction (*Conventions › i18n*). The H1 and the "Stand" line are the only English elements that sit *inside* the `lang="de"` wrapper, so both carry `lang="en"` on their own element; the notice needs none, it is already outside. |
 | Legal pages in English | Verification | `npx ng build --configuration en --i18n-missing-translation=warning 2>&1 \| grep 'No translation found' \| grep -E 'imprint\.\|privacy\.\|legal\.'` must print nothing, and each `/en/` legal page must contain the notice exactly once plus a `lang="de"` wrapper. |
 
 ### M7 — English Locale
@@ -299,10 +301,10 @@ Fourteen items need you. Everything else in this document is decided and needs n
 | Search Console | Timing | Split by what is possible when: DNS TXT + verification in both tools can happen any time before cutover; sitemap submission is a numbered step **after** the post-launch pass is green (the URL does not exist before cutover), and the issue closes on "both tools list `https://boundfoxstudios.com/sitemap.xml` with 0 errors and a read date". Replace the coverage criterion with a URL-Inspection spot check on `https://boundfoxstudios.com/en/support/` plus a dated follow-up line (cutover + 14 days) in the runbook. |
 | Search Console | Are the TXT values secrets? | No. A verification token only proves control of DNS that its holder already controls, and `dig +short TXT boundfoxstudios.com` exposes it anyway. Commit both values in full, with one line underneath: never in the repo go FTP credentials, the Cloudflare API token and any IndexNow key file. |
 | Measurement | The decision itself | **No measurement is added.** No client-side script of any kind, recorded as SPEC §12 **D11**. Cloudflare's zone analytics exist as a byproduct of the CDN and are not part of the site; delete the "Measurement" bullet from "Still open" and fix the §1 cross-reference from "(see §11)" to "(see §12, D11)". Runbook line: traffic numbers come from Cloudflare → Analytics & Logs → Traffic; nothing is collected in the page, deliberately. No application, privacy-copy or translation change. |
-| Measurement | Cookie criterion | Origin-response check in the post-launch pass: `curl -sI https://boundfoxstudios.com/ \| grep -i '^set-cookie'` prints nothing, same for `/en/` (verified empty against the live site). Build-side half: `grep -rn 'cloudflareinsights\|beacon.min.js' dist/website/browser \| wc -l` = 0. If a `__cf_bm` ever appears, the fix is Bot Fight Mode off — never a weakening of `privacy.essentials.body`. |
+| Measurement | Cookie criterion | Origin-response check in the post-launch pass: `curl -sI https://boundfoxstudios.com/ \| grep -i '^set-cookie'` prints nothing, same for `/en/` (verified empty against the live site). Build-side half: `grep -rn 'cloudflareinsights\|beacon.min.js' dist/website/browser \| wc -l` = 0. If a `__cf_bm` ever appears, the fix is Bot Fight Mode off — never a weakening of the cookie-free promise the home page and `seo.privacy-policy.description` make. |
 | Link check | lychee config | Commit `lychee.toml`: browser `user_agent`, `max_retries = 3`, `retry_wait_time = 5`, `timeout = 20`, `max_concurrency = 8`, `accept = ["200..=299", "403", "429"]` (Ko-fi, Patreon and YouTube answer datacenter IPs with 403/429), `include_mail = false`, `exclude = ["^https://boundfoxstudios\\.com/"]` (own-origin URLs are asserted by `verify-dist` and would be red before cutover). Pass `--base-url dist/website/browser` and `token: ${{ secrets.GITHUB_TOKEN }}`. Relax the AC to "no *third-party* destination that is reachable may be excluded". |
 | Link check | Does the gate fire? | Set `fail: true` explicitly and prove it once before merging: add a canary anchor `https://bugaball.com/__link-check-canary`, dispatch the workflow, confirm red, remove it, re-run green — both run URLs go into the PR description. |
-| Link check | "count matches the copy" | Replace the count with a host assertion over `--format json --output lychee-report.json`: a follow-up step greps the report for `github.com`, `discord.gg`, `youtube.com`, `ko-fi.com`, `patreon.com`, `lehrgrapht.de`, `bugaball.com` and fails with `::error::<host> was never checked` if one is missing. Those seven are the complete external inventory of the copy. |
+| Link check | "count matches the copy" | Replace the count with a host assertion over `--format json --output lychee-report.json`: a follow-up step greps the report for `github.com`, `discord.gg`, `youtube.com`, `ko-fi.com`, `patreon.com`, `lehrgrapht.de`, `bugaball.com`, `dg-datenschutz.de`, `wbs.legal` and fails with `::error::<host> was never checked` if one is missing. Those nine are the complete external inventory of the copy — the last two are the generator-attribution links at the end of the supplied privacy text. |
 | Link check | Schedule | `cron: '0 5 * * 1'` plus `workflow_dispatch`, with the comment: GitHub disables scheduled workflows after 60 days without repository activity; if no weekly run appears, re-enable it in the Actions tab. |
 | Post-launch | Sampled legacy URLs | The fixed list (also the cutover issue's "ten sampled legacy URLs"): `/games/` → `/apps-and-games/`, `/spiele-programmieren-mit-unity-kurs-gratis/` → `/`, `/shops/` → `/support/`, `/founding-boundfox-studios-coaching/` → `/`, `/tag/founding/` → `/`, `/author/manuel-rauber/` → `/`, `/feed/` 410, `/wp-json/` 410, `/post_tag-sitemap.xml` → `/sitemap.xml`, `/en/games/` → `/en/apps-and-games/`, `/en/2d-space-shooter-course/` → `/en/`. Each checked with `curl -sI`, each 301 target re-fetched to prove one hop to 200. |
 | Post-launch | x-default | German (SPEC D9 beats the research sample): `X_DEFAULT_LOCALE = LOCALES[0]` in `site.config.ts`, the sitemap generator reads the same constant, `verify-dist` asserts that every indexable page's `x-default` href equals its German URL, and production is checked with `curl -s https://boundfoxstudios.com/en/support/ \| grep 'x-default'` → `href="https://boundfoxstudios.com/support/"`. |
@@ -370,36 +372,12 @@ authored in M7. Casing follows the *Conventions* rule: natural German case in th
 | `socials.channels.github.aria` | GitHub – zur Organisation | Tile `aria-label`; the handle and the arrow are not announced |
 | `socials.channels.discord.aria` | Discord – Server beitreten | Tile `aria-label` |
 | `socials.channels.youtube.aria` | YouTube – Kanal öffnen | Tile `aria-label` |
-| `imprint.contact.email-label` | E-Mail:&nbsp; | Label run; the address itself is an unmarked literal |
-| `imprint.contact.website-label` | Internet:&nbsp; | Label run; the domain text is an unmarked literal |
-| `imprint.contact.phone` | Telefon: wegen Spam-Anrufen entfernt | Contact paragraph |
-| `imprint.vat.body` | Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz: | Followed by the unmarked literal `DE294345223` |
-| `privacy.controller.owner-line` | Boundfox Studios, Inhaber: Manuel Rauber | Privacy §1 |
-| `privacy.controller.address-line` | Flamingoweg 68, 70378 Stuttgart | Privacy §1 |
-| `privacy.controller.email-label` | E-Mail:&nbsp; | Privacy §1; the address is an unmarked literal |
-| `privacy.essentials.body` | Diese Website kommt ohne Cookies, ohne Tracking und ohne Analyse-Skripte im Browser aus. Es werden keine personenbezogenen Daten zu Werbezwecken erhoben, gespeichert oder an Dritte weitergegeben. | Privacy §2, amended so it stays true alongside server-side zone statistics |
-| `privacy.hosting.body` | see *Langtexte* | Privacy §3, rewritten for Plesk + Cloudflare |
+| `imprint.title` | Impressum | H1 and the only marked string on the imprint page |
+| `privacy.title` | Datenschutzerklärung | H1 and the only marked string inside the privacy prose; the supplied text's own heading |
 | `privacy.last-updated` | Stand: {date} | Rendered as `{{ lastUpdated \| date: 'MMMM y' : 'UTC' }}`; page furniture, so it gets a real English target |
 | `legal.german-only-notice` | Diese Seite gibt es nur auf Deutsch. Rechtlich verbindlich ist ausschließlich die deutsche Fassung. | Above the H1 on both legal pages, rendered only outside `de` |
 
 ### Langtexte
-
-**`@@privacy.hosting.body`** (heading `3. Hosting & Server-Logfiles` unchanged; `[Firma, Sitz]`
-is the only blank, filled from Manu's answer; „z. B." uses a real U+00A0):
-
-> Beim Aufruf dieser Website verarbeitet unser Hosting-Anbieter, [Firma, Sitz], automatisch
-> technische Zugriffsdaten (z. B. IP-Adresse, Datum und Uhrzeit des Abrufs, aufgerufene Seite,
-> Browsertyp). Dem Server vorgeschaltet ist Cloudflare, Inc. (101 Townsend Street, San Francisco,
-> CA 94107, USA) als Reverse-Proxy und Content-Delivery-Network; Cloudflare verarbeitet dieselben
-> Zugriffsdaten, um die Auslieferung abzusichern und zu beschleunigen. Beide Anbieter arbeiten für
-> uns als Auftragsverarbeiter auf Grundlage eines Auftragsverarbeitungsvertrags; für die
-> Übermittlung in die USA gelten die Standardvertragsklauseln der EU-Kommission. Rechtsgrundlage
-> der Verarbeitung ist Art. 6 Abs. 1 lit. f DSGVO — unser berechtigtes Interesse an einem sicheren
-> und stabilen Betrieb der Website. Die Logfiles werden nach kurzer Zeit automatisch gelöscht.
-> Schriftarten, Skripte, Bilder und alle weiteren Dateien liefern wir ausschließlich von unserem
-> eigenen Server aus: Beim Laden einer Seite erhält kein weiterer Dritter deine IP-Adresse. Eine
-> Reichweitenmessung findet nur serverseitig anhand der Zugriffsstatistik von Cloudflare statt —
-> ohne Cookies und ohne Skript in deinem Browser.
 
 **LICENSE asset carve-out** (English, appended after the verbatim MIT body):
 
@@ -454,6 +432,15 @@ Rules that apply across issues. Each is decided once here; no issue re-decides i
   string is a computed fallback.
 - Trailing spaces in label runs are authored as `&nbsp;` — Angular's whitespace removal deletes a
   real trailing space.
+- **Legal prose is never marked.** On `/legal-details-imprint/` and `/privacy-policy/` nothing
+  inside the text carries an `i18n` attribute — not a heading, not a paragraph, not a list item. Marked are exactly
+  eight ids, all page furniture: `privacy.title`, `imprint.title`, `privacy.last-updated`,
+  `legal.german-only-notice` and the `seo.privacy-policy.*` / `seo.legal-details-imprint.*` pairs.
+  SPEC §12 D10 serves the German text under `/en/`, so marking the prose would mean ninety
+  byte-identical units, ninety chances for the two texts to drift apart, and a rewrite on every
+  `ng extract-i18n` run; unmarked content is identical in both locales by construction. The prose
+  sits inside the `lang="de"` wrapper, the notice outside it. Rationale in `docs/legal/README.md` —
+  apply it, do not re-argue it, and do not mark a legal string out of habit.
 
 ### Files and naming
 
