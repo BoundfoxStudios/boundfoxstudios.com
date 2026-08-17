@@ -1,0 +1,76 @@
+name: CI
+
+# No paths filter on purpose: a filtered-out run never reports, and a required
+# status check then waits forever.
+on:
+  pull_request:
+    branches:
+      - develop
+      - main
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  cve-check:
+    name: CVE check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ./.github/actions/read-node-version-from-nvmrc
+        id: node-version
+      - uses: OWASP/cve-lite-cli@fd481fff75f492f94de36dcaf020674af0eca9ef # v1.29.0
+        with:
+          node-version: ${{ steps.node-version.outputs.version }}
+          fail-on: 'critical'
+          verbose: 'true'
+
+  lint:
+    name: Lint & format
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ./.github/actions/read-node-version-from-nvmrc
+        id: node-version
+      - uses: ./.github/actions/prepare-node
+        with:
+          version: ${{ steps.node-version.outputs.version }}
+      - run: npm run format:check
+      - run: npm run lint
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      # `ng test` exits 1 with "No tests found matching the following patterns"
+      # while the repository tracks no spec, which would make this required check
+      # red by construction until the first spec lands.
+      - name: Count tracked specs
+        id: specs
+        run: echo "count=$(git ls-files '*.spec.ts' | wc -l)" >> "$GITHUB_OUTPUT"
+      - uses: ./.github/actions/read-node-version-from-nvmrc
+        id: node-version
+        if: steps.specs.outputs.count != '0'
+      - uses: ./.github/actions/prepare-node
+        if: steps.specs.outputs.count != '0'
+        with:
+          version: ${{ steps.node-version.outputs.version }}
+      - run: npm test
+        if: steps.specs.outputs.count != '0'
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ./.github/actions/read-node-version-from-nvmrc
+        id: node-version
+      - uses: ./.github/actions/prepare-node
+        with:
+          version: ${{ steps.node-version.outputs.version }}
+      - run: npm run build
