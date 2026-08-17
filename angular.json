@@ -25,13 +25,12 @@
               }
             ],
             "styles": ["projects/website/src/styles.css"],
+            // The builder derives `prerender` from `!!server`. Dropping this option still exits 0
+            // but ships an empty client-side shell with nothing prerendered.
             "server": "projects/website/src/main.server.ts",
-            "outputMode": "server",
+            "outputMode": "static",
             "security": {
               "allowedHosts": []
-            },
-            "ssr": {
-              "entry": "projects/website/src/server.ts"
             }
           },
           "configurations": {
@@ -39,8 +38,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumWarning": "400kB",
+                  "maximumError": "500kB"
                 },
                 {
                   "type": "anyComponentStyle",
