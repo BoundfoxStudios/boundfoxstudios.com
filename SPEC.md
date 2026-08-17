@@ -3,8 +3,10 @@
 Redesign of boundfoxstudios.com as a fully static, prerendered, bilingual Angular site,
 built and deployed by GitHub Actions.
 
-> Status: approved. All blocking decisions are settled (§12); the milestones in §13 are the
-> issue backlog. Two items remain open and are scheduled into the milestone that needs them.
+> Status: approved. Every decision is settled — §12 holds the twelve that shape the
+> architecture, [`docs/decisions.md`](docs/decisions.md) holds the rest down to string ids and
+> filenames. The milestones in §13 are the issue backlog. Nothing is left for an implementer
+> to invent; what remains is delivery, not decision.
 
 ---
 
@@ -12,7 +14,7 @@ built and deployed by GitHub Actions.
 
 Replace the current WordPress site with a six-page static site that loads fast, ships no
 tracking and no cookies, and can be rebuilt from source at any time. The site is the public
-face of Bound Fox Studios: it shows what we build, where to find us, and how to support us.
+face of Boundfox Studios: it shows what we build, where to find us, and how to support us.
 
 Audience: people who found one of our apps or games (LehrGrapht, MAT, Flugwacht, Bug-A-Ball),
 plus anyone landing from GitHub, Discord or YouTube.
@@ -29,7 +31,7 @@ Success looks like:
 ### Non-goals
 
 - No blog, no CMS, no comment system.
-- No analytics beyond what Cloudflare provides server-side (see §11).
+- No analytics of any kind (see §12, D11).
 - No client-side interactivity beyond navigation and the mobile menu.
 
 ---
@@ -199,7 +201,7 @@ cutover). Everything not in the table above needs a rule:
 | `/games/` | `/apps-and-games/` | 301 |
 | `/courses/`, `/2d-space-shooter-course/`, `/blender-course/`, `/blender-shading-kurs/`, `/spiele-programmieren-mit-unity-kurs-gratis/` | `/` | 301 |
 | `/shops/`, `/spreadshop/` | `/support/` | 301 |
-| 3 blog posts, `/category/company/`, 6 `/tag/*` | `/` | 301 |
+| 3 blog posts, `/category/company/`, 6 `/tag/*`, `/author/manuel-rauber/` | `/` | 301 |
 | `/feed/`, `/comments/feed/`, `/wp-json/`, `/wp-content/`, `/wp-includes/`, `/xmlrpc.php` | — | 410 |
 | Yoast sitemaps (`sitemap_index.xml`, `*-sitemap.xml`) | `/sitemap.xml` | 301 |
 | `/press/index.php` | preserved, not part of the Angular route space | — |
@@ -254,6 +256,7 @@ projects/website/
     ├── locale/messages.en.xlf       English translations (hand-maintained)
     └── app/
         ├── generated/github-data.json   written by the prebuild script, committed
+        ├── data/                        social links and app catalogue, single source
         ├── layout/                      site header, site footer, layout shell
         ├── pages/                       one folder per route
         ├── ui/                          reusable presentational components
@@ -444,18 +447,17 @@ something in the design handoff or an earlier assumption.
 | D7 | FTP target | `server-dir: /` — a dedicated FTP account is rooted at the right directory |
 | D8 | Staging | **None.** Verification is local via `npm run preview` before merging to `main` |
 | D9 | `x-default` hreflang | **German** — matches the apex and the primary audience |
+| D10 | Legal pages in English | **German text under `/en/`** plus one English notice; only the German version is legally binding |
+| D11 | Measurement | **None.** No client-side script of any kind. Cloudflare's zone analytics exist as a byproduct of the CDN and are not part of the site |
+| D12 | Translation catalogue tooling | `ng-extract-i18n-merge` with `newTranslationTargetsBlank: "omit"` — the default copies the German source into new targets and would ship German into `/en/` with a green build |
 
-### Still open
+### Awaiting delivery, not decision
 
-- **Legal pages in English.** Either translate them, or serve the German text under `/en/` with
-  a one-line notice that only the German version is legally binding. Decided in M6 when the
-  final texts arrive; it blocks nothing before then.
-- **Impressum and Datenschutz final texts** — you supply them in M6.
-- **Measurement.** The site promises no cookies and no tracking, so the usual answer is off the
-  table. Cloudflare Web Analytics is cookieless but would still need a sentence in the privacy
-  policy; server-side Cloudflare zone analytics needs nothing. Search Console and Bing
-  Webmaster Tools should be verified by DNS TXT regardless — that survives every redeploy and
-  covers `/en/`.
+- **Impressum and Datenschutz final texts** — Manu supplies them; they drop into the existing
+  i18n ids without touching code.
+- **The handover items in [`docs/decisions.md`](docs/decisions.md#for-manu)** — credentials,
+  hosting-panel settings and the two data-processing-agreement dates. Everything else in the
+  backlog is decided.
 
 ---
 
@@ -473,7 +475,7 @@ Build order. Each milestone is independently verifiable.
 | M6 | Legal & Content | Imprint, privacy policy, Bug-A-Ball crops, legal review | M3 |
 | M7 | English Locale | Extraction, translation per page, `i18nMissingTranslation` green | M5, M6 |
 | M8 | SEO & Generation | sitemap, robots, JSON-LD, favicons, OG images, `verify-dist`, Lighthouse CI | M3 |
-| M9 | Deploy & Migration | `.htaccess`, redirect map, FTP deploy, nightly job, Cloudflare/TLS | M1 |
+| M9 | Deploy & Migration | `.htaccess`, redirect map, FTP deploy, nightly job, Cloudflare/TLS | M1, M3, M4, M8 |
 | M10 | Launch | Cutover runbook, staging verification, rollback plan, Search Console | all |
 
 M4 and M9 can start in parallel with M2/M3. M7 blocks the first green production build, since
