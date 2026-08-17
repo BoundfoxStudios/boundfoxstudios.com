@@ -42,3 +42,8 @@ __screenshots__/
 # System files
 .DS_Store
 Thumbs.db
+
+# Design handoff references. Not redistributable: the bundled Tahu.ttf is
+# "Copyright (c) 2018 by Khurasan. All rights reserved." with no open licence,
+# and this repository is public. See SPEC.md section 10.
+/design_handoff_website_redesign
