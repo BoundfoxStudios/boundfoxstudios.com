@@ -2,11 +2,13 @@
 
 | File | Role |
 |---|---|
-| `imprint.source.md` | The imprint exactly as Manu supplied it on 2026-08-17. Archival. |
+| `imprint.source.md` | The imprint exactly as Manu supplied it on 2026-08-17. Archival, never edited. |
+| `imprint.final.md` | What ships. Two citation updates, listed in the file. |
 | `privacy-policy.source.html` | The privacy policy exactly as supplied. Archival, never edited. |
 | `privacy-policy.final.html` | What ships. Derived mechanically from the source — see below. |
 
-The imprint has no `.final` file: nothing was removed, so the source text is what ships.
+**Build the pages from the `.final` files.** The `.source` files exist so the difference between
+what was handed over and what ships stays visible.
 
 ## What changed, and why
 
@@ -69,9 +71,14 @@ The prose sits inside a wrapper carrying `lang="de"` on the English page, so ass
 and search engines are told which language they are reading. That wrapper is the reason the
 notice must render *outside* it.
 
-## Flagged for Manu, not blocking
+## The imprint's legal citations
 
-The imprint cites **§ 5 TMG** and **§§ 8 bis 10 des Telemediengesetzes (TMG)**. The provider
-identification duty moved to the Digitale-Dienste-Gesetz on 14 May 2024; the current citations are
-§ 5 DDG and §§ 7–10 DDG. The design handoff already used DDG. The supplied wording ships as-is
-until Manu says otherwise — this is recorded so the discrepancy is a decision, not an oversight.
+Both were updated on Manu's instruction; the reasoning is in `imprint.final.md`. The short
+version, because it is the kind of thing someone will "helpfully" revert:
+
+- `§ 5 TMG` → `§ 5 DDG` is a straight substitution. Same section number, same substance.
+- `§§ 8 bis 10 TMG` has **no DDG equivalent**. Those provisions live in the Digital Services Act
+  (Art. 4–6) now, and DDG §§ 8–10 cover entirely different subject matter. The citation is
+  dropped rather than renumbered, which is also what the design handoff's own imprint does.
+
+Do not "complete" the sentence by adding `§§ 8 bis 10 DDG`.
