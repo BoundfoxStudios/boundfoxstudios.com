@@ -3,8 +3,8 @@
 Redesign of boundfoxstudios.com as a fully static, prerendered, bilingual Angular site,
 built and deployed by GitHub Actions.
 
-> Status: draft, awaiting approval. Decisions marked **[OPEN]** need Manu's answer before
-> the affected issues can be written.
+> Status: approved. All blocking decisions are settled (§12); the milestones in §13 are the
+> issue backlog. Two items remain open and are scheduled into the milestone that needs them.
 
 ---
 
@@ -30,7 +30,7 @@ Success looks like:
 
 - No blog, no CMS, no comment system.
 - No analytics beyond what Cloudflare provides server-side (see §11).
-- No client-side interactivity beyond navigation.
+- No client-side interactivity beyond navigation and the mobile menu.
 
 ---
 
@@ -49,7 +49,7 @@ Success looks like:
 | Format | Prettier 3 + organize-attributes, css-order, tailwindcss plugins |
 | Hooks | lefthook 2 + commitlint (Conventional Commits) |
 | CI/CD | GitHub Actions → `SamKirkland/FTP-Deploy-Action` → Plesk/Apache |
-| Runtime deps | Angular only. No Octokit, no Express, no UI library. |
+| Runtime deps | Angular + `@angular/cdk` (overlay and focus trap for the mobile menu). No Octokit, no Express, no UI library. |
 
 Component prefix is `bfs` (`bfs-root`, `bfs-project-card`, …).
 
@@ -140,6 +140,31 @@ Generated at build time, never hand-maintained: `sitemap.xml` (both locales, wit
 `xhtml:link rel="alternate"`), `robots.txt`, favicon/app-icon set, JSON-LD (`Organization`,
 `WebSite`, one `SoftwareApplication` per app).
 
+### 3.4 Mobile navigation
+
+The design has no mobile menu — the header nav simply wraps. We ship a real burger menu as an
+overlay instead, built on **`@angular/cdk`**. It is the site's only stateful, JavaScript-driven
+widget, so its behaviour is specified rather than left to implementation:
+
+- Breakpoint: burger below `md` (768px), full nav at and above.
+- The panel is a CDK `Overlay` with a `BlockScrollStrategy`, a backdrop, and
+  `keydownEvents` wired to close on `Escape`.
+- `cdkTrapFocus` with `autoCapture` moves focus into the panel on open; the CDK's
+  `FocusTrap` returns focus to the toggle on close.
+- Toggle button carries `aria-expanded` and `aria-controls`; the panel has an accessible name.
+- A navigation closes the panel.
+- Transitions respect `prefers-reduced-motion`.
+- The prerendered HTML renders the menu closed and the page fully usable; the toggle becomes
+  interactive after hydration.
+
+`@angular/cdk` is the only runtime dependency beyond Angular itself. Import only `Overlay` and
+`A11yModule` — the CDK is deeply tree-shakeable, but a blanket import is not. The initial
+bundle budget is 500 kB; if the overlay pushes past it, the budget is what gets re-examined,
+not the accessibility behaviour.
+
+This is also the one piece of genuine logic on the site, and the only component that earns a
+unit test (see §8).
+
 ---
 
 ## 4. Routes
@@ -172,7 +197,7 @@ cutover). Everything not in the table above needs a rule:
 | Old | New | Code |
 |---|---|---|
 | `/games/` | `/apps-and-games/` | 301 |
-| `/courses/`, `/2d-space-shooter-course/`, `/blender-course/`, `/blender-shading-kurs/`, `/spiele-programmieren-mit-unity-kurs-gratis/` | **[OPEN]** | 301 |
+| `/courses/`, `/2d-space-shooter-course/`, `/blender-course/`, `/blender-shading-kurs/`, `/spiele-programmieren-mit-unity-kurs-gratis/` | `/` | 301 |
 | `/shops/`, `/spreadshop/` | `/support/` | 301 |
 | 3 blog posts, `/category/company/`, 6 `/tag/*` | `/` | 301 |
 | `/feed/`, `/comments/feed/`, `/wp-json/`, `/wp-content/`, `/wp-includes/`, `/xmlrpc.php` | — | 410 |
@@ -180,6 +205,15 @@ cutover). Everything not in the table above needs a rule:
 | `/press/index.php` | preserved, not part of the Angular route space | — |
 
 Each rule is mirrored under `/en/`.
+
+The course and blog content is deliberately not carried over. Those URLs redirect to the home
+page rather than 404ing, so their inbound links keep some value — the new site has no closer
+equivalent. WordPress infrastructure paths return 410 because they are not content and should
+drop out of the index rather than being followed.
+
+There is **no `www` hostname**. The apex is the only valid host; `https://boundfoxstudios.com`
+is the canonical origin everywhere. If a `www` DNS record still exists (it currently resolves
+and returns HTTP 526), it should either 301 to the apex at Cloudflare or be removed.
 
 ---
 
@@ -274,8 +308,9 @@ project conventions forbid that. So:
 - **No component unit tests.** `projects/website/src/app/app.spec.ts` (the scaffold spec
   asserting `'Hello, website'`) is deleted in the first cleanup commit; it goes red the moment
   the template changes.
-- **Unit tests only for real logic**, if any appears. Today the only candidate is the sitemap
-  generator and the redirect-map generator in `tools/`.
+- **Unit tests only for real logic.** Three candidates: the mobile menu's focus trap and
+  Escape/navigation close behaviour (§3.4), the sitemap generator, and the redirect-map
+  generator.
 - **The build is the test.** `ng build` runs the AOT compiler with `strictTemplates`; a separate
   `tsc --noEmit` job would be a slower, weaker duplicate. `i18nMissingTranslation: "error"`
   turns a missing translation into a build failure.
@@ -288,7 +323,11 @@ project conventions forbid that. So:
   - no `process.env` and no `fonts.googleapis.com` anywhere in `dist/`
   - `.htaccess` and `en/.htaccess` are present
 - **Lighthouse CI** over the built output for `/` and `/en/`: Performance ≥ 95,
-  Accessibility = 100, Best Practices ≥ 95, SEO = 100, CLS < 0.05.
+  Best Practices ≥ 95, SEO = 100, CLS < 0.05. Accessibility cannot be 100 — see below.
+- **axe** over the built output with exactly one documented exception: the `color-contrast`
+  finding on the orange kicker (§11.6). Any other finding fails the build. The exception lives
+  in `docs/accessibility.md` with the measured ratio and the reason, so it stays a decision
+  rather than drift.
 - **Weekly link check** (`lychee`) over the built HTML — not per PR, so a dead partner link
   surfaces without blocking merges.
 
@@ -337,7 +376,8 @@ content-hashed bundles are `immutable`.
 
 **Ask first**
 
-- Adding any runtime dependency (the budget is 500 kB and there is no UI library today).
+- Adding any runtime dependency beyond Angular and `@angular/cdk` (the budget is 500 kB and
+  there is no UI library).
 - Changing a route path — five of them are indexed and linked from shipped apps.
 - Changing brand colours or introducing a colour outside the token set.
 - Anything that touches the production docroot outside the deploy workflow.
@@ -345,10 +385,8 @@ content-hashed bundles are `immutable`.
 **Never**
 
 - Commit secrets. The repo goes public; enable secret scanning and push protection first.
-- Commit `design_handoff_website_redesign/` — it contains `Tahu.ttf`, which is
-  "Copyright (c) 2018 by Khurasan. All rights reserved." with no open licence (verified in the
-  font's name table). Publishing the repo with that file redistributes it. It is gitignored;
-  removing it later means rewriting history.
+- Change `#ffeb3b`, `#ffc107` or `#ffa726`. They are brand colours, not design tokens up for
+  negotiation — including where one of them fails a contrast check (§11.6).
 - Call GitHub (or any third party) from the browser at runtime.
 - Load fonts or scripts from a third-party origin — the privacy policy asserts we do not.
 - Use `dangerous-clean-slate` on the FTP deploy: `/press/` and Plesk backups live in the same
@@ -367,17 +405,24 @@ something in the design handoff or an earlier assumption.
    200 today. The handoff proposes German slugs (`/unterstuetzen`, `/impressum`); adopting
    them would throw away every existing backlink and force a per-locale route table. The route
    table in §4 keeps what is indexed.
-2. **`www.boundfoxstudios.com` returns HTTP 526** — Cloudflare cannot validate the origin
-   certificate. The apex works. Canonicalize on the apex and fix `www` at Cloudflare.
+2. **There is no `www` hostname.** `www.boundfoxstudios.com` currently resolves and returns
+   HTTP 526; only the apex is valid. Canonical origin is `https://boundfoxstudios.com`, and the
+   stray `www` record should 301 to the apex at Cloudflare or be removed.
 3. **`https://bug-a-ball.com` has an invalid certificate** (subject `Plesk`), so the primary
    CTA on `/apps-and-games/` currently lands on a browser security interstitial.
    `https://bugaball.com/` works. Every link must point there.
 4. **The Bug-A-Ball SVG is not broken.** The handoff says the export lost its styles; it renders
    perfectly. The real problem is that it is square (1025×1026) and both media slots need wide
    crops. This is an art-direction task, not an asset hunt.
-5. **Tahu is not licensed for this use** (see §10).
-6. **The orange kicker fails WCAG AA.** `#ffa726` on white is ~1.9:1 at 12px bold, and the
-   kicker is the first text on all six pages.
+5. **Tahu is licensed for commercial use** — dafont lists it as "100% Free" and the author
+   states "free 100% for personal use and commercial use". The font binary's embedded
+   "All rights reserved" string is stale editor boilerplate. Evidence recorded in
+   `docs/licenses/tahu.md`; the font ships self-hosted like the others.
+6. **The orange kicker fails WCAG AA and stays anyway.** `#ffa726` on white is ~1.9:1 at 12px
+   bold, and the kicker is the first text on all six pages. `#ffa726` is a brand colour and is
+   not being changed; no size increase fixes it either (large-text AA needs 3:1). This is a
+   deliberate, documented deviation — recorded in `docs/accessibility.md`, excluded by name in
+   the axe run, and the reason the Lighthouse accessibility target is not 100 (§8).
 7. **There is no focus-visible state anywhere in the design**, and no single ring colour works
    across white, `#f5f5f5`, `#171717` and the yellow→orange gradient — amber on the gradient is
    ~1.1:1, exactly where five clickable pills live.
@@ -386,29 +431,31 @@ something in the design handoff or an earlier assumption.
 
 ---
 
-## 12. Open Decisions
+## 12. Decisions
 
-These change what gets built. Recommended answer first.
-
-| # | Decision | Recommendation |
+| # | Decision | Outcome |
 |---|---|---|
-| D1 | Build-time data: prebuild script or `TransferState` like LehrGrapht? | **Prebuild script** (§3.2) — 1 API call instead of 21, no Octokit, no `process.env` in the bundle |
-| D2 | Kicker contrast | **Add `--color-kicker: #a16207`** (the existing link yellow, 4.6:1) for 12px kickers only; keep `#ffa726` for gradient, hovers and wordmark |
-| D3 | Focus ring | **Surface-scoped token**: `#171717` by default, `#ffc107` on dark surfaces, one `focus-visible:outline-2` utility everywhere |
-| D4 | Mobile navigation | **No burger menu.** Four nav items wrap to two rows at 375px with zero JavaScript, fully accessible — as the design already does it. A burger is the site's only stateful widget and its only real a11y risk |
-| D5 | Tahu replacement | **Caveat or Grape Nuts** (SIL OFL, self-hosted). Alternative: buy a Khurasan commercial + webfont licence and commit the PDF |
-| D6 | Course URLs (`/courses/` and 4 course pages) | Content is gone from the new site. `301` to `/apps-and-games/`, or keep the free Unity course page as static legacy HTML? **Your call — it is the most link-worthy asset on the domain** |
-| D7 | Legal pages in English | **Serve the German text under `/en/`** with a one-line English notice that only the German version is legally binding — common practice, avoids paying for legal review twice |
-| D8 | `x-default` hreflang | **German** (matches the apex and the primary audience) |
+| D1 | Build-time data source | **Prebuild script** (§3.2). One API call, no Octokit, no `process.env` in the bundle |
+| D2 | Kicker contrast | **Keep `#ffa726`.** Brand colour, not negotiable. Documented deviation (§11.6) |
+| D3 | Focus ring | **Surface-scoped token**: `#171717` on light surfaces, `#ffc107` on dark, one `focus-visible:outline-2` utility everywhere |
+| D4 | Mobile navigation | **Burger menu built on `@angular/cdk`**, fully specified in §3.4 |
+| D5 | Tahu | **Keep it.** Licensed for commercial use, evidence in `docs/licenses/tahu.md` |
+| D6 | Course and blog content | **Not carried over.** Only the six pages in the handoff. Old URLs 301 to `/` (§4) |
+| D7 | FTP target | `server-dir: /` — a dedicated FTP account is rooted at the right directory |
+| D8 | Staging | **None.** Verification is local via `npm run preview` before merging to `main` |
+| D9 | `x-default` hreflang | **German** — matches the apex and the primary audience |
 
-Still needed from you, not decidable here:
+### Still open
 
-- The real docroot path on the Plesk host (`/httpdocs`?) for `server-dir`
-- Whether a staging vhost (`beta.boundfoxstudios.com`) exists or should be created for the
-  cutover rehearsal
-- Impressum and Datenschutz final texts
-- Whether Cloudflare Web Analytics is acceptable (cookieless, but still needs a line in §3 of
-  the privacy policy) or measurement stays off entirely
+- **Legal pages in English.** Either translate them, or serve the German text under `/en/` with
+  a one-line notice that only the German version is legally binding. Decided in M6 when the
+  final texts arrive; it blocks nothing before then.
+- **Impressum and Datenschutz final texts** — you supply them in M6.
+- **Measurement.** The site promises no cookies and no tracking, so the usual answer is off the
+  table. Cloudflare Web Analytics is cookieless but would still need a sentence in the privacy
+  policy; server-side Cloudflare zone analytics needs nothing. Search Console and Bing
+  Webmaster Tools should be verified by DNS TXT regardless — that survives every redeploy and
+  covers `/en/`.
 
 ---
 
