@@ -1,6 +1,66 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xliff version="2.0" xmlns="urn:oasis:names:tc:xliff:document:2.0" srcLang="de">
   <file id="ngi18n" original="ng.template">
+    <unit id="site-header.menu.close">
+      <notes>
+        <note category="location">projects/website/src/app/layout/mobile-menu/mobile-menu.html:25,29</note>
+      </notes>
+      <segment>
+        <source>Menü schließen</source>
+      </segment>
+    </unit>
+    <unit id="site-header.menu.open">
+      <notes>
+        <note category="location">projects/website/src/app/layout/mobile-menu/mobile-menu.html:44,49</note>
+      </notes>
+      <segment>
+        <source>Menü öffnen</source>
+      </segment>
+    </unit>
+    <unit id="site-header.menu.panel-label">
+      <notes>
+        <note category="location">projects/website/src/app/layout/mobile-menu/mobile-menu.html:57</note>
+      </notes>
+      <segment>
+        <source>Menü</source>
+      </segment>
+    </unit>
+    <unit id="site-header.nav.home">
+      <notes>
+        <note category="location">projects/website/src/app/layout/mobile-menu/mobile-menu.html:66,69</note>
+        <note category="location">projects/website/src/app/layout/site-header/site-header.html:21,24</note>
+      </notes>
+      <segment>
+        <source>Startseite</source>
+      </segment>
+    </unit>
+    <unit id="site-header.nav.apps-and-games">
+      <notes>
+        <note category="location">projects/website/src/app/layout/mobile-menu/mobile-menu.html:74,77</note>
+        <note category="location">projects/website/src/app/layout/site-header/site-header.html:29,32</note>
+      </notes>
+      <segment>
+        <source>Apps &amp; Spiele</source>
+      </segment>
+    </unit>
+    <unit id="site-header.nav.support">
+      <notes>
+        <note category="location">projects/website/src/app/layout/mobile-menu/mobile-menu.html:82,85</note>
+        <note category="location">projects/website/src/app/layout/site-header/site-header.html:37,40</note>
+      </notes>
+      <segment>
+        <source>Unterstützen</source>
+      </segment>
+    </unit>
+    <unit id="site-header.nav.socials">
+      <notes>
+        <note category="location">projects/website/src/app/layout/mobile-menu/mobile-menu.html:90,93</note>
+        <note category="location">projects/website/src/app/layout/site-header/site-header.html:45,48</note>
+      </notes>
+      <segment>
+        <source>Socials</source>
+      </segment>
+    </unit>
     <unit id="footer.tagline">
       <notes>
         <note category="location">projects/website/src/app/layout/site-footer/site-footer.html:14,16</note>
@@ -129,38 +189,6 @@
       </notes>
       <segment>
         <source>Hauptnavigation</source>
-      </segment>
-    </unit>
-    <unit id="site-header.nav.home">
-      <notes>
-        <note category="location">projects/website/src/app/layout/site-header/site-header.html:21,24</note>
-      </notes>
-      <segment>
-        <source>Startseite</source>
-      </segment>
-    </unit>
-    <unit id="site-header.nav.apps-and-games">
-      <notes>
-        <note category="location">projects/website/src/app/layout/site-header/site-header.html:29,32</note>
-      </notes>
-      <segment>
-        <source>Apps &amp; Spiele</source>
-      </segment>
-    </unit>
-    <unit id="site-header.nav.support">
-      <notes>
-        <note category="location">projects/website/src/app/layout/site-header/site-header.html:37,40</note>
-      </notes>
-      <segment>
-        <source>Unterstützen</source>
-      </segment>
-    </unit>
-    <unit id="site-header.nav.socials">
-      <notes>
-        <note category="location">projects/website/src/app/layout/site-header/site-header.html:45,48</note>
-      </notes>
-      <segment>
-        <source>Socials</source>
       </segment>
     </unit>
   </file>

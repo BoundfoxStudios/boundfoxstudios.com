@@ -187,6 +187,7 @@ Nicht als Key nötig: der Trenner `/` zwischen DE und EN — statisches Markup.
 | `site-header.language.aria-label` | `Sprache wählen` | Gruppe des Sprachumschalters |
 | `site-header.menu.open` | `Menü öffnen` | Burger-Button (ergänzt) |
 | `site-header.menu.close` | `Menü schließen` | Burger-Button (ergänzt) |
+| `site-header.menu.panel-label` | `Menü` | `aria-label` des Mobile-Menü-Panels |
 
 ---
 

@@ -37,7 +37,10 @@
                 "input": "projects/website/public"
               }
             ],
-            "styles": ["projects/website/src/styles.css"],
+            "styles": [
+              "node_modules/@angular/cdk/overlay-prebuilt.css",
+              "projects/website/src/styles.css"
+            ],
             // The builder derives `prerender` from `!!server`. Dropping this option still exits 0
             // but ships an empty client-side shell with nothing prerendered.
             "server": "projects/website/src/main.server.ts",
@@ -54,7 +57,7 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "400kB",
+                  "maximumWarning": "450kB",
                   "maximumError": "500kB"
                 },
                 {

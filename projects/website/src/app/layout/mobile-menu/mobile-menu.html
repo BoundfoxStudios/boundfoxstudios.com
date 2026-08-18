@@ -1,0 +1,97 @@
+<button
+  class="px-3 py-2 text-white focus-ring transition-colors duration-150 ease-in-out hover:text-yellow"
+  [attr.aria-expanded]="isOpen()"
+  (click)="toggle()"
+  type="button"
+  aria-controls="mobile-menu-panel"
+>
+  @if (isOpen()) {
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path d="M18 6 6 18M6 6l12 12" />
+    </svg>
+    <span
+      class="sr-only"
+      i18n="@@site-header.menu.close"
+      >Menü schließen</span
+    >
+  } @else {
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path d="M3 6h18M3 12h18M3 18h18" />
+    </svg>
+    <span
+      class="sr-only"
+      i18n="@@site-header.menu.open"
+      >Menü öffnen</span
+    >
+  }
+</button>
+
+<ng-template #panel>
+  <nav
+    class="flex w-screen flex-col gap-1 bg-neutral-900 px-6 py-4 opacity-100 transition-opacity duration-150 ease-in-out surface-dark motion-reduce:transition-none starting:opacity-0"
+    id="mobile-menu-panel"
+    [cdkTrapFocusAutoCapture]="true"
+    tabindex="-1"
+    cdkTrapFocus
+    aria-label="Menü"
+    i18n-aria-label="@@site-header.menu.panel-label"
+  >
+    <a
+      class="px-3 py-2 font-display text-base tracking-wider text-white uppercase focus-ring transition-colors duration-150 ease-in-out hover:text-yellow"
+      [routerLinkActiveOptions]="{ exact: true }"
+      routerLink="/"
+      routerLinkActive="text-yellow"
+      ariaCurrentWhenActive="page"
+      i18n="@@site-header.nav.home"
+      >Startseite</a
+    >
+    <a
+      class="px-3 py-2 font-display text-base tracking-wider text-white uppercase focus-ring transition-colors duration-150 ease-in-out hover:text-yellow"
+      routerLink="/apps-and-games"
+      routerLinkActive="text-yellow"
+      ariaCurrentWhenActive="page"
+      i18n="@@site-header.nav.apps-and-games"
+      >Apps &amp; Spiele</a
+    >
+    <a
+      class="px-3 py-2 font-display text-base tracking-wider text-white uppercase focus-ring transition-colors duration-150 ease-in-out hover:text-yellow"
+      routerLink="/support"
+      routerLinkActive="text-yellow"
+      ariaCurrentWhenActive="page"
+      i18n="@@site-header.nav.support"
+      >Unterstützen</a
+    >
+    <a
+      class="px-3 py-2 font-display text-base tracking-wider text-white uppercase focus-ring transition-colors duration-150 ease-in-out hover:text-yellow"
+      routerLink="/socials"
+      routerLinkActive="text-yellow"
+      ariaCurrentWhenActive="page"
+      i18n="@@site-header.nav.socials"
+      >Socials</a
+    >
+
+    <div class="mt-2 border-t border-neutral-600 pt-2">
+      <bfs-language-switcher [links]="localeLinks.links()" />
+    </div>
+  </nav>
+</ng-template>

@@ -7,7 +7,7 @@
       <bfs-brand-lockup [priority]="true" />
     </a>
     <nav
-      class="ml-auto flex flex-wrap items-center gap-1"
+      class="ml-auto flex flex-wrap items-center gap-1 max-md:hidden"
       aria-label="Hauptnavigation"
       i18n-aria-label="@@site-header.nav.aria-label"
     >
@@ -45,6 +45,10 @@
         >Socials</a
       >
     </nav>
-    <bfs-language-switcher [links]="localeLinks.links()" />
+    <bfs-language-switcher
+      class="border-l border-neutral-600 pl-4 max-md:hidden"
+      [links]="localeLinks.links()"
+    />
+    <bfs-mobile-menu class="ml-auto md:hidden" />
   </div>
 </header>
