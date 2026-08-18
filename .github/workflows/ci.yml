@@ -73,4 +73,9 @@ jobs:
       - uses: ./.github/actions/prepare-node
         with:
           version: ${{ steps.node-version.outputs.version }}
-      - run: npm run build
+      - name: Fetch GitHub data
+        run: npm run fetch:github
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # `npx ng build` runs no npm lifecycle hook, so the prebuild fetch above is not repeated.
+      - run: npx ng build && npm run postbuild --if-present
