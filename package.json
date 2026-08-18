@@ -11,6 +11,7 @@
     "fetch:github": "node tools/fetch-github-data.mjs projects/website/src/app/generated/github-data.json",
     "fonts:generate": "node tools/generate-fonts.mjs",
     "images:generate": "node tools/generate-images.mjs",
+    "images:crops": "node tools/generate-bug-a-ball-crops.mjs",
     "prebuild": "npm run fetch:github",
     "build": "ng build",
     "build:draft": "ng build --i18n-missing-translation=warning",

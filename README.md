@@ -23,6 +23,7 @@ Node.js as pinned in [`.nvmrc`](.nvmrc). `npm ci` installs the toolchain and, th
 | `npm run fetch:github`      | Regenerate `projects/website/src/app/generated/github-data.json`                  |
 | `npm run fonts:generate`    | Re-subset the four self-hosted web fonts into `public/fonts/`                     |
 | `npm run images:generate`   | Re-generate the fox-head mark sizes into `public/images/`                         |
+| `npm run images:crops`      | Re-generate the two Bug-A-Ball key-art crops into `public/images/`                |
 | `npm run build`             | `ng build` — both locales, fully prerendered, into `dist/website/browser`         |
 | `npm run build:draft`       | `ng build --i18n-missing-translation=warning` — both locales with source fallback |
 | `npm run watch`             | Development build in watch mode                                                   |
