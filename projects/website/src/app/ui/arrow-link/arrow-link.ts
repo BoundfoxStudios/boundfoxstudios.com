@@ -1,12 +1,11 @@
 import { NgTemplateOutlet } from '@angular/common';
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 export type ArrowLinkVariant = 'body' | 'display';
 
 @Component({
   selector: 'bfs-arrow-link',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NgTemplateOutlet, RouterLink],
   templateUrl: './arrow-link.html',
 })

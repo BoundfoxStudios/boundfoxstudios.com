@@ -3,7 +3,6 @@ import { Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
 import {
   afterNextRender,
-  ChangeDetectionStrategy,
   Component,
   DestroyRef,
   inject,
@@ -30,7 +29,6 @@ const PANEL_TOP_OFFSET = '64px';
 
 @Component({
   selector: 'bfs-mobile-menu',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CdkTrapFocus, LanguageSwitcher, RouterLink, RouterLinkActive],
   templateUrl: './mobile-menu.html',
 })

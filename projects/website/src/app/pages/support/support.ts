@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { socialLink } from '../../data/social-links';
 import { BrandIcon, BrandIconName } from '../../ui/brand-icon/brand-icon';
@@ -66,7 +66,6 @@ const FINANCIAL_WAYS: readonly SupportWay[] = [
 
 @Component({
   selector: 'bfs-support-page',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [BrandIcon, LinkCard, SectionHead],
   templateUrl: './support.html',
 })

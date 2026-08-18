@@ -1,5 +1,5 @@
 import { NgTemplateOutlet } from '@angular/common';
-import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
+import { Component, computed, input } from '@angular/core';
 
 import { Kicker } from '../kicker/kicker';
 
@@ -16,7 +16,6 @@ const MEDIA_PANEL_CLASSES: Record<ProjectCardMedia, string> = {
 
 @Component({
   selector: 'bfs-project-card',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: 'contents' },
   imports: [Kicker, NgTemplateOutlet],
   templateUrl: './project-card.html',

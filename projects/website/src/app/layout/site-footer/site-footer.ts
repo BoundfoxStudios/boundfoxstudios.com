@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { SOCIAL_LINKS } from '../../data/social-links';
@@ -8,7 +8,6 @@ import { BrandLockup } from '../../ui/brand-lockup/brand-lockup';
 
 @Component({
   selector: 'bfs-site-footer',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [RouterLink, BrandLockup, BrandIcon],
   templateUrl: './site-footer.html',
 })

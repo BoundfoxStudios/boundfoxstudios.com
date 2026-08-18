@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { RouterLink } from '@angular/router';
 
@@ -13,7 +13,6 @@ import { SectionHead } from '../../ui/section-head/section-head';
 
 @Component({
   selector: 'bfs-home-page',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ArrowLink, Badge, PillLink, ProjectCard, RepositoryCards, RouterLink, SectionHead],
   templateUrl: './home.html',
 })

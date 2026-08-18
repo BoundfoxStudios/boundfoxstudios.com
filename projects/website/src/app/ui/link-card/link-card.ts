@@ -1,10 +1,9 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 export type LinkCardTone = 'light' | 'dark';
 
 @Component({
   selector: 'bfs-link-card',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: 'contents' },
   templateUrl: './link-card.html',
 })

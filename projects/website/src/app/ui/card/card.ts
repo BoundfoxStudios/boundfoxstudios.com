@@ -1,8 +1,7 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'bfs-card',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: 'contents' },
   templateUrl: './card.html',
 })
