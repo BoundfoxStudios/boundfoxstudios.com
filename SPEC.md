@@ -236,7 +236,6 @@ npm test                  # ng test (vitest)
 npm run lint              # eslint
 npm run format            # prettier --write .
 npm run format:check      # prettier --check .
-npm run verify:dist       # assertions over the built output (see §8)
 ```
 
 ---
@@ -251,7 +250,7 @@ docs/components.md                   component inventory and API (produced in M2
 docs/i18n-workflow.md                how to add, change and remove a translatable string
 design_handoff_website_redesign/     original design references — GITIGNORED, see §10
 deploy/                              .htaccess files and the redirect map, uploaded by CI
-tools/                               build scripts (fetch-github-data, sitemap, icons, verify-dist)
+tools/                               build scripts (fetch-github-data, sitemap, icons, redirects)
 .github/actions/                     read-node-version-from-nvmrc, prepare-node
 .github/workflows/                   ci.yml, deploy.yml
 projects/website/
@@ -322,14 +321,8 @@ project conventions forbid that. So:
 - **The build is the test.** `ng build` runs the AOT compiler with `strictTemplates`; a separate
   `tsc --noEmit` job would be a slower, weaker duplicate. `i18nMissingTranslation: "error"`
   turns a missing translation into a build failure.
-- **`tools/verify-dist.mjs` runs in CI after every build** and asserts what a type system
-  cannot:
-  - `dist/website/browser/index.html` and `en/index.html` contain prerendered content, not a
-    client-side shell (this is the §3.1 trap #1 tripwire)
-  - every `index.html` has exactly one `<link rel="canonical">` and three `hreflang` links
-  - `sitemap.xml` URL count matches the route table
-  - no `process.env` and no `fonts.googleapis.com` anywhere in `dist/`
-  - `.htaccess` and `en/.htaccess` are present
+- **No separate assertion script over `dist/`** (D13). The gates below run against the built
+  output and the generators carry their own unit tests.
 - **Lighthouse CI** over the built output for `/` and `/en/`: Performance ≥ 95,
   Best Practices ≥ 95, SEO = 100, CLS < 0.05. Accessibility cannot be 100 — see below.
 - **axe** over the built output with exactly one documented exception: the `color-contrast`
@@ -351,7 +344,8 @@ project conventions forbid that. So:
 ### Workflows
 
 - **`ci.yml`** on pull requests into `develop` and `main`: CVE check
-  (`OWASP/cve-lite-cli@v1`, fail on critical), lint + format check, test, build + `verify:dist`.
+  (`OWASP/cve-lite-cli@v1`, fail on critical), lint + format check, test, build + the
+  accessibility and performance gates.
 - **`deploy.yml`** on push to `main`, on `schedule` (nightly 03:00 UTC), and on
   `workflow_dispatch`: build with fresh GitHub data, then upload. Concurrency group
   `deploy-production` with `cancel-in-progress: false` — cancelling mid-upload leaves the
@@ -455,6 +449,7 @@ something in the design handoff or an earlier assumption.
 | D10 | Legal pages in English | **German text under `/en/`** plus one English notice; only the German version is legally binding |
 | D11 | Measurement | **None.** No client-side script of any kind. Cloudflare's zone analytics exist as a byproduct of the CDN and are not part of the site |
 | D12 | Translation catalogue tooling | `ng-extract-i18n-merge` with `newTranslationTargetsBlank: "omit"` — the default copies the German source into new targets and would ship German into `/en/` with a green build |
+| D13 | Build output assertions | **None.** No `verify-dist` script — the Lighthouse and axe gates run over the same `dist/`, and the generators are covered by unit tests |
 
 ### Awaiting delivery, not decision
 
@@ -479,7 +474,7 @@ Build order. Each milestone is independently verifiable.
 | M5 | Pages | Home, Apps & Games, Support, Socials | M3, M4 |
 | M6 | Legal & Content | Imprint, privacy policy, Bug-A-Ball crops, legal review | M3 |
 | M7 | English Locale | Extraction, translation per page, `i18nMissingTranslation` green | M5, M6 |
-| M8 | SEO & Generation | sitemap, robots, JSON-LD, favicons, OG images, `verify-dist`, Lighthouse CI | M3 |
+| M8 | SEO & Generation | sitemap, robots, JSON-LD, favicons, OG images, Lighthouse CI | M3 |
 | M9 | Deploy & Migration | `.htaccess`, redirect map, FTP deploy, nightly job, Cloudflare/TLS | M1, M3, M4, M8 |
 | M10 | Launch | Cutover runbook, staging verification, rollback plan, Search Console | all |
 
