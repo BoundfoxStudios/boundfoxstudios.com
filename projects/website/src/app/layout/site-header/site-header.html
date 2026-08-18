@@ -1,0 +1,50 @@
+<header class="bg-neutral-900 text-white surface-dark">
+  <div class="mx-auto flex min-h-16 max-w-6xl flex-wrap items-center gap-4 gap-y-2 px-6 py-2">
+    <a
+      class="focus-ring"
+      routerLink="/"
+    >
+      <bfs-brand-lockup [priority]="true" />
+    </a>
+    <nav
+      class="ml-auto flex flex-wrap items-center gap-1"
+      aria-label="Hauptnavigation"
+      i18n-aria-label="@@site-header.nav.aria-label"
+    >
+      <a
+        class="border-b-2 border-transparent px-3 py-2 font-display text-base tracking-wider text-white uppercase focus-ring transition-colors duration-150 ease-in-out hover:text-yellow"
+        [routerLinkActiveOptions]="{ exact: true }"
+        routerLink="/"
+        routerLinkActive="text-yellow border-yellow"
+        ariaCurrentWhenActive="page"
+        i18n="@@site-header.nav.home"
+        >Startseite</a
+      >
+      <a
+        class="border-b-2 border-transparent px-3 py-2 font-display text-base tracking-wider text-white uppercase focus-ring transition-colors duration-150 ease-in-out hover:text-yellow"
+        routerLink="/apps-and-games"
+        routerLinkActive="text-yellow border-yellow"
+        ariaCurrentWhenActive="page"
+        i18n="@@site-header.nav.apps-and-games"
+        >Apps &amp; Spiele</a
+      >
+      <a
+        class="border-b-2 border-transparent px-3 py-2 font-display text-base tracking-wider text-white uppercase focus-ring transition-colors duration-150 ease-in-out hover:text-yellow"
+        routerLink="/support"
+        routerLinkActive="text-yellow border-yellow"
+        ariaCurrentWhenActive="page"
+        i18n="@@site-header.nav.support"
+        >Unterstützen</a
+      >
+      <a
+        class="border-b-2 border-transparent px-3 py-2 font-display text-base tracking-wider text-white uppercase focus-ring transition-colors duration-150 ease-in-out hover:text-yellow"
+        routerLink="/socials"
+        routerLinkActive="text-yellow border-yellow"
+        ariaCurrentWhenActive="page"
+        i18n="@@site-header.nav.socials"
+        >Socials</a
+      >
+    </nav>
+    <bfs-language-switcher [links]="localeLinks.links()" />
+  </div>
+</header>

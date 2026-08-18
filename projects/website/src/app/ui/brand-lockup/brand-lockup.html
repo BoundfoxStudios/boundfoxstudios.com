@@ -1,0 +1,18 @@
+<div class="flex items-center gap-2.5">
+  <img
+    class="object-contain"
+    [ngSrc]="markSource()"
+    [width]="markSize()"
+    [height]="markSize()"
+    [priority]="priority()"
+    alt=""
+  />
+  <!-- `&ngsp;` and not a plain space: Angular drops a whitespace-only text node between two
+       elements, and `&nbsp;` would stop the footer's `nowrap = false` from ever breaking. -->
+  <span
+    class="font-display text-2xl leading-none tracking-wider uppercase"
+    [class.whitespace-nowrap]="nowrap()"
+    translate="no"
+    ><span class="text-orange">Boundfox</span>&ngsp;<span class="text-yellow">Studios</span></span
+  >
+</div>
