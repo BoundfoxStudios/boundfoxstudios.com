@@ -618,178 +618,213 @@
       </segment>
     </unit>
     <unit id="socials.hero.kicker">
-      <segment state="initial">
+      <segment state="translated">
         <source>Community</source>
+        <target>Community</target>
       </segment>
     </unit>
     <unit id="socials.hero.headline">
-      <segment state="initial">
+      <segment state="translated">
         <source>Vernetze dich mit uns</source>
+        <target>Connect with us</target>
       </segment>
     </unit>
     <unit id="socials.hero.lead">
-      <segment state="initial">
+      <segment state="translated">
         <source>Hier findest du uns — für Tutorials, Fragen, Feedback oder einfach einen Blick hinter die Kulissen.</source>
+        <target>This is where to find us — for tutorials, questions, feedback or just a look behind the scenes.</target>
       </segment>
     </unit>
     <unit id="socials.channels.github.description">
-      <segment state="initial">
+      <segment state="translated">
         <source>Unsere Open-Source-Projekte: Code lesen, Issues melden, mitentwickeln.</source>
+        <target>Our open-source projects: read the code, report issues, help build them.</target>
       </segment>
     </unit>
     <unit id="socials.channels.github.cta">
-      <segment state="initial">
+      <segment state="translated">
         <source>Zur Organisation</source>
+        <target>Go to the organisation</target>
       </segment>
     </unit>
     <unit id="socials.channels.github.aria">
-      <segment state="initial">
+      <segment state="translated">
         <source>GitHub – zur Organisation</source>
+        <target>GitHub – go to the organisation</target>
       </segment>
     </unit>
     <unit id="socials.channels.discord.description">
-      <segment state="initial">
+      <segment state="translated">
         <source>Unsere Community: Hilfe bei deinen Projekten, Feedback und Austausch mit anderen Entwickler:innen.</source>
+        <target>Our community: help with your own projects, feedback, and talking shop with other developers.</target>
       </segment>
     </unit>
     <unit id="socials.channels.discord.cta">
-      <segment state="initial">
+      <segment state="translated">
         <source>Server beitreten</source>
+        <target>Join the server</target>
       </segment>
     </unit>
     <unit id="socials.channels.discord.aria">
-      <segment state="initial">
+      <segment state="translated">
         <source>Discord – Server beitreten</source>
+        <target>Discord – join the server</target>
       </segment>
     </unit>
     <unit id="socials.channels.youtube.description">
-      <segment state="initial">
+      <segment state="translated">
         <source>Kostenlose Kurse und Tutorials zu Unity, Blender und Spieleentwicklung — auf Deutsch.</source>
+        <target>Free courses and tutorials on Unity, Blender and game development — in German.</target>
       </segment>
     </unit>
     <unit id="socials.channels.youtube.cta">
-      <segment state="initial">
+      <segment state="translated">
         <source>Kanal öffnen</source>
+        <target>Open the channel</target>
       </segment>
     </unit>
     <unit id="socials.channels.youtube.aria">
-      <segment state="initial">
+      <segment state="translated">
         <source>YouTube – Kanal öffnen</source>
+        <target>YouTube – open the channel</target>
       </segment>
     </unit>
     <unit id="support.hero.kicker">
-      <segment state="initial">
+      <segment state="translated">
         <source>Community</source>
+        <target>Community</target>
       </segment>
     </unit>
     <unit id="support.hero.title">
-      <segment state="initial">
+      <segment state="translated">
         <source>Unterstütze uns</source>
+        <target>Support us</target>
       </segment>
     </unit>
     <unit id="support.hero.lead">
-      <segment state="initial">
+      <segment state="translated">
         <source>Unsere Spiele, Apps und Tutorials sind kostenlos — und sollen es bleiben. Hier findest du alle Möglichkeiten, uns dabei zu unterstützen. Vieles davon kostet dich keinen Cent.</source>
+        <target>Our games, apps and tutorials are free — and they should stay that way. Here are all the ways you can help us keep it up. Plenty of them cost you nothing at all.</target>
       </segment>
     </unit>
     <unit id="support.hero.thanks">
-      <segment state="initial">
+      <segment state="translated">
         <source> Danke! </source>
+        <target>Thanks!</target>
       </segment>
     </unit>
     <unit id="support.free.heading">
-      <segment state="initial">
+      <segment state="translated">
         <source>Kostenfrei unterstützen</source>
+        <target>Support us for free</target>
       </segment>
     </unit>
     <unit id="support.free.subline">
-      <segment state="initial">
+      <segment state="translated">
         <source>Zeit und Aufmerksamkeit helfen uns genauso wie Geld — manchmal sogar mehr.</source>
+        <target>Time and attention help us just as much as money — sometimes more.</target>
       </segment>
     </unit>
     <unit id="support.financial.heading">
-      <segment state="initial">
+      <segment state="translated">
         <source>Finanziell unterstützen</source>
+        <target>Support us financially</target>
       </segment>
     </unit>
     <unit id="support.financial.subline">
-      <segment state="initial">
+      <segment state="translated">
         <source>Einmalig oder monatlich — ganz wie du magst. Jeder Beitrag hilft, weiter kostenlose Projekte zu bauen.</source>
+        <target>One-off or monthly — however you like. Every contribution helps us keep building free projects.</target>
       </segment>
     </unit>
     <unit id="support.free.github.description">
-      <segment state="initial">
+      <segment state="translated">
         <source>Vergib Stars, melde Fehler, schlag Features vor — oder bring dich direkt mit Pull Requests in unsere Open-Source-Projekte ein.</source>
+        <target>Give us a star, report bugs, suggest features — or pitch in directly with pull requests on our open-source projects.</target>
       </segment>
     </unit>
     <unit id="support.free.github.cta">
-      <segment state="initial">
+      <segment state="translated">
         <source>Zur Organisation</source>
+        <target>Go to the organisation</target>
       </segment>
     </unit>
     <unit id="support.free.github.aria">
-      <segment state="initial">
+      <segment state="translated">
         <source>GitHub – zur Organisation</source>
+        <target>GitHub – go to the organisation</target>
       </segment>
     </unit>
     <unit id="support.free.discord.description">
-      <segment state="initial">
+      <segment state="translated">
         <source>Sei im Discord aktiv, rege Diskussionen an und hilf anderen aus der Community — genau dafür ist er da.</source>
+        <target>Be active on Discord, get discussions going and help others in the community — that is exactly what it is there for.</target>
       </segment>
     </unit>
     <unit id="support.free.discord.cta">
-      <segment state="initial">
+      <segment state="translated">
         <source>Server beitreten</source>
+        <target>Join the server</target>
       </segment>
     </unit>
     <unit id="support.free.discord.aria">
-      <segment state="initial">
+      <segment state="translated">
         <source>Discord – Server beitreten</source>
+        <target>Discord – join the server</target>
       </segment>
     </unit>
     <unit id="support.free.youtube.description">
-      <segment state="initial">
+      <segment state="translated">
         <source>Schau unsere Videos, like und kommentiere sie — so werden sie von YouTube besser gefunden und erreichen mehr Leute.</source>
+        <target>Watch our videos, like them and leave a comment — that is how YouTube surfaces them and how they reach more people.</target>
       </segment>
     </unit>
     <unit id="support.free.youtube.cta">
-      <segment state="initial">
+      <segment state="translated">
         <source>Kanal öffnen</source>
+        <target>Open the channel</target>
       </segment>
     </unit>
     <unit id="support.free.youtube.aria">
-      <segment state="initial">
+      <segment state="translated">
         <source>YouTube – Kanal öffnen</source>
+        <target>YouTube – open the channel</target>
       </segment>
     </unit>
     <unit id="support.financial.kofi.description">
-      <segment state="initial">
+      <segment state="translated">
         <source>Spendier uns einen Kaffee — einmalig oder monatlich, ganz ohne Verpflichtung.</source>
+        <target>Buy us a coffee — one-off or monthly, with no strings attached.</target>
       </segment>
     </unit>
     <unit id="support.financial.kofi.cta">
-      <segment state="initial">
+      <segment state="translated">
         <source>Kaffee spendieren</source>
+        <target>Buy us a coffee</target>
       </segment>
     </unit>
     <unit id="support.financial.kofi.aria">
-      <segment state="initial">
+      <segment state="translated">
         <source>Ko-fi – Kaffee spendieren</source>
+        <target>Ko-fi – buy us a coffee</target>
       </segment>
     </unit>
     <unit id="support.financial.patreon.description">
-      <segment state="initial">
+      <segment state="translated">
         <source>Unterstütze uns mit einem monatlichen Beitrag deiner Wahl und begleite unsere Projekte langfristig.</source>
+        <target>Support us with a monthly contribution of your choosing and stay with our projects for the long run.</target>
       </segment>
     </unit>
     <unit id="support.financial.patreon.cta">
-      <segment state="initial">
+      <segment state="translated">
         <source>Patron werden</source>
+        <target>Become a patron</target>
       </segment>
     </unit>
     <unit id="support.financial.patreon.aria">
-      <segment state="initial">
+      <segment state="translated">
         <source>Patreon – Patron werden</source>
+        <target>Patreon – become a patron</target>
       </segment>
     </unit>
     <unit id="home.github.card.updated">
