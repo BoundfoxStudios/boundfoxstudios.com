@@ -35,6 +35,13 @@ either `npm start` or `npm run start:en`.
 tree, so `http://localhost:4300/` and `http://localhost:4300/en/` behave exactly as they will in
 production.
 
+## GitHub release data
+
+`projects/website/src/app/generated/github-data.json` is committed. It is a development
+snapshot so `ng serve` and offline builds work without a token — the `prebuild` hook refreshes
+it locally, CI regenerates it before every build without committing it back, and the nightly
+deploy keeps production current.
+
 ## Editor setup
 
 `.vscode/extensions.json` recommends the Angular Language Service, Tailwind CSS IntelliSense,
