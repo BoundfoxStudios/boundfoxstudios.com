@@ -1,0 +1,44 @@
+<section class="mx-auto max-w-6xl px-6 pt-16 pb-18">
+  <!-- The requested path is deliberately absent: /404/ is prerendered once and hydrated at every
+       missed URL, so any echo of the URL would make the client DOM diverge from the server one. -->
+  <bfs-section-head
+    variant="page"
+    kicker="Fehler 404"
+    i18n-kicker="@@not-found.kicker"
+    heading="Seite nicht gefunden"
+    i18n-heading="@@not-found.title"
+    lead="Diese Seite gibt es nicht mehr oder hat nie existiert. Von hier aus kommst du weiter:"
+    i18n-lead="@@not-found.lead"
+  />
+
+  <ul class="m-0 mt-8 flex list-none flex-wrap gap-x-6 gap-y-3 p-0">
+    <li>
+      <bfs-arrow-link
+        route="/"
+        i18n="@@not-found.links.home"
+        >Startseite</bfs-arrow-link
+      >
+    </li>
+    <li>
+      <bfs-arrow-link
+        route="/apps-and-games"
+        i18n="@@not-found.links.apps-and-games"
+        >Apps &amp; Spiele</bfs-arrow-link
+      >
+    </li>
+    <li>
+      <bfs-arrow-link
+        route="/support"
+        i18n="@@not-found.links.support"
+        >Unterstützen</bfs-arrow-link
+      >
+    </li>
+    <li>
+      <bfs-arrow-link
+        route="/socials"
+        i18n="@@not-found.links.socials"
+        >Socials</bfs-arrow-link
+      >
+    </li>
+  </ul>
+</section>
