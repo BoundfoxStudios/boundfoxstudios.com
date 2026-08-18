@@ -14,7 +14,7 @@
     "images:crops": "node tools/generate-bug-a-ball-crops.mjs",
     "prebuild": "npm run fetch:github",
     "build": "ng build",
-    "postbuild": "node tools/seo/generate-sitemap.mjs",
+    "postbuild": "node tools/seo/finalize-dist.mjs && node tools/seo/generate-sitemap.mjs",
     "build:draft": "ng build --i18n-missing-translation=warning",
     "i18n:extract": "ng extract-i18n",
     "i18n:check": "ng extract-i18n && git diff --exit-code -- projects/website/src/locale && node tools/verify-translations.mjs",
