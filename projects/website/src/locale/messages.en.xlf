@@ -26,73 +26,87 @@
       </segment>
     </unit>
     <unit id="seo.not-found.title">
-      <segment state="initial">
+      <segment state="translated">
         <source>Seite nicht gefunden – Boundfox Studios</source>
+        <target>Page not found – Boundfox Studios</target>
       </segment>
     </unit>
     <unit id="seo.not-found.description">
-      <segment state="initial">
+      <segment state="translated">
         <source>Diese Seite gibt es nicht mehr oder hat nie existiert. Von hier kommst du zurück zur Startseite, zu den Projekten oder in die Community.</source>
+        <target>This page no longer exists, or it never did. From here you can get back to the home page, to the projects, or into the community.</target>
       </segment>
     </unit>
     <unit id="seo.home.title">
-      <segment state="initial">
+      <segment state="translated">
         <source>Boundfox Studios – kostenlose Apps und Spiele</source>
+        <target>Boundfox Studios – free apps and games</target>
       </segment>
     </unit>
     <unit id="seo.home.description">
-      <segment state="initial">
+      <segment state="translated">
         <source>Wir entwickeln Apps und Spiele in Stuttgart — kostenlos, vieles davon Open Source. Schau dir an, woran wir bauen und wie du uns unterstützen kannst.</source>
+        <target>We build apps and games in Stuttgart — free, and much of it open source. Take a look at what we&apos;re building and how you can support us.</target>
       </segment>
     </unit>
     <unit id="seo.apps-and-games.title">
-      <segment state="initial">
+      <segment state="translated">
         <source>Apps &amp; Spiele – Boundfox Studios</source>
+        <target>Apps &amp; Games – Boundfox Studios</target>
       </segment>
     </unit>
     <unit id="seo.apps-and-games.description">
-      <segment state="initial">
+      <segment state="translated">
         <source>Alle Apps und Spiele von Boundfox Studios: LehrGrapht, MAT, Flugwacht und Bug-A-Ball — kostenlos, vieles davon Open Source.</source>
+        <target>Every app and game by Boundfox Studios: LehrGrapht, MAT, Flugwacht and Bug-A-Ball — free, and much of it open source.</target>
       </segment>
     </unit>
     <unit id="seo.support.title">
-      <segment state="initial">
+      <segment state="translated">
         <source>Unterstützen – Boundfox Studios</source>
+        <target>Support – Boundfox Studios</target>
       </segment>
     </unit>
     <unit id="seo.support.description">
-      <segment state="initial">
+      <segment state="translated">
         <source>So kannst du uns unterstützen: Stars und Pull Requests auf GitHub, Discord, YouTube — oder finanziell über Ko-fi und Patreon. Vieles kostet nichts.</source>
+        <target>How you can support us: stars and pull requests on GitHub, Discord, YouTube — or financially through Ko-fi and Patreon. Plenty of it costs nothing.</target>
       </segment>
     </unit>
     <unit id="seo.socials.title">
-      <segment state="initial">
+      <segment state="translated">
         <source>Socials – Boundfox Studios</source>
+        <target>Socials – Boundfox Studios</target>
       </segment>
     </unit>
     <unit id="seo.socials.description">
-      <segment state="initial">
+      <segment state="translated">
         <source>Hier findest du uns: GitHub für unsere Open-Source-Projekte, Discord für die Community und YouTube für Tutorials zu Unity, Blender und Gamedev.</source>
+        <target>This is where to find us: GitHub for our open-source projects, Discord for the community, and YouTube for Unity, Blender and gamedev tutorials.</target>
       </segment>
     </unit>
     <unit id="seo.legal-details-imprint.title">
-      <segment state="initial">
+      <segment state="translated">
         <source>Impressum – Boundfox Studios</source>
+        <target>Legal notice – Boundfox Studios</target>
       </segment>
     </unit>
     <unit id="seo.legal-details-imprint.description">
-      <segment state="initial">
+      <segment state="translated">
         <source>Impressum von Boundfox Studios: Anbieterkennzeichnung nach § 5 DDG, Kontakt, Umsatzsteuer-ID sowie Hinweise zu Haftung und Urheberrecht.</source>
+        <target>Legal notice for Boundfox Studios: provider identification under § 5 DDG, contact details, VAT ID, and notes on liability and copyright.</target>
       </segment>
     </unit>
     <unit id="seo.privacy-policy.title">
-      <segment state="initial">
+      <segment state="translated">
         <source>Datenschutzerklärung – Boundfox Studios</source>
+        <target>Privacy Policy – Boundfox Studios</target>
       </segment>
     </unit>
     <unit id="seo.privacy-policy.description">
-      <segment state="initial">
+      <segment state="translated">
         <source>Datenschutzerklärung von Boundfox Studios: ohne Cookies, ohne Tracking, ohne Analyse-Skripte – und was beim Aufruf der Website trotzdem verarbeitet wird.</source>
+        <target>Boundfox Studios&apos; privacy policy: no cookies, no tracking, no analytics scripts – and what is processed anyway when you open the site.</target>
       </segment>
     </unit>
     <unit id="site-header.menu.close">
