@@ -100,6 +100,10 @@
 }
 
 @layer base {
+  :root {
+    --focus-ring: #171717;
+  }
+
   body {
     color: var(--color-neutral-700);
   }
@@ -112,5 +116,22 @@
 
   a:hover {
     color: var(--color-orange);
+  }
+}
+
+/*
+ * The focus ring colour is surface-scoped rather than one value: `#ffc107` disappears on the
+ * yellow→orange band, where five clickable pills live (SPEC §11.7, §12 D3). `--focus-ring`
+ * inherits, so `surface-dark` on a band, tile or chip re-points every descendant at the amber
+ * ring. Measured ratios in `docs/accessibility.md`.
+ */
+@utility surface-dark {
+  --focus-ring: #ffc107;
+}
+
+@utility focus-ring {
+  &:focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
   }
 }

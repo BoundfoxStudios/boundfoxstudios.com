@@ -19,6 +19,7 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "screenshots:focus": "node tools/capture-focus-screenshots.mjs",
     "postinstall": "lefthook install"
   },
   "private": true,
@@ -29,7 +30,8 @@
     "fsevents": true,
     "lefthook": true,
     "lmdb": true,
-    "msgpackr-extract": true
+    "msgpackr-extract": true,
+    "playwright": true
   },
   "dependencies": {
     "@angular/common": "^22.1.0",
@@ -50,13 +52,14 @@
     "@commitlint/cli": "^21.2.2",
     "@commitlint/config-conventional": "^21.2.2",
     "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.62.1",
     "@tailwindcss/postcss": "^4.1.12",
     "@types/node": "^20.17.19",
     "angular-eslint": "^22.1.0",
     "eslint": "^10.8.1",
     "eslint-config-prettier": "~10.1.8",
     "eslint-plugin-better-tailwindcss": "^4.7.0",
-    "http-server": "^14.1.1",
+    "http-server": "14.1.1",
     "jsdom": "^28.0.0",
     "lefthook": "^2.1.10",
     "postcss": "^8.5.3",
