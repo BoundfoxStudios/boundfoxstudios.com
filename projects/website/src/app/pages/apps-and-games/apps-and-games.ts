@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, inject } from '@angular/core';
+import { Component, DestroyRef, inject } from '@angular/core';
 
 import { appEntry, repositoryUrl } from '../../data/apps';
 import { appsItemListJsonLd } from '../../seo/json-ld';
@@ -12,7 +12,6 @@ import { SectionHead } from '../../ui/section-head/section-head';
 
 @Component({
   selector: 'bfs-apps-and-games-page',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ArrowLink, Badge, ButtonPrimary, FeatureCard, ProjectCard, SectionHead],
   templateUrl: './apps-and-games.html',
 })

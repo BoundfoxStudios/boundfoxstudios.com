@@ -11,9 +11,9 @@ const PORT = 4398;
 const TAGS = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'];
 
 // The accepted contrast deviations, recorded in docs/accessibility.md: `#ffa726` on a light
-// surface measures 1.94:1 and is a brand colour that does not change (SPEC §12 D2). Listed one by
-// one rather than as `[data-a11y-exception]`, so a new marker has to be added here — and to the
-// document — before it excuses anything.
+// surface measures 1.94:1 and is a brand colour that does not change. Listed one by one rather
+// than as `[data-a11y-exception]`, so a new marker has to be added here — and to the document —
+// before it excuses anything.
 const CONTRAST_EXCEPTIONS = [
   '[data-a11y-exception="kicker-contrast"]',
   '[data-a11y-exception="script-accent-contrast"]',

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { socialLink, SocialLink } from '../../data/social-links';
 import { BrandIcon } from '../../ui/brand-icon/brand-icon';
@@ -35,7 +35,6 @@ const CHANNELS: readonly SocialChannel[] = [
 
 @Component({
   selector: 'bfs-socials-page',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [BrandIcon, LinkCard, SectionHead],
   templateUrl: './socials.html',
 })

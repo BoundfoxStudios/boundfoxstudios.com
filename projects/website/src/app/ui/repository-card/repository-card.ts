@@ -1,11 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  computed,
-  inject,
-  input,
-  LOCALE_ID,
-} from '@angular/core';
+import { Component, computed, inject, input, LOCALE_ID } from '@angular/core';
 
 import { Card } from '../card/card';
 
@@ -16,7 +9,6 @@ const utcDayIndex = (date: Date): number =>
 
 @Component({
   selector: 'bfs-repository-card',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: 'contents' },
   imports: [Card],
   templateUrl: './repository-card.html',

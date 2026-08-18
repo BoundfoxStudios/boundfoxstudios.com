@@ -1,10 +1,9 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 export type BrandIconName = 'github' | 'discord' | 'youtube' | 'kofi' | 'patreon';
 
 @Component({
   selector: 'bfs-brand-icon',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './brand-icon.html',
 })
 export class BrandIcon {

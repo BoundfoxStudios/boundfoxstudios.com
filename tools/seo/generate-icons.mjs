@@ -11,7 +11,7 @@ const SOURCE_PNG = join(BRANDING_DIR, 'icon.png');
 const OG_SOURCE = join(BRANDING_DIR, 'og-logo.png');
 
 // `--color-neutral-900`, the design's ink token. Opaque outputs need a colour and this is the only
-// one the token set offers for a dark surface (SPEC §10).
+// one the token set offers for a dark surface.
 const BACKGROUND = '#171717';
 const TRANSPARENT = { r: 0, g: 0, b: 0, alpha: 0 };
 

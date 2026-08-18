@@ -1,5 +1,5 @@
 import { NgOptimizedImage } from '@angular/common';
-import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
+import { Component, computed, input } from '@angular/core';
 
 const MARK_SOURCES: Record<32 | 40, string> = {
   32: 'images/fox-head-64.webp',
@@ -8,7 +8,6 @@ const MARK_SOURCES: Record<32 | 40, string> = {
 
 @Component({
   selector: 'bfs-brand-lockup',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NgOptimizedImage],
   host: { class: 'contents' },
   templateUrl: './brand-lockup.html',

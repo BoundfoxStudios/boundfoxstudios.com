@@ -1,8 +1,7 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'bfs-pill-link',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './pill-link.html',
 })
 export class PillLink {

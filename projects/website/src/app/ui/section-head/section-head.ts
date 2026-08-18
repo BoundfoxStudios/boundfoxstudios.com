@@ -1,5 +1,5 @@
 import { NgTemplateOutlet } from '@angular/common';
-import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
+import { Component, computed, input } from '@angular/core';
 
 import { Kicker } from '../kicker/kicker';
 
@@ -15,7 +15,6 @@ const BOTTOM_MARGIN_CLASSES: Record<0 | 24 | 28 | 32, string> = {
 
 @Component({
   selector: 'bfs-section-head',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: 'contents' },
   imports: [Kicker, NgTemplateOutlet],
   templateUrl: './section-head.html',
