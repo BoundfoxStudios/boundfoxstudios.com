@@ -2,5 +2,14 @@
   <!-- The notice sits outside the wrapper on purpose: under /en/ the wrapper is lang="de", and
        the notice is the one line on the page that really is English. -->
   <ng-content select="[legalNotice]" />
-  <div [attr.lang]="proseLang()"><ng-content /></div>
+  <!-- Links inside running prose are underlined: #a16207 against the #404040 body text is 2.11:1,
+       under the 3:1 that colour alone needs to distinguish a link (axe `link-in-text-block`).
+       These two pages are the only ones with links mid-sentence. -->
+  <div
+    class="[&_a]:underline [&_a]:underline-offset-2"
+    [attr.lang]="proseLang()"
+    data-legal-prose
+  >
+    <ng-content />
+  </div>
 </section>

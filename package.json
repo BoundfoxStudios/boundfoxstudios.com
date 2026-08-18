@@ -23,6 +23,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test && vitest run --config vitest.config.mts",
     "check:viewports": "node tools/check-viewports.mjs",
+    "lighthouse": "lhci autorun --config=lighthouserc.cjs",
+    "axe": "node tools/a11y/run-axe.mjs",
     "verify:legal": "node tools/verify-legal-text.mjs",
     "verify:translations": "node tools/verify-translations.mjs",
     "lint": "eslint .",
@@ -59,9 +61,11 @@
     "@angular/cli": "^22.1.4",
     "@angular/compiler-cli": "^22.1.0",
     "@angular/localize": "^22.1.2",
+    "@axe-core/playwright": "^4.13.0",
     "@commitlint/cli": "^21.2.2",
     "@commitlint/config-conventional": "^21.2.2",
     "@eslint/js": "^10.0.1",
+    "@lhci/cli": "^0.15.1",
     "@playwright/test": "^1.62.1",
     "@tailwindcss/postcss": "^4.1.12",
     "@types/node": "^20.17.19",
@@ -85,5 +89,8 @@
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.67.0",
     "vitest": "^4.0.8"
+  },
+  "overrides": {
+    "tmp": "^0.2.5"
   }
 }

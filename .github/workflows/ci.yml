@@ -95,3 +95,6 @@ jobs:
             echo "::error::an analytics script reached the build — see SPEC §12 D11"
             exit 1
           fi
+      - run: npm run lighthouse
+      - run: npx playwright install --with-deps chromium
+      - run: npm run axe

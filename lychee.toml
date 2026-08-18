@@ -1,0 +1,22 @@
+# Configuration for the weekly link check (.github/workflows/link-check.yml).
+
+max_retries = 3
+retry_wait_time = 5
+timeout = 20
+max_concurrency = 8
+
+# Ko-fi and Patreon reject the default agent outright; a browser string is what a visitor sends.
+user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+
+# Ko-fi, Patreon and YouTube answer datacenter IPs with 403 or 429 while serving visitors
+# normally, so those two codes are health, not breakage.
+accept = ["200..=299", "403", "429"]
+
+# The copy carries one mailto (the imprint contact); SMTP verification proves nothing about it.
+include_mail = false
+
+exclude = [
+  # Our own URLs. Before cutover they resolve to the old WordPress site, and afterwards they are
+  # the pages being checked — either way a result here says nothing about link health.
+  "^https://boundfoxstudios\\.com/",
+]
