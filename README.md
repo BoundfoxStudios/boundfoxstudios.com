@@ -29,7 +29,6 @@ Node.js as pinned in [`.nvmrc`](.nvmrc). `npm ci` installs the toolchain and, th
 | `npm run i18n:extract`        | `ng extract-i18n` — regenerate `messages.xlf` after adding a marked string        |
 | `npm run i18n:check`          | Extract, fail on a dirty tree, then verify the catalogue — this is what CI runs   |
 | `npm run generate:icons`      | Re-generate the favicon, app icons and `og/default.png` from `branding/icon.png`  |
-| `npm run generate:redirects`  | Re-generate `deploy/redirects.htaccess` from `deploy/legacy-urls.csv`             |
 | `npm run watch`               | Development build in watch mode                                                   |
 | `npm test`                    | `ng test` plus the build-script tests (both Vitest)                               |
 | `npm run verify:translations` | Every unit translated, in sync and placeholder-clean                              |

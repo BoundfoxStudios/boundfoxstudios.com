@@ -41,9 +41,6 @@ jobs:
           version: ${{ steps.node-version.outputs.version }}
       - run: npm run format:check
       - run: npm run lint
-      # `deploy/redirects.htaccess` is generated and committed, so a hand-edited rule or a CSV
-      # change without a regenerate shows up as a dirty tree rather than reaching Apache.
-      - run: npm run generate:redirects && git diff --exit-code deploy/redirects.htaccess
 
   test:
     name: Test
