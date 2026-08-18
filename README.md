@@ -13,17 +13,23 @@ Node.js as pinned in [`.nvmrc`](.nvmrc). `npm ci` installs the toolchain and, th
 
 ## Commands
 
-| Command                | What it does                                                                |
-| ---------------------- | --------------------------------------------------------------------------- |
-| `npm start`            | `ng serve` — the German locale at `http://localhost:4200/`                  |
-| `npm run start:en`     | `ng serve --configuration=en` — the English locale, also served flat at `/` |
-| `npm run preview`      | Build, then serve `dist/website/browser` at `http://localhost:4300/`        |
-| `npm run build`        | `ng build` — both locales, fully prerendered, into `dist/website/browser`   |
-| `npm run watch`        | Development build in watch mode                                             |
-| `npm test`             | `ng test` (Vitest)                                                          |
-| `npm run lint`         | ESLint over the whole repository                                            |
-| `npm run format`       | `prettier --write .`                                                        |
-| `npm run format:check` | `prettier --check .`                                                        |
+| Command                 | What it does                                                                      |
+| ----------------------- | --------------------------------------------------------------------------------- |
+| `npm start`             | `ng serve` — the German locale at `http://localhost:4200/`                        |
+| `npm run start:en`      | `ng serve --configuration=en` — the English locale, also served flat at `/`       |
+| `npm run preview`       | Build both locales, then serve `dist/website/browser` at `http://localhost:4300/` |
+| `npm run preview:de`    | Development build, then serve it — German verification while `/en/` is still red  |
+| `npm run preview:draft` | `build:draft`, then serve it — seeing `/en/` before the catalogue is complete     |
+| `npm run fetch:github`  | Regenerate `projects/website/src/app/generated/github-data.json`                  |
+| `npm run build`         | `ng build` — both locales, fully prerendered, into `dist/website/browser`         |
+| `npm run build:draft`   | `ng build --i18n-missing-translation=warning` — both locales with source fallback |
+| `npm run watch`         | Development build in watch mode                                                   |
+| `npm test`              | `ng test` (Vitest)                                                                |
+| `npm run lint`          | ESLint over the whole repository                                                  |
+| `npm run format`        | `prettier --write .`                                                              |
+| `npm run format:check`  | `prettier --check .`                                                              |
+
+The remaining commands in SPEC §5 — `i18n:extract` and `verify:dist` — arrive with M7 and M8.
 
 ## `ng serve` cannot show you the real site
 

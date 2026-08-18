@@ -1,7 +1,6 @@
 /dist
 /.angular
 package-lock.json
-
-# Supplied legal texts: the .source files are archival and never edited, and the
-# .final files are asserted byte-for-byte by tools/derive-privacy-policy.mjs.
-/docs/legal
+/design_handoff_website_redesign
+/docs
+/SPEC.md
