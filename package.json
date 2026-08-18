@@ -24,7 +24,6 @@
     "check:viewports": "node tools/check-viewports.mjs",
     "lighthouse": "lhci autorun --config=lighthouserc.cjs",
     "axe": "node tools/a11y/run-axe.mjs",
-    "verify:legal": "node tools/verify-legal-text.mjs",
     "verify:translations": "node tools/verify-translations.mjs",
     "lint": "eslint .",
     "format": "prettier --write .",

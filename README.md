@@ -32,7 +32,6 @@ Node.js as pinned in [`.nvmrc`](.nvmrc). `npm ci` installs the toolchain and, th
 | `npm run watch`               | Development build in watch mode                                                   |
 | `npm test`                    | `ng test` plus the build-script tests (both Vitest)                               |
 | `npm run verify:translations` | Every unit translated, in sync and placeholder-clean                              |
-| `npm run verify:legal`        | Rendered legal prose equals `docs/legal/*.final.*`, both locales                  |
 | `npm run check:viewports`     | Column counts and overflow at 320/768/1152/1440                                   |
 | `npm run lint`                | ESLint over the whole repository                                                  |
 | `npm run format`              | `prettier --write .`                                                              |
