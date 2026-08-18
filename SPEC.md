@@ -227,7 +227,11 @@ npm run start:en          # ng serve --configuration=en — English locale, serv
 npm run preview           # build + static file server over dist — the ONLY way to see /en/
 npm run build             # prebuild fetches GitHub data, then ng build (both locales)
 npm run fetch:github      # regenerate projects/website/src/app/generated/github-data.json
-npm run i18n:extract      # ng extract-i18n — regenerate messages.xlf after adding strings
+npm run i18n:extract      # regenerate messages.xlf AND messages.en.xlf after adding strings
+npm run i18n:check        # extract, fail on a dirty tree, then verify:translations — CI runs this
+npm run verify:translations  # every unit translated, in sync and placeholder-clean (see docs/i18n-workflow.md)
+npm run verify:legal      # rendered legal prose equals docs/legal/*.final.*, both locales
+npm run check:viewports   # column counts and overflow at 320/768/1152/1440 (see §8)
 npm test                  # ng test (vitest)
 npm run lint              # eslint
 npm run format            # prettier --write .
@@ -244,6 +248,7 @@ SPEC.md                              this file
 docs/design/*.md                     per-page implementation reference from the design handoff
 docs/research/*.md                   verified technical research backing the decisions here
 docs/components.md                   component inventory and API (produced in M2)
+docs/i18n-workflow.md                how to add, change and remove a translatable string
 design_handoff_website_redesign/     original design references — GITIGNORED, see §10
 deploy/                              .htaccess files and the redirect map, uploaded by CI
 tools/                               build scripts (fetch-github-data, sitemap, icons, verify-dist)

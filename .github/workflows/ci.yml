@@ -73,9 +73,14 @@ jobs:
       - uses: ./.github/actions/prepare-node
         with:
           version: ${{ steps.node-version.outputs.version }}
+      # Re-extracting must not change either catalogue: a forgotten `npm run i18n:extract` or an
+      # orphaned unit shows up as a dirty tree. `verify:translations` then covers what the builder
+      # cannot — a unit that exists without a `<target>` resolves to its German `<source>` and
+      # would otherwise ship German into /en/ with a green build.
+      - run: npm run i18n:check
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       # The `prebuild` hook fetches the GitHub data, so this is a single step and never fetches twice.
-      # The i18n gate is flagged down until the M7 catalogue is complete; `angular.json` keeps
-      # `i18nMissingTranslation: "error"` so that flip is a real gate.
-      - run: npm run build -- --i18n-missing-translation=warning
+      - run: npm run build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
