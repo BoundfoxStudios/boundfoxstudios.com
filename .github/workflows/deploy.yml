@@ -13,7 +13,7 @@ concurrency:
   cancel-in-progress: false
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   deploy:
@@ -36,13 +36,17 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: npx ng build
       - run: npm run postbuild
-      - name: Upload
-        uses: SamKirkland/FTP-Deploy-Action@110f9186c050f71550953127052e77650219c287 # v4.4.0
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftp
-          local-dir: dist/website/browser/
-          server-dir: /
-          log-level: minimal
+      - name: Publish to the build branch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git fetch --depth 1 origin build
+          git worktree add published -B build FETCH_HEAD
+          rsync --archive --delete --exclude .git dist/website/browser/ published/
+          git -C published add --all
+          if git -C published diff --cached --quiet; then
+            echo "build output unchanged, nothing to publish"
+          else
+            git -C published commit -m "chore: publish ${GITHUB_SHA}"
+            git -C published push origin build
+          fi
