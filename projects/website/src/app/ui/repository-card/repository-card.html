@@ -1,0 +1,17 @@
+<bfs-card
+  [eyebrow]="language()"
+  [title]="title()"
+  [hasFooter]="true"
+>
+  {{ description() }}
+  <span
+    card-footer
+    i18n="@@home.github.card.updated"
+    >{{ versionLabel() }} · aktualisiert
+    <time
+      [attr.datetime]="updatedAt()"
+      data-lastmod-ignore
+      >{{ relativeLabel() }}</time
+    ></span
+  >
+</bfs-card>

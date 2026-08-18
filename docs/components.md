@@ -381,7 +381,7 @@ Template, verbatim:
 
 Consumers: imprint, privacy policy.
 
-### 3.14 `bfs-repository-card` / `bfs-repository-cards` — `app/ui/repository-card/` (M4, issue #25)
+### 3.14 `bfs-repository-card` / `bfs-repository-cards` — `app/ui/repository-card/` (built in M4, issue #25)
 
 ```ts
 // bfs-repository-card
@@ -399,9 +399,11 @@ Composes `bfs-card` with `[eyebrow]="language()"`, `[title]`, `[hasFooter]="true
 
 where `versionLabel()` falls back to `$localize` `@@common.badge.in-development` and `relativeLabel()` comes from `new Intl.RelativeTimeFormat(this.locale, { numeric: 'auto' })` over whole UTC days, clamped with `Math.min(0, …)`. The `data-lastmod-ignore` attribute is what keeps the sitemap's `lastmod` from churning daily.
 
-`bfs-repository-cards` owns the grid — `grid gap-6 grid-cols-[repeat(auto-fit,minmax(min(280px,100%),1fr))]` (3 / 2 / 1 columns at content width ≥888px / 584–887px / <584px) — and renders three authored `<bfs-repository-card>` elements in fixed order LehrGrapht → MAT → Flugwacht, never a sorted `@for`.
+`bfs-repository-cards` owns the grid — `grid gap-6 grid-cols-[repeat(auto-fit,minmax(min(280px,100%),1fr))]` (3 / 2 / 1 columns at content width ≥888px / 584–887px / <584px) — and renders three authored `<bfs-repository-card>` elements in fixed order LehrGrapht → MAT → Flugwacht, never a sorted `@for`. It reads `gitHubData` directly (the one place besides the sitemap generator that does) and maps `lehrgrapht.latestTag?.name`, `mat.latestRelease?.tagName` and `flugwacht.latestRelease?.tagName` with `?? null` — never a `!`.
 
-Consumer: home, section C.
+The three column counts were swept pixel by pixel in chromium against the real build inside `<div class="mx-auto max-w-6xl px-6">`: the transitions land exactly at content 888px (viewport 936) and content 584px (viewport 632), matching `docs/design/home.md` §5.3's 1200 → 3, 800 → 2, 500 → 1.
+
+Consumer: home, section C. Until that page lands (M5, issue #26) nothing imports either component, so their five ids are absent from `messages.xlf` — extraction only walks the reachable app graph.
 
 ## 4. Layout components (`projects/website/src/app/layout/`)
 

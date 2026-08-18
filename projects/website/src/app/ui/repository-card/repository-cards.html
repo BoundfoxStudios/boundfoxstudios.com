@@ -1,0 +1,28 @@
+<!-- Three authored elements in the fixed order LehrGrapht → MAT → Flugwacht, never a sorted @for:
+     the order is an editorial decision, not a function of pushedAt. -->
+<div class="grid grid-cols-[repeat(auto-fit,minmax(min(280px,100%),1fr))] gap-6">
+  <bfs-repository-card
+    [language]="lehrgrapht.language"
+    [version]="lehrgrapht.latestTag?.name ?? null"
+    [updatedAt]="lehrgrapht.pushedAt"
+    title="LehrGrapht"
+    description="Mathe-Plotter-Word-AddIn für Lehrkräfte — maßstabsgetreu auf 5×5-mm-Karopapier."
+    i18n-description="@@home.github.lehrgrapht.description"
+  />
+  <bfs-repository-card
+    [language]="mat.language"
+    [version]="mat.latestRelease?.tagName ?? null"
+    [updatedAt]="mat.pushedAt"
+    title="MAT"
+    description="Markdown-Vorschau im Browser, gerendert wie auf GitHub — direkt aus dem Terminal."
+    i18n-description="@@home.github.mat.description"
+  />
+  <bfs-repository-card
+    [language]="flugwacht.language"
+    [version]="flugwacht.latestRelease?.tagName ?? null"
+    [updatedAt]="flugwacht.pushedAt"
+    title="Flugwacht"
+    description="Minimaler Flug-Tracker für einzelne, manuell angelegte Flüge — live auf der Karte."
+    i18n-description="@@home.github.flugwacht.description"
+  />
+</div>
