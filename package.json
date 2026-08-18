@@ -6,6 +6,8 @@
     "start": "ng serve",
     "start:en": "ng serve --configuration=en",
     "preview": "npm run build && npx http-server dist/website/browser -p 4300 -c-1",
+    "fetch:github": "node tools/fetch-github-data.mjs projects/website/src/app/generated/github-data.json",
+    "prebuild": "npm run fetch:github",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
