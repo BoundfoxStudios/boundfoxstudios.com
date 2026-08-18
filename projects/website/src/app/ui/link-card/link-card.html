@@ -1,0 +1,52 @@
+<a
+  class="flex flex-col rounded-xl shadow-md focus-ring transition-colors duration-150 ease-in-out"
+  [class]="
+    tone() === 'light'
+      ? 'gap-3 border border-neutral-200 bg-white p-6 text-neutral-700 hover:border-amber hover:text-neutral-700'
+      : 'gap-3.5 border border-neutral-600 bg-neutral-900 p-8 surface-dark hover:border-amber'
+  "
+  [href]="href()"
+  [attr.aria-label]="ariaLabel()"
+>
+  <ng-content select="[card-chip]" />
+  @if (headingLevel() === 2) {
+    <h2
+      class="m-0 font-display leading-none tracking-wide uppercase"
+      [class]="tone() === 'light' ? 'text-2xl text-neutral-900' : 'text-[28px] text-white'"
+      translate="no"
+    >
+      {{ heading() }}
+    </h2>
+  } @else {
+    <h3
+      class="m-0 font-display leading-none tracking-wide uppercase"
+      [class]="tone() === 'light' ? 'text-2xl text-neutral-900' : 'text-[28px] text-white'"
+      translate="no"
+    >
+      {{ heading() }}
+    </h3>
+  }
+  <p
+    class="m-0 text-sm leading-relaxed"
+    [class]="tone() === 'dark' ? 'text-neutral-300' : ''"
+  >
+    <ng-content />
+  </p>
+  @if (handle(); as handleText) {
+    <span class="font-mono text-xs leading-[normal] text-neutral-400">{{ handleText }}</span>
+  }
+  <span
+    class="mt-auto"
+    [class]="
+      tone() === 'light'
+        ? 'text-sm font-bold text-link'
+        : 'font-display text-base leading-[normal] tracking-wider text-yellow uppercase'
+    "
+    >{{ ctaLabel()
+    }}<span
+      class="ml-1"
+      aria-hidden="true"
+      >→</span
+    ></span
+  >
+</a>

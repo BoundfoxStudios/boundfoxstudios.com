@@ -1,0 +1,33 @@
+<!-- One slot for both anchors: a second <ng-content> never receives content, and a RouterLink
+     bound to null would resolve to the current URL instead of href(). -->
+<ng-template #label
+  ><ng-content /><span
+    class="ml-1"
+    aria-hidden="true"
+    >→</span
+  ></ng-template
+>
+
+@if (route(); as target) {
+  <a
+    [class]="
+      variant() === 'body'
+        ? 'text-sm font-bold text-link focus-ring transition-colors duration-150 ease-in-out hover:text-orange'
+        : 'font-display text-lg tracking-wider text-link uppercase focus-ring transition-colors duration-150 ease-in-out hover:text-orange'
+    "
+    [routerLink]="target"
+    [attr.aria-label]="ariaLabel()"
+    ><ng-container [ngTemplateOutlet]="label"
+  /></a>
+} @else {
+  <a
+    [class]="
+      variant() === 'body'
+        ? 'text-sm font-bold text-link focus-ring transition-colors duration-150 ease-in-out hover:text-orange'
+        : 'font-display text-lg tracking-wider text-link uppercase focus-ring transition-colors duration-150 ease-in-out hover:text-orange'
+    "
+    [href]="href()"
+    [attr.aria-label]="ariaLabel()"
+    ><ng-container [ngTemplateOutlet]="label"
+  /></a>
+}

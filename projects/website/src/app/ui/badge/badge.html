@@ -1,0 +1,10 @@
+<span
+  class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-bold tracking-wider uppercase"
+  [class]="
+    variant() === 'amber'
+      ? 'bg-amber text-neutral-900'
+      : 'text-neutral-900 ring-1 ring-neutral-400 ring-inset'
+  "
+>
+  <ng-content />
+</span>

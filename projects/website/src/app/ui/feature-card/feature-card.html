@@ -1,0 +1,31 @@
+<article
+  class="grid grid-cols-[repeat(auto-fit,minmax(min(320px,100%),1fr))] overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-md"
+>
+  <div class="relative min-h-[240px] overflow-hidden bg-neutral-100">
+    <ng-content select="[card-media]" />
+  </div>
+  <div class="flex flex-col items-start gap-2.5 p-8">
+    <div class="flex items-center gap-2.5">
+      <bfs-kicker variant="inline">{{ kicker() }}</bfs-kicker>
+      <ng-content select="[card-badge]" />
+    </div>
+    @if (headingLevel() === 2) {
+      <h2
+        class="m-0 font-display text-4xl leading-none tracking-wide text-neutral-900 uppercase"
+        translate="no"
+      >
+        {{ title() }}
+      </h2>
+    } @else {
+      <h3
+        class="m-0 font-display text-4xl leading-none tracking-wide text-neutral-900 uppercase"
+        translate="no"
+      >
+        {{ title() }}
+      </h3>
+    }
+    <p class="m-0 max-w-[480px] text-base leading-relaxed"><ng-content /></p>
+    <span class="text-sm text-neutral-600">{{ platforms() }}</span>
+    <ng-content select="[card-cta]" />
+  </div>
+</article>
