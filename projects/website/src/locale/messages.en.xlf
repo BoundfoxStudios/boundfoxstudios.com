@@ -25,5 +25,735 @@
         <target> This page is available in German only. Only the German version is legally binding. </target>
       </segment>
     </unit>
+    <unit id="seo.not-found.title">
+      <segment state="initial">
+        <source>Seite nicht gefunden – Boundfox Studios</source>
+      </segment>
+    </unit>
+    <unit id="seo.not-found.description">
+      <segment state="initial">
+        <source>Diese Seite gibt es nicht mehr oder hat nie existiert. Von hier kommst du zurück zur Startseite, zu den Projekten oder in die Community.</source>
+      </segment>
+    </unit>
+    <unit id="seo.home.title">
+      <segment state="initial">
+        <source>Boundfox Studios – kostenlose Apps und Spiele</source>
+      </segment>
+    </unit>
+    <unit id="seo.home.description">
+      <segment state="initial">
+        <source>Wir entwickeln Apps und Spiele in Stuttgart — kostenlos, vieles davon Open Source. Schau dir an, woran wir bauen und wie du uns unterstützen kannst.</source>
+      </segment>
+    </unit>
+    <unit id="seo.apps-and-games.title">
+      <segment state="initial">
+        <source>Apps &amp; Spiele – Boundfox Studios</source>
+      </segment>
+    </unit>
+    <unit id="seo.apps-and-games.description">
+      <segment state="initial">
+        <source>Alle Apps und Spiele von Boundfox Studios: LehrGrapht, MAT, Flugwacht und Bug-A-Ball — kostenlos, vieles davon Open Source.</source>
+      </segment>
+    </unit>
+    <unit id="seo.support.title">
+      <segment state="initial">
+        <source>Unterstützen – Boundfox Studios</source>
+      </segment>
+    </unit>
+    <unit id="seo.support.description">
+      <segment state="initial">
+        <source>So kannst du uns unterstützen: Stars und Pull Requests auf GitHub, Discord, YouTube — oder finanziell über Ko-fi und Patreon. Vieles kostet nichts.</source>
+      </segment>
+    </unit>
+    <unit id="seo.socials.title">
+      <segment state="initial">
+        <source>Socials – Boundfox Studios</source>
+      </segment>
+    </unit>
+    <unit id="seo.socials.description">
+      <segment state="initial">
+        <source>Hier findest du uns: GitHub für unsere Open-Source-Projekte, Discord für die Community und YouTube für Tutorials zu Unity, Blender und Gamedev.</source>
+      </segment>
+    </unit>
+    <unit id="seo.legal-details-imprint.title">
+      <segment state="initial">
+        <source>Impressum – Boundfox Studios</source>
+      </segment>
+    </unit>
+    <unit id="seo.legal-details-imprint.description">
+      <segment state="initial">
+        <source>Impressum von Boundfox Studios: Anbieterkennzeichnung nach § 5 DDG, Kontakt, Umsatzsteuer-ID sowie Hinweise zu Haftung und Urheberrecht.</source>
+      </segment>
+    </unit>
+    <unit id="seo.privacy-policy.title">
+      <segment state="initial">
+        <source>Datenschutzerklärung – Boundfox Studios</source>
+      </segment>
+    </unit>
+    <unit id="seo.privacy-policy.description">
+      <segment state="initial">
+        <source>Datenschutzerklärung von Boundfox Studios: ohne Cookies, ohne Tracking, ohne Analyse-Skripte – und was beim Aufruf der Website trotzdem verarbeitet wird.</source>
+      </segment>
+    </unit>
+    <unit id="site-header.menu.close">
+      <segment state="translated">
+        <source>Menü schließen</source>
+        <target>Close menu</target>
+      </segment>
+    </unit>
+    <unit id="site-header.menu.open">
+      <segment state="translated">
+        <source>Menü öffnen</source>
+        <target>Open menu</target>
+      </segment>
+    </unit>
+    <unit id="site-header.menu.panel-label">
+      <segment state="translated">
+        <source>Menü</source>
+        <target>Menu</target>
+      </segment>
+    </unit>
+    <unit id="site-header.nav.home">
+      <segment state="translated">
+        <source>Startseite</source>
+        <target>Home</target>
+      </segment>
+    </unit>
+    <unit id="site-header.nav.apps-and-games">
+      <segment state="translated">
+        <source>Apps &amp; Spiele</source>
+        <target>Apps &amp; Games</target>
+      </segment>
+    </unit>
+    <unit id="site-header.nav.support">
+      <segment state="translated">
+        <source>Unterstützen</source>
+        <target>Support</target>
+      </segment>
+    </unit>
+    <unit id="site-header.nav.socials">
+      <segment state="translated">
+        <source>Socials</source>
+        <target>Socials</target>
+      </segment>
+    </unit>
+    <unit id="footer.tagline">
+      <segment state="translated">
+        <source> Spiele und Apps — mit Liebe in Stuttgart entwickelt. Kostenlos und Open Source. </source>
+        <target>Games and apps — built with love in Stuttgart. Free and open source.</target>
+      </segment>
+    </unit>
+    <unit id="footer.pages.title">
+      <segment state="translated">
+        <source>Seiten</source>
+        <target>Pages</target>
+      </segment>
+    </unit>
+    <unit id="footer.pages.home">
+      <segment state="translated">
+        <source>Startseite</source>
+        <target>Home</target>
+      </segment>
+    </unit>
+    <unit id="footer.pages.projects">
+      <segment state="translated">
+        <source>Apps &amp; Spiele</source>
+        <target>Apps &amp; Games</target>
+      </segment>
+    </unit>
+    <unit id="footer.pages.support">
+      <segment state="translated">
+        <source>Unterstützen</source>
+        <target>Support</target>
+      </segment>
+    </unit>
+    <unit id="footer.pages.socials">
+      <segment state="translated">
+        <source>Socials</source>
+        <target>Socials</target>
+      </segment>
+    </unit>
+    <unit id="footer.legal.title">
+      <segment state="translated">
+        <source>Rechtliches</source>
+        <target>Legal</target>
+      </segment>
+    </unit>
+    <unit id="footer.legal.imprint">
+      <segment state="translated">
+        <source>Impressum</source>
+        <target>Legal notice</target>
+      </segment>
+    </unit>
+    <unit id="footer.legal.privacy">
+      <segment state="translated">
+        <source>Datenschutz</source>
+        <target>Privacy</target>
+      </segment>
+    </unit>
+    <unit id="footer.social.title">
+      <segment state="translated">
+        <source>Folge uns</source>
+        <target>Follow us</target>
+      </segment>
+    </unit>
+    <unit id="footer.copyright">
+      <segment state="translated">
+        <source>© <ph id="0" equiv="INTERPOLATION" disp="{{ currentYear() }}"/> Boundfox Studios. Alle Rechte vorbehalten.</source>
+        <target>© <ph id="0" equiv="INTERPOLATION" disp="{{ currentYear() }}"/> Boundfox Studios. All rights reserved.</target>
+      </segment>
+    </unit>
+    <unit id="footer.language.aria-label">
+      <segment state="translated">
+        <source>Sprache wählen</source>
+        <target>Choose language</target>
+      </segment>
+    </unit>
+    <unit id="footer.language.de">
+      <segment state="translated">
+        <source>Deutsch</source>
+        <target>Deutsch</target>
+      </segment>
+    </unit>
+    <unit id="footer.language.en">
+      <segment state="translated">
+        <source>English</source>
+        <target>English</target>
+      </segment>
+    </unit>
+    <unit id="site-header.language.aria-label">
+      <segment state="translated">
+        <source>Sprache wählen</source>
+        <target>Choose language</target>
+      </segment>
+    </unit>
+    <unit id="site-header.nav.aria-label">
+      <segment state="translated">
+        <source>Hauptnavigation</source>
+        <target>Main navigation</target>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.hero.kicker">
+      <segment state="initial">
+        <source>Projekte</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.hero.title">
+      <segment state="initial">
+        <source>Apps &amp; Spiele</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.hero.intro">
+      <segment state="initial">
+        <source>Stöber doch einmal durch unsere Projekte — es ist sicher etwas für dich dabei. Alles kostenlos, vieles Open Source.</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.apps.section-title">
+      <segment state="initial">
+        <source>Apps</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.apps.lehrgrapht.kicker">
+      <segment state="initial">
+        <source>Word-AddIn</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.apps.lehrgrapht.platforms">
+      <segment state="initial">
+        <source>Word für Windows, macOS &amp; iPad · kostenfrei · Open Source</source>
+      </segment>
+    </unit>
+    <unit id="common.badge.available">
+      <segment state="initial">
+        <source>Verfügbar</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.apps.lehrgrapht.description">
+      <segment state="initial">
+        <source>Maßstabsgetreue Plots für Lehrkräfte, passgenau auf 5×5-mm-Karopapier: Funktionen, Punkte, Flächen, Schrägbilder, Spiegelungen — und mit einem Schalter vom Arbeitsblatt zum Lösungsblatt.</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.apps.lehrgrapht.website-aria">
+      <segment state="initial">
+        <source>LehrGrapht – zur Website</source>
+      </segment>
+    </unit>
+    <unit id="common.link.website">
+      <segment state="initial">
+        <source>Zur Website</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.apps.lehrgrapht.source-aria">
+      <segment state="initial">
+        <source>LehrGrapht – Source Code auf GitHub</source>
+      </segment>
+    </unit>
+    <unit id="common.link.source-code">
+      <segment state="initial">
+        <source>Source Code</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.apps.mat.kicker">
+      <segment state="initial">
+        <source>CLI-Tool</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.apps.mat.platforms">
+      <segment state="initial">
+        <source>macOS, Linux &amp; Windows · Open Source</source>
+      </segment>
+    </unit>
+    <unit id="common.badge.in-development">
+      <segment state="initial">
+        <source>In Entwicklung</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.apps.mat.description">
+      <segment state="initial">
+        <source>Markdown-Vorschau direkt aus dem Terminal — gerendert wie auf GitHub, inklusive Mermaid, KaTeX und Syntax-Highlighting. Kein Server, keine Konfiguration: so beiläufig wie <pc id="0" equivStart="START_TAG_SPAN" equivEnd="CLOSE_TAG_SPAN" type="other" dispStart="&lt;span class=&quot;font-mono&quot;&gt;" dispEnd="&lt;/span&gt;">cat</pc>.</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.apps.mat.repository-aria">
+      <segment state="initial">
+        <source>MAT – zum Repository auf GitHub</source>
+      </segment>
+    </unit>
+    <unit id="common.link.repository">
+      <segment state="initial">
+        <source>Zum Repository</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.apps.flugwacht.kicker">
+      <segment state="initial">
+        <source>Mobile App</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.apps.flugwacht.platforms">
+      <segment state="initial">
+        <source>iOS &amp; Android · Open Source</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.apps.flugwacht.description">
+      <segment state="initial">
+        <source>Bewusst minimaler Flug-Tracker für einzelne Flüge: Flugnummer und Datum eintragen, am Reisetag live auf der Karte verfolgen — mit Ankunftszeit in beiden Zeitzonen. Ohne Konto, alles bleibt auf deinem Gerät.</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.apps.flugwacht.repository-aria">
+      <segment state="initial">
+        <source>Flugwacht – zum Repository auf GitHub</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.games.section-title">
+      <segment state="initial">
+        <source>Spiele</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.games.bug-a-ball.kicker">
+      <segment state="initial">
+        <source>Spiel</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.games.bug-a-ball.platforms">
+      <segment state="initial">
+        <source>Für iOS &amp; Android — auf fast allen Geräten.</source>
+      </segment>
+    </unit>
+    <unit id="common.bug-a-ball.key-art-alt">
+      <segment state="initial">
+        <source>Bug-A-Ball: eine grinsende grüne Kugel rollt über eine blaue Bahn an rot-weißen Hindernissen vorbei.</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.games.bug-a-ball.description">
+      <segment state="initial">
+        <source>In Bug-A-Ball rollst du dich durch verschiedene Level und Welten, vorbei an kniffligen Hindernissen. Schalte exklusive Skins frei und zeig allen auf der Bestenliste, wer hier der Profi ist.</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.games.bug-a-ball.cta-aria">
+      <segment state="initial">
+        <source>Bug-A-Ball – zur Website</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.games.bug-a-ball.cta">
+      <segment state="initial">
+        <source>Zur Website</source>
+      </segment>
+    </unit>
+    <unit id="home.projects.kicker">
+      <segment state="initial">
+        <source>Projekte</source>
+      </segment>
+    </unit>
+    <unit id="home.projects.title">
+      <segment state="initial">
+        <source>Apps &amp; Spiele</source>
+      </segment>
+    </unit>
+    <unit id="home.projects.subtitle">
+      <segment state="initial">
+        <source>Woran wir gerade bauen — und was du schon heute spielen und benutzen kannst. Kostenlos und Open Source.</source>
+      </segment>
+    </unit>
+    <unit id="home.projects.all-link">
+      <segment state="initial">
+        <source>Alle Projekte</source>
+      </segment>
+    </unit>
+    <unit id="common.project-type.app">
+      <segment state="initial">
+        <source>App</source>
+      </segment>
+    </unit>
+    <unit id="home.projects.lehrgrapht.platforms">
+      <segment state="initial">
+        <source>Word für Windows, macOS &amp; iPad</source>
+      </segment>
+    </unit>
+    <unit id="home.projects.lehrgrapht.description">
+      <segment state="initial">
+        <source>Kostenfreies, quelloffenes Word-AddIn für Lehrkräfte: maßstabsgetreue Plots, passgenau auf 5×5-mm-Karopapier — ideal zum Nachmessen.</source>
+      </segment>
+    </unit>
+    <unit id="home.projects.lehrgrapht.link-aria">
+      <segment state="initial">
+        <source>LehrGrapht – zur Website</source>
+      </segment>
+    </unit>
+    <unit id="home.projects.lehrgrapht.link">
+      <segment state="initial">
+        <source>Zur Website</source>
+      </segment>
+    </unit>
+    <unit id="home.projects.flugwacht.platforms">
+      <segment state="initial">
+        <source>iOS &amp; Android</source>
+      </segment>
+    </unit>
+    <unit id="home.projects.flugwacht.description">
+      <segment state="initial">
+        <source>Bewusst minimaler Flug-Tracker: Flugnummer eintragen und am Reisetag live auf der Karte verfolgen, wo der Flieger gerade ist — ganz ohne Konto.</source>
+      </segment>
+    </unit>
+    <unit id="home.projects.flugwacht.link-aria">
+      <segment state="initial">
+        <source>Flugwacht – zum Repository auf GitHub</source>
+      </segment>
+    </unit>
+    <unit id="home.projects.flugwacht.link">
+      <segment state="initial">
+        <source>Zum Repository</source>
+      </segment>
+    </unit>
+    <unit id="home.projects.mat.platforms">
+      <segment state="initial">
+        <source>macOS, Linux &amp; Windows</source>
+      </segment>
+    </unit>
+    <unit id="home.projects.mat.description">
+      <segment state="initial">
+        <source>Markdown-Vorschau direkt aus dem Terminal — gerendert wie auf GitHub, ohne Server und ohne Konfiguration. So beiläufig wie <pc id="0" equivStart="START_TAG_SPAN" equivEnd="CLOSE_TAG_SPAN" type="other" dispStart="&lt;span class=&quot;font-mono&quot;&gt;" dispEnd="&lt;/span&gt;">cat</pc>.</source>
+      </segment>
+    </unit>
+    <unit id="home.projects.mat.link-aria">
+      <segment state="initial">
+        <source>MAT – zum Repository auf GitHub</source>
+      </segment>
+    </unit>
+    <unit id="home.projects.mat.link">
+      <segment state="initial">
+        <source>Zum Repository</source>
+      </segment>
+    </unit>
+    <unit id="common.project-type.game">
+      <segment state="initial">
+        <source>Spiel</source>
+      </segment>
+    </unit>
+    <unit id="home.projects.bug-a-ball.platforms">
+      <segment state="initial">
+        <source>iOS &amp; Android</source>
+      </segment>
+    </unit>
+    <unit id="home.projects.bug-a-ball.description">
+      <segment state="initial">
+        <source>Rolle dich durch Level und Welten, weiche Hindernissen aus, schalte exklusive Skins frei — und zeig auf der Bestenliste, wer hier der Profi ist.</source>
+      </segment>
+    </unit>
+    <unit id="home.projects.bug-a-ball.link-aria">
+      <segment state="initial">
+        <source>Bug-A-Ball – zur Website</source>
+      </segment>
+    </unit>
+    <unit id="home.projects.bug-a-ball.link">
+      <segment state="initial">
+        <source>Zur Website</source>
+      </segment>
+    </unit>
+    <unit id="home.support.title">
+      <segment state="initial">
+        <source> Unterstütze uns </source>
+      </segment>
+    </unit>
+    <unit id="home.support.text">
+      <segment state="initial">
+        <source> Unsere Projekte sind kostenlos und Open Source. Wenn du magst, gib etwas zurück — vieles davon kostet dich keinen Cent. </source>
+      </segment>
+    </unit>
+    <unit id="home.support.all-options-link">
+      <segment state="initial">
+        <source>Alle Möglichkeiten ansehen</source>
+      </segment>
+    </unit>
+    <unit id="home.github.kicker">
+      <segment state="initial">
+        <source>Open Source</source>
+      </segment>
+    </unit>
+    <unit id="home.github.title">
+      <segment state="initial">
+        <source>Zuletzt auf GitHub</source>
+      </segment>
+    </unit>
+    <unit id="home.github.all-repositories-link">
+      <segment state="initial">
+        <source>Alle Repositories</source>
+      </segment>
+    </unit>
+    <unit id="not-found.kicker">
+      <segment state="translated">
+        <source>Fehler 404</source>
+        <target>Error 404</target>
+      </segment>
+    </unit>
+    <unit id="not-found.title">
+      <segment state="translated">
+        <source>Seite nicht gefunden</source>
+        <target>Page not found</target>
+      </segment>
+    </unit>
+    <unit id="not-found.lead">
+      <segment state="translated">
+        <source>Diese Seite gibt es nicht mehr oder hat nie existiert. Von hier aus kommst du weiter:</source>
+        <target>This page no longer exists, or it never did. From here you can carry on:</target>
+      </segment>
+    </unit>
+    <unit id="not-found.links.home">
+      <segment state="translated">
+        <source>Startseite</source>
+        <target>Home</target>
+      </segment>
+    </unit>
+    <unit id="not-found.links.apps-and-games">
+      <segment state="translated">
+        <source>Apps &amp; Spiele</source>
+        <target>Apps &amp; Games</target>
+      </segment>
+    </unit>
+    <unit id="not-found.links.support">
+      <segment state="translated">
+        <source>Unterstützen</source>
+        <target>Support</target>
+      </segment>
+    </unit>
+    <unit id="not-found.links.socials">
+      <segment state="translated">
+        <source>Socials</source>
+        <target>Socials</target>
+      </segment>
+    </unit>
+    <unit id="socials.hero.kicker">
+      <segment state="initial">
+        <source>Community</source>
+      </segment>
+    </unit>
+    <unit id="socials.hero.headline">
+      <segment state="initial">
+        <source>Vernetze dich mit uns</source>
+      </segment>
+    </unit>
+    <unit id="socials.hero.lead">
+      <segment state="initial">
+        <source>Hier findest du uns — für Tutorials, Fragen, Feedback oder einfach einen Blick hinter die Kulissen.</source>
+      </segment>
+    </unit>
+    <unit id="socials.channels.github.description">
+      <segment state="initial">
+        <source>Unsere Open-Source-Projekte: Code lesen, Issues melden, mitentwickeln.</source>
+      </segment>
+    </unit>
+    <unit id="socials.channels.github.cta">
+      <segment state="initial">
+        <source>Zur Organisation</source>
+      </segment>
+    </unit>
+    <unit id="socials.channels.github.aria">
+      <segment state="initial">
+        <source>GitHub – zur Organisation</source>
+      </segment>
+    </unit>
+    <unit id="socials.channels.discord.description">
+      <segment state="initial">
+        <source>Unsere Community: Hilfe bei deinen Projekten, Feedback und Austausch mit anderen Entwickler:innen.</source>
+      </segment>
+    </unit>
+    <unit id="socials.channels.discord.cta">
+      <segment state="initial">
+        <source>Server beitreten</source>
+      </segment>
+    </unit>
+    <unit id="socials.channels.discord.aria">
+      <segment state="initial">
+        <source>Discord – Server beitreten</source>
+      </segment>
+    </unit>
+    <unit id="socials.channels.youtube.description">
+      <segment state="initial">
+        <source>Kostenlose Kurse und Tutorials zu Unity, Blender und Spieleentwicklung — auf Deutsch.</source>
+      </segment>
+    </unit>
+    <unit id="socials.channels.youtube.cta">
+      <segment state="initial">
+        <source>Kanal öffnen</source>
+      </segment>
+    </unit>
+    <unit id="socials.channels.youtube.aria">
+      <segment state="initial">
+        <source>YouTube – Kanal öffnen</source>
+      </segment>
+    </unit>
+    <unit id="support.hero.kicker">
+      <segment state="initial">
+        <source>Community</source>
+      </segment>
+    </unit>
+    <unit id="support.hero.title">
+      <segment state="initial">
+        <source>Unterstütze uns</source>
+      </segment>
+    </unit>
+    <unit id="support.hero.lead">
+      <segment state="initial">
+        <source>Unsere Spiele, Apps und Tutorials sind kostenlos — und sollen es bleiben. Hier findest du alle Möglichkeiten, uns dabei zu unterstützen. Vieles davon kostet dich keinen Cent.</source>
+      </segment>
+    </unit>
+    <unit id="support.hero.thanks">
+      <segment state="initial">
+        <source> Danke! </source>
+      </segment>
+    </unit>
+    <unit id="support.free.heading">
+      <segment state="initial">
+        <source>Kostenfrei unterstützen</source>
+      </segment>
+    </unit>
+    <unit id="support.free.subline">
+      <segment state="initial">
+        <source>Zeit und Aufmerksamkeit helfen uns genauso wie Geld — manchmal sogar mehr.</source>
+      </segment>
+    </unit>
+    <unit id="support.financial.heading">
+      <segment state="initial">
+        <source>Finanziell unterstützen</source>
+      </segment>
+    </unit>
+    <unit id="support.financial.subline">
+      <segment state="initial">
+        <source>Einmalig oder monatlich — ganz wie du magst. Jeder Beitrag hilft, weiter kostenlose Projekte zu bauen.</source>
+      </segment>
+    </unit>
+    <unit id="support.free.github.description">
+      <segment state="initial">
+        <source>Vergib Stars, melde Fehler, schlag Features vor — oder bring dich direkt mit Pull Requests in unsere Open-Source-Projekte ein.</source>
+      </segment>
+    </unit>
+    <unit id="support.free.github.cta">
+      <segment state="initial">
+        <source>Zur Organisation</source>
+      </segment>
+    </unit>
+    <unit id="support.free.github.aria">
+      <segment state="initial">
+        <source>GitHub – zur Organisation</source>
+      </segment>
+    </unit>
+    <unit id="support.free.discord.description">
+      <segment state="initial">
+        <source>Sei im Discord aktiv, rege Diskussionen an und hilf anderen aus der Community — genau dafür ist er da.</source>
+      </segment>
+    </unit>
+    <unit id="support.free.discord.cta">
+      <segment state="initial">
+        <source>Server beitreten</source>
+      </segment>
+    </unit>
+    <unit id="support.free.discord.aria">
+      <segment state="initial">
+        <source>Discord – Server beitreten</source>
+      </segment>
+    </unit>
+    <unit id="support.free.youtube.description">
+      <segment state="initial">
+        <source>Schau unsere Videos, like und kommentiere sie — so werden sie von YouTube besser gefunden und erreichen mehr Leute.</source>
+      </segment>
+    </unit>
+    <unit id="support.free.youtube.cta">
+      <segment state="initial">
+        <source>Kanal öffnen</source>
+      </segment>
+    </unit>
+    <unit id="support.free.youtube.aria">
+      <segment state="initial">
+        <source>YouTube – Kanal öffnen</source>
+      </segment>
+    </unit>
+    <unit id="support.financial.kofi.description">
+      <segment state="initial">
+        <source>Spendier uns einen Kaffee — einmalig oder monatlich, ganz ohne Verpflichtung.</source>
+      </segment>
+    </unit>
+    <unit id="support.financial.kofi.cta">
+      <segment state="initial">
+        <source>Kaffee spendieren</source>
+      </segment>
+    </unit>
+    <unit id="support.financial.kofi.aria">
+      <segment state="initial">
+        <source>Ko-fi – Kaffee spendieren</source>
+      </segment>
+    </unit>
+    <unit id="support.financial.patreon.description">
+      <segment state="initial">
+        <source>Unterstütze uns mit einem monatlichen Beitrag deiner Wahl und begleite unsere Projekte langfristig.</source>
+      </segment>
+    </unit>
+    <unit id="support.financial.patreon.cta">
+      <segment state="initial">
+        <source>Patron werden</source>
+      </segment>
+    </unit>
+    <unit id="support.financial.patreon.aria">
+      <segment state="initial">
+        <source>Patreon – Patron werden</source>
+      </segment>
+    </unit>
+    <unit id="home.github.card.updated">
+      <segment state="initial">
+        <source><ph id="0" equiv="INTERPOLATION" disp="{{ versionLabel() }}"/> · aktualisiert <pc id="1" equivStart="START_TAG_TIME" equivEnd="CLOSE_TAG_TIME" type="other" dispStart="&lt;time [attr.datetime]=&quot;updatedAt()&quot; data-lastmod-ignore &gt;" dispEnd="&lt;/time &gt;"><ph id="2" equiv="INTERPOLATION_1" disp="{{ relativeLabel() }}"/></pc></source>
+      </segment>
+    </unit>
+    <unit id="home.github.lehrgrapht.description">
+      <segment state="initial">
+        <source>Mathe-Plotter-Word-AddIn für Lehrkräfte — maßstabsgetreu auf 5×5-mm-Karopapier.</source>
+      </segment>
+    </unit>
+    <unit id="home.github.mat.description">
+      <segment state="initial">
+        <source>Markdown-Vorschau im Browser, gerendert wie auf GitHub — direkt aus dem Terminal.</source>
+      </segment>
+    </unit>
+    <unit id="home.github.flugwacht.description">
+      <segment state="initial">
+        <source>Minimaler Flug-Tracker für einzelne, manuell angelegte Flüge — live auf der Karte.</source>
+      </segment>
+    </unit>
   </file>
 </xliff>
