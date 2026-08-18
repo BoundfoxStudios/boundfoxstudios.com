@@ -28,6 +28,8 @@
     "
     [href]="href()"
     [attr.aria-label]="ariaLabel()"
+    [attr.target]="newTab() ? '_blank' : null"
+    [attr.rel]="newTab() ? 'noopener noreferrer' : null"
     ><ng-container [ngTemplateOutlet]="label"
   /></a>
 }

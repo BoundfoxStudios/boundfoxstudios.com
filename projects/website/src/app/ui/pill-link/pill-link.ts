@@ -7,4 +7,5 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 })
 export class PillLink {
   readonly href = input.required<string>();
+  readonly newTab = input(false);
 }

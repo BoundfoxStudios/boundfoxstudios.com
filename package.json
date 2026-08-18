@@ -18,6 +18,7 @@
     "i18n:extract": "ng extract-i18n",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "check:viewports": "node tools/check-viewports.mjs",
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
