@@ -1,0 +1,175 @@
+<footer class="bg-neutral-900 font-sans text-white surface-dark">
+  <div
+    class="mx-auto grid max-w-6xl grid-cols-[repeat(auto-fit,minmax(min(220px,100%),1fr))] gap-8 px-6 pt-12 pb-0"
+  >
+    <div class="flex flex-col gap-3">
+      <bfs-brand-lockup
+        [markSize]="40"
+        [nowrap]="false"
+      />
+      <p
+        class="m-0 max-w-80 text-sm leading-relaxed text-neutral-300"
+        i18n="@@footer.tagline"
+      >
+        Spiele und Apps — mit Liebe in Stuttgart entwickelt. Kostenlos und Open Source.
+      </p>
+    </div>
+
+    <div class="flex flex-col gap-2.5">
+      <span
+        class="font-display text-base tracking-wider text-yellow uppercase"
+        id="footer-pages-title"
+        i18n="@@footer.pages.title"
+        >Seiten</span
+      >
+      <nav aria-labelledby="footer-pages-title">
+        <ul class="m-0 flex list-none flex-col gap-2.5 p-0">
+          <li>
+            <a
+              class="text-sm text-white no-underline focus-ring transition-colors duration-150 ease-in-out hover:text-yellow"
+              routerLink="/"
+              i18n="@@footer.pages.home"
+              >Startseite</a
+            >
+          </li>
+          <li>
+            <a
+              class="text-sm text-white no-underline focus-ring transition-colors duration-150 ease-in-out hover:text-yellow"
+              routerLink="/apps-and-games"
+              i18n="@@footer.pages.projects"
+              >Apps &amp; Spiele</a
+            >
+          </li>
+          <li>
+            <a
+              class="text-sm text-white no-underline focus-ring transition-colors duration-150 ease-in-out hover:text-yellow"
+              routerLink="/support"
+              i18n="@@footer.pages.support"
+              >Unterstützen</a
+            >
+          </li>
+          <li>
+            <a
+              class="text-sm text-white no-underline focus-ring transition-colors duration-150 ease-in-out hover:text-yellow"
+              routerLink="/socials"
+              i18n="@@footer.pages.socials"
+              >Socials</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="flex flex-col gap-2.5">
+      <span
+        class="font-display text-base tracking-wider text-yellow uppercase"
+        id="footer-legal-title"
+        i18n="@@footer.legal.title"
+        >Rechtliches</span
+      >
+      <nav aria-labelledby="footer-legal-title">
+        <ul class="m-0 flex list-none flex-col gap-2.5 p-0">
+          <li>
+            <a
+              class="text-sm text-white no-underline focus-ring transition-colors duration-150 ease-in-out hover:text-yellow"
+              routerLink="/legal-details-imprint"
+              i18n="@@footer.legal.imprint"
+              >Impressum</a
+            >
+          </li>
+          <li>
+            <a
+              class="text-sm text-white no-underline focus-ring transition-colors duration-150 ease-in-out hover:text-yellow"
+              routerLink="/privacy-policy"
+              i18n="@@footer.legal.privacy"
+              >Datenschutz</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="flex flex-col gap-2.5">
+      <span
+        class="font-display text-base tracking-wider text-yellow uppercase"
+        id="footer-social-title"
+        i18n="@@footer.social.title"
+        >Folge uns</span
+      >
+      <nav aria-labelledby="footer-social-title">
+        <ul class="m-0 flex list-none gap-3 p-0">
+          @for (socialLink of socialLinks; track socialLink.id) {
+            <li>
+              <a
+                class="-m-1 inline-flex p-1 text-white focus-ring transition-colors duration-150 ease-in-out hover:text-yellow"
+                [href]="socialLink.href"
+                [attr.title]="socialLink.name"
+                [attr.aria-label]="socialLink.name"
+                target="_blank"
+                rel="noopener noreferrer"
+                translate="no"
+              >
+                <bfs-brand-icon
+                  [name]="socialLink.id"
+                  [size]="20"
+                />
+              </a>
+            </li>
+          }
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <div
+    class="mx-auto mt-6 flex max-w-6xl flex-wrap justify-between gap-4 border-t border-neutral-600 px-6 py-4"
+  >
+    <span
+      class="text-xs text-neutral-400"
+      i18n="@@footer.copyright"
+      >© {{ currentYear() }} Boundfox Studios. Alle Rechte vorbehalten.</span
+    >
+    <nav
+      class="flex items-center gap-2 text-xs text-neutral-400"
+      aria-label="Sprache wählen"
+      i18n-aria-label="@@footer.language.aria-label"
+    >
+      @for (localeLink of languageLinks(); track localeLink.code; let isLast = $last) {
+        @if (localeLink.current) {
+          <span
+            class="text-yellow"
+            aria-current="true"
+          >
+            @switch (localeLink.code) {
+              @case ('de') {
+                <span i18n="@@footer.language.de">Deutsch</span>
+              }
+              @case ('en') {
+                <span i18n="@@footer.language.en">English</span>
+              }
+            }
+          </span>
+        } @else {
+          <a
+            class="text-neutral-400 no-underline focus-ring transition-colors duration-150 ease-in-out hover:text-yellow"
+            [href]="localeLink.href"
+            [attr.hreflang]="localeLink.hreflang"
+            rel="alternate"
+          >
+            @switch (localeLink.code) {
+              @case ('de') {
+                <span i18n="@@footer.language.de">Deutsch</span>
+              }
+              @case ('en') {
+                <span i18n="@@footer.language.en">English</span>
+              }
+            }
+          </a>
+        }
+        @if (!isLast) {
+          <span aria-hidden="true">/</span>
+        }
+      }
+    </nav>
+  </div>
+</footer>
