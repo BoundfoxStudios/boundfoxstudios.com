@@ -43,6 +43,7 @@ jobs:
       - run: npx ng build
       - run: npm run postbuild
       - name: Publish to the build branch
+        id: publish
         env:
           APP_SLUG: ${{ steps.app-token.outputs.app-slug }}
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
@@ -52,11 +53,43 @@ jobs:
           git config user.email "${user_id}+${APP_SLUG}[bot]@users.noreply.github.com"
           git fetch --depth 1 origin build
           git worktree add published -B build FETCH_HEAD
-          rsync --archive --delete --exclude .git dist/website/browser/ published/
+          # Replacing the contents outright rather than syncing them: rsync's quick check compares
+          # size and mtime, so an edit that keeps the byte count within the same second is skipped.
+          find published -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+          cp --archive dist/website/browser/. published/
           git -C published add --all
-          if git -C published diff --cached --quiet; then
+          # The marker is the tree hash of the output itself, so an unchanged build keeps its id
+          # and produces no commit. Anything else would republish nightly for no reason.
+          build_id=$(git -C published write-tree)
+          echo "$build_id" > published/build-id.txt
+          git -C published add --all
+          if git -C published diff --cached --quiet HEAD; then
             echo "build output unchanged, nothing to publish"
           else
             git -C published commit -m "chore: publish ${GITHUB_SHA}"
             git -C published push origin build
+            echo "build-id=$build_id" >> "$GITHUB_OUTPUT"
           fi
+      - name: Purge the edge cache
+        if: steps.publish.outputs.build-id != ''
+        env:
+          BUILD_ID: ${{ steps.publish.outputs.build-id }}
+          CF_ZONE_ID: ${{ secrets.CF_ZONE_ID }}
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+        run: |
+          # Plesk pulls the branch on its own schedule, so the purge has to wait for the new output
+          # to actually be served — purging earlier would pull the old pages back into the edge.
+          # A unique query string per attempt keeps Cloudflare from answering the poll from cache.
+          for attempt in $(seq 1 60); do
+            live=$(curl -fsS --max-time 10 "https://boundfoxstudios.com/build-id.txt?poll=${attempt}" || true)
+            if [ "$live" = "$BUILD_ID" ]; then
+              curl -fsS -X POST "https://api.cloudflare.com/client/v4/zones/${CF_ZONE_ID}/purge_cache" \
+                -H "Authorization: Bearer ${CF_API_TOKEN}" \
+                -H "Content-Type: application/json" \
+                --data '{"purge_everything":true}'
+              exit 0
+            fi
+            sleep 10
+          done
+          echo "::error::the origin never served build ${BUILD_ID} — the edge cache was not purged"
+          exit 1
