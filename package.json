@@ -19,6 +19,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "check:viewports": "node tools/check-viewports.mjs",
+    "verify:legal": "node tools/verify-legal-text.mjs",
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
