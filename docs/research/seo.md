@@ -1,5 +1,4 @@
 ## RECOMMENDATION
-
 Everything below was built and verified in a real Angular 22.1.4 lab copy of this repo (`@angular/build` 22.1.4, `@angular/ssr` 22.1.4, `@angular/core` 22.1.2, Node 26). The lab produced 14 prerendered routes across both locales, a 12-URL sitemap with hreflang, generated icons, and per-locale `.htaccess` files.
 
 ## 0. Foundation: `outputMode: static` + `@angular/localize` (both locales in ONE build)
@@ -52,7 +51,7 @@ dist/website/browser/en/support/index.html
 
 ## 3. Per-page title/description/canonical/OG/Twitter — route `data` + `TitleStrategy`
 
-There is **no built-in SEO API in Angular 22** (verified against angular.dev v22 docs). The idiomatic hook is a custom `TitleStrategy` — it is a stable API, fires on every navigation _including the prerender pass_, and needs no resolver. Resolvers are the wrong tool here: the data is static.
+There is **no built-in SEO API in Angular 22** (verified against angular.dev v22 docs). The idiomatic hook is a custom `TitleStrategy` — it is a stable API, fires on every navigation *including the prerender pass*, and needs no resolver. Resolvers are the wrong tool here: the data is static.
 
 The trick that removes all duplication: **put `$localize` strings directly in route `data`**. `ng extract-i18n` extracts them (verified — `seo.home.title`, `seo.apps.description`, … all landed in `messages.xlf` alongside template messages), and they get inlined per locale at build time. One route table, two languages, zero parallel structures.
 
@@ -74,7 +73,7 @@ export interface LocaleConfig {
 }
 
 export const LOCALES: readonly LocaleConfig[] = [
-  { code: 'de', hreflang: 'de', subPath: '', ogLocale: 'de_DE' },
+  { code: 'de', hreflang: 'de', subPath: '',   ogLocale: 'de_DE' },
   { code: 'en', hreflang: 'en', subPath: 'en', ogLocale: 'en_US' },
 ];
 
@@ -111,7 +110,7 @@ export class SeoService {
   private readonly localeId = inject(LOCALE_ID);
 
   apply(seo: PageSeo, routePath: string): void {
-    const locale = LOCALES.find(entry => this.localeId.startsWith(entry.code)) ?? LOCALES[0];
+    const locale = LOCALES.find((entry) => this.localeId.startsWith(entry.code)) ?? LOCALES[0];
     const canonical = this.absoluteUrl(locale.subPath, routePath);
     const image = new URL(seo.image ?? SITE.defaultImage, SITE.origin).href;
 
@@ -249,7 +248,7 @@ const seo = (data: PageSeo): { seo: PageSeo } => ({ seo: data });
 export const routes: Routes = [
   {
     path: '',
-    loadComponent: () => import('./pages/home.page').then(m => m.HomePage),
+    loadComponent: () => import('./pages/home.page').then((m) => m.HomePage),
     data: seo({
       title: $localize`:@@seo.home.title:Bound Fox Studios – Open-Source-Apps und Spiele`,
       description: $localize`:@@seo.home.description:Bound Fox Studios entwickelt Open-Source-Apps und Spiele.`,
@@ -257,7 +256,7 @@ export const routes: Routes = [
   },
   {
     path: 'apps-and-games',
-    loadComponent: () => import('./pages/apps.page').then(m => m.AppsPage),
+    loadComponent: () => import('./pages/apps.page').then((m) => m.AppsPage),
     data: seo({
       title: $localize`:@@seo.apps.title:Apps und Spiele – Bound Fox Studios`,
       description: $localize`:@@seo.apps.description:Alle Apps und Spiele von Bound Fox Studios.`,
@@ -266,7 +265,7 @@ export const routes: Routes = [
   // support, socials, legal-details-imprint, privacy-policy — same shape
   {
     path: '404',
-    loadComponent: () => import('./pages/not-found.page').then(m => m.NotFoundPage),
+    loadComponent: () => import('./pages/not-found.page').then((m) => m.NotFoundPage),
     data: seo({
       title: $localize`:@@seo.notFound.title:Seite nicht gefunden – Bound Fox Studios`,
       description: $localize`:@@seo.notFound.description:Diese Seite existiert nicht.`,
@@ -274,8 +273,8 @@ export const routes: Routes = [
     }),
   },
   {
-    path: '**', // same component => hydration matches
-    loadComponent: () => import('./pages/not-found.page').then(m => m.NotFoundPage),
+    path: '**',                                    // same component => hydration matches
+    loadComponent: () => import('./pages/not-found.page').then((m) => m.NotFoundPage),
     data: seo({
       title: $localize`:@@seo.notFound.title:Seite nicht gefunden – Bound Fox Studios`,
       description: $localize`:@@seo.notFound.description:Diese Seite existiert nicht.`,
@@ -301,62 +300,17 @@ Do **not** set `noIndex` on imprint/privacy — they are legitimate indexable pa
 **Survives prerendering?** Yes, verified in the emitted HTML. `dist/website/browser/en/apps-and-games/index.html`:
 
 ```html
-<html
-  lang="en"
-  dir="ltr"
->
-  <head>
-    <title>EN: Apps und Spiele – Bound Fox Studios</title>
-    <base href="/en/" />
-    <meta
-      name="description"
-      content="…"
-    />
-    <meta
-      name="robots"
-      content="index, follow"
-    />
-    <meta
-      name="twitter:card"
-      content="summary_large_image"
-    />
-    <meta
-      name="twitter:site"
-      content="@boundfoxstudios"
-    />
-    <meta
-      property="og:title"
-      …
-    />
-    <meta
-      property="og:url"
-      content="https://boundfoxstudios.com/en/apps-and-games/"
-    />
-    <meta
-      property="og:locale"
-      content="en_US"
-    />
-    <link
-      rel="canonical"
-      href="https://boundfoxstudios.com/en/apps-and-games/"
-    />
-    <link
-      rel="alternate"
-      hreflang="de"
-      href="https://boundfoxstudios.com/apps-and-games/"
-    />
-    <link
-      rel="alternate"
-      hreflang="en"
-      href="https://boundfoxstudios.com/en/apps-and-games/"
-    />
-    <link
-      rel="alternate"
-      hreflang="x-default"
-      href="https://boundfoxstudios.com/en/apps-and-games/"
-    />
-  </head>
-</html>
+<html lang="en" dir="ltr"><head>
+<title>EN: Apps und Spiele – Bound Fox Studios</title>
+<base href="/en/">
+<meta name="description" content="…"><meta name="robots" content="index, follow">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@boundfoxstudios">
+<meta property="og:title" …><meta property="og:url" content="https://boundfoxstudios.com/en/apps-and-games/">
+<meta property="og:locale" content="en_US">
+<link rel="canonical" href="https://boundfoxstudios.com/en/apps-and-games/">
+<link rel="alternate" hreflang="de" href="https://boundfoxstudios.com/apps-and-games/">
+<link rel="alternate" hreflang="en" href="https://boundfoxstudios.com/en/apps-and-games/">
+<link rel="alternate" hreflang="x-default" href="https://boundfoxstudios.com/en/apps-and-games/">
 ```
 
 `Meta`/`Title`/`DOCUMENT` all work on the server renderer, so everything lands in the static file — no JS needed at crawl time.
@@ -366,41 +320,17 @@ Do **not** set `noIndex` on imprint/privacy — they are legitimate indexable pa
 Every page emits all three (self-reference included, as Google requires). Emitted automatically by `SeoService`; e.g. for `/support`:
 
 ```html
-<link
-  rel="alternate"
-  hreflang="de"
-  href="https://boundfoxstudios.com/support/"
-/>
-<link
-  rel="alternate"
-  hreflang="en"
-  href="https://boundfoxstudios.com/en/support/"
-/>
-<link
-  rel="alternate"
-  hreflang="x-default"
-  href="https://boundfoxstudios.com/en/support/"
-/>
+<link rel="alternate" hreflang="de" href="https://boundfoxstudios.com/support/">
+<link rel="alternate" hreflang="en" href="https://boundfoxstudios.com/en/support/">
+<link rel="alternate" hreflang="x-default" href="https://boundfoxstudios.com/en/support/">
 ```
 
 Home page:
 
 ```html
-<link
-  rel="alternate"
-  hreflang="de"
-  href="https://boundfoxstudios.com/"
-/>
-<link
-  rel="alternate"
-  hreflang="en"
-  href="https://boundfoxstudios.com/en/"
-/>
-<link
-  rel="alternate"
-  hreflang="x-default"
-  href="https://boundfoxstudios.com/en/"
-/>
+<link rel="alternate" hreflang="de" href="https://boundfoxstudios.com/">
+<link rel="alternate" hreflang="en" href="https://boundfoxstudios.com/en/">
+<link rel="alternate" hreflang="x-default" href="https://boundfoxstudios.com/en/">
 ```
 
 Use bare `de` / `en` (not `de-DE`) — you target languages, not regions. Both pages of a pair link to each other **and** to themselves, which is Google's reciprocity requirement. Trailing slashes everywhere, matching what Apache actually serves (`DirectorySlash` 301s `/support` → `/support/`), so canonical == served URL.
@@ -477,10 +407,7 @@ for (const file of await findIndexFiles(BROWSER_DIR)) {
     throw new Error(`No canonical URL in ${file} — the SEO strategy did not run for this route.`);
   }
 
-  const alternates = [...html.matchAll(ALTERNATE)].map(([, hreflang, href]) => ({
-    hreflang,
-    href,
-  }));
+  const alternates = [...html.matchAll(ALTERNATE)].map(([, hreflang, href]) => ({ hreflang, href }));
   const key = relative(BROWSER_DIR, file).split(sep).join('/');
   const hash = createHash('sha256').update(contentFingerprint(html)).digest('hex').slice(0, 16);
   const previous = lastmodDatabase[key];
@@ -509,7 +436,7 @@ const xml = [
   '',
 ].join('\n');
 
-const changedUrls = pages.filter(page => page.changed).map(({ canonical }) => canonical);
+const changedUrls = pages.filter((page) => page.changed).map(({ canonical }) => canonical);
 
 await writeFile(join(BROWSER_DIR, 'sitemap.xml'), xml);
 await writeFile(LASTMOD_DB, `${JSON.stringify(nextLastmodDatabase, null, 2)}\n`);
@@ -579,11 +506,8 @@ export function organizationJsonLd(): unknown {
     name: SITE.name,
     url: `${SITE.origin}/`,
     logo: `${SITE.origin}/icons/icon-512.png`,
-    foundingLocation: {
-      '@type': 'Place',
-      address: { '@type': 'PostalAddress', addressCountry: 'DE' },
-    },
-    sameAs: SOCIALS.map(entry => entry.url), // same array that renders /socials
+    foundingLocation: { '@type': 'Place', address: { '@type': 'PostalAddress', addressCountry: 'DE' } },
+    sameAs: SOCIALS.map((entry) => entry.url),   // same array that renders /socials
   };
 }
 
@@ -619,22 +543,22 @@ export interface AppEntry {
   slug: string;
   name: string;
   kind: 'SoftwareApplication' | 'VideoGame';
-  category: string; // 'GameApplication' | 'ProductivityApplication' | …
+  category: string;                 // 'GameApplication' | 'ProductivityApplication' | …
   operatingSystems: string[];
   description: string;
   url: string;
   repository?: string;
-  price?: string; // '0' for free
+  price?: string;                   // '0' for free
 }
 
-export const APPS: readonly AppEntry[] = [/* … */];
+export const APPS: readonly AppEntry[] = [ /* … */ ];
 ```
 
 `src/app/pages/apps.page.ts`:
 
 ```ts
 export class AppsPage {
-  protected readonly apps = APPS; // rendered in the template
+  protected readonly apps = APPS;          // rendered in the template
 
   constructor() {
     inject(SeoService).setJsonLd('apps', {
@@ -666,28 +590,14 @@ export class AppsPage {
 Verified emitted output on `/apps-and-games/`:
 
 ```json
-{
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "item": {
-        "@type": "SoftwareApplication",
-        "@id": "https://boundfoxstudios.com/#foxy-notes",
-        "name": "Foxy Notes",
-        "description": "Open-source note taking.",
-        "url": "…/apps-and-games/#foxy-notes",
-        "applicationCategory": "ProductivityApplication",
-        "operatingSystem": "iOS, Android",
-        "author": { "@id": "https://boundfoxstudios.com/#organization" },
-        "codeRepository": "https://github.com/boundfoxstudios/foxy-notes",
-        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
-      }
-    }
-  ]
-}
+{"@context":"https://schema.org","@type":"ItemList","itemListElement":[
+  {"@type":"ListItem","position":1,"item":{"@type":"SoftwareApplication",
+   "@id":"https://boundfoxstudios.com/#foxy-notes","name":"Foxy Notes",
+   "description":"Open-source note taking.","url":"…/apps-and-games/#foxy-notes",
+   "applicationCategory":"ProductivityApplication","operatingSystem":"iOS, Android",
+   "author":{"@id":"https://boundfoxstudios.com/#organization"},
+   "codeRepository":"https://github.com/boundfoxstudios/foxy-notes",
+   "offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"}}}]}
 ```
 
 Skip `BreadcrumbList` (a flat six-page site has no breadcrumbs to describe) and skip `FAQPage` (Google removed FAQ rich results in May 2026).
@@ -715,10 +625,7 @@ const SOURCE_PNG = 'projects/website/branding/icon.png';
 const PUBLIC_DIR = 'projects/website/public';
 const BACKGROUND = '#0f1115';
 
-const exists = async path =>
-  access(path)
-    .then(() => true)
-    .catch(() => false);
+const exists = async (path) => access(path).then(() => true).catch(() => false);
 const source = (await exists(SOURCE_SVG)) ? SOURCE_SVG : SOURCE_PNG;
 const TRANSPARENT = { r: 0, g: 0, b: 0, alpha: 0 };
 
@@ -742,10 +649,10 @@ await mkdir(join(PUBLIC_DIR, 'icons'), { recursive: true });
 const [ico32, ico48, appleTouch, icon192, icon512, maskable512] = await Promise.all([
   render(32),
   render(48),
-  render(180, { background: BACKGROUND }), // must be opaque
+  render(180, { background: BACKGROUND }),          // must be opaque
   render(192),
   render(512),
-  render(512, { padding: 0.1, background: BACKGROUND }), // maskable safe zone
+  render(512, { padding: 0.1, background: BACKGROUND }),  // maskable safe zone
 ]);
 
 await Promise.all([
@@ -776,33 +683,13 @@ Run it via `npm run generate:icons` when the logo changes and commit the results
   <head>
     <meta charset="utf-8" />
     <base href="/" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link
-      rel="icon"
-      href="/favicon.ico"
-      sizes="48x48"
-    />
-    <link
-      rel="icon"
-      href="/icon.svg"
-      type="image/svg+xml"
-    />
-    <link
-      rel="apple-touch-icon"
-      href="/apple-touch-icon.png"
-    />
-    <link
-      rel="manifest"
-      href="manifest.webmanifest"
-    />
-    <meta
-      name="theme-color"
-      content="#0f1115"
-    />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <meta name="theme-color" content="#0f1115" />
   </head>
   <body>
     <app-root></app-root>
@@ -903,14 +790,7 @@ const LOCALE_SUBPATHS = ['en'];
 
 // Angular copies every file in `public/` into each locale directory. These belong
 // to the site root only, so the localized copies are removed after the build.
-const ROOT_ONLY = [
-  'robots.txt',
-  'favicon.ico',
-  'icon.svg',
-  'apple-touch-icon.png',
-  'icons',
-  '.well-known',
-];
+const ROOT_ONLY = ['robots.txt', 'favicon.ico', 'icon.svg', 'apple-touch-icon.png', 'icons', '.well-known'];
 
 for (const subPath of LOCALE_SUBPATHS) {
   for (const entry of ROOT_ONLY) {
@@ -941,20 +821,14 @@ const manifest = (locale, subPath, name) => ({
   ],
 });
 
-await writeFile(
-  join(BROWSER_DIR, 'manifest.webmanifest'),
-  `${JSON.stringify(manifest('de', '', 'Bound Fox Studios'), null, 2)}\n`,
-);
-await writeFile(
-  join(BROWSER_DIR, 'en', 'manifest.webmanifest'),
-  `${JSON.stringify(manifest('en', 'en', 'Bound Fox Studios'), null, 2)}\n`,
-);
+await writeFile(join(BROWSER_DIR, 'manifest.webmanifest'),
+  `${JSON.stringify(manifest('de', '', 'Bound Fox Studios'), null, 2)}\n`);
+await writeFile(join(BROWSER_DIR, 'en', 'manifest.webmanifest'),
+  `${JSON.stringify(manifest('en', 'en', 'Bound Fox Studios'), null, 2)}\n`);
 
 for (const subPath of LOCALE_SUBPATHS) {
-  await writeFile(
-    join(BROWSER_DIR, subPath, '.htaccess'),
-    `ErrorDocument 404 /${subPath}/404/index.html\n`,
-  );
+  await writeFile(join(BROWSER_DIR, subPath, '.htaccess'),
+    `ErrorDocument 404 /${subPath}/404/index.html\n`);
 }
 
 // RFC 9116 requires an Expires date, and an expired file reads as an abandoned
@@ -963,17 +837,14 @@ const expires = new Date();
 expires.setUTCFullYear(expires.getUTCFullYear() + 1);
 
 await mkdir(join(BROWSER_DIR, '.well-known'), { recursive: true });
-await writeFile(
-  join(BROWSER_DIR, '.well-known', 'security.txt'),
-  [
-    'Contact: mailto:security@boundfoxstudios.com',
-    'Contact: https://github.com/boundfoxstudios',
-    `Expires: ${expires.toISOString().replace(/\.\d{3}Z$/, 'Z')}`,
-    'Preferred-Languages: de, en',
-    'Canonical: https://boundfoxstudios.com/.well-known/security.txt',
-    '',
-  ].join('\n'),
-);
+await writeFile(join(BROWSER_DIR, '.well-known', 'security.txt'), [
+  'Contact: mailto:security@boundfoxstudios.com',
+  'Contact: https://github.com/boundfoxstudios',
+  `Expires: ${expires.toISOString().replace(/\.\d{3}Z$/, 'Z')}`,
+  'Preferred-Languages: de, en',
+  'Canonical: https://boundfoxstudios.com/.well-known/security.txt',
+  '',
+].join('\n'));
 
 console.log('dist finalized');
 ```
@@ -1041,11 +912,10 @@ console.log(`IndexNow: ${urlList.length} URLs -> ${response.status}`);
 **Worth adding: `@angular/ssr` is still a dependency** even in static mode (it drives prerendering), but `express` and `@types/express` are not — remove them.
 
 ## FINDINGS
-
 - Angular 22.1.4 prerenders BOTH locales in a single `ng build` with `outputMode: "static"` + `localize: true` — verified in a lab copy of this repo: `Prerendered 14 static routes.` (7 routes x 2 locales). No separate per-locale build, no server runtime, no `ssr.entry` needed (only `server: main.server.ts`).
 - `i18n.sourceLocale.subPath: ""` is legal (angular.json schema pattern `^[\w-]*$`) and puts German at `/` while `locales.en.subPath: "en"` puts English at `/en/`. Angular then emits `<html lang="de|en" dir="ltr">` and `<base href="/">` / `<base href="/en/">` automatically — verified in the output HTML.
 - `$localize` tagged strings placed in route `data` ARE extracted by `ng extract-i18n` (verified: `seo.home.title`, `seo.apps.description`, etc. appeared in `messages.xlf` alongside template messages) and are inlined per locale at build time. This is the mechanism that makes localized titles/descriptions need zero parallel data structures.
-- Angular 22 has NO built-in sitemap generation and no built-in SEO/meta API. `TitleStrategy` (stable API, `@angular/router`) is the idiomatic hook — it fires during the prerender pass, so `Title`, `Meta` and `DOCUMENT`-created `<link>`/`<script>` tags all end up baked into the static HTML. Verified: title, description, robots, twitter:_, og:_, canonical, 3x hreflang and two JSON-LD blocks all present in `dist/website/browser/**/index.html`.
+- Angular 22 has NO built-in sitemap generation and no built-in SEO/meta API. `TitleStrategy` (stable API, `@angular/router`) is the idiomatic hook — it fires during the prerender pass, so `Title`, `Meta` and `DOCUMENT`-created `<link>`/`<script>` tags all end up baked into the static HTML. Verified: title, description, robots, twitter:*, og:*, canonical, 3x hreflang and two JSON-LD blocks all present in `dist/website/browser/**/index.html`.
 - `@angular/build` writes `dist/website/prerendered-routes.json` — `{"routes":{"/":{},"/404":{},"/apps-and-games":{},"/en":{},"/en/apps-and-games":{},…}}` — with locale subpaths included. Wildcard (`**`) routes are excluded from it (source: `execute-post-bundle.js` only records `renderMode === Prerender && !route.includes('*')`).
 - Reading the prerendered HTML back is a better sitemap source than the route config: canonical URL, robots directive and the full hreflang set are already in each file, so the sitemap physically cannot disagree with the pages. Verified end-to-end: 12 URLs emitted, 404 pages excluded via their `noindex` meta.
 - A content-fingerprint manifest (`tools/seo/lastmod.json`, committed) gives honest per-page `lastmod` with zero manual input. Verified: two identical rebuilds produced a byte-identical manifest (0 changed); editing one route description bumped exactly that one page; a JSON-LD-only edit bumped exactly the two `/apps-and-games/` pages. The fingerprint must exclude bundle hashes, inlined critical CSS and hydration attributes, but must KEEP `application/ld+json` scripts.
@@ -1060,7 +930,6 @@ console.log(`IndexNow: ${urlList.length} URLs -> ${response.status}`);
 - npm auto-runs a `postbuild` script after `build` — chaining it explicitly inside `build` as well makes it run twice (observed in the lab).
 
 ## RISKS
-
 - FTP clients frequently skip hidden files by default, which would silently drop `.htaccess`, `/en/.htaccess` and `/.well-known/security.txt` — producing a generic Apache 404, no HTTPS redirect and no caching. Mitigation: enable 'transfer hidden files' in the client (FileZilla: Server > Force showing hidden files; lftp: `mirror --no-symlinks -R` includes dotfiles by default), and verify after the first deploy with `curl -I https://boundfoxstudios.com/nope` (expect 404 + your branded page) and `curl -I http://boundfoxstudios.com/` (expect 301).
 - `.htaccess` only works if the vhost allows it. `AllowOverride` must include at least `FileInfo Indexes Limit Options=Indexes,MultiViews` — on most shared hosting it is `All`, but if it is `None` every directive is silently ignored with no error anywhere. Mitigation: after the first upload, check that `curl -I https://boundfoxstudios.com/main-*.js` returns `Cache-Control: …immutable`; if not, ask the host to raise AllowOverride.
 - The branded 404 relies on `/404` and the `**` catch-all rendering the SAME component, so the DOM Angular hydrates at `/typo` matches what was prerendered at `/404`. If they ever diverge (different component, or content that depends on the URL), hydration will throw NG0500-class errors in the console for every 404 visit. Mitigation: keep both routes pointing at `NotFoundPage`, and never render the requested path into that page's markup.

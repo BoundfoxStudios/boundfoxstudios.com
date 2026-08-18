@@ -1,5 +1,4 @@
 ## RECOMMENDATION
-
 All versions below were looked up live (`npm view <pkg> version`, GitHub Releases API) on 2026-08-17. Nothing is guessed.
 
 # 0. package.json changes
@@ -15,7 +14,7 @@ All versions below were looked up live (`npm view <pkg> version`, GitHub Release
     "lint": "ng lint",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "postinstall": "lefthook install",
+    "postinstall": "lefthook install"
   },
   "devDependencies": {
     "@commitlint/cli": "^21.2.2",
@@ -28,7 +27,7 @@ All versions below were looked up live (`npm view <pkg> version`, GitHub Release
     "prettier-plugin-css-order": "~2.2.0",
     "prettier-plugin-organize-attributes": "~1.0.0",
     "prettier-plugin-tailwindcss": "~0.8.1",
-    "typescript-eslint": "8.67.0",
+    "typescript-eslint": "8.67.0"
   },
   "allowScripts": {
     "@parcel/watcher": true,
@@ -36,8 +35,8 @@ All versions below were looked up live (`npm view <pkg> version`, GitHub Release
     "fsevents": true,
     "lefthook": true,
     "lmdb": true,
-    "msgpackr-extract": true,
-  },
+    "msgpackr-extract": true
+  }
 }
 ```
 
@@ -65,7 +64,6 @@ Also: **`prefix` in `angular.json` must change from `app` to `bfs`**, and `app.t
   }
 }
 ```
-
 (Leaner alternative: skip the builder target entirely and use `"lint": "eslint ."`. The builder exists mainly for multi-project workspaces; with one project it buys nothing. I keep it above only for house-style parity with lehrgrapht.)
 
 ---
@@ -147,7 +145,7 @@ export default defineConfig([
 
 **Why `defineConfig` and not `tseslint.config` (which lehrgrapht uses):** typescript-eslint's own docs now mark `tseslint.config(...)` **deprecated in favour of ESLint core's `defineConfig(...)`**, and angular-eslint 22.1.0's `ng add` schematic (`packages/angular-eslint/src/dist/utils.js`, `createStringifiedRootESLintConfig`) emits `defineConfig` too. The one semantic difference: in `tseslint.config`, an outer `files` **overrides** the extended config's `files`; in `defineConfig` it **intersects**. That is safe here because `angular.configs.ts-base` and `template-base` (verified at tag v22.1.0) declare no `files` of their own. If you prefer to stay byte-identical with lehrgrapht, `tseslint.config(...)` with `...` spreads still works with eslint 10 — it is deprecated, not removed.
 
-Two other deltas from lehrgrapht worth taking: `eslint-config-prettier/flat` (adds a `name` for the config inspector; the bare entry point is the eslintrc-shaped one), and dropping `eslintConfigPrettier` from the **HTML** block — it turns off core/TS _formatting_ rules and knows nothing about `@angular-eslint/template/*`, so it is a pure no-op there. Also drop lehrgrapht's `brace-style` and `'id-blacklist': 'off'`: `brace-style` was removed from ESLint core in v9 (it lives in `@stylistic`) and is a formatting rule that prettier owns anyway; `id-blacklist` was removed too.
+Two other deltas from lehrgrapht worth taking: `eslint-config-prettier/flat` (adds a `name` for the config inspector; the bare entry point is the eslintrc-shaped one), and dropping `eslintConfigPrettier` from the **HTML** block — it turns off core/TS *formatting* rules and knows nothing about `@angular-eslint/template/*`, so it is a pure no-op there. Also drop lehrgrapht's `brace-style` and `'id-blacklist': 'off'`: `brace-style` was removed from ESLint core in v9 (it lives in `@stylistic`) and is a formatting rule that prettier owns anyway; `id-blacklist` was removed too.
 
 **angular-eslint accessibility rules — the complete picture (verified against tag v22.1.0):**
 
@@ -157,7 +155,6 @@ Two other deltas from lehrgrapht worth taking: `eslint-config-prettier/flat` (ad
 `angular.configs.templateRecommended` enables only 4: `banana-in-box`, `eqeqeq`, `no-negated-async`, `prefer-control-flow`.
 
 The plugin ships 41 template rules in total. The a11y-relevant ones **not** in the accessibility preset, and my call on each:
-
 - `no-positive-tabindex` — **enable** (`error`). Genuine a11y rule, surprisingly absent from the preset; positive tabindex breaks focus order on a marketing site.
 - `button-has-type` — **enable** (`error`). Prevents accidental `type=submit` semantics.
 - `prefer-ngsrc` — **enable as `warn`**. It is an LCP/perf rule (pushes `NgOptimizedImage`), not a11y; as `warn` it flags images without blocking until `NgOptimizedImage` is actually wired up.
@@ -197,7 +194,6 @@ commit-msg:
 ```
 
 Three deliberate changes vs lehrgrapht's file:
-
 1. **No `parallel: true`.** lehrgrapht runs prettier and eslint concurrently over overlapping file sets; both write to disk and both `stage_fixed`. That is a real lost-update race on any `.ts` file. Sequential also gives the right precedence: eslint fixes code, prettier has the final word on formatting.
 2. **eslint also globs `*.html`.** Angular 20+ dropped the `.component.html` infix (this repo has `app.html`), and the template rules only run if HTML reaches eslint.
 3. **`--no-warn-ignored`.** Without it, committing `src/index.html` (globally ignored above) prints a warning; with `--max-warnings 0` in CI it would be an error.
@@ -266,7 +262,6 @@ package-lock.json
 # 5. Stylelint: **no.**
 
 Clear no, for this repo, today:
-
 - There are two CSS files: `styles.css` (`@import 'tailwindcss';` and a comment) and `app.css`. Every styling decision lives as utility classes in templates. A linter that cannot see templates cannot see your styling.
 - `stylelint-config-standard` actively fights Tailwind v4: `at-rule-no-unknown` fires on `@theme`, `@utility`, `@custom-variant`, `@variant`, `@source`, `@plugin`, `@reference`, `@apply`. You would maintain a hand-written `ignoreAtRules` allowlist that goes stale every time Tailwind adds an at-rule, or take on `stylelint-config-tailwindcss`, which lags upstream.
 - The formatting/ordering job is already done: prettier (postcss parser) + `prettier-plugin-css-order`. Stylelint would duplicate it and you'd need `stylelint-config-prettier`-style conflict management on top.
@@ -402,7 +397,7 @@ jobs:
       - run: npm run build
 ```
 
-**On "typecheck" as a separate job: don't add one.** For Angular there is no meaningful `tsc --noEmit` step — plain `tsc` will not type-check templates, and `strictTemplates` is where the interesting errors are. `ng build` runs the AOT compiler and _is_ the typecheck. Adding `tsc -b --noEmit` would be a slower, weaker duplicate. (Also: `strictTemplates` needs no entry in `tsconfig.json` — I read `packages/compiler-cli/src/ngtsc/core/src/compiler.ts`, where it is `this.options.strictTemplates !== false`, i.e. **on by default**. Likewise `strict: true` is now the TypeScript 6.0 default. The current tsconfig is already strict; don't cargo-cult those two lines in.)
+**On "typecheck" as a separate job: don't add one.** For Angular there is no meaningful `tsc --noEmit` step — plain `tsc` will not type-check templates, and `strictTemplates` is where the interesting errors are. `ng build` runs the AOT compiler and *is* the typecheck. Adding `tsc -b --noEmit` would be a slower, weaker duplicate. (Also: `strictTemplates` needs no entry in `tsconfig.json` — I read `packages/compiler-cli/src/ngtsc/core/src/compiler.ts`, where it is `this.options.strictTemplates !== false`, i.e. **on by default**. Likewise `strict: true` is now the TypeScript 6.0 default. The current tsconfig is already strict; don't cargo-cult those two lines in.)
 
 Four jobs each pay their own `npm ci` (~30–45s cached). If you'd rather have one required check and one install, collapse `lint`/`test`/`build` into a single job with three steps — the tradeoff is that a lint failure then masks a build failure. For a solo site I'd take the four jobs; parallel wall-clock is better and the required-status-check list is more legible.
 
@@ -461,22 +456,20 @@ jobs:
 ```
 
 Deliberate choices:
-
 - **`protocol: ftps`, not `ftp`.** lehrgrapht uses plain `ftp`, which sends the password and the whole site in cleartext. Use `ftps` (explicit TLS on port 21); fall back to `ftps-legacy` only if the host is implicit-TLS-on-990.
-- **`ref: main` on checkout is mandatory, not decoration.** Scheduled runs check out the _default_ branch. If `develop` is the default branch (which the "PRs into develop" flow implies), the cron would otherwise build and ship `develop` to production. Related gotcha: `schedule` triggers only fire for the workflow file **as it exists on the default branch** — so `deploy.yml` must be merged into `develop` too, or the cron never runs.
+- **`ref: main` on checkout is mandatory, not decoration.** Scheduled runs check out the *default* branch. If `develop` is the default branch (which the "PRs into develop" flow implies), the cron would otherwise build and ship `develop` to production. Related gotcha: `schedule` triggers only fire for the workflow file **as it exists on the default branch** — so `deploy.yml` must be merged into `develop` too, or the cron never runs.
 - **`concurrency` without `cancel-in-progress`.** Also note lehrgrapht's `group: ${{ github.workflow }}-${{ github.head_ref }}` is subtly broken: on `push`/`schedule` events `github.head_ref` is empty, so every non-PR run shares one group and cancels the previous one mid-upload.
-- **`environment: production`** so the FTP secrets are scoped to an environment you can lock to the `main` branch (see §7). Never `pull_request_target`, and never expose these secrets to a `pull_request` job — fork PRs run in this repo's context for workflow _files_ only, but the environment gate is the real protection.
-- No `paths:` filter. lehrgrapht uses one (with YAML anchors) because it is a monorepo with an add-in and a website. Here everything _is_ the website, and paths filters on required status checks cause PRs to hang forever waiting for a check that will never report.
+- **`environment: production`** so the FTP secrets are scoped to an environment you can lock to the `main` branch (see §7). Never `pull_request_target`, and never expose these secrets to a `pull_request` job — fork PRs run in this repo's context for workflow *files* only, but the environment gate is the real protection.
+- No `paths:` filter. lehrgrapht uses one (with YAML anchors) because it is a monorepo with an add-in and a website. Here everything *is* the website, and paths filters on required status checks cause PRs to hang forever waiting for a check that will never report.
 - No `issues:` / `issue_comment:` triggers. lehrgrapht's website workflow has them, which makes a full build+deploy pipeline start on every issue comment. That looks accidental; do not copy it.
 
-**Is the nightly cron worth it? Qualified yes — keep it, but be honest about what it buys.** FTP-Deploy-Action diffs against a `.ftp-deploy-sync-state.json` it keeps on the server, so a nightly run with no source change uploads nothing: it costs ~2 minutes of runner time and is a no-op on the wire. What you actually get is a **build-health canary** — it catches the day a transitive dependency publishes a broken version, before you find out during a real release. What you do _not_ get is drift repair: because the state file records the _last deployed_ hashes, a file someone edits by hand on the server is invisible to the action. If you want the canary without touching production, split it into a separate `nightly.yml` that runs `cve-check` + `npm run build` and stops there — that is the cleaner shape, and I'd lean that way given `main` already deploys on every push.
+**Is the nightly cron worth it? Qualified yes — keep it, but be honest about what it buys.** FTP-Deploy-Action diffs against a `.ftp-deploy-sync-state.json` it keeps on the server, so a nightly run with no source change uploads nothing: it costs ~2 minutes of runner time and is a no-op on the wire. What you actually get is a **build-health canary** — it catches the day a transitive dependency publishes a broken version, before you find out during a real release. What you do *not* get is drift repair: because the state file records the *last deployed* hashes, a file someone edits by hand on the server is invisible to the action. If you want the canary without touching production, split it into a separate `nightly.yml` that runs `cve-check` + `npm run build` and stops there — that is the cleaner shape, and I'd lean that way given `main` already deploys on every push.
 
 ---
 
 # 7. Repo settings for a public repo where `main` auto-deploys
 
 **Rulesets (Settings → Rules), on `main`:**
-
 - Require a pull request before merging; require status checks `CVE check`, `Lint & format`, `Test`, `Build`; require branches to be up to date. As a solo maintainer set **0 required approvals** — you cannot approve your own PR, and a `1` here means you can never merge.
 - Block force pushes; restrict deletions; require linear history; require conversation resolution.
 - Restrict who can push to `main` to the release path only (merges from `develop`).
@@ -530,7 +523,6 @@ Conversely, one thing this repo needs that lehrgrapht does not: **`.prettierigno
 Then delete `projects/website/src/server.ts`, drop the `serve:ssr:website` script, and remove `express` / `@types/express`. Output lands in `dist/website/browser/`, which is exactly what `local-dir` points at. (`outputMode: "static"` keeps the `server` entry — it is what prerendering runs — but emits no server bundle.)
 
 ## FINDINGS
-
 - angular-eslint 22.1.0's `templateAccessibility` config contains exactly 11 rules (alt-text, click-events-have-key-events, elements-content, interactive-supports-focus, label-has-associated-control, mouse-events-have-key-events, no-autofocus, no-distracting-elements, role-has-required-aria, table-scope, valid-aria); `templateRecommended` adds only 4 (banana-in-box, eqeqeq, no-negated-async, prefer-control-flow). Verified by reading packages/angular-eslint/src/configs/*.ts at tag v22.1.0.
 - `no-positive-tabindex` is a genuine accessibility rule that is NOT in the accessibility preset and should be enabled explicitly. `attributes-order` must stay off because prettier-plugin-organize-attributes owns attribute ordering — two fixers on the same bytes.
 - typescript-eslint's own docs mark `tseslint.config(...)` DEPRECATED in favour of ESLint core's `defineConfig(...)`. angular-eslint 22's `ng add` schematic already emits `defineConfig`. The lehrgrapht config uses the deprecated helper. Semantic difference: `extends` intersects `files` under defineConfig vs overrides under tseslint.config — safe here because angular-eslint's ts-base/template-base declare no `files`.
@@ -550,7 +542,6 @@ Then delete `projects/website/src/server.ts`, drop the `serve:ssr:website` scrip
 - GitHub's squash-merge default writes the PR title as the commit subject. The author's conventions say commit messages ARE Conventional Commits but PR titles are NOT — so squash merging would put non-conventional subjects on main. Disable squash merging or change the squash message source.
 
 ## RISKS
-
 - Changing the component prefix to `bfs` breaks the existing `app-root` selector immediately — the first `npm run lint` fails. Mitigation: rename the selector in `projects/website/src/app/app.ts` to `bfs-root` and update `<app-root></app-root>` in `src/index.html` in the same commit as the angular.json prefix change.
 - `@angular-eslint/template/prefer-self-closing-tags` has an autofixer. If `src/index.html` is linted it would rewrite `<bfs-root></bfs-root>` to `<bfs-root />`, which the browser HTML parser treats as an unclosed open tag. Mitigation: the `globalIgnores` entry for `projects/website/src/index.html` in the supplied eslint config — do not remove it.
 - `tseslint.configs.strictTypeChecked` on a codebase that has never been linted will produce a large first-run error count (it is the house style, but lehrgrapht grew into it). Mitigation: land the config, run `npm run lint -- --fix`, and if the residue is large, temporarily downgrade the noisiest rules to `warn` in a single clearly-marked block rather than dropping strictTypeChecked.

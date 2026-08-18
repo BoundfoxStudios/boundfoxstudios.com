@@ -1,5 +1,4 @@
 ## RECOMMENDATION
-
 All snippets below were verified by actually building them in a copy of this workspace with the installed toolchain (`@angular/build` 22.1.4, `@angular/cli` 22.1.4, `@angular/localize` 22.1.2). Everything claimed here was observed in real build output, not inferred.
 
 # 1. Install `@angular/localize`
@@ -9,7 +8,6 @@ ng add @angular/localize
 ```
 
 That schematic (verified in `node_modules/@angular/localize/schematics/ng-add/ng_add_bundle.cjs`) does exactly three things:
-
 - adds `@angular/localize` to **devDependencies** (runtime translation is not used; AOT inlines at build time)
 - adds `"@angular/localize/init"` to the build target's `polyfills`
 - adds `"@angular/localize"` to `types` in the project tsconfigs
@@ -17,7 +15,6 @@ That schematic (verified in `node_modules/@angular/localize/schematics/ng-add/ng
 Do it manually if you prefer — pin the version you resolve at the time, `npm view @angular/localize version` (22.1.2 when I checked).
 
 `projects/website/tsconfig.app.json`:
-
 ```json
 {
   "extends": "../../tsconfig.json",
@@ -68,7 +65,9 @@ Do it manually if you prefer — pin the version you resolve at the time, `npm v
             "localize": true,
             "i18nMissingTranslation": "error",
             "i18nDuplicateTranslation": "error",
-            "assets": [{ "glob": "**/*", "input": "projects/website/public" }],
+            "assets": [
+              { "glob": "**/*", "input": "projects/website/public" }
+            ],
             "styles": ["projects/website/src/styles.css"],
             "security": { "allowedHosts": [] }
           },
@@ -117,19 +116,17 @@ Do it manually if you prefer — pin the version you resolve at the time, `npm v
 }
 ```
 
-**The single most important line is `"sourceLocale": { "code": "de", "subPath": "" }`.** `subPath` sets _both_ the output directory name and the `<base href>`. Without it, `subPath` defaults to the locale code and German lands in `browser/de/` with `<base href="/de/">`. The empty string is explicitly allowed (schema pattern `^[\w-]*$`), and `join("", path)` leaves files at the root.
+**The single most important line is `"sourceLocale": { "code": "de", "subPath": "" }`.** `subPath` sets *both* the output directory name and the `<base href>`. Without it, `subPath` defaults to the locale code and German lands in `browser/de/` with `<base href="/de/">`. The empty string is explicitly allowed (schema pattern `^[\w-]*$`), and `join("", path)` leaves files at the root.
 
 Do **not** use `baseHref` instead of `subPath` — they are mutually exclusive (the CLI throws), `baseHref` leaves the output directory named after the locale code, and `createI18nOptions` logs a warning that `baseHref` "may lead to undefined behavior" whenever a server entry is present.
 
 ## What changed vs. your current config
-
 - `"outputMode"`: `"server"` → `"static"`
 - **`"server": "projects/website/src/main.server.ts"` must STAY** (see the trap in Risks)
 - `"ssr": { "entry": "projects/website/src/server.ts" }` — **removed**
 - added `i18n`, `localize`, `polyfills`, `i18nMissingTranslation`, `i18nDuplicateTranslation`
 
 ## Files/scripts to delete
-
 - `projects/website/src/server.ts` (the Express host — nothing serves it now)
 - the `"serve:ssr:website": "node dist/website/server/server.mjs"` script in `package.json`
 - `express` and `@types/express` from dependencies
@@ -140,7 +137,7 @@ Keep `main.server.ts`, `app.config.server.ts` and `@angular/ssr` — they are th
 
 **One `ng build` produces both locales, fully prerendered.** Verified: 5 routes × 2 locales printed `Prerendered 10 static routes.`
 
-The mechanism (`src/builders/application/i18n.js`): the builder bundles once, then for each locale inlines translations and runs the whole post-bundle pipeline — including prerendering — with that locale's `baseHref`. The source comment is literally _"If localization is enabled, prerendering is handled in the inlining process."_ Output files are then relocated with `file.path = join(subPath, file.path)`.
+The mechanism (`src/builders/application/i18n.js`): the builder bundles once, then for each locale inlines translations and runs the whole post-bundle pipeline — including prerendering — with that locale's `baseHref`. The source comment is literally *"If localization is enabled, prerendering is handled in the inlining process."* Output files are then relocated with `file.path = join(subPath, file.path)`.
 
 Exact observed output layout:
 
@@ -170,7 +167,7 @@ dist/website/
         └── privacy-policy/index.html
 ```
 
-Every route becomes `<route>/index.html` (the render worker documents this: _"writes them to `<outputPath>/<route>/index.html`"_). There is **no `server/` directory at all** — `outputMode: static` sets `ignoreServer: true`, so no Node artifacts are emitted.
+Every route becomes `<route>/index.html` (the render worker documents this: *"writes them to `<outputPath>/<route>/index.html`"*). There is **no `server/` directory at all** — `outputMode: static` sets `ignoreServer: true`, so no Node artifacts are emitted.
 
 `<html lang>` and `<base href>` are set automatically and correctly per locale. So is locale data: I verified `{{ d | date:'longDate' }}` → `15. März 2026` / `March 15, 2026`, `{{ n | number }}` → `1.234.567,89` / `1,234,567.89`, `{{ v | currency:'EUR' }}` → `1.234,50 €` / `€1,234.50`. **No `registerLocaleData()` call is needed.**
 
@@ -178,7 +175,7 @@ Every route becomes `<route>/index.html` (the render worker documents this: _"wr
 
 # 4. Translation files: use `xlf2`
 
-Supported _input_ parsers (verified in `src/utils/load-translations.js`): `arb`, `json` (SimpleJson), `xlf` (XLIFF 1.2), `xlf2` (XLIFF 2.0), `xmb`/`xtb`.
+Supported *input* parsers (verified in `src/utils/load-translations.js`): `arb`, `json` (SimpleJson), `xlf` (XLIFF 1.2), `xlf2` (XLIFF 2.0), `xmb`/`xtb`.
 
 Use **`xlf2`**. It keeps `<source>` next to `<target>` (so you can see when a translation went stale), and it represents interpolation placeholders and ICU sub-messages properly — the flat `json` format is a bare id→string map and loses that structure.
 
@@ -190,7 +187,6 @@ ng extract-i18n website
 With the `extract-i18n` options above this writes `projects/website/src/locale/messages.xlf` with `srcLang="de"` (it picks the source locale up from `angular.json`).
 
 Extracted shape:
-
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
 <xliff version="2.0" xmlns="urn:oasis:names:tc:xliff:document:2.0" srcLang="de">
@@ -206,7 +202,6 @@ Extracted shape:
 ```
 
 The English file is the same document with `trgLang="en"` and a `<target>` added inside each `<segment>`:
-
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
 <xliff version="2.0" xmlns="urn:oasis:names:tc:xliff:document:2.0" srcLang="de" trgLang="en">
@@ -222,19 +217,17 @@ The English file is the same document with `trgLang="en"` and a `<target>` added
 ```
 
 ## Keeping the two files in sync
-
 The Angular CLI has **no merge step** — `extract-i18n` overwrites the source catalogue and never touches `messages.en.xlf`. Two workable approaches:
 
 **(a) Let the build be the gate (zero extra dependencies).** `"i18nMissingTranslation": "error"` in the build options turns any untranslated message into a hard build failure, so an un-synced `messages.en.xlf` can never reach production. Verified: a missing unit produced `No translation found for "notFound.title"`, which becomes an error at that setting. Run `ng build` in CI.
 
-**(b) Add a real merge builder.** `ng-extract-i18n-merge` is current and declares `@angular/build: ^20 || ^21 || ^22` as a peer (v3.4.0, published 2026-06). It replaces the `extract-i18n` target, updates the source file _and_ merges new/removed units into every target file while preserving existing translations. Recommended once the catalogue grows past a few dozen strings.
+**(b) Add a real merge builder.** `ng-extract-i18n-merge` is current and declares `@angular/build: ^20 || ^21 || ^22` as a peer (v3.4.0, published 2026-06). It replaces the `extract-i18n` target, updates the source file *and* merges new/removed units into every target file while preserving existing translations. Recommended once the catalogue grows past a few dozen strings.
 
 Use (a) now, add (b) when it starts to hurt.
 
 # 5. Marking text for translation
 
 ## Templates
-
 ```html
 <!-- always give an explicit, stable id: @@my.id -->
 <h1 i18n="@@page.title">Willkommen bei BoundfoxStudios</h1>
@@ -245,13 +238,9 @@ Use (a) now, add (b) when it starts to hurt.
 </p>
 
 <!-- attributes: i18n-<attr>, one per attribute -->
-<img
-  src="logo.svg"
-  alt="Logo"
-  i18n-alt="@@page.logoAlt"
-  title="Logo"
-  i18n-title="@@page.logoTitle"
-/>
+<img src="logo.svg"
+     alt="Logo"   i18n-alt="@@page.logoAlt"
+     title="Logo" i18n-title="@@page.logoTitle" />
 
 <!-- plurals -->
 <p i18n="@@page.games">
@@ -265,7 +254,6 @@ Use (a) now, add (b) when it starts to hurt.
 Interpolations inside a marked block are extracted as `<ph .../>` placeholders and must be carried over verbatim into the `<target>` — you may reorder them, but not rename or drop them.
 
 ## TypeScript
-
 ```ts
 protected readonly message = $localize`:@@page.tsMessage:Aus TypeScript übersetzt`;
 
@@ -275,7 +263,6 @@ protected readonly other = $localize`:site header|Button label@@page.cta:Jetzt s
 // with interpolation
 protected readonly greeting = $localize`:@@page.greeting:Hallo ${name}:name:!`;
 ```
-
 `$localize` is a global — no import — which is why `"types": ["@angular/localize"]` matters.
 
 All of the above were verified end-to-end: the German build rendered `Willkommen bei BoundfoxStudios / Wir entwickeln Spiele mit Unity seit 2019. / 3 Spiele / Sie arbeitet hier.` and the English build rendered `Welcome to BoundfoxStudios / We have been building games with Unity since 2019. / 3 games / She works here.`
@@ -305,12 +292,7 @@ const LOCALE_LABELS: Record<string, string> = {
   selector: 'app-language-switcher',
   template: `
     @for (locale of otherLocales(); track locale.code) {
-      <a
-        [href]="locale.href"
-        [attr.hreflang]="locale.code"
-        rel="alternate"
-        >{{ locale.label }}</a
-      >
+      <a [href]="locale.href" [attr.hreflang]="locale.code" rel="alternate">{{ locale.label }}</a>
     }
   `,
 })
@@ -326,8 +308,8 @@ export class LanguageSwitcher {
     const path = this.currentPath();
 
     return Object.keys(LOCALE_SUB_PATHS)
-      .filter(code => code !== this.currentLocale)
-      .map(code => ({
+      .filter((code) => code !== this.currentLocale)
+      .map((code) => ({
         code,
         label: LOCALE_LABELS[code],
         href: `/${LOCALE_SUB_PATHS[code]}${path}`.replace(/\/{2,}/g, '/'),
@@ -338,37 +320,23 @@ export class LanguageSwitcher {
 
 Verified in the actual prerendered HTML:
 
-| prerendered file               | emitted anchor                                                           |
-| ------------------------------ | ------------------------------------------------------------------------ |
-| `index.html`                   | `<a rel="alternate" href="/en/" hreflang="en">English</a>`               |
-| `socials/index.html`           | `<a rel="alternate" href="/en/socials" hreflang="en">English</a>`        |
-| `privacy-policy/index.html`    | `<a rel="alternate" href="/en/privacy-policy" hreflang="en">English</a>` |
-| `en/index.html`                | `<a rel="alternate" href="/" hreflang="de">Deutsch</a>`                  |
-| `en/socials/index.html`        | `<a rel="alternate" href="/socials" hreflang="de">Deutsch</a>`           |
-| `en/privacy-policy/index.html` | `<a rel="alternate" href="/privacy-policy" hreflang="de">Deutsch</a>`    |
+| prerendered file | emitted anchor |
+|---|---|
+| `index.html` | `<a rel="alternate" href="/en/" hreflang="en">English</a>` |
+| `socials/index.html` | `<a rel="alternate" href="/en/socials" hreflang="en">English</a>` |
+| `privacy-policy/index.html` | `<a rel="alternate" href="/en/privacy-policy" hreflang="en">English</a>` |
+| `en/index.html` | `<a rel="alternate" href="/" hreflang="de">Deutsch</a>` |
+| `en/socials/index.html` | `<a rel="alternate" href="/socials" hreflang="de">Deutsch</a>` |
+| `en/privacy-policy/index.html` | `<a rel="alternate" href="/privacy-policy" hreflang="de">Deutsch</a>` |
 
-**Use `router.lastSuccessfulNavigation()`, not `router.url`.** This is the sharpest trap I found. `Router.url` is a plain getter, not a signal; under Angular 22's zoneless change detection it is read once at component construction and never re-evaluated, so during prerendering **every page emitted `/`** and every switcher link pointed at the home page. `lastSuccessfulNavigation` _is_ a `Signal<Navigation | null>` and produced the correct path on every page. `document.location.pathname` also works during prerendering but includes the `/en/` prefix, so you would have to strip it — more code, no benefit.
+**Use `router.lastSuccessfulNavigation()`, not `router.url`.** This is the sharpest trap I found. `Router.url` is a plain getter, not a signal; under Angular 22's zoneless change detection it is read once at component construction and never re-evaluated, so during prerendering **every page emitted `/`** and every switcher link pointed at the home page. `lastSuccessfulNavigation` *is* a `Signal<Navigation | null>` and produced the correct path on every page. `document.location.pathname` also works during prerendering but includes the `/en/` prefix, so you would have to strip it — more code, no benefit.
 
 The same `computed` gives you SEO alternates for free:
-
 ```html
-<link
-  rel="alternate"
-  hreflang="de"
-  [href]="deHref()"
-/>
-<link
-  rel="alternate"
-  hreflang="en"
-  [href]="enHref()"
-/>
-<link
-  rel="alternate"
-  hreflang="x-default"
-  [href]="deHref()"
-/>
+<link rel="alternate" hreflang="de" [href]="deHref()" />
+<link rel="alternate" hreflang="en" [href]="enHref()" />
+<link rel="alternate" hreflang="x-default" [href]="deHref()" />
 ```
-
 (Use absolute URLs with your domain for `hreflang` in production.)
 
 # 7. Server routes for a fully static build
@@ -390,7 +358,6 @@ export const serverRoutes: ServerRoute[] = [
 ```
 
 `app.config.server.ts` stays exactly as it is:
-
 ```ts
 import { mergeApplicationConfig, ApplicationConfig } from '@angular/core';
 import { provideServerRendering, withRoutes } from '@angular/ssr';
@@ -419,26 +386,22 @@ The `'**'` entry itself is never rendered (prerender skips any route containing 
   },
 }
 ```
-
 Observed output: `browser/blog/post-a-de/index.html` and `browser/en/blog/post-a-en/index.html`.
 
 Add a 404 route so Apache has something to serve:
-
 ```ts
 { path: '404', component: NotFound },
 { path: '**', component: NotFound },
 ```
-
 This prerenders `404/index.html` and `en/404/index.html`.
 
 # 8. Apache / FTP deployment
 
-Upload the **contents of `dist/website/browser/`** to the document root. `3rdpartylicenses.txt` and `prerendered-routes.json` sit _outside_ `browser/` and are not deployed.
+Upload the **contents of `dist/website/browser/`** to the document root. `3rdpartylicenses.txt` and `prerendered-routes.json` sit *outside* `browser/` and are not deployed.
 
 **No rewrite rules are needed for routing.** Every route is a real directory containing `index.html`, so stock `DirectoryIndex` handling serves the whole site. That is the whole point of going static.
 
 Root `.htaccess`:
-
 ```apache
 Options -Indexes -MultiViews
 DirectoryIndex index.html
@@ -463,19 +426,16 @@ ErrorDocument 404 /404/index.html
 ```
 
 `en/.htaccess` (for a localized 404):
-
 ```apache
 ErrorDocument 404 /en/404/index.html
 ```
 
 Apache resolves `ErrorDocument` from the deepest existing directory, so a miss under `/en/…` picks up the English page.
 
-Deploy these two files from a `deploy/` folder in your FTP step — **not** via `projects/website/public/`. I verified that a `.htaccess` placed in `public/` _is_ copied (dotfiles are not excluded), but it is copied identically into **both** `browser/` and `browser/en/`, so you cannot express a per-locale `ErrorDocument` that way.
+Deploy these two files from a `deploy/` folder in your FTP step — **not** via `projects/website/public/`. I verified that a `.htaccess` placed in `public/` *is* copied (dotfiles are not excluded), but it is copied identically into **both** `browser/` and `browser/en/`, so you cannot express a per-locale `ErrorDocument` that way.
 
 ## FINDINGS
-
 ONE `ng build` produces both locales fully prerendered. Verified: 5 routes x 2 locales printed `Prerendered 10 static routes.` The builder bundles once, then per locale inlines translations and re-runs the entire post-bundle pipeline (prerendering included) with that locale's baseHref — source comment in `src/builders/application/i18n.js`: "If localization is enabled, prerendering is handled in the inlining process."
-
 - `subPath` is the correct knob, and `""` is legal. `sourceLocale: { code: "de", subPath: "" }` puts German at the root with `<base href="/">`; `en: { subPath: "en" }` puts English in `en/` with `<base href="/en/">`. The schema pattern is `^[\w-]*$` (empty allowed) and the builder does `file.path = join(subPath, file.path)`, so an empty subPath is a no-op join. Omitting it defaults subPath to the locale code — German would land in `browser/de/`.
 - `subPath` and `baseHref` are mutually exclusive — the CLI throws `'i18n.sourceLocale.subPath' and 'i18n.sourceLocale.baseHref' cannot be used together.` `baseHref` also only changes the `<base href>` and leaves the output directory named after the locale code, and `createI18nOptions` warns that it "may lead to undefined behavior" whenever a server entry is present. Use `subPath`.
 - Exact verified output layout: `dist/website/browser/` holds the German site at its root (`index.html`, `socials/index.html`, `legal-details-imprint/index.html`, …) and the English site under `browser/en/`. Each route becomes `<route>/index.html` — the render worker documents "writes them to `<outputPath>/<route>/index.html`". There is NO `server/` directory: `outputMode: static` sets `ignoreServer: true`.
@@ -496,9 +456,7 @@ ONE `ng build` produces both locales fully prerendered. Verified: 5 routes x 2 l
 - Bundle filenames are shared across locales while contents differ (`browser/main-NIOROH2S.js` and `browser/en/main-NIOROH2S.js` are byte-different). The content hash DOES incorporate translation file contents — changing one string in `messages.en.xlf` re-hashed the bundles — so there is no stale-cache correctness bug, but every locale's bundles get renamed whenever any locale's translations change.
 
 ## RISKS
-
 THE BIG ONE: removing `"server": "…/main.server.ts"` silently disables ALL prerendering. `normalizeOptions` does `options.prerender = !!options.server` when `outputMode` is set — no error, no warning. I built this: the output was a plain CSR `index.html` per locale with zero prerendered routes, and it looked like a successful build. It is tempting to delete the server entry when "going static" because static implies no server. MITIGATION: keep `server` pointing at `main.server.ts`; delete only `ssr.entry` and `server.ts`. Add a CI assertion that `dist/website/browser/socials/index.html` exists after a build.
-
 - `ng serve` cannot serve both locales. With `localize: true` the dev-server WARNS and silently disables localization (`Localization (`localize` option) has been disabled. The development server only supports localizing a single locale per build.`) — you then develop against untranslated source text with `LOCALE_ID` defaulting to `en-US`, so German date/number formatting silently differs from production. MITIGATION: the `"development": { "localize": ["de"] }` and `"en": { "localize": ["en"] }` configurations above; run `ng serve` for German and `ng serve --configuration=en` for English.
 - In `ng serve` the single locale is served FLAT at `/`, not under `/en/` — the dev-server forces `forceI18nFlatOutput = true`. Verified: `ng serve --configuration=en` served the English app at `/` with `<base href="/">`. Consequence: the language switcher renders self-referential links in dev (on the English dev server `/socials` links to `/socials`). This is a dev-only artifact, correct in production. MITIGATION: do not debug the switcher against the dev server — check it in `dist/website/browser/**/index.html` after a real build, or serve `dist/website/browser` with a static file server.
 - Setting the `prerender` option alongside `outputMode` is silently ignored, with only a warning: `The "prerender" option is not considered when "outputMode" is specified.` (same for `appShell`). MITIGATION: do not set `prerender` at all — `outputMode: "static"` plus a `server` entry already implies it.

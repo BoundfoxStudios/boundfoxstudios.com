@@ -8,7 +8,7 @@ The site ships `Tahu!` as a self-hosted webfont for a single accent word ("Danke
 <https://www.dafont.com/tahu.font> — listed under the **"100% Free"** licence label.
 
 The author's note on that page (Syafrizal / Khurasan) states the font is
-_"free 100% for personal use and commercial use"_. Donations are invited but optional.
+*"free 100% for personal use and commercial use"*. Donations are invited but optional.
 
 Checked: 2026-08-17.
 
