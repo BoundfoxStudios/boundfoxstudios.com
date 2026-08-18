@@ -55,10 +55,3 @@ German source as the fallback, when `/en/` itself has to be looked at.
 snapshot so `ng serve` and offline builds work without a token — the `prebuild` hook refreshes
 it locally, CI regenerates it before every build without committing it back, and the nightly
 deploy keeps production current.
-
-## Editor setup
-
-`.vscode/extensions.json` recommends the Angular Language Service, Tailwind CSS IntelliSense,
-Prettier and EditorConfig. `.vscode/settings.json` points Tailwind IntelliSense at
-`projects/website/src/styles.css` — Tailwind v4 has no `tailwind.config.js`, so without that
-setting the extension finds no theme and completes nothing.
