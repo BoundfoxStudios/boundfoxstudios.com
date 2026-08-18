@@ -4,7 +4,6 @@ import { dirname, resolve } from 'node:path';
 import subsetFont from 'subset-font';
 
 const OUTPUT_DIRECTORY = resolve('projects/website/public/fonts');
-const LICENSE_DIRECTORY = resolve('docs/licenses');
 const TAHU_MASTER = resolve('projects/website/branding/fonts/Tahu.ttf');
 
 const GOOGLE_FONTS_RAW = 'https://raw.githubusercontent.com/google/fonts/main/ofl';
@@ -34,7 +33,6 @@ const latinText = LATIN_RANGES.flatMap(([from, to]) =>
   Array.from({ length: to - from + 1 }, (_, offset) => String.fromCodePoint(from + offset)),
 ).join('');
 
-// Bebas Neue renders uppercase display copy only; see docs/licenses/fonts.md.
 const BEBAS_TEXT = "ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ0123456789 &§©·–—→/.,:!?'()-+%";
 const TAHU_TEXT = 'Danke!Thanks';
 
@@ -73,7 +71,6 @@ const download = async url => {
 };
 
 mkdirSync(OUTPUT_DIRECTORY, { recursive: true });
-mkdirSync(LICENSE_DIRECTORY, { recursive: true });
 
 for (const face of FACES) {
   const master = face.master ? readFileSync(face.master) : await download(face.source);
@@ -87,6 +84,6 @@ for (const face of FACES) {
 }
 
 for (const license of LICENSES) {
-  writeFileSync(resolve(LICENSE_DIRECTORY, license.output), await download(license.source));
+  writeFileSync(resolve(OUTPUT_DIRECTORY, license.output), await download(license.source));
   console.log(`${license.output}`);
 }

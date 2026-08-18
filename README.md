@@ -3,9 +3,6 @@
 Fully static, prerendered, bilingual Angular site. German at `/`, English at `/en/`, both
 produced by a single `ng build` and uploaded to Apache over FTP by GitHub Actions.
 
-Start with [`SPEC.md`](SPEC.md) for the architecture and [`docs/decisions.md`](docs/decisions.md)
-for everything already decided.
-
 ## Requirements
 
 Node.js as pinned in [`.nvmrc`](.nvmrc). `npm ci` installs the toolchain and, through
@@ -29,11 +26,9 @@ Node.js as pinned in [`.nvmrc`](.nvmrc). `npm ci` installs the toolchain and, th
 | `npm run i18n:extract`        | `ng extract-i18n` — regenerate `messages.xlf` after adding a marked string        |
 | `npm run i18n:check`          | Extract, fail on a dirty tree, then verify the catalogue — this is what CI runs   |
 | `npm run generate:icons`      | Re-generate the favicon, app icons and `og/default.png` from `branding/icon.png`  |
-| `npm run generate:redirects`  | Re-generate `deploy/redirects.htaccess` from `deploy/legacy-urls.csv`             |
 | `npm run watch`               | Development build in watch mode                                                   |
 | `npm test`                    | `ng test` plus the build-script tests (both Vitest)                               |
 | `npm run verify:translations` | Every unit translated, in sync and placeholder-clean                              |
-| `npm run verify:legal`        | Rendered legal prose equals `docs/legal/*.final.*`, both locales                  |
 | `npm run check:viewports`     | Column counts and overflow at 320/768/1152/1440                                   |
 | `npm run lint`                | ESLint over the whole repository                                                  |
 | `npm run format`              | `prettier --write .`                                                              |
@@ -60,10 +55,3 @@ German source as the fallback, when `/en/` itself has to be looked at.
 snapshot so `ng serve` and offline builds work without a token — the `prebuild` hook refreshes
 it locally, CI regenerates it before every build without committing it back, and the nightly
 deploy keeps production current.
-
-## Editor setup
-
-`.vscode/extensions.json` recommends the Angular Language Service, Tailwind CSS IntelliSense,
-Prettier and EditorConfig. `.vscode/settings.json` points Tailwind IntelliSense at
-`projects/website/src/styles.css` — Tailwind v4 has no `tailwind.config.js`, so without that
-setting the extension finds no theme and completes nothing.
