@@ -66,6 +66,7 @@
       i18n-platforms="@@home.projects.flugwacht.platforms"
     >
       <!-- Decorative: the card's own <h2> names the product right below it. -->
+      <!-- eslint-disable @angular-eslint/template/prefer-ngsrc -- an SVG has no resolution variants for the directive to generate -->
       <img
         class="h-auto w-[56%] max-w-[300px]"
         card-media
@@ -74,6 +75,7 @@
         height="42"
         alt=""
       />
+      <!-- eslint-enable @angular-eslint/template/prefer-ngsrc -->
       <bfs-badge
         card-badge
         variant="outline"
@@ -104,6 +106,7 @@
       platforms="macOS, Linux &amp; Windows"
       i18n-platforms="@@home.projects.mat.platforms"
     >
+      <!-- eslint-disable @angular-eslint/template/prefer-ngsrc -- an SVG has no resolution variants for the directive to generate -->
       <img
         card-media
         src="images/mat-dark.svg"
@@ -111,6 +114,7 @@
         height="112"
         alt=""
       />
+      <!-- eslint-enable @angular-eslint/template/prefer-ngsrc -->
       <bfs-badge
         card-badge
         variant="outline"
@@ -141,6 +145,7 @@
       platforms="iOS &amp; Android"
       i18n-platforms="@@home.projects.bug-a-ball.platforms"
     >
+      <!-- eslint-disable @angular-eslint/template/prefer-ngsrc -- inside <picture> the <source> element picks the file, not the directive -->
       <picture
         class="block h-full w-full"
         card-media
@@ -159,6 +164,7 @@
           i18n-alt="@@common.bug-a-ball.key-art-alt"
         />
       </picture>
+      <!-- eslint-enable @angular-eslint/template/prefer-ngsrc -->
       <bfs-badge
         card-badge
         variant="amber"

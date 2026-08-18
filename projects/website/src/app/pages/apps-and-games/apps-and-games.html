@@ -75,6 +75,7 @@
       platforms="macOS, Linux &amp; Windows · Open Source"
       i18n-platforms="@@apps-and-games.apps.mat.platforms"
     >
+      <!-- eslint-disable @angular-eslint/template/prefer-ngsrc -- an SVG has no resolution variants for the directive to generate -->
       <img
         card-media
         src="images/mat-dark.svg"
@@ -82,6 +83,7 @@
         height="104"
         alt=""
       />
+      <!-- eslint-enable @angular-eslint/template/prefer-ngsrc -->
       <bfs-badge
         card-badge
         variant="outline"
@@ -113,6 +115,7 @@
       platforms="iOS &amp; Android · Open Source"
       i18n-platforms="@@apps-and-games.apps.flugwacht.platforms"
     >
+      <!-- eslint-disable @angular-eslint/template/prefer-ngsrc -- an SVG has no resolution variants for the directive to generate -->
       <img
         class="h-auto w-[62%] max-w-[280px]"
         card-media
@@ -121,6 +124,7 @@
         height="42"
         alt=""
       />
+      <!-- eslint-enable @angular-eslint/template/prefer-ngsrc -->
       <bfs-badge
         card-badge
         variant="outline"
@@ -159,6 +163,7 @@
     platforms="Für iOS &amp; Android — auf fast allen Geräten."
     i18n-platforms="@@apps-and-games.games.bug-a-ball.platforms"
   >
+    <!-- eslint-disable @angular-eslint/template/prefer-ngsrc -- inside <picture> the <source> element picks the file, not the directive -->
     <picture card-media>
       <source
         srcset="images/bug-a-ball-feature-1200x600.webp"
@@ -175,6 +180,7 @@
         i18n-alt="@@common.bug-a-ball.key-art-alt"
       />
     </picture>
+    <!-- eslint-enable @angular-eslint/template/prefer-ngsrc -->
     <bfs-badge
       card-badge
       variant="amber"
