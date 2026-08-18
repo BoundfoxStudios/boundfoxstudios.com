@@ -10,15 +10,11 @@ const PAGES = [
     source: 'docs/legal/imprint.final.md',
     // Everything below the explanatory table's `---` is the wording that ships.
     extract: raw => raw.split('\n---\n')[1],
-    // `Impressum` is page furniture with an English target, not part of the supplied wording, so
-    // it is dropped before comparing. The privacy H1 is the supplied text's own heading and stays.
-    dropHeading: true,
   },
   {
     route: 'privacy-policy',
     source: 'docs/legal/privacy-policy.final.html',
     extract: raw => raw,
-    dropHeading: false,
   },
 ];
 
@@ -92,8 +88,13 @@ for (const page of PAGES) {
       continue;
     }
 
+    // Two elements render inside the wrapper without being part of the supplied wording: the
+    // imprint's `Impressum` H1 and the privacy "Stand" line. Each carries
+    // `data-legal-not-in-source` in its template, so stripping it here is locale-independent and
+    // survives M7's English targets. The privacy H1 is *not* marked — it is the supplied text's
+    // own first heading.
     const rendered = normalise(
-      page.dropHeading ? prose.replace(/<h1[^>]*>[\s\S]*?<\/h1>/i, '') : prose,
+      prose.replace(/<(\w+)[^>]*\sdata-legal-not-in-source[^>]*>[\s\S]*?<\/\1>/gi, ''),
     );
 
     if (rendered === sourceText) {

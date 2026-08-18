@@ -390,15 +390,17 @@ Typography lives in the two page templates as literal utilities, not in the comp
 
 | element | classes |
 | --- | --- |
-| `h1` | `m-0 font-display text-[clamp(40px,5.5vw,60px)] leading-none font-normal tracking-wide text-neutral-900` |
+| `h1` | `m-0 font-display text-[clamp(40px,5.5vw,60px)] leading-none font-normal tracking-wide text-neutral-900 hyphens-auto break-words` |
 | `h2` | `mt-10 mb-3` first, `mt-8 mb-3` after, plus `font-display text-2xl leading-none font-normal tracking-wide text-neutral-900` |
 | `h3` | `mt-6 mb-2 font-display text-lg leading-none font-normal tracking-wide text-neutral-900` |
 | `p` | `m-0 text-base leading-relaxed`; a **consecutive** paragraph in the same section takes `mt-4` |
 
+- **`hyphens-auto break-words` on the H1 is not decoration.** `Datenschutzerklärung` measures 396px at the 40px clamp floor against 327px of available width, so without it the privacy page overflows horizontally at 375px — and the culprit is a text node, not an element box, so an element-level overflow probe finds nothing. Verified: `scrollWidth === innerWidth` at 375px and 320px on both routes, H1 on two lines.
 - **`font-normal` on every heading is mandatory.** Bebas Neue has no bold cut, so the UA default `bold` would synthesise one. Measured on the shipped imprint: all seven headings compute to weight 400.
 - Measured rhythm at 1280px, no collapsed margins: H1 → 40 → H2 → 12 → P → 32 → H2 → 12 → P → 16 → P → 32 → H2 → 24 → H3 → 8 → P.
 - The section is a border-box, so `max-w-[760px]` caps its **outer** width and `px-6` sits inside it: 760px wide at 1280 and at 768, full width at 375.
 - The `<h1>` and the privacy "Stand" line are the only translated elements inside the wrapper, so each carries its own `[attr.lang]="isGermanLocale ? null : 'en'"`. The notice needs none — the `legalNotice` slot renders it outside the wrapper.
+- Two of those three elements also carry `data-legal-not-in-source`, which is how `npm run verify:legal` knows to drop them before comparing: the imprint's `Impressum` H1 and the privacy "Stand" line. The privacy H1 is **not** marked — `Datenschutzerklärung` is the supplied text's own first heading.
 
 ### 3.14 `bfs-repository-card` / `bfs-repository-cards` — `app/ui/repository-card/` (built in M4, issue #25)
 

@@ -773,6 +773,7 @@
     <unit id="legal.german-only-notice">
       <notes>
         <note category="location">projects/website/src/app/pages/imprint/imprint.html:8,13</note>
+        <note category="location">projects/website/src/app/pages/privacy-policy/privacy-policy.html:8,13</note>
       </notes>
       <segment>
         <source> Diese Seite gibt es nur auf Deutsch. Rechtlich verbindlich ist ausschließlich die deutsche Fassung. </source>
@@ -780,7 +781,7 @@
     </unit>
     <unit id="imprint.title">
       <notes>
-        <note category="location">projects/website/src/app/pages/imprint/imprint.html:20,24</note>
+        <note category="location">projects/website/src/app/pages/imprint/imprint.html:21,25</note>
       </notes>
       <segment>
         <source> Impressum </source>
@@ -840,6 +841,22 @@
       </notes>
       <segment>
         <source>Socials</source>
+      </segment>
+    </unit>
+    <unit id="privacy.title">
+      <notes>
+        <note category="location">projects/website/src/app/pages/privacy-policy/privacy-policy.html:21,24</note>
+      </notes>
+      <segment>
+        <source> Datenschutzerklärung </source>
+      </segment>
+    </unit>
+    <unit id="privacy.last-updated">
+      <notes>
+        <note category="location">projects/website/src/app/pages/privacy-policy/privacy-policy.html:676,678</note>
+      </notes>
+      <segment>
+        <source> Stand: <ph id="0" equiv="INTERPOLATION" disp="{{ lastUpdated | date: &apos;MMMM y&apos; : &apos;UTC&apos; }}"/> </source>
       </segment>
     </unit>
     <unit id="socials.hero.kicker">
