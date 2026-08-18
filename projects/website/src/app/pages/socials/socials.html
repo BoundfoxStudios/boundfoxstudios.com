@@ -1,0 +1,35 @@
+<section class="mx-auto max-w-6xl px-6 pt-16 pb-2">
+  <bfs-section-head
+    variant="page"
+    kicker="Community"
+    i18n-kicker="@@socials.hero.kicker"
+    heading="Vernetze dich mit uns"
+    i18n-heading="@@socials.hero.headline"
+    lead="Hier findest du uns — für Tutorials, Fragen, Feedback oder einfach einen Blick hinter die Kulissen."
+    i18n-lead="@@socials.hero.lead"
+  />
+</section>
+
+<section class="mx-auto max-w-6xl px-6 pt-12 pb-18">
+  <div class="grid grid-cols-[repeat(auto-fit,minmax(min(280px,100%),1fr))] gap-6">
+    @for (channel of channels; track channel.id) {
+      <bfs-link-card
+        [headingLevel]="2"
+        [href]="channel.href"
+        [ariaLabel]="channel.ariaLabel"
+        [heading]="channel.name"
+        [handle]="channel.handle"
+        [ctaLabel]="channel.ctaLabel"
+        tone="dark"
+      >
+        <bfs-brand-icon
+          class="text-yellow"
+          [name]="channel.id"
+          [size]="32"
+          card-chip
+        />
+        {{ channel.description }}
+      </bfs-link-card>
+    }
+  </div>
+</section>

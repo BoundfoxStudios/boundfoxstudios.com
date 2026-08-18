@@ -198,21 +198,15 @@
       kostet dich keinen Cent.
     </p>
     <div class="flex flex-wrap gap-3">
-      <bfs-pill-link
-        [newTab]="true"
-        href="https://github.com/BoundfoxStudios"
-        ><span translate="no">GitHub</span></bfs-pill-link
-      >
-      <bfs-pill-link
-        [newTab]="true"
-        href="https://discord.gg/tHqNzMT"
-        ><span translate="no">Discord</span></bfs-pill-link
-      >
-      <bfs-pill-link
-        [newTab]="true"
-        href="https://youtube.com/c/boundfox"
-        ><span translate="no">YouTube</span></bfs-pill-link
-      >
+      <!-- The three social channels come from the shared list; Ko-fi and Patreon are funding
+           destinations and deliberately not part of it. -->
+      @for (social of socialLinks; track social.id) {
+        <bfs-pill-link
+          [newTab]="true"
+          [href]="social.href"
+          ><span translate="no">{{ social.name }}</span></bfs-pill-link
+        >
+      }
       <bfs-pill-link
         [newTab]="true"
         href="https://ko-fi.com/boundfoxstudios"
@@ -249,9 +243,9 @@
     >
       <bfs-arrow-link
         [newTab]="true"
+        [href]="githubOrganization.href"
         head-link
         variant="display"
-        href="https://github.com/BoundfoxStudios"
         i18n="@@home.github.all-repositories-link"
         >Alle Repositories</bfs-arrow-link
       >

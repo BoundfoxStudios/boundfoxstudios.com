@@ -48,6 +48,12 @@ const GRIDS = [
     name: 'financial support grid',
     columns: { 320: 1, 768: 2, 1152: 2, 1440: 2 },
   },
+  {
+    route: 'socials',
+    selector: 'bfs-socials-page div.grid',
+    name: 'socials channel grid',
+    columns: { 320: 1, 768: 2, 1152: 3, 1440: 3 },
+  },
 ];
 
 const CONTENT_TYPES = {
