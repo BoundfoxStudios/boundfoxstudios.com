@@ -31,7 +31,11 @@ jobs:
       - name: Check every link in the built output
         uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2.9.0
         with:
-          args: --config lychee.toml --base-url dist/website/browser --format json --output lychee-report.json 'dist/website/browser/**/*.html'
+          args: --config lychee.toml --base-url dist/website/browser 'dist/website/browser/**/*.html'
+          # `format` and `output` are the action's own inputs; passing them in `args` too makes it
+          # refuse to run with "'output' is set in args as well as in the action configuration".
+          format: json
+          output: lychee-report.json
           fail: true
           token: ${{ secrets.GITHUB_TOKEN }}
 
