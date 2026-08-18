@@ -11,6 +11,7 @@ const LOCALES = [
 // belong to the site root only: crawlers and the OS icon pickers never read a localized copy.
 const ROOT_ONLY = [
   'robots.txt',
+  'app-ads.txt',
   'favicon.ico',
   'icon.svg',
   'apple-touch-icon.png',
