@@ -54,12 +54,20 @@ below 3:1 — so amber is never the ring on a light surface.
 
 ### Evidence
 
-`docs/screenshots/focus/{white,neutral-100,ink,gradient}.png`, produced by
-`npm run screenshots:focus` (`tools/capture-focus-screenshots.mjs`, Playwright + chromium). The
-script does more than screenshot: it tabs through all twelve interactive stops of the design
-harness and asserts on each that the element matches `:focus-visible` and that the computed
-outline is `2px` solid in the surface's expected colour at `2px` offset, then clicks with the
-mouse and asserts that no ring appears.
+`docs/screenshots/focus/{white,neutral-100,ink,gradient}.png` — one per surface, captured against
+the M2 design harness by `npm run screenshots:focus`
+(`tools/capture-focus-screenshots.mjs`, Playwright + chromium). That script did more than
+screenshot: it tabbed through all twelve interactive stops of the harness and asserted on each
+that the element matched `:focus-visible` and that the computed outline was `2px` solid in the
+surface's expected colour at `2px` offset, then clicked with the mouse and asserted that no ring
+appeared.
+
+The harness and the script were retired with the UI-primitives PR (#14), which is what
+`docs/components.md` C16 requires; the four PNGs stay as the measured evidence. The four
+surfaces still exist on the real pages — the header and footer bands, the Socials tiles and the
+dark Support chips carry `surface-dark`, the home gradient band deliberately does not — so the
+M8 accessibility-gates issue (#45) re-points the focus-ring assertions at those pages instead of
+at a harness.
 
 One thing that script had to learn, and any later one will too: Tailwind v4's `transition-colors`
 includes `outline-color`. Immediately after focus the ring is still at `currentColor` and only

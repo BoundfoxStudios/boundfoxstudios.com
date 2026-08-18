@@ -1,0 +1,56 @@
+<ng-template #headingElement>
+  @switch (level()) {
+    @case (1) {
+      <h1
+        class="m-0 font-display leading-none font-normal tracking-wide text-neutral-900 uppercase"
+        [class]="headingSizeClass()"
+      >
+        {{ heading() }}
+      </h1>
+    }
+    @case (2) {
+      <h2
+        class="m-0 font-display leading-none font-normal tracking-wide text-neutral-900 uppercase"
+        [class]="headingSizeClass()"
+      >
+        {{ heading() }}
+      </h2>
+    }
+    @default {
+      <h3
+        class="m-0 font-display leading-none font-normal tracking-wide text-neutral-900 uppercase"
+        [class]="headingSizeClass()"
+      >
+        {{ heading() }}
+      </h3>
+    }
+  }
+</ng-template>
+
+<div [class]="rowClass()">
+  @if (hasRule()) {
+    <ng-container [ngTemplateOutlet]="headingElement" />
+    <div class="h-px flex-1 bg-neutral-200"></div>
+  } @else {
+    <div>
+      @if (kicker(); as kickerText) {
+        <bfs-kicker variant="block">{{ kickerText }}</bfs-kicker>
+      }
+      <ng-container [ngTemplateOutlet]="headingElement" />
+      @if (lead(); as leadText) {
+        <p
+          class="mt-3 text-lg leading-relaxed text-pretty"
+          [class]="leadMaxWidth() === 620 ? 'max-w-[620px]' : 'max-w-[560px]'"
+        >
+          {{ leadText }}
+        </p>
+      }
+      <ng-content select="[head-accent]" />
+    </div>
+    <ng-content select="[head-link]" />
+  }
+</div>
+
+@if (subline(); as sublineText) {
+  <p class="m-0 mb-6 text-sm text-neutral-600">{{ sublineText }}</p>
+}

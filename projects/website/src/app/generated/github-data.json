@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-18T05:34:59.511Z",
+  "generatedAt": "2026-08-18T06:33:06.500Z",
   "lehrgrapht": {
     "description": "LehrGrapht is a little math plotter as a word addin for teachers",
     "language": "TypeScript",
@@ -22,7 +22,7 @@
   "flugwacht": {
     "description": "A deliberately minimal flight tracker for individual, manually added flights — where are they right now, and when will they arrive? (Flutter, iOS + Android)",
     "language": "Dart",
-    "pushedAt": "2026-08-18T05:13:50Z",
+    "pushedAt": "2026-08-18T05:55:35Z",
     "stars": 0,
     "latestRelease": null
   }

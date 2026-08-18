@@ -1,0 +1,18 @@
+<!-- One slot for both elements: a second <ng-content> with the same selector never receives content. -->
+<ng-template #label><ng-content /></ng-template>
+
+@if (variant() === 'block') {
+  <p
+    class="mb-2 text-xs font-bold tracking-widest text-orange uppercase"
+    data-a11y-exception="kicker-contrast"
+  >
+    <ng-container [ngTemplateOutlet]="label" />
+  </p>
+} @else {
+  <span
+    class="text-xs font-bold tracking-widest text-orange uppercase"
+    data-a11y-exception="kicker-contrast"
+  >
+    <ng-container [ngTemplateOutlet]="label" />
+  </span>
+}

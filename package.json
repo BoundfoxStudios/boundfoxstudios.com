@@ -20,7 +20,6 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "screenshots:focus": "node tools/capture-focus-screenshots.mjs",
     "postinstall": "lefthook install"
   },
   "private": true,
