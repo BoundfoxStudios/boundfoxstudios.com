@@ -10,8 +10,22 @@
     />
     <link
       rel="icon"
-      type="image/x-icon"
-      href="favicon.ico"
+      href="/favicon.ico"
+      sizes="48x48"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="/apple-touch-icon.png"
+    />
+    <!-- Icons are absolute: one copy at the site root serves both locales. The manifest is
+         relative on purpose, so `<base href="/en/">` resolves it to the English one. -->
+    <link
+      rel="manifest"
+      href="manifest.webmanifest"
+    />
+    <meta
+      name="theme-color"
+      content="#171717"
     />
     <link
       rel="preload"
