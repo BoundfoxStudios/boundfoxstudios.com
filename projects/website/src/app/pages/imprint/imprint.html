@@ -13,9 +13,10 @@
   <!-- The H1 is the one English element inside the lang="de" wrapper, so it names its own
        language; the prose below is German under both locales by construction. -->
   <h1
-    class="m-0 font-display text-[clamp(40px,5.5vw,60px)] leading-none font-normal tracking-wide text-neutral-900"
+    class="m-0 font-display text-[clamp(40px,5.5vw,60px)] leading-none font-normal tracking-wide break-words hyphens-auto text-neutral-900"
     [attr.lang]="isGermanLocale ? null : 'en'"
     i18n="@@imprint.title"
+    data-legal-not-in-source
   >
     Impressum
   </h1>
