@@ -400,7 +400,7 @@ Typography lives in the two page templates as literal utilities, not in the comp
 - Measured rhythm at 1280px, no collapsed margins: H1 → 40 → H2 → 12 → P → 32 → H2 → 12 → P → 16 → P → 32 → H2 → 24 → H3 → 8 → P.
 - The section is a border-box, so `max-w-[760px]` caps its **outer** width and `px-6` sits inside it: 760px wide at 1280 and at 768, full width at 375.
 - The `<h1>` and the privacy "Stand" line are the only translated elements inside the wrapper, so each carries its own `[attr.lang]="isGermanLocale ? null : 'en'"`. The notice needs none — the `legalNotice` slot renders it outside the wrapper.
-- Two of those three elements also carry `data-legal-not-in-source`, which is how `npm run verify:legal` knows to drop them before comparing: the imprint's `Impressum` H1 and the privacy "Stand" line. The privacy H1 is **not** marked — `Datenschutzerklärung` is the supplied text's own first heading.
+- All three carry `data-legal-not-in-source`, which is how `npm run verify:legal` knows to drop them before comparing. Every translated element inside the wrapper is excluded, including the privacy H1: it renders `Datenschutzerklärung` under `/de/` and `Privacy Policy` under `/en/`, so it cannot take part in a comparison against one German source file. The source file's own first heading is dropped on the other side to match.
 
 ### 3.14 `bfs-repository-card` / `bfs-repository-cards` — `app/ui/repository-card/` (built in M4, issue #25)
 

@@ -14,7 +14,10 @@ const PAGES = [
   {
     route: 'privacy-policy',
     source: 'docs/legal/privacy-policy.final.html',
-    extract: raw => raw,
+    // The file's own first heading is `Datenschutzerklärung`, which the page renders as the
+    // translated H1 — `Privacy Policy` under /en/. It is dropped on both sides so the comparison
+    // covers exactly the prose that is German in both locales.
+    extract: raw => raw.replace(/<h4>[\s\S]*?<\/h4>/, ''),
   },
 ];
 
@@ -88,11 +91,11 @@ for (const page of PAGES) {
       continue;
     }
 
-    // Two elements render inside the wrapper without being part of the supplied wording: the
-    // imprint's `Impressum` H1 and the privacy "Stand" line. Each carries
-    // `data-legal-not-in-source` in its template, so stripping it here is locale-independent and
-    // survives M7's English targets. The privacy H1 is *not* marked — it is the supplied text's
-    // own first heading.
+    // Every translated element inside the wrapper is stripped before comparing: both H1s and the
+    // privacy "Stand" line, each marked `data-legal-not-in-source` in its template. The privacy
+    // H1 renders `Datenschutzerklärung` under /de/ and `Privacy Policy` under /en/, so it cannot
+    // take part in a comparison against a single German source file — that is why the source's
+    // own first heading is dropped too.
     const rendered = normalise(
       prose.replace(/<(\w+)[^>]*\sdata-legal-not-in-source[^>]*>[\s\S]*?<\/\1>/gi, ''),
     );
