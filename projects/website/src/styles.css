@@ -1,3 +1,26 @@
-/* You can add global styles to this file, and also import other style files */
-
 @import 'tailwindcss';
+
+/*
+ * `--color-*: initial` wipes the stock palette so a mistyped utility produces no CSS at all —
+ * that is what `better-tailwindcss/no-unknown-classes` turns into a lint error.
+ * Preflight emits `border: 0 solid` with no default border colour, so every `border` utility
+ * has to spell its colour out (`border-neutral-200`) or it inherits `currentColor`.
+ */
+@theme {
+  --color-*: initial;
+  --color-white: #fff;
+  --color-yellow: #ffeb3b;
+  --color-amber: #ffc107;
+  --color-orange: #ffa726;
+  --color-link: #a16207;
+  --color-neutral-100: #f5f5f5;
+  --color-neutral-200: #e5e5e5;
+  --color-neutral-300: #d4d4d4;
+  --color-neutral-400: #a3a3a3;
+  --color-neutral-600: #525252;
+  --color-neutral-700: #404040;
+  --color-neutral-900: #171717;
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-sans: 'Barlow', sans-serif;
+  --font-script: 'Tahu', cursive;
+}

@@ -408,7 +408,7 @@ body {
   @apply bg-white font-sans text-neutral-700;
 }
 a {
-  @apply text-link hover:text-orange no-underline transition-colors duration-150 ease-in-out;
+  @apply text-link no-underline transition-colors duration-150 ease-in-out hover:text-orange;
 }
 ```
 
@@ -417,14 +417,14 @@ Page template:
 ```html
 <section class="max-w-legal mx-auto px-6 pt-16 pb-18">
   <h1
-    class="font-display mb-2 text-[clamp(40px,5.5vw,60px)] leading-none font-normal tracking-wide text-neutral-900"
+    class="mb-2 font-display text-[clamp(40px,5.5vw,60px)] leading-none font-normal tracking-wide text-neutral-900"
   >
     DATENSCHUTZERKLÄRUNG
   </h1>
   <app-badge variant="outline">Entwurf — vor Veröffentlichung rechtlich prüfen</app-badge>
 
   <h2
-    class="font-display mt-10 mb-3 text-2xl leading-none font-normal tracking-wide text-neutral-900"
+    class="mt-10 mb-3 font-display text-2xl leading-none font-normal tracking-wide text-neutral-900"
   >
     1. VERANTWORTLICHER
   </h2>

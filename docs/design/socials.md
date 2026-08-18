@@ -373,11 +373,11 @@ Recommendation: one `LinkCardComponent` providing the shell + `tone: 'dark' \| '
 ```html
 <!-- socials-page.html -->
 <section class="mx-auto max-w-6xl px-6 pt-16 pb-2">
-  <p class="text-orange mb-2 text-xs leading-[normal] font-bold tracking-widest uppercase">
+  <p class="mb-2 text-xs leading-[normal] font-bold tracking-widest text-orange uppercase">
     Community
   </p>
   <h1
-    class="font-display m-0 text-[clamp(40px,5.5vw,60px)] leading-none font-normal tracking-wide text-neutral-900"
+    class="m-0 font-display text-[clamp(40px,5.5vw,60px)] leading-none font-normal tracking-wide text-neutral-900"
   >
     VERNETZE DICH MIT UNS
   </h1>
@@ -388,11 +388,11 @@ Recommendation: one `LinkCardComponent` providing the shell + `tone: 'dark' \| '
   <div class="grid [grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr))] gap-6">
     @for (channel of channels; track channel.id) {
     <a
-      class="hover:border-amber focus-visible:outline-amber flex flex-col gap-3.5 rounded-xl border border-neutral-600 bg-neutral-900 p-8 shadow-md transition-[border-color] duration-150 ease-in-out focus-visible:outline-2 focus-visible:outline-offset-2"
+      class="flex flex-col gap-3.5 rounded-xl border border-neutral-600 bg-neutral-900 p-8 shadow-md transition-[border-color] duration-150 ease-in-out hover:border-amber focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber"
       [href]="channel.href"
     >
       <bfs-brand-icon
-        class="fill-yellow size-8"
+        class="size-8 fill-yellow"
         [name]="channel.icon"
         aria-hidden="true"
       />
@@ -403,7 +403,7 @@ Recommendation: one `LinkCardComponent` providing the shell + `tone: 'dark' \| '
       <span class="font-[monospace] text-xs leading-[normal] text-neutral-400"
         >{{ channel.handle }}</span
       >
-      <span class="font-display text-yellow mt-auto text-base leading-[normal] tracking-wider">
+      <span class="mt-auto font-display text-base leading-[normal] tracking-wider text-yellow">
         {{ channel.cta }} <span aria-hidden="true">→</span>
       </span>
     </a>

@@ -461,9 +461,9 @@ The prototype is presentational HTML. Apply these when rebuilding; none of them 
 
     <!-- col 2 / col 3 -->
     <div class="flex flex-col gap-2.5">
-      <span class="font-display text-yellow text-base tracking-wider">SEITEN</span>
+      <span class="font-display text-base tracking-wider text-yellow">SEITEN</span>
       <a
-        class="hover:text-yellow text-sm text-white no-underline transition-colors duration-150 ease-in-out"
+        class="text-sm text-white no-underline transition-colors duration-150 ease-in-out hover:text-yellow"
         >Startseite</a
       >
       …
@@ -471,9 +471,9 @@ The prototype is presentational HTML. Apply these when rebuilding; none of them 
 
     <!-- col 4 -->
     <div class="flex flex-col gap-2.5">
-      <span class="font-display text-yellow text-base tracking-wider">FOLGE UNS</span>
+      <span class="font-display text-base tracking-wider text-yellow">FOLGE UNS</span>
       <div class="flex gap-3">
-        <a class="hover:text-yellow text-white transition-colors duration-150 ease-in-out">
+        <a class="text-white transition-colors duration-150 ease-in-out hover:text-yellow">
           <svg
             width="20"
             height="20"
