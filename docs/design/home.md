@@ -375,6 +375,13 @@ The relative-time phrasing (`vor 3 Tagen` / `gestern` / `heute`) must be produce
 relative-time formatter (`Intl.RelativeTimeFormat('de')`), so the footer needs a composed i18n
 message, not a literal.
 
+Corrected while building issue #25: the eyebrows above (`TypeScript · Bun`, `Dart · Flutter`) are
+**design placeholders**. The card renders GitHub's single primary `language` field verbatim, never
+composed and never translated, so LehrGrapht and MAT both reading `TypeScript` is the correct
+output and no second API call is made. The body is authored German (§11.4), not the API's English
+`description` field, and the version falls back to `In Entwicklung` when a repository has neither a
+release nor a tag.
+
 Cards are **not** clickable in the design (the DS `Card` renders a `<div>`). If they should link to
 the repo, that is a new decision — see §10.
 
@@ -648,11 +655,17 @@ Dark-variant-only (not shipped by default): `home.support.kicker` = `Community`,
 | `home.github.kicker` | `Open Source` |
 | `home.github.title` | `ZULETZT AUF GITHUB` |
 | `home.github.all-repositories-link` | `ALLE REPOSITORIES →` |
-| `home.github.card.updated` | `aktualisiert {relativeTime}` — composed with `Intl.RelativeTimeFormat('de')`; design placeholders read `vor 3 Tagen`, `gestern`, `heute` |
+| `home.github.card.updated` | `{version} · aktualisiert <time>{relativeTime}</time>` — one message spanning the whole footer so English can reorder it; `relativeTime` is composed with `Intl.RelativeTimeFormat`, design placeholders read `vor 3 Tagen`, `gestern`, `heute` |
+| `home.github.lehrgrapht.description` | `Mathe-Plotter-Word-AddIn für Lehrkräfte — maßstabsgetreu auf 5×5-mm-Karopapier.` |
+| `home.github.mat.description` | `Markdown-Vorschau im Browser, gerendert wie auf GitHub — direkt aus dem Terminal.` |
+| `home.github.flugwacht.description` | `Minimaler Flug-Tracker für einzelne, manuell angelegte Flüge — live auf der Karte.` |
+| `common.badge.in-development` | `In Entwicklung` — the version slot's fallback, shared with the badge; one spelling repo-wide |
 
-Placeholder card copy (`v1.6.2 · aktualisiert vor 3 Tagen`, the three repo descriptions, the eyebrows
-`TypeScript`, `TypeScript · Bun`, `Dart · Flutter`) comes from the GitHub API at build/SSR time and is
-**not** translatable content.
+Corrected while building issue #25 (`docs/decisions.md` M4 › Repository cards › _Card copy is
+translatable_): the three card **descriptions are authored German and translatable**, and carry the
+ids above. Only the version, the pushed date and the language come from the GitHub API at build
+time and are therefore not translatable. The three card titles are product names and stay unmarked
+literals rendered with `translate="no"`.
 
 ### 11.5 Shell (shared with all pages)
 
