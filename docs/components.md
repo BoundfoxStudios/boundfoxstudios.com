@@ -386,6 +386,20 @@ Template, verbatim:
 
 Consumers: imprint, privacy policy.
 
+Typography lives in the two page templates as literal utilities, not in the component — the layout owns the column, the projection and the `lang` wrapper, nothing else. The scale both pages use (settled while building #30, `docs/decisions.md` M6 › Legal layout › _Vertical rhythm of the new elements_):
+
+| element | classes |
+| --- | --- |
+| `h1` | `m-0 font-display text-[clamp(40px,5.5vw,60px)] leading-none font-normal tracking-wide text-neutral-900` |
+| `h2` | `mt-10 mb-3` first, `mt-8 mb-3` after, plus `font-display text-2xl leading-none font-normal tracking-wide text-neutral-900` |
+| `h3` | `mt-6 mb-2 font-display text-lg leading-none font-normal tracking-wide text-neutral-900` |
+| `p` | `m-0 text-base leading-relaxed`; a **consecutive** paragraph in the same section takes `mt-4` |
+
+- **`font-normal` on every heading is mandatory.** Bebas Neue has no bold cut, so the UA default `bold` would synthesise one. Measured on the shipped imprint: all seven headings compute to weight 400.
+- Measured rhythm at 1280px, no collapsed margins: H1 → 40 → H2 → 12 → P → 32 → H2 → 12 → P → 16 → P → 32 → H2 → 24 → H3 → 8 → P.
+- The section is a border-box, so `max-w-[760px]` caps its **outer** width and `px-6` sits inside it: 760px wide at 1280 and at 768, full width at 375.
+- The `<h1>` and the privacy "Stand" line are the only translated elements inside the wrapper, so each carries its own `[attr.lang]="isGermanLocale ? null : 'en'"`. The notice needs none — the `legalNotice` slot renders it outside the wrapper.
+
 ### 3.14 `bfs-repository-card` / `bfs-repository-cards` — `app/ui/repository-card/` (built in M4, issue #25)
 
 ```ts

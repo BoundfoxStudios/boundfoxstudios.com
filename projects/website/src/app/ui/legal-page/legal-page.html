@@ -1,0 +1,6 @@
+<section class="mx-auto max-w-[760px] px-6 pt-16 pb-18">
+  <!-- The notice sits outside the wrapper on purpose: under /en/ the wrapper is lang="de", and
+       the notice is the one line on the page that really is English. -->
+  <ng-content select="[legalNotice]" />
+  <div [attr.lang]="proseLang()"><ng-content /></div>
+</section>

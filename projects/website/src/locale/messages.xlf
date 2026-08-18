@@ -770,6 +770,22 @@
         <source>Alle Repositories</source>
       </segment>
     </unit>
+    <unit id="legal.german-only-notice">
+      <notes>
+        <note category="location">projects/website/src/app/pages/imprint/imprint.html:8,13</note>
+      </notes>
+      <segment>
+        <source> Diese Seite gibt es nur auf Deutsch. Rechtlich verbindlich ist ausschließlich die deutsche Fassung. </source>
+      </segment>
+    </unit>
+    <unit id="imprint.title">
+      <notes>
+        <note category="location">projects/website/src/app/pages/imprint/imprint.html:20,24</note>
+      </notes>
+      <segment>
+        <source> Impressum </source>
+      </segment>
+    </unit>
     <unit id="not-found.kicker">
       <notes>
         <note category="location">projects/website/src/app/pages/not-found/not-found.html:6,7</note>
