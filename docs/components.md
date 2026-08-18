@@ -59,6 +59,30 @@ CSS does the sizing.
 | `mat-dark.svg`           | `/`                | `width="112" height="112"` | —                              |
 | `mat-dark.svg`           | `/apps-and-games/` | `width="104" height="104"` | —                              |
 
+## Components
+
+Selector prefix `bfs` (SPEC §2). Signal inputs only, OnPush everywhere, no component `.css`.
+
+| Component   | Selector          | Inputs                                                                                                                                                                 | Variants                     | Consumers                                                                                                                                          |
+| ----------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `BrandIcon` | `bfs-brand-icon`  | `name = input.required<BrandIconName>()` where `BrandIconName = 'github' \| 'discord' \| 'youtube' \| 'kofi' \| 'patreon'`; `size = input(24)` (px, onto the SVG `width`/`height`) | none — `name` selects the glyph | Site footer 20 `text-white hover:text-yellow` · Support financial chip 22 `text-yellow` · Support free chip 24 `text-neutral-900` · Socials tile 32 `text-yellow` |
+
+- The component emits no Tailwind class and no host styling. Colour comes from an inherited
+  `text-*` utility on the consumer through `fill="currentColor"`; `docs/design/socials.md` §7.3's
+  `class="size-8 fill-yellow"` on the host is superseded.
+- `aria-hidden="true"` and `focusable="false"` live on the rendered `<svg>`. Consumers must not
+  repeat `aria-hidden` on the host; the accessible name comes from the surrounding link.
+- The shape data is copied verbatim from the handoff and carries no `fill-rule` — the Discord eyes
+  and the YouTube triangle knock out correctly under the default `nonzero` rule.
+- `BrandIconName` is exported from `ui/brand-icon/brand-icon.ts`; `data/social-links.ts` imports it
+  from there.
+
+## Conventions
+
+- Every `border` utility spells out its colour — Preflight emits `border: 0 solid` with no default.
+- One-off measurements are arbitrary utilities at the usage site (`text-[28px]`, `max-w-[760px]`),
+  never new `@theme` tokens.
+
 ## Performance
 
 The LCP element per page, so the SPEC §8 gates (Performance ≥ 95, CLS < 0.05) are writable.
