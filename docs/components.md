@@ -193,7 +193,7 @@ article.grid.overflow-hidden.rounded-xl.border.border-neutral-200.bg-white.shado
     └── <ng-content select="[card-cta]" />
 ```
 
-The media column has no `border-right`; the two columns are separated only by the background change. The image is `<img class="absolute inset-0 h-full w-full object-cover">` inside a `<picture>` using `bug-a-ball-feature-1200x600.{webp,jpg}` with `loading="eager" fetchpriority="high"` and explicit `width`/`height` — it is the declared LCP element of that page (§5.4). `imagePosition` is not shipped: one usage, the same rule that dropped the three badge variants.
+The media column has no `border-right`; the two columns are separated only by the background change. The two columns separate at viewport 690px, not the 688px `docs/design/apps-and-games.md` §3.3b states — the card's own 1px borders sit inside the content width (`docs/decisions.md` M5 › Apps & Games › _Feature-card stacking threshold_), and above that the computed track list reads `551px 551px 0px` because `auto-fit` collapses the third track it has no child for. The image is `<img class="absolute inset-0 h-full w-full object-cover">` inside a `<picture>` using `bug-a-ball-feature-1200x600.{webp,jpg}` with `loading="eager" fetchpriority="high"` and explicit `width`/`height` — it is the declared LCP element of that page (§5.4). `imagePosition` is not shipped: one usage, the same rule that dropped the three badge variants.
 
 Consumer: Apps & Games, SPIELE section.
 

@@ -303,6 +303,247 @@
         <source>Hauptnavigation</source>
       </segment>
     </unit>
+    <unit id="apps-and-games.hero.kicker">
+      <notes>
+        <note category="location">projects/website/src/app/pages/apps-and-games/apps-and-games.html:4,5</note>
+      </notes>
+      <segment>
+        <source>Projekte</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.hero.title">
+      <notes>
+        <note category="location">projects/website/src/app/pages/apps-and-games/apps-and-games.html:6,7</note>
+      </notes>
+      <segment>
+        <source>Apps &amp; Spiele</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.hero.intro">
+      <notes>
+        <note category="location">projects/website/src/app/pages/apps-and-games/apps-and-games.html:8,9</note>
+      </notes>
+      <segment>
+        <source>Stöber doch einmal durch unsere Projekte — es ist sicher etwas für dich dabei. Alles kostenlos, vieles Open Source.</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.apps.section-title">
+      <notes>
+        <note category="location">projects/website/src/app/pages/apps-and-games/apps-and-games.html:18</note>
+      </notes>
+      <segment>
+        <source>Apps</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.apps.lehrgrapht.kicker">
+      <notes>
+        <note category="location">projects/website/src/app/pages/apps-and-games/apps-and-games.html:26,27</note>
+      </notes>
+      <segment>
+        <source>Word-AddIn</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.apps.lehrgrapht.platforms">
+      <notes>
+        <note category="location">projects/website/src/app/pages/apps-and-games/apps-and-games.html:29,30</note>
+      </notes>
+      <segment>
+        <source>Word für Windows, macOS &amp; iPad · kostenfrei · Open Source</source>
+      </segment>
+    </unit>
+    <unit id="common.badge.available">
+      <notes>
+        <note category="location">projects/website/src/app/pages/apps-and-games/apps-and-games.html:43,45</note>
+        <note category="location">projects/website/src/app/pages/apps-and-games/apps-and-games.html:182,184</note>
+        <note category="location">projects/website/src/app/pages/home/home.html:42,44</note>
+        <note category="location">projects/website/src/app/pages/home/home.html:166,168</note>
+      </notes>
+      <segment>
+        <source>Verfügbar</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.apps.lehrgrapht.description">
+      <notes>
+        <note category="location">projects/website/src/app/pages/apps-and-games/apps-and-games.html:46,50</note>
+      </notes>
+      <segment>
+        <source>Maßstabsgetreue Plots für Lehrkräfte, passgenau auf 5×5-mm-Karopapier: Funktionen, Punkte, Flächen, Schrägbilder, Spiegelungen — und mit einem Schalter vom Arbeitsblatt zum Lösungsblatt.</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.apps.lehrgrapht.website-aria">
+      <notes>
+        <note category="location">projects/website/src/app/pages/apps-and-games/apps-and-games.html:53,54</note>
+      </notes>
+      <segment>
+        <source>LehrGrapht – zur Website</source>
+      </segment>
+    </unit>
+    <unit id="common.link.website">
+      <notes>
+        <note category="location">projects/website/src/app/pages/apps-and-games/apps-and-games.html:56,58</note>
+      </notes>
+      <segment>
+        <source>Zur Website</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.apps.lehrgrapht.source-aria">
+      <notes>
+        <note category="location">projects/website/src/app/pages/apps-and-games/apps-and-games.html:61,62</note>
+      </notes>
+      <segment>
+        <source>LehrGrapht – Source Code auf GitHub</source>
+      </segment>
+    </unit>
+    <unit id="common.link.source-code">
+      <notes>
+        <note category="location">projects/website/src/app/pages/apps-and-games/apps-and-games.html:64,66</note>
+      </notes>
+      <segment>
+        <source>Source Code</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.apps.mat.kicker">
+      <notes>
+        <note category="location">projects/website/src/app/pages/apps-and-games/apps-and-games.html:72,73</note>
+      </notes>
+      <segment>
+        <source>CLI-Tool</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.apps.mat.platforms">
+      <notes>
+        <note category="location">projects/website/src/app/pages/apps-and-games/apps-and-games.html:75,76</note>
+      </notes>
+      <segment>
+        <source>macOS, Linux &amp; Windows · Open Source</source>
+      </segment>
+    </unit>
+    <unit id="common.badge.in-development">
+      <notes>
+        <note category="location">projects/website/src/app/pages/apps-and-games/apps-and-games.html:89,91</note>
+        <note category="location">projects/website/src/app/pages/apps-and-games/apps-and-games.html:128,130</note>
+        <note category="location">projects/website/src/app/pages/home/home.html:81,83</note>
+        <note category="location">projects/website/src/app/pages/home/home.html:118,120</note>
+        <note category="location">projects/website/src/app/ui/repository-card/repository-card.ts:35</note>
+      </notes>
+      <segment>
+        <source>In Entwicklung</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.apps.mat.description">
+      <notes>
+        <note category="location">projects/website/src/app/pages/apps-and-games/apps-and-games.html:92,95</note>
+      </notes>
+      <segment>
+        <source>Markdown-Vorschau direkt aus dem Terminal — gerendert wie auf GitHub, inklusive Mermaid, KaTeX und Syntax-Highlighting. Kein Server, keine Konfiguration: so beiläufig wie <pc id="0" equivStart="START_TAG_SPAN" equivEnd="CLOSE_TAG_SPAN" type="other" dispStart="&lt;span class=&quot;font-mono&quot;&gt;" dispEnd="&lt;/span&gt;">cat</pc>.</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.apps.mat.repository-aria">
+      <notes>
+        <note category="location">projects/website/src/app/pages/apps-and-games/apps-and-games.html:99,100</note>
+      </notes>
+      <segment>
+        <source>MAT – zum Repository auf GitHub</source>
+      </segment>
+    </unit>
+    <unit id="common.link.repository">
+      <notes>
+        <note category="location">projects/website/src/app/pages/apps-and-games/apps-and-games.html:102,104</note>
+        <note category="location">projects/website/src/app/pages/apps-and-games/apps-and-games.html:141,143</note>
+      </notes>
+      <segment>
+        <source>Zum Repository</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.apps.flugwacht.kicker">
+      <notes>
+        <note category="location">projects/website/src/app/pages/apps-and-games/apps-and-games.html:110,111</note>
+      </notes>
+      <segment>
+        <source>Mobile App</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.apps.flugwacht.platforms">
+      <notes>
+        <note category="location">projects/website/src/app/pages/apps-and-games/apps-and-games.html:113,114</note>
+      </notes>
+      <segment>
+        <source>iOS &amp; Android · Open Source</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.apps.flugwacht.description">
+      <notes>
+        <note category="location">projects/website/src/app/pages/apps-and-games/apps-and-games.html:131,135</note>
+      </notes>
+      <segment>
+        <source>Bewusst minimaler Flug-Tracker für einzelne Flüge: Flugnummer und Datum eintragen, am Reisetag live auf der Karte verfolgen — mit Ankunftszeit in beiden Zeitzonen. Ohne Konto, alles bleibt auf deinem Gerät.</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.apps.flugwacht.repository-aria">
+      <notes>
+        <note category="location">projects/website/src/app/pages/apps-and-games/apps-and-games.html:138,139</note>
+      </notes>
+      <segment>
+        <source>Flugwacht – zum Repository auf GitHub</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.games.section-title">
+      <notes>
+        <note category="location">projects/website/src/app/pages/apps-and-games/apps-and-games.html:152</note>
+      </notes>
+      <segment>
+        <source>Spiele</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.games.bug-a-ball.kicker">
+      <notes>
+        <note category="location">projects/website/src/app/pages/apps-and-games/apps-and-games.html:157</note>
+      </notes>
+      <segment>
+        <source>Spiel</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.games.bug-a-ball.platforms">
+      <notes>
+        <note category="location">projects/website/src/app/pages/apps-and-games/apps-and-games.html:159,160</note>
+      </notes>
+      <segment>
+        <source>Für iOS &amp; Android — auf fast allen Geräten.</source>
+      </segment>
+    </unit>
+    <unit id="common.bug-a-ball.key-art-alt">
+      <notes>
+        <note category="location">projects/website/src/app/pages/apps-and-games/apps-and-games.html:174,175</note>
+        <note category="location">projects/website/src/app/pages/home/home.html:158,159</note>
+      </notes>
+      <segment>
+        <source>Bug-A-Ball: eine grinsende grüne Kugel rollt über eine blaue Bahn an rot-weißen Hindernissen vorbei.</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.games.bug-a-ball.description">
+      <notes>
+        <note category="location">projects/website/src/app/pages/apps-and-games/apps-and-games.html:185,190</note>
+      </notes>
+      <segment>
+        <source>In Bug-A-Ball rollst du dich durch verschiedene Level und Welten, vorbei an kniffligen Hindernissen. Schalte exklusive Skins frei und zeig allen auf der Bestenliste, wer hier der Profi ist.</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.games.bug-a-ball.cta-aria">
+      <notes>
+        <note category="location">projects/website/src/app/pages/apps-and-games/apps-and-games.html:193,194</note>
+      </notes>
+      <segment>
+        <source>Bug-A-Ball – zur Website</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.games.bug-a-ball.cta">
+      <notes>
+        <note category="location">projects/website/src/app/pages/apps-and-games/apps-and-games.html:196,199</note>
+      </notes>
+      <segment>
+        <source>Zur Website</source>
+      </segment>
+    </unit>
     <unit id="home.projects.kicker">
       <notes>
         <note category="location">projects/website/src/app/pages/home/home.html:5,6</note>
@@ -353,15 +594,6 @@
         <source>Word für Windows, macOS &amp; iPad</source>
       </segment>
     </unit>
-    <unit id="common.badge.available">
-      <notes>
-        <note category="location">projects/website/src/app/pages/home/home.html:42,44</note>
-        <note category="location">projects/website/src/app/pages/home/home.html:166,168</note>
-      </notes>
-      <segment>
-        <source>Verfügbar</source>
-      </segment>
-    </unit>
     <unit id="home.projects.lehrgrapht.description">
       <notes>
         <note category="location">projects/website/src/app/pages/home/home.html:45,48</note>
@@ -392,16 +624,6 @@
       </notes>
       <segment>
         <source>iOS &amp; Android</source>
-      </segment>
-    </unit>
-    <unit id="common.badge.in-development">
-      <notes>
-        <note category="location">projects/website/src/app/pages/home/home.html:81,83</note>
-        <note category="location">projects/website/src/app/pages/home/home.html:118,120</note>
-        <note category="location">projects/website/src/app/ui/repository-card/repository-card.ts:35</note>
-      </notes>
-      <segment>
-        <source>In Entwicklung</source>
       </segment>
     </unit>
     <unit id="home.projects.flugwacht.description">
@@ -474,14 +696,6 @@
       </notes>
       <segment>
         <source>iOS &amp; Android</source>
-      </segment>
-    </unit>
-    <unit id="common.bug-a-ball.key-art-alt">
-      <notes>
-        <note category="location">projects/website/src/app/pages/home/home.html:158,159</note>
-      </notes>
-      <segment>
-        <source>Bug-A-Ball: eine grinsende grüne Kugel rollt über eine blaue Bahn an rot-weißen Hindernissen vorbei.</source>
       </segment>
     </unit>
     <unit id="home.projects.bug-a-ball.description">

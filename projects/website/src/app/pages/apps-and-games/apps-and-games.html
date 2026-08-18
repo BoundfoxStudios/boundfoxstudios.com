@@ -1,0 +1,199 @@
+<section class="mx-auto max-w-6xl px-6 pt-16 pb-2">
+  <bfs-section-head
+    variant="page"
+    kicker="Projekte"
+    i18n-kicker="@@apps-and-games.hero.kicker"
+    heading="Apps & Spiele"
+    i18n-heading="@@apps-and-games.hero.title"
+    lead="Stöber doch einmal durch unsere Projekte — es ist sicher etwas für dich dabei. Alles kostenlos, vieles Open Source."
+    i18n-lead="@@apps-and-games.hero.intro"
+  />
+</section>
+
+<section class="mx-auto max-w-6xl px-6 pt-12 pb-4">
+  <bfs-section-head
+    [bottomMargin]="24"
+    size="display-sm"
+    heading="Apps"
+    i18n-heading="@@apps-and-games.apps.section-title"
+  />
+
+  <div class="grid grid-cols-[repeat(auto-fit,minmax(min(300px,100%),1fr))] gap-6">
+    <bfs-project-card
+      [headingLevel]="3"
+      density="compact"
+      media="pattern"
+      kicker="Word-AddIn"
+      i18n-kicker="@@apps-and-games.apps.lehrgrapht.kicker"
+      title="LehrGrapht"
+      platforms="Word für Windows, macOS &amp; iPad · kostenfrei · Open Source"
+      i18n-platforms="@@apps-and-games.apps.lehrgrapht.platforms"
+    >
+      <span
+        class="font-display text-[38px] tracking-wide text-neutral-900 uppercase"
+        card-media
+        aria-hidden="true"
+        translate="no"
+        >LehrGrapht</span
+      >
+      <bfs-badge
+        card-badge
+        variant="amber"
+        i18n="@@common.badge.available"
+        >Verfügbar</bfs-badge
+      >
+      <ng-container i18n="@@apps-and-games.apps.lehrgrapht.description"
+        >Maßstabsgetreue Plots für Lehrkräfte, passgenau auf 5×5-mm-Karopapier: Funktionen, Punkte,
+        Flächen, Schrägbilder, Spiegelungen — und mit einem Schalter vom Arbeitsblatt zum
+        Lösungsblatt.</ng-container
+      >
+      <bfs-arrow-link
+        card-links
+        href="https://lehrgrapht.de"
+        ariaLabel="LehrGrapht – zur Website"
+        i18n-ariaLabel="@@apps-and-games.apps.lehrgrapht.website-aria"
+        i18n="@@common.link.website"
+        >Zur Website</bfs-arrow-link
+      >
+      <bfs-arrow-link
+        card-links
+        href="https://github.com/BoundfoxStudios/lehrgrapht"
+        ariaLabel="LehrGrapht – Source Code auf GitHub"
+        i18n-ariaLabel="@@apps-and-games.apps.lehrgrapht.source-aria"
+        i18n="@@common.link.source-code"
+        >Source Code</bfs-arrow-link
+      >
+    </bfs-project-card>
+
+    <bfs-project-card
+      [headingLevel]="3"
+      density="compact"
+      media="icon"
+      kicker="CLI-Tool"
+      i18n-kicker="@@apps-and-games.apps.mat.kicker"
+      title="MAT"
+      platforms="macOS, Linux &amp; Windows · Open Source"
+      i18n-platforms="@@apps-and-games.apps.mat.platforms"
+    >
+      <img
+        card-media
+        src="images/mat-dark.svg"
+        width="104"
+        height="104"
+        alt=""
+      />
+      <bfs-badge
+        card-badge
+        variant="outline"
+        i18n="@@common.badge.in-development"
+        >In Entwicklung</bfs-badge
+      >
+      <ng-container i18n="@@apps-and-games.apps.mat.description"
+        >Markdown-Vorschau direkt aus dem Terminal — gerendert wie auf GitHub, inklusive Mermaid,
+        KaTeX und Syntax-Highlighting. Kein Server, keine Konfiguration: so beiläufig wie
+        <span class="font-mono">cat</span>.</ng-container
+      >
+      <bfs-arrow-link
+        card-links
+        href="https://github.com/BoundfoxStudios/mat"
+        ariaLabel="MAT – zum Repository auf GitHub"
+        i18n-ariaLabel="@@apps-and-games.apps.mat.repository-aria"
+        i18n="@@common.link.repository"
+        >Zum Repository</bfs-arrow-link
+      >
+    </bfs-project-card>
+
+    <bfs-project-card
+      [headingLevel]="3"
+      density="compact"
+      media="contain"
+      kicker="Mobile App"
+      i18n-kicker="@@apps-and-games.apps.flugwacht.kicker"
+      title="Flugwacht"
+      platforms="iOS &amp; Android · Open Source"
+      i18n-platforms="@@apps-and-games.apps.flugwacht.platforms"
+    >
+      <img
+        class="h-auto w-[62%] max-w-[280px]"
+        card-media
+        src="images/flugwacht-wordmark.svg"
+        width="231"
+        height="42"
+        alt=""
+      />
+      <bfs-badge
+        card-badge
+        variant="outline"
+        i18n="@@common.badge.in-development"
+        >In Entwicklung</bfs-badge
+      >
+      <ng-container i18n="@@apps-and-games.apps.flugwacht.description"
+        >Bewusst minimaler Flug-Tracker für einzelne Flüge: Flugnummer und Datum eintragen, am
+        Reisetag live auf der Karte verfolgen — mit Ankunftszeit in beiden Zeitzonen. Ohne Konto,
+        alles bleibt auf deinem Gerät.</ng-container
+      >
+      <bfs-arrow-link
+        card-links
+        href="https://github.com/BoundfoxStudios/flugwacht"
+        ariaLabel="Flugwacht – zum Repository auf GitHub"
+        i18n-ariaLabel="@@apps-and-games.apps.flugwacht.repository-aria"
+        i18n="@@common.link.repository"
+        >Zum Repository</bfs-arrow-link
+      >
+    </bfs-project-card>
+  </div>
+</section>
+
+<section class="mx-auto max-w-6xl px-6 pt-12 pb-18">
+  <bfs-section-head
+    [bottomMargin]="24"
+    size="display-sm"
+    heading="Spiele"
+    i18n-heading="@@apps-and-games.games.section-title"
+  />
+
+  <bfs-feature-card
+    kicker="Spiel"
+    i18n-kicker="@@apps-and-games.games.bug-a-ball.kicker"
+    title="Bug-A-Ball"
+    platforms="Für iOS &amp; Android — auf fast allen Geräten."
+    i18n-platforms="@@apps-and-games.games.bug-a-ball.platforms"
+  >
+    <picture card-media>
+      <source
+        srcset="images/bug-a-ball-feature-1200x600.webp"
+        type="image/webp"
+      />
+      <img
+        class="absolute inset-0 h-full w-full object-cover"
+        src="images/bug-a-ball-feature-1200x600.jpg"
+        width="1200"
+        height="600"
+        loading="eager"
+        fetchpriority="high"
+        alt="Bug-A-Ball: eine grinsende grüne Kugel rollt über eine blaue Bahn an rot-weißen Hindernissen vorbei."
+        i18n-alt="@@common.bug-a-ball.key-art-alt"
+      />
+    </picture>
+    <bfs-badge
+      card-badge
+      variant="amber"
+      i18n="@@common.badge.available"
+      >Verfügbar</bfs-badge
+    >
+    <ng-container i18n="@@apps-and-games.games.bug-a-ball.description"
+      >In Bug-A-Ball rollst du dich durch verschiedene Level und Welten, vorbei an kniffligen
+      Hindernissen. Schalte exklusive Skins frei und zeig allen auf der Bestenliste, wer hier der
+      Profi ist.</ng-container
+    >
+    <bfs-button-primary
+      class="mt-2"
+      card-cta
+      href="https://bugaball.com/"
+      ariaLabel="Bug-A-Ball – zur Website"
+      i18n-ariaLabel="@@apps-and-games.games.bug-a-ball.cta-aria"
+      i18n="@@apps-and-games.games.bug-a-ball.cta"
+      >Zur Website</bfs-button-primary
+    >
+  </bfs-feature-card>
+</section>
