@@ -167,7 +167,7 @@ article.flex.flex-col.overflow-hidden.rounded-xl.border.border-neutral-200.bg-wh
   - `<img card-media src="images/flugwacht-wordmark.svg" width="231" height="42" alt="…" class="h-auto w-[56%] max-w-[300px]">` (`w-[62%] max-w-[280px]` on Apps & Games);
   - `<img card-media src="images/mat-dark.svg" width="112" height="112" alt="…">` (104×104 on Apps & Games);
   - the Bug-A-Ball `<picture card-media class="block h-full w-full">` (`bug-a-ball-card-840x420.webp`/`.jpg`) wrapping `<img class="h-full w-full object-cover" loading="lazy">`, alt from `@@common.bug-a-ball.key-art-alt` — the `block h-full w-full` on the `<picture>` is load-bearing, and the full block is in §5.2.
-- **Open point:** per C14 the two SVG `<img>` elements must carry an `alt` attribute, but its value is undecided. `docs/design/home.md` §11.1 proposes `home.projects.flugwacht.image-alt` (`Flugwacht Wortmarke`) and `home.projects.mat.image-alt` (`mat App-Icon`); `docs/design/apps-and-games.md` §4.6 proposes `apps-and-games.apps.flugwacht.wordmark-alt` and `apps-and-games.apps.mat.icon-alt` for the same two pictures; `docs/decisions.md` consolidates only the Bug-A-Ball alt and never says whether these four ids survive or whether the images are decorative (`alt=""`) like the fox head and the LehrGrapht wordmark next to the same product name. The implementing PR settles it and records the answer here; it is not picked in this file.
+- **Settled while building #26: both SVGs are decorative, `alt=""`.** Same rule as the fox head (`docs/decisions.md` › Header / footer › _Fox head `alt`_): the card's own `<h2>` names the product directly below the image, so a non-empty alt makes the card announce its name twice. All four proposed ids are retired — `home.projects.flugwacht.image-alt`, `home.projects.mat.image-alt`, `apps-and-games.apps.flugwacht.wordmark-alt` and `apps-and-games.apps.mat.icon-alt`. The attribute is still written out, never omitted (C14).
 - Links are projected `bfs-arrow-link` elements, so their labels and `aria-label`s stay markable in the page template.
 
 Consumers: home 4 cards in order LehrGrapht → Flugwacht → MAT → Bug-A-Ball (`roomy`, `headingLevel` 2); Apps & Games 3 cards in order LehrGrapht → MAT → Flugwacht (`compact`, `headingLevel` 3).
@@ -284,7 +284,11 @@ Consumer: Apps & Games feature-card CTA, `href="https://bugaball.com/"` (SPEC §
 readonly href = input.required<string>();
 ```
 
-`<a [href] class="inline-flex items-center gap-2 rounded-full bg-white px-[18px] py-2.5 font-display text-base tracking-wider text-neutral-900 uppercase shadow-md transition-colors duration-150 ease-in-out hover:text-neutral-900 focus-ring"><ng-content /></a>`
+```ts
+readonly newTab = input(false);      // renders [attr.target]/[attr.rel] only when set
+```
+
+`<a [href] [attr.target] [attr.rel] class="inline-flex items-center gap-2 rounded-full bg-white px-[18px] py-2.5 font-display text-base tracking-wider text-neutral-900 uppercase shadow-md transition-colors duration-150 ease-in-out hover:text-neutral-900 focus-ring"><ng-content /></a>`
 
 - `gap-2` (8px) is the design's prepared slot for an optional icon; the five chips ship without one.
 - `hover:text-neutral-900` cancels the global `a:hover` — the pill deliberately does not change colour.
@@ -299,6 +303,7 @@ readonly route = input<string | null>(null);   // internal — never name this i
 readonly href = input<string | null>(null);    // external; exactly one of the two is set
 readonly ariaLabel = input<string | null>(null);
 readonly variant = input<'body' | 'display'>('body');
+readonly newTab = input(false);                // href form only; renders [attr.target]/[attr.rel]
 ```
 
 Renders `<a [routerLink]>` when `route()` is set, otherwise `<a [href]>`; both carry `[attr.aria-label]`, then `<ng-content /><span aria-hidden="true" class="ml-1">→</span>`.
@@ -644,7 +649,7 @@ Names and props that exist in the design documents and are deliberately not buil
 - `CardGridComponent`, `FooterLinkColumn`, `SocialIconLink`, `PageShell` — page- or layout-internal markup, listed in §6 and §7.
 - The `ko-fi` id spelling (`docs/design/home.md` §6.7) in favour of `kofi`; the alt ids `home.projects.bug-a-ball.image-alt` and `apps-and-games.games.bug-a-ball.key-art-alt` in favour of `common.bug-a-ball.key-art-alt`; `footer.language-list` in favour of `footer.language.de` / `footer.language.en`.
 - `branding/icon.svg` and the SVG favicon link — no vector brand mark exists (§5.3).
-- **Not dropped, undecided:** `target`/`rel` inputs on `bfs-link-card`, `bfs-arrow-link`, `bfs-pill-link` and `bfs-button-primary`. Only the footer's three social icon links are settled as new-tab (issue #19). The design documents contradict each other — `docs/design/home.md` §4.1/§10.8 and `docs/design/site-footer.md` §6 say add it, `docs/design/imprint.md` §5 and `docs/design/privacy.md` §7 say keep external links same-tab, `docs/design/socials.md` §10.5 and `docs/design/support.md` §14.2 list it as open — so the four components ship without those inputs (same tab, as in the prototype). Adopting new-tab behaviour is one decision plus one input on those four rows.
+- **Partly settled while building #26:** `bfs-arrow-link` and `bfs-pill-link` now carry `newTab = input(false)`, rendering `[attr.target]` / `[attr.rel]` only when it is set. The design documents genuinely contradict each other — `docs/design/home.md` §4.1/§10.8 and `docs/design/site-footer.md` §6 ask for new-tab, `docs/design/imprint.md` §5 and `docs/design/privacy.md` §7 ask for same-tab, `docs/design/socials.md` §10.5 and `docs/design/support.md` §14.2 list it as open — so the input is opt-in per usage rather than a component-wide default, and the home page is the only consumer that sets it (five pills, four card links). The legal pages keep same-tab in M6, as their documents say. `bfs-link-card` and `bfs-button-primary` still ship without the input; adding it is the same one-line change if a page needs it.
 
 ## 9. Change rule
 

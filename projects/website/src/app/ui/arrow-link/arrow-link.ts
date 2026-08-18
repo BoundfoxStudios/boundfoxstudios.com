@@ -14,5 +14,6 @@ export class ArrowLink {
   readonly route = input<string | null>(null);
   readonly href = input<string | null>(null);
   readonly ariaLabel = input<string | null>(null);
+  readonly newTab = input(false);
   readonly variant = input<ArrowLinkVariant>('body');
 }

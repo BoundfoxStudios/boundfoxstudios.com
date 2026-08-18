@@ -1,0 +1,262 @@
+<section class="mx-auto max-w-6xl px-6 pt-16 pb-18">
+  <bfs-section-head
+    [bottomMargin]="32"
+    variant="page"
+    kicker="Projekte"
+    i18n-kicker="@@home.projects.kicker"
+    heading="Apps & Spiele"
+    i18n-heading="@@home.projects.title"
+    lead="Woran wir gerade bauen — und was du schon heute spielen und benutzen kannst. Kostenlos und Open Source."
+    i18n-lead="@@home.projects.subtitle"
+  >
+    <bfs-arrow-link
+      head-link
+      variant="display"
+      route="/apps-and-games"
+      i18n="@@home.projects.all-link"
+      >Alle Projekte</bfs-arrow-link
+    >
+  </bfs-section-head>
+
+  <div class="grid grid-cols-[repeat(auto-fit,minmax(min(420px,100%),1fr))] gap-6">
+    <bfs-project-card
+      density="roomy"
+      media="pattern"
+      kicker="App"
+      i18n-kicker="@@common.project-type.app"
+      title="LehrGrapht"
+      platforms="Word für Windows, macOS &amp; iPad"
+      i18n-platforms="@@home.projects.lehrgrapht.platforms"
+    >
+      <span
+        class="font-display text-[44px] tracking-wide text-neutral-900 uppercase"
+        card-media
+        aria-hidden="true"
+        translate="no"
+        >LehrGrapht</span
+      >
+      <bfs-badge
+        card-badge
+        variant="amber"
+        i18n="@@common.badge.available"
+        >Verfügbar</bfs-badge
+      >
+      <ng-container i18n="@@home.projects.lehrgrapht.description"
+        >Kostenfreies, quelloffenes Word-AddIn für Lehrkräfte: maßstabsgetreue Plots, passgenau auf
+        5×5-mm-Karopapier — ideal zum Nachmessen.</ng-container
+      >
+      <bfs-arrow-link
+        [newTab]="true"
+        card-links
+        href="https://lehrgrapht.de"
+        ariaLabel="LehrGrapht – zur Website"
+        i18n-ariaLabel="@@home.projects.lehrgrapht.link-aria"
+        i18n="@@home.projects.lehrgrapht.link"
+        >Zur Website</bfs-arrow-link
+      >
+    </bfs-project-card>
+
+    <bfs-project-card
+      density="roomy"
+      media="contain"
+      kicker="App"
+      i18n-kicker="@@common.project-type.app"
+      title="Flugwacht"
+      platforms="iOS &amp; Android"
+      i18n-platforms="@@home.projects.flugwacht.platforms"
+    >
+      <!-- Decorative: the card's own <h2> names the product right below it. -->
+      <img
+        class="h-auto w-[56%] max-w-[300px]"
+        card-media
+        src="images/flugwacht-wordmark.svg"
+        width="231"
+        height="42"
+        alt=""
+      />
+      <bfs-badge
+        card-badge
+        variant="outline"
+        i18n="@@common.badge.in-development"
+        >In Entwicklung</bfs-badge
+      >
+      <ng-container i18n="@@home.projects.flugwacht.description"
+        >Bewusst minimaler Flug-Tracker: Flugnummer eintragen und am Reisetag live auf der Karte
+        verfolgen, wo der Flieger gerade ist — ganz ohne Konto.</ng-container
+      >
+      <bfs-arrow-link
+        [newTab]="true"
+        card-links
+        href="https://github.com/BoundfoxStudios/flugwacht"
+        ariaLabel="Flugwacht – zum Repository auf GitHub"
+        i18n-ariaLabel="@@home.projects.flugwacht.link-aria"
+        i18n="@@home.projects.flugwacht.link"
+        >Zum Repository</bfs-arrow-link
+      >
+    </bfs-project-card>
+
+    <bfs-project-card
+      density="roomy"
+      media="icon"
+      kicker="App"
+      i18n-kicker="@@common.project-type.app"
+      title="MAT"
+      platforms="macOS, Linux &amp; Windows"
+      i18n-platforms="@@home.projects.mat.platforms"
+    >
+      <img
+        card-media
+        src="images/mat-dark.svg"
+        width="112"
+        height="112"
+        alt=""
+      />
+      <bfs-badge
+        card-badge
+        variant="outline"
+        i18n="@@common.badge.in-development"
+        >In Entwicklung</bfs-badge
+      >
+      <ng-container i18n="@@home.projects.mat.description"
+        >Markdown-Vorschau direkt aus dem Terminal — gerendert wie auf GitHub, ohne Server und ohne
+        Konfiguration. So beiläufig wie <span class="font-mono">cat</span>.</ng-container
+      >
+      <bfs-arrow-link
+        [newTab]="true"
+        card-links
+        href="https://github.com/BoundfoxStudios/mat"
+        ariaLabel="MAT – zum Repository auf GitHub"
+        i18n-ariaLabel="@@home.projects.mat.link-aria"
+        i18n="@@home.projects.mat.link"
+        >Zum Repository</bfs-arrow-link
+      >
+    </bfs-project-card>
+
+    <bfs-project-card
+      density="roomy"
+      media="cover"
+      kicker="Spiel"
+      i18n-kicker="@@common.project-type.game"
+      title="Bug-A-Ball"
+      platforms="iOS &amp; Android"
+      i18n-platforms="@@home.projects.bug-a-ball.platforms"
+    >
+      <picture
+        class="block h-full w-full"
+        card-media
+      >
+        <source
+          srcset="images/bug-a-ball-card-840x420.webp"
+          type="image/webp"
+        />
+        <img
+          class="h-full w-full object-cover"
+          src="images/bug-a-ball-card-840x420.jpg"
+          width="840"
+          height="420"
+          loading="lazy"
+          alt="Bug-A-Ball: eine grinsende grüne Kugel rollt über eine blaue Bahn an rot-weißen Hindernissen vorbei."
+          i18n-alt="@@common.bug-a-ball.key-art-alt"
+        />
+      </picture>
+      <bfs-badge
+        card-badge
+        variant="amber"
+        i18n="@@common.badge.available"
+        >Verfügbar</bfs-badge
+      >
+      <ng-container i18n="@@home.projects.bug-a-ball.description"
+        >Rolle dich durch Level und Welten, weiche Hindernissen aus, schalte exklusive Skins frei —
+        und zeig auf der Bestenliste, wer hier der Profi ist.</ng-container
+      >
+      <bfs-arrow-link
+        [newTab]="true"
+        card-links
+        href="https://bugaball.com/"
+        ariaLabel="Bug-A-Ball – zur Website"
+        i18n-ariaLabel="@@home.projects.bug-a-ball.link-aria"
+        i18n="@@home.projects.bug-a-ball.link"
+        >Zur Website</bfs-arrow-link
+      >
+    </bfs-project-card>
+  </div>
+</section>
+
+<section class="bg-linear-to-r from-yellow to-orange">
+  <div class="mx-auto flex max-w-6xl flex-col items-start gap-5 px-6 py-14">
+    <h2
+      class="m-0 font-display text-4xl leading-none tracking-wide text-neutral-900 uppercase"
+      i18n="@@home.support.title"
+    >
+      Unterstütze uns
+    </h2>
+    <p
+      class="m-0 max-w-[560px] text-base leading-relaxed text-pretty text-neutral-900"
+      i18n="@@home.support.text"
+    >
+      Unsere Projekte sind kostenlos und Open Source. Wenn du magst, gib etwas zurück — vieles davon
+      kostet dich keinen Cent.
+    </p>
+    <div class="flex flex-wrap gap-3">
+      <bfs-pill-link
+        [newTab]="true"
+        href="https://github.com/BoundfoxStudios"
+        ><span translate="no">GitHub</span></bfs-pill-link
+      >
+      <bfs-pill-link
+        [newTab]="true"
+        href="https://discord.gg/tHqNzMT"
+        ><span translate="no">Discord</span></bfs-pill-link
+      >
+      <bfs-pill-link
+        [newTab]="true"
+        href="https://youtube.com/c/boundfox"
+        ><span translate="no">YouTube</span></bfs-pill-link
+      >
+      <bfs-pill-link
+        [newTab]="true"
+        href="https://ko-fi.com/boundfoxstudios"
+        ><span translate="no">Ko-fi</span></bfs-pill-link
+      >
+      <bfs-pill-link
+        [newTab]="true"
+        href="https://www.patreon.com/boundfoxstudios"
+        ><span translate="no">Patreon</span></bfs-pill-link
+      >
+    </div>
+    <a
+      class="text-sm font-bold text-neutral-900 underline focus-ring hover:text-neutral-700"
+      routerLink="/support"
+      ><span i18n="@@home.support.all-options-link">Alle Möglichkeiten ansehen</span
+      ><span
+        class="ml-1"
+        aria-hidden="true"
+        >→</span
+      ></a
+    >
+  </div>
+</section>
+
+<section class="bg-neutral-100">
+  <div class="mx-auto max-w-6xl px-6 pt-16 pb-18">
+    <bfs-section-head
+      [bottomMargin]="28"
+      size="display-md"
+      kicker="Open Source"
+      i18n-kicker="@@home.github.kicker"
+      heading="Zuletzt auf GitHub"
+      i18n-heading="@@home.github.title"
+    >
+      <bfs-arrow-link
+        [newTab]="true"
+        head-link
+        variant="display"
+        href="https://github.com/BoundfoxStudios"
+        i18n="@@home.github.all-repositories-link"
+        >Alle Repositories</bfs-arrow-link
+      >
+    </bfs-section-head>
+
+    <bfs-repository-cards />
+  </div>
+</section>
