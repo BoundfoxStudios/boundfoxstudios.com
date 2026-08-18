@@ -24,6 +24,18 @@ const GRIDS = [
     name: 'home repository cards',
     columns: { 320: 1, 768: 2, 1152: 3, 1440: 3 },
   },
+  {
+    route: 'apps-and-games',
+    selector: 'bfs-apps-and-games-page div.grid',
+    name: 'apps card grid',
+    columns: { 320: 1, 768: 2, 1152: 3, 1440: 3 },
+  },
+  {
+    route: 'apps-and-games',
+    selector: 'bfs-feature-card article',
+    name: 'Bug-A-Ball feature card',
+    columns: { 320: 1, 768: 2, 1152: 2, 1440: 2 },
+  },
 ];
 
 const CONTENT_TYPES = {
@@ -109,7 +121,15 @@ for (const route of routes) {
       const tracks = await page.evaluate(selector => {
         const element = document.querySelector(selector);
 
-        return element ? getComputedStyle(element).gridTemplateColumns.split(' ').length : null;
+        if (!element) {
+          return null;
+        }
+
+        // `auto-fit` collapses tracks it has no item for, and the computed value still lists them
+        // as `0px`. Only the tracks that actually carry width are columns the visitor sees.
+        return getComputedStyle(element)
+          .gridTemplateColumns.split(' ')
+          .filter(track => parseFloat(track) > 0).length;
       }, grid.selector);
 
       if (tracks === null) {
