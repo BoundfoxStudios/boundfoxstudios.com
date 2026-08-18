@@ -96,5 +96,8 @@ jobs:
             exit 1
           fi
       - run: npm run lighthouse
-      - run: npx playwright install --with-deps chromium
+      # No `--with-deps`: that runs a full `apt-get update` on the runner — 12 minutes when it
+      # works, and once it hung until the run was cancelled. The ubuntu-latest image already ships
+      # the libraries Chromium needs, so only the browser itself is downloaded here.
+      - run: npx playwright install chromium
       - run: npm run axe
