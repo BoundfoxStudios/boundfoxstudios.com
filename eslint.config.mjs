@@ -10,8 +10,6 @@ export default defineConfig([
   globalIgnores([
     '.angular/**',
     'dist/**',
-    // Design references, not application sources — see SPEC §6.
-    'design_handoff_website_redesign/**',
     // Not an Angular template: `prefer-self-closing-tags` would rewrite
     // <bfs-root></bfs-root> to <bfs-root />, which the HTML parser mis-nests.
     'projects/website/src/index.html',
