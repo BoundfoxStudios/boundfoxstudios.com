@@ -64,6 +64,25 @@ export class SeoService {
     });
   }
 
+  // The prerendered head already carries every block this writes, so the client updates the
+  // existing script in place. Appending would double each block on hydration.
+  setJsonLd(id: string, data: unknown): void {
+    const existing = this.document.head.querySelector(`script[data-json-ld="${id}"]`);
+    const script = existing ?? this.document.createElement('script');
+
+    script.setAttribute('type', 'application/ld+json');
+    script.setAttribute('data-json-ld', id);
+    script.textContent = JSON.stringify(data);
+
+    if (!existing) {
+      this.document.head.appendChild(script);
+    }
+  }
+
+  removeJsonLd(id: string): void {
+    this.document.head.querySelector(`script[data-json-ld="${id}"]`)?.remove();
+  }
+
   private clearCanonicalIdentity(): void {
     this.meta.removeTag(`property='og:url'`);
 

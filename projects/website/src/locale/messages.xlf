@@ -721,5 +721,10 @@
         <source>Minimaler Flug-Tracker für einzelne, manuell angelegte Flüge — live auf der Karte.</source>
       </segment>
     </unit>
+    <unit id="apps-and-games.apps.mat.description-plain">
+      <segment>
+        <source>Markdown-Vorschau direkt aus dem Terminal — gerendert wie auf GitHub, inklusive Mermaid, KaTeX und Syntax-Highlighting. Kein Server, keine Konfiguration: so beiläufig wie cat.</source>
+      </segment>
+    </unit>
   </file>
 </xliff>
