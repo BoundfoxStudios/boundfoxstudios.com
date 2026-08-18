@@ -3,9 +3,6 @@
 Fully static, prerendered, bilingual Angular site. German at `/`, English at `/en/`, both
 produced by a single `ng build` and uploaded to Apache over FTP by GitHub Actions.
 
-Start with [`SPEC.md`](SPEC.md) for the architecture and [`docs/decisions.md`](docs/decisions.md)
-for everything already decided.
-
 ## Requirements
 
 Node.js as pinned in [`.nvmrc`](.nvmrc). `npm ci` installs the toolchain and, through
