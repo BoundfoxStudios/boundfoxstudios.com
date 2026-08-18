@@ -5,9 +5,9 @@ produced by a single `ng build` and uploaded to Apache over FTP by GitHub Action
 
 ## Read before touching anything
 
-1. [`SPEC.md`](SPEC.md) — architecture, routes, boundaries, and the twelve decisions that
+1. [`SPEC.md`](../SPEC.md) — architecture, routes, boundaries, and the twelve decisions that
    shape the build (§12).
-2. [`docs/decisions.md`](docs/decisions.md) — every remaining decision, down to i18n ids,
+2. [`docs/decisions.md`](../docs/decisions.md) — every remaining decision, down to i18n ids,
    filenames, npm scripts and exact German strings. **This file answers questions instead of
    you inventing an answer.** Where it contradicts a design document, it wins; where it
    contradicts `SPEC.md`, `SPEC.md` wins unless the row says it corrects `SPEC.md`.
