@@ -1,6 +1,118 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xliff version="2.0" xmlns="urn:oasis:names:tc:xliff:document:2.0" srcLang="de">
   <file id="ngi18n" original="ng.template">
+    <unit id="seo.not-found.title">
+      <notes>
+        <note category="location">projects/website/src/app/app.routes.ts:9</note>
+      </notes>
+      <segment>
+        <source>Seite nicht gefunden – Boundfox Studios</source>
+      </segment>
+    </unit>
+    <unit id="seo.not-found.description">
+      <notes>
+        <note category="location">projects/website/src/app/app.routes.ts:10</note>
+      </notes>
+      <segment>
+        <source>Diese Seite gibt es nicht mehr oder hat nie existiert. Von hier kommst du zurück zur Startseite, zu den Projekten oder in die Community.</source>
+      </segment>
+    </unit>
+    <unit id="seo.home.title">
+      <notes>
+        <note category="location">projects/website/src/app/app.routes.ts:19</note>
+      </notes>
+      <segment>
+        <source>Boundfox Studios – kostenlose Apps und Spiele</source>
+      </segment>
+    </unit>
+    <unit id="seo.home.description">
+      <notes>
+        <note category="location">projects/website/src/app/app.routes.ts:20</note>
+      </notes>
+      <segment>
+        <source>Wir entwickeln Apps und Spiele in Stuttgart — kostenlos, vieles davon Open Source. Schau dir an, woran wir bauen und wie du uns unterstützen kannst.</source>
+      </segment>
+    </unit>
+    <unit id="seo.apps-and-games.title">
+      <notes>
+        <note category="location">projects/website/src/app/app.routes.ts:28</note>
+      </notes>
+      <segment>
+        <source>Apps &amp; Spiele – Boundfox Studios</source>
+      </segment>
+    </unit>
+    <unit id="seo.apps-and-games.description">
+      <notes>
+        <note category="location">projects/website/src/app/app.routes.ts:29</note>
+      </notes>
+      <segment>
+        <source>Alle Apps und Spiele von Boundfox Studios: LehrGrapht, MAT, Flugwacht und Bug-A-Ball — kostenlos, vieles davon Open Source.</source>
+      </segment>
+    </unit>
+    <unit id="seo.support.title">
+      <notes>
+        <note category="location">projects/website/src/app/app.routes.ts:36</note>
+      </notes>
+      <segment>
+        <source>Unterstützen – Boundfox Studios</source>
+      </segment>
+    </unit>
+    <unit id="seo.support.description">
+      <notes>
+        <note category="location">projects/website/src/app/app.routes.ts:37</note>
+      </notes>
+      <segment>
+        <source>So kannst du uns unterstützen: Stars und Pull Requests auf GitHub, Discord, YouTube — oder finanziell über Ko-fi und Patreon. Vieles kostet nichts.</source>
+      </segment>
+    </unit>
+    <unit id="seo.socials.title">
+      <notes>
+        <note category="location">projects/website/src/app/app.routes.ts:44</note>
+      </notes>
+      <segment>
+        <source>Socials – Boundfox Studios</source>
+      </segment>
+    </unit>
+    <unit id="seo.socials.description">
+      <notes>
+        <note category="location">projects/website/src/app/app.routes.ts:45</note>
+      </notes>
+      <segment>
+        <source>Hier findest du uns: GitHub für unsere Open-Source-Projekte, Discord für die Community und YouTube für Tutorials zu Unity, Blender und Gamedev.</source>
+      </segment>
+    </unit>
+    <unit id="seo.legal-details-imprint.title">
+      <notes>
+        <note category="location">projects/website/src/app/app.routes.ts:52</note>
+      </notes>
+      <segment>
+        <source>Impressum – Boundfox Studios</source>
+      </segment>
+    </unit>
+    <unit id="seo.legal-details-imprint.description">
+      <notes>
+        <note category="location">projects/website/src/app/app.routes.ts:53</note>
+      </notes>
+      <segment>
+        <source>Impressum von Boundfox Studios: Anbieterkennzeichnung nach § 5 DDG, Kontakt, Umsatzsteuer-ID sowie Hinweise zu Haftung und Urheberrecht.</source>
+      </segment>
+    </unit>
+    <unit id="seo.privacy-policy.title">
+      <notes>
+        <note category="location">projects/website/src/app/app.routes.ts:61</note>
+      </notes>
+      <segment>
+        <source>Datenschutzerklärung – Boundfox Studios</source>
+      </segment>
+    </unit>
+    <unit id="seo.privacy-policy.description">
+      <notes>
+        <note category="location">projects/website/src/app/app.routes.ts:62</note>
+      </notes>
+      <segment>
+        <source>Datenschutzerklärung von Boundfox Studios: ohne Cookies, ohne Tracking, ohne Analyse-Skripte – und was beim Aufruf der Website trotzdem verarbeitet wird.</source>
+      </segment>
+    </unit>
     <unit id="site-header.menu.close">
       <notes>
         <note category="location">projects/website/src/app/layout/mobile-menu/mobile-menu.html:25,29</note>

@@ -15,3 +15,6 @@ export const LOCALES: readonly LocaleConfig[] = [
   { code: 'de', hreflang: 'de', subPath: '', ogLocale: 'de_DE' },
   { code: 'en', hreflang: 'en', subPath: 'en', ogLocale: 'en_US' },
 ];
+
+// German, not English (SPEC §12 D9): x-default matches the apex and the primary audience.
+export const X_DEFAULT_LOCALE = LOCALES[0];
