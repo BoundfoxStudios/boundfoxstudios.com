@@ -865,5 +865,11 @@
         <target>A minimal tracker for individual, manually added flights — live on the map.</target>
       </segment>
     </unit>
+    <unit id="apps-and-games.apps.mat.description-plain">
+      <segment state="translated">
+        <source>Markdown-Vorschau direkt aus dem Terminal — gerendert wie auf GitHub, inklusive Mermaid, KaTeX und Syntax-Highlighting. Kein Server, keine Konfiguration: so beiläufig wie cat.</source>
+        <target>Preview Markdown straight from your terminal — rendered the way GitHub does it, including Mermaid, KaTeX and syntax highlighting. No server, no configuration: as casual as cat.</target>
+      </segment>
+    </unit>
   </file>
 </xliff>

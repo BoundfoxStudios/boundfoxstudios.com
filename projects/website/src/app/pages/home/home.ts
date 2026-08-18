@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { RouterLink } from '@angular/router';
 
+import { appEntry, repositoryUrl } from '../../data/apps';
 import { SOCIAL_LINKS, socialLink } from '../../data/social-links';
 import { ArrowLink } from '../../ui/arrow-link/arrow-link';
 import { Badge } from '../../ui/badge/badge';
@@ -19,4 +20,8 @@ import { SectionHead } from '../../ui/section-head/section-head';
 export class Home {
   protected readonly socialLinks = SOCIAL_LINKS;
   protected readonly githubOrganization = socialLink('github');
+  protected readonly lehrgrapht = appEntry('lehrgrapht');
+  protected readonly matRepository = repositoryUrl('mat');
+  protected readonly flugwachtRepository = repositoryUrl('flugwacht');
+  protected readonly bugABall = appEntry('bug-a-ball');
 }
