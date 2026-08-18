@@ -234,288 +234,345 @@
       </segment>
     </unit>
     <unit id="apps-and-games.hero.kicker">
-      <segment state="initial">
+      <segment state="translated">
         <source>Projekte</source>
+        <target>Projects</target>
       </segment>
     </unit>
     <unit id="apps-and-games.hero.title">
-      <segment state="initial">
+      <segment state="translated">
         <source>Apps &amp; Spiele</source>
+        <target>Apps &amp; Games</target>
       </segment>
     </unit>
     <unit id="apps-and-games.hero.intro">
-      <segment state="initial">
+      <segment state="translated">
         <source>Stöber doch einmal durch unsere Projekte — es ist sicher etwas für dich dabei. Alles kostenlos, vieles Open Source.</source>
+        <target>Have a browse through our projects — there&apos;s bound to be something for you. All free, much of it open source.</target>
       </segment>
     </unit>
     <unit id="apps-and-games.apps.section-title">
-      <segment state="initial">
+      <segment state="translated">
         <source>Apps</source>
+        <target>Apps</target>
       </segment>
     </unit>
     <unit id="apps-and-games.apps.lehrgrapht.kicker">
-      <segment state="initial">
+      <segment state="translated">
         <source>Word-AddIn</source>
+        <target>Word add-in</target>
       </segment>
     </unit>
     <unit id="apps-and-games.apps.lehrgrapht.platforms">
-      <segment state="initial">
+      <segment state="translated">
         <source>Word für Windows, macOS &amp; iPad · kostenfrei · Open Source</source>
+        <target>Word for Windows, macOS &amp; iPad · free · open source</target>
       </segment>
     </unit>
     <unit id="common.badge.available">
-      <segment state="initial">
+      <segment state="translated">
         <source>Verfügbar</source>
+        <target>Available</target>
       </segment>
     </unit>
     <unit id="apps-and-games.apps.lehrgrapht.description">
-      <segment state="initial">
+      <segment state="translated">
         <source>Maßstabsgetreue Plots für Lehrkräfte, passgenau auf 5×5-mm-Karopapier: Funktionen, Punkte, Flächen, Schrägbilder, Spiegelungen — und mit einem Schalter vom Arbeitsblatt zum Lösungsblatt.</source>
+        <target>True-to-scale plots for teachers, lining up exactly with 5×5 mm graph paper: functions, points, areas, oblique projections, reflections — and one switch that turns the worksheet into the answer sheet.</target>
       </segment>
     </unit>
     <unit id="apps-and-games.apps.lehrgrapht.website-aria">
-      <segment state="initial">
+      <segment state="translated">
         <source>LehrGrapht – zur Website</source>
+        <target>LehrGrapht – visit the website</target>
       </segment>
     </unit>
     <unit id="common.link.website">
-      <segment state="initial">
+      <segment state="translated">
         <source>Zur Website</source>
+        <target>Visit the website</target>
       </segment>
     </unit>
     <unit id="apps-and-games.apps.lehrgrapht.source-aria">
-      <segment state="initial">
+      <segment state="translated">
         <source>LehrGrapht – Source Code auf GitHub</source>
+        <target>LehrGrapht – source code on GitHub</target>
       </segment>
     </unit>
     <unit id="common.link.source-code">
-      <segment state="initial">
+      <segment state="translated">
         <source>Source Code</source>
+        <target>Source code</target>
       </segment>
     </unit>
     <unit id="apps-and-games.apps.mat.kicker">
-      <segment state="initial">
+      <segment state="translated">
         <source>CLI-Tool</source>
+        <target>CLI tool</target>
       </segment>
     </unit>
     <unit id="apps-and-games.apps.mat.platforms">
-      <segment state="initial">
+      <segment state="translated">
         <source>macOS, Linux &amp; Windows · Open Source</source>
+        <target>macOS, Linux &amp; Windows · open source</target>
       </segment>
     </unit>
     <unit id="common.badge.in-development">
-      <segment state="initial">
+      <segment state="translated">
         <source>In Entwicklung</source>
+        <target>In development</target>
       </segment>
     </unit>
     <unit id="apps-and-games.apps.mat.description">
-      <segment state="initial">
+      <segment state="translated">
         <source>Markdown-Vorschau direkt aus dem Terminal — gerendert wie auf GitHub, inklusive Mermaid, KaTeX und Syntax-Highlighting. Kein Server, keine Konfiguration: so beiläufig wie <pc id="0" equivStart="START_TAG_SPAN" equivEnd="CLOSE_TAG_SPAN" type="other" dispStart="&lt;span class=&quot;font-mono&quot;&gt;" dispEnd="&lt;/span&gt;">cat</pc>.</source>
+        <target>Preview Markdown straight from your terminal — rendered the way GitHub does it, including Mermaid, KaTeX and syntax highlighting. No server, no configuration: as casual as <pc id="0" equivStart="START_TAG_SPAN" equivEnd="CLOSE_TAG_SPAN" type="other" dispStart="&lt;span class=&quot;font-mono&quot;&gt;" dispEnd="&lt;/span&gt;">cat</pc>.</target>
       </segment>
     </unit>
     <unit id="apps-and-games.apps.mat.repository-aria">
-      <segment state="initial">
+      <segment state="translated">
         <source>MAT – zum Repository auf GitHub</source>
+        <target>MAT – go to the repository on GitHub</target>
       </segment>
     </unit>
     <unit id="common.link.repository">
-      <segment state="initial">
+      <segment state="translated">
         <source>Zum Repository</source>
+        <target>Go to the repository</target>
       </segment>
     </unit>
     <unit id="apps-and-games.apps.flugwacht.kicker">
-      <segment state="initial">
+      <segment state="translated">
         <source>Mobile App</source>
+        <target>Mobile app</target>
       </segment>
     </unit>
     <unit id="apps-and-games.apps.flugwacht.platforms">
-      <segment state="initial">
+      <segment state="translated">
         <source>iOS &amp; Android · Open Source</source>
+        <target>iOS &amp; Android · open source</target>
       </segment>
     </unit>
     <unit id="apps-and-games.apps.flugwacht.description">
-      <segment state="initial">
+      <segment state="translated">
         <source>Bewusst minimaler Flug-Tracker für einzelne Flüge: Flugnummer und Datum eintragen, am Reisetag live auf der Karte verfolgen — mit Ankunftszeit in beiden Zeitzonen. Ohne Konto, alles bleibt auf deinem Gerät.</source>
+        <target>A deliberately minimal tracker for individual flights: enter the flight number and date, then follow it live on the map on the day you travel — with arrival times in both time zones. No account, everything stays on your device.</target>
       </segment>
     </unit>
     <unit id="apps-and-games.apps.flugwacht.repository-aria">
-      <segment state="initial">
+      <segment state="translated">
         <source>Flugwacht – zum Repository auf GitHub</source>
+        <target>Flugwacht – go to the repository on GitHub</target>
       </segment>
     </unit>
     <unit id="apps-and-games.games.section-title">
-      <segment state="initial">
+      <segment state="translated">
         <source>Spiele</source>
+        <target>Games</target>
       </segment>
     </unit>
     <unit id="apps-and-games.games.bug-a-ball.kicker">
-      <segment state="initial">
+      <segment state="translated">
         <source>Spiel</source>
+        <target>Game</target>
       </segment>
     </unit>
     <unit id="apps-and-games.games.bug-a-ball.platforms">
-      <segment state="initial">
+      <segment state="translated">
         <source>Für iOS &amp; Android — auf fast allen Geräten.</source>
+        <target>For iOS &amp; Android — on almost any device.</target>
       </segment>
     </unit>
     <unit id="common.bug-a-ball.key-art-alt">
-      <segment state="initial">
+      <segment state="translated">
         <source>Bug-A-Ball: eine grinsende grüne Kugel rollt über eine blaue Bahn an rot-weißen Hindernissen vorbei.</source>
+        <target>Bug-A-Ball: a grinning green ball rolls along a blue track past red and white obstacles.</target>
       </segment>
     </unit>
     <unit id="apps-and-games.games.bug-a-ball.description">
-      <segment state="initial">
+      <segment state="translated">
         <source>In Bug-A-Ball rollst du dich durch verschiedene Level und Welten, vorbei an kniffligen Hindernissen. Schalte exklusive Skins frei und zeig allen auf der Bestenliste, wer hier der Profi ist.</source>
+        <target>In Bug-A-Ball you roll your way through all sorts of levels and worlds, past some tricky obstacles. Unlock exclusive skins and show everyone on the leaderboard who the pro is.</target>
       </segment>
     </unit>
     <unit id="apps-and-games.games.bug-a-ball.cta-aria">
-      <segment state="initial">
+      <segment state="translated">
         <source>Bug-A-Ball – zur Website</source>
+        <target>Bug-A-Ball – visit the website</target>
       </segment>
     </unit>
     <unit id="apps-and-games.games.bug-a-ball.cta">
-      <segment state="initial">
+      <segment state="translated">
         <source>Zur Website</source>
+        <target>Visit the website</target>
       </segment>
     </unit>
     <unit id="home.projects.kicker">
-      <segment state="initial">
+      <segment state="translated">
         <source>Projekte</source>
+        <target>Projects</target>
       </segment>
     </unit>
     <unit id="home.projects.title">
-      <segment state="initial">
+      <segment state="translated">
         <source>Apps &amp; Spiele</source>
+        <target>Apps &amp; Games</target>
       </segment>
     </unit>
     <unit id="home.projects.subtitle">
-      <segment state="initial">
+      <segment state="translated">
         <source>Woran wir gerade bauen — und was du schon heute spielen und benutzen kannst. Kostenlos und Open Source.</source>
+        <target>What we&apos;re building right now — and what you can already play and use today. Free and open source.</target>
       </segment>
     </unit>
     <unit id="home.projects.all-link">
-      <segment state="initial">
+      <segment state="translated">
         <source>Alle Projekte</source>
+        <target>All projects</target>
       </segment>
     </unit>
     <unit id="common.project-type.app">
-      <segment state="initial">
+      <segment state="translated">
         <source>App</source>
+        <target>App</target>
       </segment>
     </unit>
     <unit id="home.projects.lehrgrapht.platforms">
-      <segment state="initial">
+      <segment state="translated">
         <source>Word für Windows, macOS &amp; iPad</source>
+        <target>Word for Windows, macOS &amp; iPad</target>
       </segment>
     </unit>
     <unit id="home.projects.lehrgrapht.description">
-      <segment state="initial">
+      <segment state="translated">
         <source>Kostenfreies, quelloffenes Word-AddIn für Lehrkräfte: maßstabsgetreue Plots, passgenau auf 5×5-mm-Karopapier — ideal zum Nachmessen.</source>
+        <target>A free, open-source Word add-in for teachers: true-to-scale plots that line up exactly with 5×5 mm graph paper — ideal for measuring off.</target>
       </segment>
     </unit>
     <unit id="home.projects.lehrgrapht.link-aria">
-      <segment state="initial">
+      <segment state="translated">
         <source>LehrGrapht – zur Website</source>
+        <target>LehrGrapht – visit the website</target>
       </segment>
     </unit>
     <unit id="home.projects.lehrgrapht.link">
-      <segment state="initial">
+      <segment state="translated">
         <source>Zur Website</source>
+        <target>Visit the website</target>
       </segment>
     </unit>
     <unit id="home.projects.flugwacht.platforms">
-      <segment state="initial">
+      <segment state="translated">
         <source>iOS &amp; Android</source>
+        <target>iOS &amp; Android</target>
       </segment>
     </unit>
     <unit id="home.projects.flugwacht.description">
-      <segment state="initial">
+      <segment state="translated">
         <source>Bewusst minimaler Flug-Tracker: Flugnummer eintragen und am Reisetag live auf der Karte verfolgen, wo der Flieger gerade ist — ganz ohne Konto.</source>
+        <target>A deliberately minimal flight tracker: enter a flight number and follow it live on the map on the day you travel — no account needed.</target>
       </segment>
     </unit>
     <unit id="home.projects.flugwacht.link-aria">
-      <segment state="initial">
+      <segment state="translated">
         <source>Flugwacht – zum Repository auf GitHub</source>
+        <target>Flugwacht – go to the repository on GitHub</target>
       </segment>
     </unit>
     <unit id="home.projects.flugwacht.link">
-      <segment state="initial">
+      <segment state="translated">
         <source>Zum Repository</source>
+        <target>Go to the repository</target>
       </segment>
     </unit>
     <unit id="home.projects.mat.platforms">
-      <segment state="initial">
+      <segment state="translated">
         <source>macOS, Linux &amp; Windows</source>
+        <target>macOS, Linux &amp; Windows</target>
       </segment>
     </unit>
     <unit id="home.projects.mat.description">
-      <segment state="initial">
+      <segment state="translated">
         <source>Markdown-Vorschau direkt aus dem Terminal — gerendert wie auf GitHub, ohne Server und ohne Konfiguration. So beiläufig wie <pc id="0" equivStart="START_TAG_SPAN" equivEnd="CLOSE_TAG_SPAN" type="other" dispStart="&lt;span class=&quot;font-mono&quot;&gt;" dispEnd="&lt;/span&gt;">cat</pc>.</source>
+        <target>Preview Markdown straight from your terminal — rendered the way GitHub does it, with no server and no configuration. As casual as <pc id="0" equivStart="START_TAG_SPAN" equivEnd="CLOSE_TAG_SPAN" type="other" dispStart="&lt;span class=&quot;font-mono&quot;&gt;" dispEnd="&lt;/span&gt;">cat</pc>.</target>
       </segment>
     </unit>
     <unit id="home.projects.mat.link-aria">
-      <segment state="initial">
+      <segment state="translated">
         <source>MAT – zum Repository auf GitHub</source>
+        <target>MAT – go to the repository on GitHub</target>
       </segment>
     </unit>
     <unit id="home.projects.mat.link">
-      <segment state="initial">
+      <segment state="translated">
         <source>Zum Repository</source>
+        <target>Go to the repository</target>
       </segment>
     </unit>
     <unit id="common.project-type.game">
-      <segment state="initial">
+      <segment state="translated">
         <source>Spiel</source>
+        <target>Game</target>
       </segment>
     </unit>
     <unit id="home.projects.bug-a-ball.platforms">
-      <segment state="initial">
+      <segment state="translated">
         <source>iOS &amp; Android</source>
+        <target>iOS &amp; Android</target>
       </segment>
     </unit>
     <unit id="home.projects.bug-a-ball.description">
-      <segment state="initial">
+      <segment state="translated">
         <source>Rolle dich durch Level und Welten, weiche Hindernissen aus, schalte exklusive Skins frei — und zeig auf der Bestenliste, wer hier der Profi ist.</source>
+        <target>Roll your way through levels and worlds, dodge the obstacles, unlock exclusive skins — and show everyone on the leaderboard who the pro is.</target>
       </segment>
     </unit>
     <unit id="home.projects.bug-a-ball.link-aria">
-      <segment state="initial">
+      <segment state="translated">
         <source>Bug-A-Ball – zur Website</source>
+        <target>Bug-A-Ball – visit the website</target>
       </segment>
     </unit>
     <unit id="home.projects.bug-a-ball.link">
-      <segment state="initial">
+      <segment state="translated">
         <source>Zur Website</source>
+        <target>Visit the website</target>
       </segment>
     </unit>
     <unit id="home.support.title">
-      <segment state="initial">
+      <segment state="translated">
         <source> Unterstütze uns </source>
+        <target>Support us</target>
       </segment>
     </unit>
     <unit id="home.support.text">
-      <segment state="initial">
+      <segment state="translated">
         <source> Unsere Projekte sind kostenlos und Open Source. Wenn du magst, gib etwas zurück — vieles davon kostet dich keinen Cent. </source>
+        <target>Our projects are free and open source. If you&apos;d like to give something back, plenty of the ways cost you nothing at all.</target>
       </segment>
     </unit>
     <unit id="home.support.all-options-link">
-      <segment state="initial">
+      <segment state="translated">
         <source>Alle Möglichkeiten ansehen</source>
+        <target>See all the ways</target>
       </segment>
     </unit>
     <unit id="home.github.kicker">
-      <segment state="initial">
+      <segment state="translated">
         <source>Open Source</source>
+        <target>Open Source</target>
       </segment>
     </unit>
     <unit id="home.github.title">
-      <segment state="initial">
+      <segment state="translated">
         <source>Zuletzt auf GitHub</source>
+        <target>Latest on GitHub</target>
       </segment>
     </unit>
     <unit id="home.github.all-repositories-link">
-      <segment state="initial">
+      <segment state="translated">
         <source>Alle Repositories</source>
+        <target>All repositories</target>
       </segment>
     </unit>
     <unit id="not-found.kicker">
@@ -736,23 +793,27 @@
       </segment>
     </unit>
     <unit id="home.github.card.updated">
-      <segment state="initial">
+      <segment state="translated">
         <source><ph id="0" equiv="INTERPOLATION" disp="{{ versionLabel() }}"/> · aktualisiert <pc id="1" equivStart="START_TAG_TIME" equivEnd="CLOSE_TAG_TIME" type="other" dispStart="&lt;time [attr.datetime]=&quot;updatedAt()&quot; data-lastmod-ignore &gt;" dispEnd="&lt;/time &gt;"><ph id="2" equiv="INTERPOLATION_1" disp="{{ relativeLabel() }}"/></pc></source>
+        <target><ph id="0" equiv="INTERPOLATION" disp="{{ versionLabel() }}"/> · updated <pc id="1" equivStart="START_TAG_TIME" equivEnd="CLOSE_TAG_TIME" type="other" dispStart="&lt;time [attr.datetime]=&quot;updatedAt()&quot; data-lastmod-ignore &gt;" dispEnd="&lt;/time &gt;"><ph id="2" equiv="INTERPOLATION_1" disp="{{ relativeLabel() }}"/></pc></target>
       </segment>
     </unit>
     <unit id="home.github.lehrgrapht.description">
-      <segment state="initial">
+      <segment state="translated">
         <source>Mathe-Plotter-Word-AddIn für Lehrkräfte — maßstabsgetreu auf 5×5-mm-Karopapier.</source>
+        <target>A maths plotter Word add-in for teachers — true to scale on 5×5 mm graph paper.</target>
       </segment>
     </unit>
     <unit id="home.github.mat.description">
-      <segment state="initial">
+      <segment state="translated">
         <source>Markdown-Vorschau im Browser, gerendert wie auf GitHub — direkt aus dem Terminal.</source>
+        <target>Markdown preview in your browser, rendered the way GitHub does it — straight from the terminal.</target>
       </segment>
     </unit>
     <unit id="home.github.flugwacht.description">
-      <segment state="initial">
+      <segment state="translated">
         <source>Minimaler Flug-Tracker für einzelne, manuell angelegte Flüge — live auf der Karte.</source>
+        <target>A minimal tracker for individual, manually added flights — live on the map.</target>
       </segment>
     </unit>
   </file>
