@@ -74,6 +74,8 @@ jobs:
         with:
           version: ${{ steps.node-version.outputs.version }}
       # The `prebuild` hook fetches the GitHub data, so this is a single step and never fetches twice.
-      - run: npm run build
+      # The i18n gate is flagged down until the M7 catalogue is complete; `angular.json` keeps
+      # `i18nMissingTranslation: "error"` so that flip is a real gate.
+      - run: npm run build -- --i18n-missing-translation=warning
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

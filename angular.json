@@ -12,12 +12,25 @@
       "root": "projects/website",
       "sourceRoot": "projects/website/src",
       "prefix": "bfs",
+      "i18n": {
+        "sourceLocale": {
+          "code": "de",
+          "subPath": ""
+        },
+        "locales": {
+          "en": {
+            "translation": "projects/website/src/locale/messages.en.xlf",
+            "subPath": "en"
+          }
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular/build:application",
           "options": {
             "browser": "projects/website/src/main.ts",
             "tsConfig": "projects/website/tsconfig.app.json",
+            "polyfills": ["@angular/localize/init"],
             "assets": [
               {
                 "glob": "**/*",
@@ -29,6 +42,9 @@
             // but ships an empty client-side shell with nothing prerendered.
             "server": "projects/website/src/main.server.ts",
             "outputMode": "static",
+            "localize": true,
+            "i18nMissingTranslation": "error",
+            "i18nDuplicateTranslation": "error",
             "security": {
               "allowedHosts": []
             }
@@ -52,7 +68,11 @@
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "localize": ["de"]
+            },
+            "en": {
+              "localize": ["en"]
             }
           },
           "defaultConfiguration": "production"
@@ -65,9 +85,21 @@
             },
             "development": {
               "buildTarget": "website:build:development"
+            },
+            "en": {
+              "buildTarget": "website:build:development,en"
             }
           },
           "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular/build:extract-i18n",
+          "options": {
+            "buildTarget": "website:build:development",
+            "format": "xlf2",
+            "outputPath": "projects/website/src/locale",
+            "outFile": "messages.xlf"
+          }
         },
         "test": {
           "builder": "@angular/build:unit-test"
