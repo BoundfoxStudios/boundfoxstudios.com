@@ -36,6 +36,18 @@ const GRIDS = [
     name: 'Bug-A-Ball feature card',
     columns: { 320: 1, 768: 2, 1152: 2, 1440: 2 },
   },
+  {
+    route: 'support',
+    selector: 'bfs-support-page section:nth-of-type(2) div.grid',
+    name: 'free support grid',
+    columns: { 320: 1, 768: 2, 1152: 3, 1440: 3 },
+  },
+  {
+    route: 'support',
+    selector: 'bfs-support-page section:nth-of-type(3) div.grid',
+    name: 'financial support grid',
+    columns: { 320: 1, 768: 2, 1152: 2, 1440: 2 },
+  },
 ];
 
 const CONTENT_TYPES = {

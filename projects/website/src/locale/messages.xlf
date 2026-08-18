@@ -826,6 +826,190 @@
         <source>Socials</source>
       </segment>
     </unit>
+    <unit id="support.hero.kicker">
+      <notes>
+        <note category="location">projects/website/src/app/pages/support/support.html:5,6</note>
+      </notes>
+      <segment>
+        <source>Community</source>
+      </segment>
+    </unit>
+    <unit id="support.hero.title">
+      <notes>
+        <note category="location">projects/website/src/app/pages/support/support.html:7,8</note>
+      </notes>
+      <segment>
+        <source>Unterstütze uns</source>
+      </segment>
+    </unit>
+    <unit id="support.hero.lead">
+      <notes>
+        <note category="location">projects/website/src/app/pages/support/support.html:9,10</note>
+      </notes>
+      <segment>
+        <source>Unsere Spiele, Apps und Tutorials sind kostenlos — und sollen es bleiben. Hier findest du alle Möglichkeiten, uns dabei zu unterstützen. Vieles davon kostet dich keinen Cent.</source>
+      </segment>
+    </unit>
+    <unit id="support.hero.thanks">
+      <notes>
+        <note category="location">projects/website/src/app/pages/support/support.html:17,19</note>
+      </notes>
+      <segment>
+        <source> Danke! </source>
+      </segment>
+    </unit>
+    <unit id="support.free.heading">
+      <notes>
+        <note category="location">projects/website/src/app/pages/support/support.html:25,26</note>
+      </notes>
+      <segment>
+        <source>Kostenfrei unterstützen</source>
+      </segment>
+    </unit>
+    <unit id="support.free.subline">
+      <notes>
+        <note category="location">projects/website/src/app/pages/support/support.html:27,28</note>
+      </notes>
+      <segment>
+        <source>Zeit und Aufmerksamkeit helfen uns genauso wie Geld — manchmal sogar mehr.</source>
+      </segment>
+    </unit>
+    <unit id="support.financial.heading">
+      <notes>
+        <note category="location">projects/website/src/app/pages/support/support.html:59,60</note>
+      </notes>
+      <segment>
+        <source>Finanziell unterstützen</source>
+      </segment>
+    </unit>
+    <unit id="support.financial.subline">
+      <notes>
+        <note category="location">projects/website/src/app/pages/support/support.html:61,62</note>
+      </notes>
+      <segment>
+        <source>Einmalig oder monatlich — ganz wie du magst. Jeder Beitrag hilft, weiter kostenlose Projekte zu bauen.</source>
+      </segment>
+    </unit>
+    <unit id="support.free.github.description">
+      <notes>
+        <note category="location">projects/website/src/app/pages/support/support.ts:25</note>
+      </notes>
+      <segment>
+        <source>Vergib Stars, melde Fehler, schlag Features vor — oder bring dich direkt mit Pull Requests in unsere Open-Source-Projekte ein.</source>
+      </segment>
+    </unit>
+    <unit id="support.free.github.cta">
+      <notes>
+        <note category="location">projects/website/src/app/pages/support/support.ts:26</note>
+      </notes>
+      <segment>
+        <source>Zur Organisation</source>
+      </segment>
+    </unit>
+    <unit id="support.free.github.aria">
+      <notes>
+        <note category="location">projects/website/src/app/pages/support/support.ts:27</note>
+      </notes>
+      <segment>
+        <source>GitHub – zur Organisation</source>
+      </segment>
+    </unit>
+    <unit id="support.free.discord.description">
+      <notes>
+        <note category="location">projects/website/src/app/pages/support/support.ts:33</note>
+      </notes>
+      <segment>
+        <source>Sei im Discord aktiv, rege Diskussionen an und hilf anderen aus der Community — genau dafür ist er da.</source>
+      </segment>
+    </unit>
+    <unit id="support.free.discord.cta">
+      <notes>
+        <note category="location">projects/website/src/app/pages/support/support.ts:34</note>
+      </notes>
+      <segment>
+        <source>Server beitreten</source>
+      </segment>
+    </unit>
+    <unit id="support.free.discord.aria">
+      <notes>
+        <note category="location">projects/website/src/app/pages/support/support.ts:35</note>
+      </notes>
+      <segment>
+        <source>Discord – Server beitreten</source>
+      </segment>
+    </unit>
+    <unit id="support.free.youtube.description">
+      <notes>
+        <note category="location">projects/website/src/app/pages/support/support.ts:41</note>
+      </notes>
+      <segment>
+        <source>Schau unsere Videos, like und kommentiere sie — so werden sie von YouTube besser gefunden und erreichen mehr Leute.</source>
+      </segment>
+    </unit>
+    <unit id="support.free.youtube.cta">
+      <notes>
+        <note category="location">projects/website/src/app/pages/support/support.ts:42</note>
+      </notes>
+      <segment>
+        <source>Kanal öffnen</source>
+      </segment>
+    </unit>
+    <unit id="support.free.youtube.aria">
+      <notes>
+        <note category="location">projects/website/src/app/pages/support/support.ts:43</note>
+      </notes>
+      <segment>
+        <source>YouTube – Kanal öffnen</source>
+      </segment>
+    </unit>
+    <unit id="support.financial.kofi.description">
+      <notes>
+        <note category="location">projects/website/src/app/pages/support/support.ts:52</note>
+      </notes>
+      <segment>
+        <source>Spendier uns einen Kaffee — einmalig oder monatlich, ganz ohne Verpflichtung.</source>
+      </segment>
+    </unit>
+    <unit id="support.financial.kofi.cta">
+      <notes>
+        <note category="location">projects/website/src/app/pages/support/support.ts:53</note>
+      </notes>
+      <segment>
+        <source>Kaffee spendieren</source>
+      </segment>
+    </unit>
+    <unit id="support.financial.kofi.aria">
+      <notes>
+        <note category="location">projects/website/src/app/pages/support/support.ts:54</note>
+      </notes>
+      <segment>
+        <source>Ko-fi – Kaffee spendieren</source>
+      </segment>
+    </unit>
+    <unit id="support.financial.patreon.description">
+      <notes>
+        <note category="location">projects/website/src/app/pages/support/support.ts:60</note>
+      </notes>
+      <segment>
+        <source>Unterstütze uns mit einem monatlichen Beitrag deiner Wahl und begleite unsere Projekte langfristig.</source>
+      </segment>
+    </unit>
+    <unit id="support.financial.patreon.cta">
+      <notes>
+        <note category="location">projects/website/src/app/pages/support/support.ts:61</note>
+      </notes>
+      <segment>
+        <source>Patron werden</source>
+      </segment>
+    </unit>
+    <unit id="support.financial.patreon.aria">
+      <notes>
+        <note category="location">projects/website/src/app/pages/support/support.ts:62</note>
+      </notes>
+      <segment>
+        <source>Patreon – Patron werden</source>
+      </segment>
+    </unit>
     <unit id="home.github.card.updated">
       <notes>
         <note category="location">projects/website/src/app/ui/repository-card/repository-card.html:10,17</note>
