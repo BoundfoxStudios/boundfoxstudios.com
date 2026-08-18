@@ -26,13 +26,14 @@ Node.js as pinned in [`.nvmrc`](.nvmrc). `npm ci` installs the toolchain and, th
 | `npm run images:crops`    | Re-generate the two Bug-A-Ball key-art crops into `public/images/`                |
 | `npm run build`           | `ng build` — both locales, fully prerendered, into `dist/website/browser`         |
 | `npm run build:draft`     | `ng build --i18n-missing-translation=warning` — both locales with source fallback |
+| `npm run i18n:extract`    | `ng extract-i18n` — regenerate `messages.xlf` after adding a marked string        |
 | `npm run watch`           | Development build in watch mode                                                   |
 | `npm test`                | `ng test` (Vitest)                                                                |
 | `npm run lint`            | ESLint over the whole repository                                                  |
 | `npm run format`          | `prettier --write .`                                                              |
 | `npm run format:check`    | `prettier --check .`                                                              |
 
-The remaining commands in SPEC §5 — `i18n:extract` and `verify:dist` — arrive with M7 and M8.
+The remaining command in SPEC §5 — `verify:dist` — arrives with M8.
 
 ## `ng serve` cannot show you the real site
 
@@ -43,6 +44,11 @@ either `npm start` or `npm run start:en`.
 `npm run preview` is the only way to verify them: it runs a real build and serves the output
 tree, so `http://localhost:4300/` and `http://localhost:4300/en/` behave exactly as they will in
 production.
+
+Until the English catalogue is complete, a plain build fails on the first untranslated string —
+`angular.json` sets `i18nMissingTranslation: "error"` and never changes. Use `npm run preview:de`
+for German-only verification, or `npm run preview:draft`, which builds both locales with the
+German source as the fallback, when `/en/` itself has to be looked at.
 
 ## GitHub release data
 
