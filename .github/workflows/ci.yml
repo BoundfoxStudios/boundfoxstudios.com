@@ -87,3 +87,11 @@ jobs:
       - run: npm run build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # SPEC §12 D11: the site measures nothing. The privacy policy and the home page promise it in
+      # so many words, so the promise is checked against what actually ships rather than trusted.
+      - name: Nothing is measured
+        run: |
+          if grep -rniE 'cloudflareinsights|beacon\.min\.js|googletagmanager|google-analytics|plausible\.io|matomo' dist/website/browser; then
+            echo "::error::an analytics script reached the build — see SPEC §12 D11"
+            exit 1
+          fi
