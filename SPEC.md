@@ -329,8 +329,9 @@ project conventions forbid that. So:
   finding on the orange kicker (§11.6). Any other finding fails the build. The exception lives
   in `docs/accessibility.md` with the measured ratio and the reason, so it stays a decision
   rather than drift.
-- **Weekly link check** (`lychee`) over the built HTML — not per PR, so a dead partner link
-  surfaces without blocking merges.
+- **No link check** (D14). `lychee` extracted only the `<head>` of the prerendered pages and
+  never requested a single external destination, and the assertion that caught that had to be
+  hand-updated for every link the copy gains.
 
 ---
 
@@ -450,6 +451,7 @@ something in the design handoff or an earlier assumption.
 | D11 | Measurement | **None.** No client-side script of any kind. Cloudflare's zone analytics exist as a byproduct of the CDN and are not part of the site |
 | D12 | Translation catalogue tooling | `ng-extract-i18n-merge` with `newTranslationTargetsBlank: "omit"` — the default copies the German source into new targets and would ship German into `/en/` with a green build |
 | D13 | Build output assertions | **None.** No `verify-dist` script — the Lighthouse and axe gates run over the same `dist/`, and the generators are covered by unit tests |
+| D14 | Link health | **Not checked.** `lychee` saw only the `<head>` of the prerendered pages — zero external destinations requested — and the host list that exposed that is maintenance on every new link |
 
 ### Awaiting delivery, not decision
 
