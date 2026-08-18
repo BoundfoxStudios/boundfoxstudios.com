@@ -34,4 +34,47 @@
       alt=""
     />
   </div>
+
+  <h2 class="mt-10 font-display text-2xl tracking-wide text-neutral-900 uppercase">Brand icons</h2>
+
+  @for (size of brandIconSizes; track size) {
+    <div class="mt-4 flex flex-wrap items-center gap-6 text-neutral-900">
+      <span class="font-mono text-xs">{{ size }}</span>
+      @for (name of brandIconNames; track name) {
+        <bfs-brand-icon
+          [name]="name"
+          [size]="size"
+        />
+      }
+    </div>
+  }
+
+  <div class="mt-4 flex flex-wrap items-center gap-6 bg-neutral-900 p-6 text-white">
+    @for (name of brandIconNames; track name) {
+      <bfs-brand-icon
+        [name]="name"
+        [size]="32"
+      />
+    }
+  </div>
+
+  <div class="mt-4 flex flex-wrap items-center gap-6 bg-neutral-900 p-6 text-yellow">
+    @for (name of brandIconNames; track name) {
+      <bfs-brand-icon
+        [name]="name"
+        [size]="32"
+      />
+    }
+  </div>
+
+  <div class="mt-4 flex flex-wrap items-center gap-6 text-neutral-900">
+    <bfs-brand-icon
+      [size]="200"
+      name="discord"
+    />
+    <bfs-brand-icon
+      [size]="200"
+      name="youtube"
+    />
+  </div>
 </section>
