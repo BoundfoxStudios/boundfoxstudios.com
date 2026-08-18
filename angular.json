@@ -96,12 +96,19 @@
           "defaultConfiguration": "development"
         },
         "extract-i18n": {
-          "builder": "@angular/build:extract-i18n",
+          "builder": "ng-extract-i18n-merge:ng-extract-i18n-merge",
           "options": {
             "buildTarget": "website:build:development",
             "format": "xlf2",
             "outputPath": "projects/website/src/locale",
-            "outFile": "messages.xlf"
+            "sourceFile": "messages.xlf",
+            "targetFiles": ["messages.en.xlf"],
+            // The default copies the German source into a new target, which would ship German
+            // into /en/ with a green build. "omit" leaves the target absent instead, so
+            // `i18nMissingTranslation: "error"` catches it.
+            "newTranslationTargetsBlank": "omit",
+            "sort": "stableAppendNew",
+            "includeContext": false
           }
         },
         "test": {
