@@ -51,7 +51,6 @@ export const APPS: readonly AppEntry[] = [
   {
     slug: 'bug-a-ball',
     name: 'Bug-A-Ball',
-    // `bug-a-ball.com` serves an invalid certificate (SPEC §11.3), so every link uses this host.
     description: $localize`:@@apps-and-games.games.bug-a-ball.description:In Bug-A-Ball rollst du dich durch verschiedene Level und Welten, vorbei an kniffligen Hindernissen. Schalte exklusive Skins frei und zeig allen auf der Bestenliste, wer hier der Profi ist.`,
     type: 'VideoGame',
     applicationCategory: 'GameApplication',
