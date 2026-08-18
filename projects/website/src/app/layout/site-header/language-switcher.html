@@ -1,0 +1,35 @@
+<!-- A group, not a landmark: the footer switcher carries the identical accessible name, and two
+     <nav>s of the same name are an axe `landmark-unique` violation. -->
+<div
+  class="flex items-center gap-2 border-l border-neutral-600 pl-4 font-display text-sm tracking-wider"
+  role="group"
+  aria-label="Sprache wählen"
+  i18n-aria-label="@@site-header.language.aria-label"
+>
+  @for (localeLink of links(); track localeLink.code; let isLast = $last) {
+    @if (localeLink.current) {
+      <span
+        class="text-yellow"
+        aria-current="true"
+        translate="no"
+        >{{ localeLink.code.toUpperCase() }}</span
+      >
+    } @else {
+      <a
+        class="text-white focus-ring hover:text-yellow"
+        [href]="localeLink.href"
+        [attr.hreflang]="localeLink.hreflang"
+        rel="alternate"
+        translate="no"
+        >{{ localeLink.code.toUpperCase() }}</a
+      >
+    }
+    @if (!isLast) {
+      <span
+        class="text-neutral-600"
+        aria-hidden="true"
+        >/</span
+      >
+    }
+  }
+</div>

@@ -348,11 +348,12 @@ div.flex.items-center.gap-2.5                                     (host: content
 │        [priority] only when priority() is true
 └── span.font-display.text-2xl.leading-none.tracking-wider.uppercase  [class.whitespace-nowrap]="nowrap()"  translate="no"
     ├── span.text-orange → Boundfox
-    ├── " "  (a real space character)
+    ├── &ngsp;  (renders as one real space)
     └── span.text-yellow → Studios
 ```
 
 - The lockup is **never itself a link**: the header wraps it in `<a routerLink="/">`, the footer renders it bare.
+- The separating space is authored as `&ngsp;`, recorded here because a literal space is silently wrong: Angular's whitespace removal deletes a whitespace-only text node between two elements, so `Boundfox` and `Studios` would render glued together. `&ngsp;` compiles to U+0020, which keeps the footer's `nowrap = false` able to break the wordmark; `&nbsp;` would freeze it. Verified in the prerendered header markup (issue #17).
 - `alt=""` on **both** marks, and the logo link carries no `aria-label`. This is a deliberate deviation from `docs/design/site-header.md` §2.3 (`alt="Boundfox Studios"`): the adjacent wordmark is real text, so a non-empty alt makes the name announce twice. `site-header.logo.alt` and `site-header.logo.link-label` are retired.
 - `Boundfox`/`Studios` are unmarked locale-invariant brand words; `uppercase` supplies the rendered caps.
 - The full mark contract (relative `ngSrc`, explicit dimensions, `priority` on the header only) is §5.1.
@@ -406,12 +407,30 @@ Consumer: home, section C.
 
 ### 4.1 `bfs-site-header` — `app/layout/site-header/`
 
-No inputs. `<header class="surface-dark bg-neutral-900 text-white">` › `<div class="mx-auto flex min-h-12 max-w-6xl flex-wrap items-center gap-4 gap-y-2 px-6 py-2">` (8 + 48 + 8 = 64px) with three children:
+No inputs. `<header class="surface-dark bg-neutral-900 text-white">` › `<div class="mx-auto flex min-h-16 max-w-6xl flex-wrap items-center gap-4 gap-y-2 px-6 py-2">` (64px) with three children:
 
 - `<a routerLink="/" class="focus-ring">` wrapping `<bfs-brand-lockup [priority]="true" />`.
-- `<nav class="ml-auto flex flex-wrap items-center gap-1" [attr.aria-label]>` with four links, each `border-b-2 border-transparent px-3 py-2 font-display text-base tracking-wider text-white uppercase transition-colors duration-150 ease-in-out hover:text-yellow focus-ring`, `routerLinkActive="text-yellow border-yellow"`, `[routerLinkActiveOptions]="{ exact: true }"` on `/`, plus `aria-current="page"` when active. Routes: `/`, `/apps-and-games`, `/support`, `/socials` (no trailing slash, C12).
-- `bfs-language-switcher`: `flex items-center gap-2 border-l border-neutral-600 pl-4 font-display text-sm tracking-wider`. The current locale is `<span aria-current="true" class="text-yellow">DE</span>` — never a self-link; the other locale is `<a [href] hreflang rel="alternate" class="text-white hover:text-yellow focus-ring">EN</a>`; separator `<span aria-hidden="true" class="text-neutral-600">/</span>`. Hrefs come from `seo/locale-links.ts` (`LocaleLinks`), never computed in the component.
+- `<nav class="ml-auto flex flex-wrap items-center gap-1" [attr.aria-label]>` with four links, each `border-b-2 border-transparent px-3 py-2 font-display text-base tracking-wider text-white uppercase transition-colors duration-150 ease-in-out hover:text-yellow focus-ring`, `routerLinkActive="text-yellow border-yellow"`, `[routerLinkActiveOptions]="{ exact: true }"` on `/`, plus `aria-current="page"` when active (from `ariaCurrentWhenActive="page"`, `RouterLinkActive`'s own input — no template reference variable needed). Routes: `/`, `/apps-and-games`, `/support`, `/socials` (no trailing slash, C12).
+- `bfs-language-switcher` — §4.1.1.
 - The mobile menu (issue #18) adds `max-md:hidden` to the nav and the switcher, `md:hidden` to the burger, and the `mobile-menu-panel` overlay; its glyph paths are `M3 6h18M3 12h18M3 18h18` and `M18 6 6 18M6 6l12 12`.
+
+**`min-h-16`, not `min-h-12` (corrected while building #17, recorded in issue #76).** The design's "`min-height: 48px` + 8px + 8px = 64px" (`docs/design/site-header.md` §1/§2.2/§9) is content-box arithmetic. Preflight sets `box-sizing: border-box`, under which the 16px of `py-2` is *inside* the 48px, the tallest flex item is a 42px nav link (24px line box, because Tailwind forces `--text-base--line-height: 1.5`, + 16px padding + 2px border), and `min-h-12` never engages — the band measures 58px. `min-h-16` is the one token that reproduces the 64px every other document states, including the mobile-menu overlay's `top('64px')` (`docs/decisions.md` M3 › Panel geometry and motion). Measured with Playwright over the real build: exactly 64px at 768 / 1152 / 1280 / 1440px, 172px at 320 / 375px where the nav and the switcher wrap.
+
+#### 4.1.1 `bfs-language-switcher` — `app/layout/site-header/language-switcher.ts|.html`
+
+```ts
+readonly links = input.required<readonly LocaleLink[]>();
+```
+
+Presentational (C6): it injects nothing, and `bfs-site-header` passes `localeLinks.links()` in. Hrefs come from `seo/locale-links.ts` (`LocaleLinks`), never computed in the component.
+
+Root element `<div role="group" aria-label="Sprache wählen" i18n-aria-label="@@site-header.language.aria-label" class="flex items-center gap-2 border-l border-neutral-600 pl-4 font-display text-sm tracking-wider">`, then one `@for` over `links()`: the current locale is `<span aria-current="true" translate="no" class="text-yellow">DE</span>` — never a self-link; the other locale is `<a [href] [attr.hreflang] rel="alternate" translate="no" class="text-white hover:text-yellow focus-ring">EN</a>` and never a `routerLink` (separate bundles, full document load); separator `<span aria-hidden="true" class="text-neutral-600">/</span>`, emitted from `$last` so it never trails.
+
+- **A group, not a landmark.** `docs/design/site-header.md` §1 renders the switcher as a `<div>` and `docs/decisions.md` › _Copy_ fixes `footer.language.aria-label` as the `aria-label` of the footer's language `<nav>`. Both are on every page, so a second `<nav>` with the identical name would be an axe `landmark-unique` violation, and SPEC §8 allows exactly one documented axe exception, already spent on the orange kicker (§11.6). `role="group"` keeps the design's element, exposes the name (a bare `<div aria-label>` exposes nothing and trips axe's `aria-prohibited-attr`), and adds no landmark. Verified: the header's accessibility tree is `banner › link "Boundfox Studios" › navigation "Hauptnavigation" › group "Sprache wählen"` — the header's only `<nav>` is the main navigation, so §4.2's footer language `<nav>` stays the one landmark named `Sprache wählen`. An axe-core run over the prerendered pages reports no violation from the header, `aria-prohibited-attr` and `landmark-unique` included.
+- `DE` / `EN` are unmarked `translate="no"` literals (C8), rendered as `{{ localeLink.code.toUpperCase() }}`; `site-header.language.de` / `.en` from `docs/design/site-header.md` §4 are retired. Only `site-header.language.aria-label` is marked.
+- The switcher anchor carries no `transition-colors`: the base `a` rule in `styles.css` already transitions `color` at 150ms, and unlike a nav link it has no border colour to carry along.
+
+Consumer: the header. The footer ships its own markup — it needs the `Deutsch`/`English` endonyms (`footer.language.de` / `footer.language.en`), not `DE`/`EN`.
 
 ### 4.2 `bfs-site-footer` — `app/layout/site-footer/`
 
