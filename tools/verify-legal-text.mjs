@@ -45,8 +45,10 @@ const proseOf = html => {
     return null;
   }
 
-  // The prose wrapper is the last <div> child of the section; the notice, when present, precedes it.
-  const wrapper = section[1].match(/<div(?:\s+lang="[a-z]+")?>([\s\S]*)<\/div>/);
+  // The wrapper carries `data-legal-prose` so this matcher survives every styling change. Its
+  // previous form spelled the tag out and turned all four comparisons into silent skips the first
+  // time the wrapper gained a class.
+  const wrapper = section[1].match(/<div[^>]*\sdata-legal-prose[^>]*>([\s\S]*)<\/div>/);
 
   return wrapper ? wrapper[1] : null;
 };

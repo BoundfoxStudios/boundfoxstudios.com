@@ -1,8 +1,9 @@
-import { createServer } from 'node:http';
-import { readFile, stat } from 'node:fs/promises';
-import { extname, join } from 'node:path';
+import { stat } from 'node:fs/promises';
+import { join } from 'node:path';
 
 import { chromium } from 'playwright';
+
+import { serveStaticDirectory } from './static-server.mjs';
 
 const DIST = 'dist/website/browser';
 const PORT = 4399;
@@ -56,42 +57,6 @@ const GRIDS = [
   },
 ];
 
-const CONTENT_TYPES = {
-  '.html': 'text/html; charset=utf-8',
-  '.css': 'text/css',
-  '.js': 'text/javascript',
-  '.json': 'application/json',
-  '.svg': 'image/svg+xml',
-  '.webp': 'image/webp',
-  '.jpg': 'image/jpeg',
-  '.png': 'image/png',
-  '.woff2': 'font/woff2',
-  '.xml': 'application/xml',
-  '.txt': 'text/plain',
-};
-
-const serve = () =>
-  new Promise(resolve => {
-    const server = createServer(async (request, response) => {
-      const path = decodeURIComponent(request.url.split('?')[0]);
-      const candidate = join(DIST, path.endsWith('/') ? `${path}index.html` : path);
-
-      try {
-        const body = await readFile(candidate);
-        response.writeHead(200, {
-          'content-type': CONTENT_TYPES[extname(candidate)] ?? 'application/octet-stream',
-        });
-        response.end(body);
-      } catch {
-        response.writeHead(404).end('not found');
-      }
-    });
-
-    server.listen(PORT, '127.0.0.1', () => {
-      resolve(server);
-    });
-  });
-
 const routeExists = async route => {
   try {
     await stat(join(DIST, route, 'index.html'));
@@ -102,7 +67,7 @@ const routeExists = async route => {
   }
 };
 
-const server = await serve();
+const server = await serveStaticDirectory(DIST, PORT);
 const browser = await chromium.launch();
 const failures = [];
 const report = (ok, message) => {
