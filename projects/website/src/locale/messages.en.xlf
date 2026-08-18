@@ -1,5 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xliff version="2.0" xmlns="urn:oasis:names:tc:xliff:document:2.0" srcLang="de" trgLang="en">
   <file id="ngi18n" original="ng.template">
+    <unit id="imprint.title">
+      <segment state="translated">
+        <source> Impressum </source>
+        <target> Legal notice </target>
+      </segment>
+    </unit>
+    <unit id="privacy.title">
+      <segment state="translated">
+        <source> Datenschutzerklärung </source>
+        <target> Privacy Policy </target>
+      </segment>
+    </unit>
+    <unit id="privacy.last-updated">
+      <segment state="translated">
+        <source> Stand: <ph id="0" equiv="INTERPOLATION" disp="{{ lastUpdated | date: &apos;MMMM y&apos; : &apos;UTC&apos; }}"/> </source>
+        <target> Last updated: <ph id="0" equiv="INTERPOLATION" disp="{{ lastUpdated | date: &apos;MMMM y&apos; : &apos;UTC&apos; }}"/> </target>
+      </segment>
+    </unit>
+    <unit id="legal.german-only-notice">
+      <segment state="translated">
+        <source> Diese Seite gibt es nur auf Deutsch. Rechtlich verbindlich ist ausschließlich die deutsche Fassung. </source>
+        <target> This page is available in German only. Only the German version is legally binding. </target>
+      </segment>
+    </unit>
   </file>
 </xliff>
