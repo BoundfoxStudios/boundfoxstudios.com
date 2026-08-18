@@ -20,7 +20,7 @@ module.exports = {
         'categories:best-practices': ['error', { minScore: 0.95 }],
         'categories:seo': ['error', { minScore: 1 }],
         // Collected and visible in the report, deliberately never asserted: the orange kicker
-        // cannot reach AA and `#ffa726` is a brand colour that does not change (SPEC §12 D2).
+        // cannot reach AA and `#ffa726` is a brand colour that does not change.
         // The deviation is recorded in docs/accessibility.md and enforced by `npm run axe`.
         'categories:accessibility': 'off',
         'cumulative-layout-shift': ['error', { maxNumericValue: 0.05 }],
