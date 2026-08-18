@@ -1,0 +1,90 @@
+<section class="mx-auto max-w-6xl px-6 pt-16 pb-2">
+  <bfs-section-head
+    [leadMaxWidth]="620"
+    variant="page"
+    kicker="Community"
+    i18n-kicker="@@support.hero.kicker"
+    heading="Unterstütze uns"
+    i18n-heading="@@support.hero.title"
+    lead="Unsere Spiele, Apps und Tutorials sind kostenlos — und sollen es bleiben. Hier findest du alle Möglichkeiten, uns dabei zu unterstützen. Vieles davon kostet dich keinen Cent."
+    i18n-lead="@@support.hero.lead"
+  >
+    <div
+      class="mt-4 font-script text-[44px] leading-none text-orange"
+      head-accent
+      i18n="@@support.hero.thanks"
+    >
+      Danke!
+    </div>
+  </bfs-section-head>
+</section>
+
+<section class="mx-auto max-w-6xl px-6 pt-12 pb-4">
+  <bfs-section-head
+    size="display-sm"
+    heading="Kostenfrei unterstützen"
+    i18n-heading="@@support.free.heading"
+    subline="Zeit und Aufmerksamkeit helfen uns genauso wie Geld — manchmal sogar mehr."
+    i18n-subline="@@support.free.subline"
+  />
+
+  <div class="grid grid-cols-[repeat(auto-fit,minmax(min(300px,100%),1fr))] gap-6">
+    @for (way of freeWays; track way.id) {
+      <bfs-link-card
+        [href]="way.href"
+        [ariaLabel]="way.ariaLabel"
+        [heading]="way.titleText"
+        [ctaLabel]="way.ctaLabel"
+        tone="light"
+      >
+        <span
+          class="flex size-11 items-center justify-center rounded-lg bg-yellow"
+          card-chip
+        >
+          <bfs-brand-icon
+            class="text-neutral-900"
+            [name]="way.id"
+            [size]="24"
+          />
+        </span>
+        {{ way.description }}
+      </bfs-link-card>
+    }
+  </div>
+</section>
+
+<section class="mx-auto max-w-6xl px-6 pt-12 pb-18">
+  <bfs-section-head
+    size="display-sm"
+    heading="Finanziell unterstützen"
+    i18n-heading="@@support.financial.heading"
+    subline="Einmalig oder monatlich — ganz wie du magst. Jeder Beitrag hilft, weiter kostenlose Projekte zu bauen."
+    i18n-subline="@@support.financial.subline"
+  />
+
+  <!-- The 760px cap is what keeps the two financial cards from ever becoming three columns; the
+       grid stays left-aligned, so no `mx-auto` here. -->
+  <div class="grid max-w-[760px] grid-cols-[repeat(auto-fit,minmax(min(300px,100%),1fr))] gap-6">
+    @for (way of financialWays; track way.id) {
+      <bfs-link-card
+        [href]="way.href"
+        [ariaLabel]="way.ariaLabel"
+        [heading]="way.titleText"
+        [ctaLabel]="way.ctaLabel"
+        tone="light"
+      >
+        <span
+          class="flex size-11 items-center justify-center rounded-lg bg-neutral-900 surface-dark"
+          card-chip
+        >
+          <bfs-brand-icon
+            class="text-yellow"
+            [name]="way.id"
+            [size]="22"
+          />
+        </span>
+        {{ way.description }}
+      </bfs-link-card>
+    }
+  </div>
+</section>
