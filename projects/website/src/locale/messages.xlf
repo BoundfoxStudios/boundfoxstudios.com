@@ -303,5 +303,61 @@
         <source>Hauptnavigation</source>
       </segment>
     </unit>
+    <unit id="not-found.kicker">
+      <notes>
+        <note category="location">projects/website/src/app/pages/not-found/not-found.html:6,7</note>
+      </notes>
+      <segment>
+        <source>Fehler 404</source>
+      </segment>
+    </unit>
+    <unit id="not-found.title">
+      <notes>
+        <note category="location">projects/website/src/app/pages/not-found/not-found.html:8,9</note>
+      </notes>
+      <segment>
+        <source>Seite nicht gefunden</source>
+      </segment>
+    </unit>
+    <unit id="not-found.lead">
+      <notes>
+        <note category="location">projects/website/src/app/pages/not-found/not-found.html:10,11</note>
+      </notes>
+      <segment>
+        <source>Diese Seite gibt es nicht mehr oder hat nie existiert. Von hier aus kommst du weiter:</source>
+      </segment>
+    </unit>
+    <unit id="not-found.links.home">
+      <notes>
+        <note category="location">projects/website/src/app/pages/not-found/not-found.html:19,22</note>
+      </notes>
+      <segment>
+        <source>Startseite</source>
+      </segment>
+    </unit>
+    <unit id="not-found.links.apps-and-games">
+      <notes>
+        <note category="location">projects/website/src/app/pages/not-found/not-found.html:26,29</note>
+      </notes>
+      <segment>
+        <source>Apps &amp; Spiele</source>
+      </segment>
+    </unit>
+    <unit id="not-found.links.support">
+      <notes>
+        <note category="location">projects/website/src/app/pages/not-found/not-found.html:33,36</note>
+      </notes>
+      <segment>
+        <source>Unterstützen</source>
+      </segment>
+    </unit>
+    <unit id="not-found.links.socials">
+      <notes>
+        <note category="location">projects/website/src/app/pages/not-found/not-found.html:40,43</note>
+      </notes>
+      <segment>
+        <source>Socials</source>
+      </segment>
+    </unit>
   </file>
 </xliff>
