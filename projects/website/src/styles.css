@@ -1,11 +1,13 @@
 @import 'tailwindcss';
 
 /*
- * Self-hosted, latin-subset woff2 — no third-party font origin, which is what the privacy
- * policy asserts and what `verify:dist` greps for. The url()s are relative on purpose: assets
- * are duplicated per locale and must resolve against `/en/`'s own <base href> (SPEC §3.1).
- * The `… Fallback` faces carry metrics measured against Arial so the swap does not reflow.
- * Bebas Neue has no U+2192 glyph at any weight, so a `→` always renders from the fallback.
+ * Self-hosted, subsetted woff2 — no third-party font origin, which is what the privacy policy
+ * asserts and what `verify:dist` greps for. Regenerate with `npm run fonts:generate`.
+ * The url()s and the two <link rel="preload"> hrefs in index.html are root-absolute and must
+ * stay in step: the built CSS is duplicated per locale, so a relative url() would make `/en/`
+ * fetch its own copy of every face while index.html preloaded the root one.
+ * The fallback faces carry metrics measured against Arial so the swap does not reflow. Tahu has
+ * none — one 44px word, and no metrics source.
  */
 @font-face {
   font-style: normal;
@@ -16,11 +18,11 @@
 }
 
 @font-face {
-  size-adjust: 87.67%;
+  size-adjust: 76.72%;
   src: local('Arial');
   font-family: 'Bebas Neue Fallback';
-  ascent-override: 102.65%;
-  descent-override: 34.22%;
+  ascent-override: 117.32%;
+  descent-override: 39.11%;
   line-gap-override: 0%;
 }
 
@@ -34,11 +36,11 @@
 
 @font-face {
   font-weight: 400;
-  size-adjust: 116.22%;
+  size-adjust: 96.68%;
   src: local('Arial');
   font-family: 'Barlow Fallback';
-  ascent-override: 86.04%;
-  descent-override: 17.21%;
+  ascent-override: 103.43%;
+  descent-override: 20.69%;
   line-gap-override: 0%;
 }
 
@@ -52,11 +54,11 @@
 
 @font-face {
   font-weight: 700;
-  size-adjust: 119.39%;
+  size-adjust: 99.6%;
   src: local('Arial Bold'), local('Arial');
   font-family: 'Barlow Fallback';
-  ascent-override: 83.76%;
-  descent-override: 16.75%;
+  ascent-override: 100.41%;
+  descent-override: 20.08%;
   line-gap-override: 0%;
 }
 
@@ -66,15 +68,6 @@
   src: url('/fonts/tahu-400.woff2') format('woff2');
   font-family: 'Tahu';
   font-display: swap;
-}
-
-@font-face {
-  size-adjust: 96.74%;
-  src: local('Arial');
-  font-family: 'Tahu Fallback';
-  ascent-override: 95.1%;
-  descent-override: 54.27%;
-  line-gap-override: 1.55%;
 }
 
 /*
@@ -97,7 +90,27 @@
   --color-neutral-600: #525252;
   --color-neutral-700: #404040;
   --color-neutral-900: #171717;
+
+  --shadow-accent: 0 10px 15px -3px rgb(255 193 7 / 0.3), 0 4px 6px -4px rgb(255 193 7 / 0.3);
+
   --font-display: 'Bebas Neue', 'Bebas Neue Fallback', sans-serif;
   --font-sans: 'Barlow', 'Barlow Fallback', sans-serif;
-  --font-script: 'Tahu', 'Tahu Fallback', cursive;
+  --font-script: 'Tahu', cursive;
+  --font-mono: monospace;
+}
+
+@layer base {
+  body {
+    color: var(--color-neutral-700);
+  }
+
+  a {
+    transition: color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    color: var(--color-link);
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: var(--color-orange);
+  }
 }
