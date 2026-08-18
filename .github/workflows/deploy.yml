@@ -13,7 +13,7 @@ concurrency:
   cancel-in-progress: false
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   deploy:
@@ -23,9 +23,15 @@ jobs:
       name: production
       url: https://boundfoxstudios.com
     steps:
+      - uses: actions/create-github-app-token@v3
+        id: app-token
+        with:
+          app-id: ${{ vars.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
       - uses: actions/checkout@v7
         with:
           ref: main
+          token: ${{ steps.app-token.outputs.token }}
       - uses: ./.github/actions/read-node-version-from-nvmrc
         id: node-version
       - uses: ./.github/actions/prepare-node
@@ -37,9 +43,13 @@ jobs:
       - run: npx ng build
       - run: npm run postbuild
       - name: Publish to the build branch
+        env:
+          APP_SLUG: ${{ steps.app-token.outputs.app-slug }}
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
         run: |
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          user_id=$(gh api "/users/${APP_SLUG}[bot]" --jq .id)
+          git config user.name "${APP_SLUG}[bot]"
+          git config user.email "${user_id}+${APP_SLUG}[bot]@users.noreply.github.com"
           git fetch --depth 1 origin build
           git worktree add published -B build FETCH_HEAD
           rsync --archive --delete --exclude .git dist/website/browser/ published/
