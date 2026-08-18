@@ -11,6 +11,7 @@ const LOCALES = [
 // belong to the site root only: crawlers and the OS icon pickers never read a localized copy.
 const ROOT_ONLY = [
   'robots.txt',
+  '.htaccess',
   'app-ads.txt',
   'favicon.ico',
   'icon.svg',
@@ -73,6 +74,14 @@ for (const locale of LOCALES) {
     'utf8',
   );
 }
+
+// `ErrorDocument` is per-directory, and `/en/` is the deepest existing directory for any `/en/**`
+// miss, so this one line is what makes a miss under /en/ render the English 404 page.
+await writeFile(
+  join(BROWSER_DIR, 'en', '.htaccess'),
+  'ErrorDocument 404 /en/404/index.html\n',
+  'utf8',
+);
 
 // RFC 9116 requires `Expires`, and a stale date reads as an abandoned disclosure programme — which
 // is why the file is written on every build instead of by hand.
