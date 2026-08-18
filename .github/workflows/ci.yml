@@ -1,7 +1,5 @@
 name: CI
 
-# No paths filter on purpose: a filtered-out run never reports, and a required
-# status check then waits forever.
 on:
   pull_request:
     branches:
@@ -23,7 +21,7 @@ jobs:
       - uses: actions/checkout@v7
       - uses: ./.github/actions/read-node-version-from-nvmrc
         id: node-version
-      - uses: OWASP/cve-lite-cli@fd481fff75f492f94de36dcaf020674af0eca9ef # v1.29.0
+      - uses: OWASP/cve-lite-cli@fd481fff75f492f94de36dcaf020674af0eca9ef
         with:
           node-version: ${{ steps.node-version.outputs.version }}
           fail-on: 'critical'
@@ -47,9 +45,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      # `ng test` exits 1 with "No tests found matching the following patterns"
-      # while the repository tracks no spec, which would make this required check
-      # red by construction until the first spec lands.
       - name: Count tracked specs
         id: specs
         run: echo "count=$(git ls-files '*.spec.ts' | wc -l)" >> "$GITHUB_OUTPUT"
@@ -73,19 +68,12 @@ jobs:
       - uses: ./.github/actions/prepare-node
         with:
           version: ${{ steps.node-version.outputs.version }}
-      # Re-extracting must not change either catalogue: a forgotten `npm run i18n:extract` or an
-      # orphaned unit shows up as a dirty tree. `verify:translations` then covers what the builder
-      # cannot — a unit that exists without a `<target>` resolves to its German `<source>` and
-      # would otherwise ship German into /en/ with a green build.
       - run: npm run i18n:check
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      # The `prebuild` hook fetches the GitHub data, so this is a single step and never fetches twice.
       - run: npm run build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      # SPEC §12 D11: the site measures nothing. The privacy policy and the home page promise it in
-      # so many words, so the promise is checked against what actually ships rather than trusted.
       - name: Nothing is measured
         run: |
           if grep -rniE 'cloudflareinsights|beacon\.min\.js|googletagmanager|google-analytics|plausible\.io|matomo' dist/website/browser; then
@@ -93,8 +81,5 @@ jobs:
             exit 1
           fi
       - run: npm run lighthouse
-      # No `--with-deps`: that runs a full `apt-get update` on the runner — 12 minutes when it
-      # works, and once it hung until the run was cancelled. The ubuntu-latest image already ships
-      # the libraries Chromium needs, so only the browser itself is downloaded here.
       - run: npx playwright install chromium
       - run: npm run axe
