@@ -1,6 +1,7 @@
 import { Component, DestroyRef, inject } from '@angular/core';
 
 import { appEntry, repositoryUrl } from '../../data/apps';
+import { repositoryVersions } from '../../github-data';
 import { appsItemListJsonLd } from '../../seo/json-ld';
 import { SeoService } from '../../seo/seo.service';
 import { ArrowLink } from '../../ui/arrow-link/arrow-link';
@@ -16,6 +17,7 @@ import { SectionHead } from '../../ui/section-head/section-head';
   templateUrl: './apps-and-games.html',
 })
 export class AppsAndGames {
+  protected readonly versions = repositoryVersions;
   protected readonly lehrgrapht = appEntry('lehrgrapht');
   protected readonly lehrgraphtRepository = repositoryUrl('lehrgrapht');
   protected readonly matRepository = repositoryUrl('mat');
