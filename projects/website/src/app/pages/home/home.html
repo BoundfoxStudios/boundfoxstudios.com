@@ -20,6 +20,7 @@
 
   <div class="grid grid-cols-[repeat(auto-fit,minmax(min(420px,100%),1fr))] gap-6">
     <bfs-project-card
+      [version]="versions.lehrgrapht"
       density="roomy"
       media="pattern"
       kicker="App"
@@ -57,6 +58,7 @@
     </bfs-project-card>
 
     <bfs-project-card
+      [version]="versions.flugwacht"
       density="roomy"
       media="contain"
       kicker="App"
@@ -98,6 +100,7 @@
     </bfs-project-card>
 
     <bfs-project-card
+      [version]="versions.mat"
       density="roomy"
       media="icon"
       kicker="App"
@@ -117,9 +120,9 @@
       <!-- eslint-enable @angular-eslint/template/prefer-ngsrc -->
       <bfs-badge
         card-badge
-        variant="outline"
-        i18n="@@common.badge.in-development"
-        >In Entwicklung</bfs-badge
+        variant="amber"
+        i18n="@@common.badge.available"
+        >Verfügbar</bfs-badge
       >
       <ng-container i18n="@@home.projects.mat.description"
         >Markdown-Vorschau direkt aus dem Terminal — gerendert wie auf GitHub, ohne Server und ohne

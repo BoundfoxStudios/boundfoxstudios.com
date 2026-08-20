@@ -21,6 +21,7 @@
   <div class="grid grid-cols-[repeat(auto-fit,minmax(min(300px,100%),1fr))] gap-6">
     <bfs-project-card
       [headingLevel]="3"
+      [version]="versions.lehrgrapht"
       density="compact"
       media="pattern"
       kicker="Word-AddIn"
@@ -67,6 +68,7 @@
 
     <bfs-project-card
       [headingLevel]="3"
+      [version]="versions.mat"
       density="compact"
       media="icon"
       kicker="CLI-Tool"
@@ -86,9 +88,9 @@
       <!-- eslint-enable @angular-eslint/template/prefer-ngsrc -->
       <bfs-badge
         card-badge
-        variant="outline"
-        i18n="@@common.badge.in-development"
-        >In Entwicklung</bfs-badge
+        variant="amber"
+        i18n="@@common.badge.available"
+        >Verfügbar</bfs-badge
       >
       <ng-container i18n="@@apps-and-games.apps.mat.description"
         >Markdown-Vorschau direkt aus dem Terminal — gerendert wie auf GitHub, inklusive Mermaid,
@@ -107,6 +109,7 @@
 
     <bfs-project-card
       [headingLevel]="3"
+      [version]="versions.flugwacht"
       density="compact"
       media="contain"
       kicker="Mobile App"

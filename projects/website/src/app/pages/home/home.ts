@@ -4,6 +4,7 @@ import { RouterLink } from '@angular/router';
 
 import { appEntry, repositoryUrl } from '../../data/apps';
 import { SOCIAL_LINKS, socialLink } from '../../data/social-links';
+import { repositoryVersions } from '../../github-data';
 import { ArrowLink } from '../../ui/arrow-link/arrow-link';
 import { Badge } from '../../ui/badge/badge';
 import { PillLink } from '../../ui/pill-link/pill-link';
@@ -17,6 +18,7 @@ import { SectionHead } from '../../ui/section-head/section-head';
   templateUrl: './home.html',
 })
 export class Home {
+  protected readonly versions = repositoryVersions;
   protected readonly socialLinks = SOCIAL_LINKS;
   protected readonly githubOrganization = socialLink('github');
   protected readonly lehrgrapht = appEntry('lehrgrapht');

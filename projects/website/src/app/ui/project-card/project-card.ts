@@ -26,7 +26,14 @@ export class ProjectCard {
   readonly kicker = input.required<string>();
   readonly title = input.required<string>();
   readonly platforms = input.required<string>();
+  readonly version = input<string | null>(null);
   readonly headingLevel = input<2 | 3>(2);
+
+  protected readonly platformsLine = computed(() => {
+    const version = this.version();
+
+    return version ? `${this.platforms()} · ${version}` : this.platforms();
+  });
 
   protected readonly mediaPanelClass = computed(() => {
     const height = this.density() === 'roomy' ? 'h-[200px]' : 'h-[180px]';

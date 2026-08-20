@@ -3,7 +3,7 @@
 <div class="grid grid-cols-[repeat(auto-fit,minmax(min(280px,100%),1fr))] gap-6">
   <bfs-repository-card
     [language]="lehrgrapht.language"
-    [version]="lehrgrapht.latestTag?.name ?? null"
+    [version]="versions.lehrgrapht"
     [updatedAt]="lehrgrapht.pushedAt"
     title="LehrGrapht"
     description="Mathe-Plotter-Word-AddIn für Lehrkräfte — maßstabsgetreu auf 5×5-mm-Karopapier."
@@ -11,7 +11,7 @@
   />
   <bfs-repository-card
     [language]="mat.language"
-    [version]="mat.latestRelease?.tagName ?? null"
+    [version]="versions.mat"
     [updatedAt]="mat.pushedAt"
     title="MAT"
     description="Markdown-Vorschau im Browser, gerendert wie auf GitHub — direkt aus dem Terminal."
@@ -19,7 +19,7 @@
   />
   <bfs-repository-card
     [language]="flugwacht.language"
-    [version]="flugwacht.latestRelease?.tagName ?? null"
+    [version]="versions.flugwacht"
     [updatedAt]="flugwacht.pushedAt"
     title="Flugwacht"
     description="Minimaler Flug-Tracker für einzelne, manuell angelegte Flüge — live auf der Karte."
