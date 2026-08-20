@@ -40,6 +40,15 @@ jobs:
       - run: npm run fetch:github
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Restore the lastmod database
+        run: |
+          # The database is build output, not source: keeping it on its own branch means a deploy
+          # no longer depends on someone having built locally and committed the refreshed file.
+          if git fetch --depth 1 origin '+refs/heads/deployment/state:refs/remotes/origin/deployment/state'; then
+            git show refs/remotes/origin/deployment/state:lastmod.json > tools/seo/lastmod.json
+          else
+            echo "no lastmod database yet, every URL gets today's date"
+          fi
       - run: npx ng build
       - run: npm run postbuild
       - name: Publish to the deployment branch
@@ -69,6 +78,21 @@ jobs:
             git -C published commit -m "chore: publish ${GITHUB_SHA}"
             git -C published push origin deployment/production
             echo "build-id=$build_id" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Persist the lastmod database
+        run: |
+          if git rev-parse --verify --quiet refs/remotes/origin/deployment/state >/dev/null; then
+            git worktree add state -B deployment/state refs/remotes/origin/deployment/state
+          else
+            git worktree add --orphan -b deployment/state state
+          fi
+          cp tools/seo/lastmod.json state/lastmod.json
+          git -C state add lastmod.json
+          if git -C state diff --cached --quiet HEAD 2>/dev/null; then
+            echo "lastmod database unchanged"
+          else
+            git -C state commit -m "chore: update the lastmod database"
+            git -C state push origin deployment/state
           fi
       - name: Purge the edge cache
         if: steps.publish.outputs.build-id != ''

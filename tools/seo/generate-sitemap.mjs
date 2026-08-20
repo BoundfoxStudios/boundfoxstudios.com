@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto';
 import { readdir, readFile, writeFile } from 'node:fs/promises';
 import { join, relative } from 'node:path';
 
@@ -46,14 +47,12 @@ for (const file of await walk(DIST)) {
   }
 
   const key = relative(DIST, file).replaceAll('\\', '/');
-  const { lastmod, changed: isChanged } = resolveLastmod(
-    key,
-    page.fingerprint,
-    previousDatabase,
-    today,
-  );
+  // Only the digest is stored: the fingerprint is the whole normalised page, and keeping twelve of
+  // them verbatim grew the database to 300 KB of unreadable diffs.
+  const hash = createHash('sha256').update(page.fingerprint).digest('hex');
+  const { lastmod, changed: isChanged } = resolveLastmod(key, hash, previousDatabase, today);
 
-  database[key] = { hash: page.fingerprint, lastmod };
+  database[key] = { hash, lastmod };
   pages.push({ ...page, lastmod });
 
   if (isChanged) {

@@ -40,3 +40,6 @@ Thumbs.db
 
 # Lighthouse CI reports
 .lighthouseci/
+
+# Sitemap lastmod database, written by the deploy workflow and kept on deployment/state
+/tools/seo/lastmod.json
