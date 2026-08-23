@@ -22,6 +22,12 @@ export class RepositoryCard {
   readonly language = input<string | null>(null);
   readonly version = input<string | null>(null);
   readonly updatedAt = input.required<string>();
+  readonly href = input.required<string>();
+
+  protected readonly linkAriaLabel = computed(
+    () =>
+      $localize`:@@home.github.card.link-aria:${this.title()}:TITLE: – zum Repository auf GitHub`,
+  );
 
   protected readonly versionLabel = computed(
     () => this.version() ?? $localize`:@@common.badge.in-development:In Entwicklung`,

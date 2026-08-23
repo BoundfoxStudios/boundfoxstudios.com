@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 
+import { repositoryUrl } from '../../data/apps';
 import { gitHubData, repositoryVersions } from '../../github-data';
 import { RepositoryCard } from './repository-card';
 
@@ -14,4 +15,7 @@ export class RepositoryCards {
   protected readonly lehrgrapht = gitHubData.lehrgrapht;
   protected readonly mat = gitHubData.mat;
   protected readonly flugwacht = gitHubData.flugwacht;
+  protected readonly lehrgraphtRepository = repositoryUrl('lehrgrapht');
+  protected readonly matRepository = repositoryUrl('mat');
+  protected readonly flugwachtRepository = repositoryUrl('flugwacht');
 }

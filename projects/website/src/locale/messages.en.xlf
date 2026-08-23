@@ -871,5 +871,11 @@
         <target>Preview Markdown straight from your terminal — rendered the way GitHub does it, including Mermaid, KaTeX and syntax highlighting. No server, no configuration: as casual as cat.</target>
       </segment>
     </unit>
+    <unit id="home.github.card.link-aria">
+      <segment state="translated">
+        <source><ph id="0" equiv="TITLE" disp="this.title()"/> – zum Repository auf GitHub</source>
+        <target><ph id="0" equiv="TITLE" disp="this.title()"/> – go to the repository on GitHub</target>
+      </segment>
+    </unit>
   </file>
 </xliff>

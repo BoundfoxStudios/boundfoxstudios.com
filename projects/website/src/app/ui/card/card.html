@@ -1,4 +1,22 @@
-<div class="flex flex-col overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-md">
+<!-- One slot for both heading levels: the title never renders twice. -->
+<ng-template #titleLabel>
+  @if (href(); as target) {
+    <!-- The pseudo-element stretches the anchor over the whole card, so the entire surface is
+         clickable without wrapping the footer inside the link. -->
+    <a
+      class="text-neutral-900 focus-ring after:absolute after:inset-0 hover:text-orange"
+      [href]="target"
+      [attr.aria-label]="linkAriaLabel()"
+      target="_blank"
+      rel="noopener noreferrer"
+      >{{ title() }}</a
+    >
+  } @else {
+    {{ title() }}
+  }
+</ng-template>
+
+<div [class]="containerClass()">
   <div class="flex-1 p-6">
     @if (eyebrow(); as eyebrowText) {
       <div
@@ -13,14 +31,14 @@
         class="mb-2 font-display text-2xl leading-none tracking-wide text-neutral-900 uppercase"
         translate="no"
       >
-        {{ title() }}
+        <ng-container [ngTemplateOutlet]="titleLabel" />
       </h2>
     } @else {
       <h3
         class="mb-2 font-display text-2xl leading-none tracking-wide text-neutral-900 uppercase"
         translate="no"
       >
-        {{ title() }}
+        <ng-container [ngTemplateOutlet]="titleLabel" />
       </h3>
     }
     <div class="text-sm leading-relaxed text-neutral-700"><ng-content /></div>
