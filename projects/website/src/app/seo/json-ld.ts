@@ -12,7 +12,7 @@ export const organizationJsonLd = (): JsonLd => ({
   '@id': ORGANIZATION_ID,
   name: SITE.name,
   url: `${SITE.origin}/`,
-  logo: `${SITE.origin}/icons/icon-512.png`,
+  logo: `${SITE.origin}/app-icons/icon-512.png`,
   foundingLocation: {
     '@type': 'Place',
     address: { '@type': 'PostalAddress', addressCountry: 'DE' },

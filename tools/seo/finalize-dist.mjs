@@ -16,7 +16,7 @@ const ROOT_ONLY = [
   'favicon.ico',
   'icon.svg',
   'apple-touch-icon.png',
-  'icons',
+  'app-icons',
   'og',
   '.well-known',
 ];
@@ -60,9 +60,14 @@ const manifest = ({ code, subPath }) => {
     background_color: '#171717',
     theme_color: '#171717',
     icons: [
-      { src: '/icons/icon-192.png', sizes: '192x192', type: 'image/png' },
-      { src: '/icons/icon-512.png', sizes: '512x512', type: 'image/png' },
-      { src: '/icons/maskable-512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
+      { src: '/app-icons/icon-192.png', sizes: '192x192', type: 'image/png' },
+      { src: '/app-icons/icon-512.png', sizes: '512x512', type: 'image/png' },
+      {
+        src: '/app-icons/maskable-512.png',
+        sizes: '512x512',
+        type: 'image/png',
+        purpose: 'maskable',
+      },
     ],
   };
 };
