@@ -25,4 +25,5 @@ jobs:
       - uses: ./.github/actions/prepare-node
         with:
           version: ${{ steps.node-version.outputs.version }}
-      - run: npm run check:links
+          run-install: 'false'
+      - run: npx --yes linkinator@8.0.4 https://boundfoxstudios.com

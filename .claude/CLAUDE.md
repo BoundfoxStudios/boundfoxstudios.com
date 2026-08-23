@@ -24,7 +24,7 @@ name is `Boundfox Studios`, one word.
 - Link checkers built on `html5gum` (lychee, hyperlink) only ever see the `<head>` of a
   prerendered page. They stop at Angular's inline `ng-event-dispatch-contract` script,
   where `o<n.length` reads as the start of a tag, and then report every page as clean.
-  That is why `check:links` runs linkinator.
+  That is why the nightly link check runs linkinator.
 
 ## Conventions
 
