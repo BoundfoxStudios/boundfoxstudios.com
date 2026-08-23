@@ -60,7 +60,7 @@ const renderOpenGraphImage = async () => {
   return flatten(canvas);
 };
 
-await mkdir(join(PUBLIC_DIR, 'icons'), { recursive: true });
+await mkdir(join(PUBLIC_DIR, 'app-icons'), { recursive: true });
 await mkdir(join(PUBLIC_DIR, 'og'), { recursive: true });
 
 const [ico32, ico48, appleTouch, icon192, icon512, maskable512, openGraph] = await Promise.all([
@@ -76,9 +76,9 @@ const [ico32, ico48, appleTouch, icon192, icon512, maskable512, openGraph] = awa
 await Promise.all([
   writeFile(join(PUBLIC_DIR, 'favicon.ico'), await pngToIco([ico32, ico48])),
   writeFile(join(PUBLIC_DIR, 'apple-touch-icon.png'), appleTouch),
-  writeFile(join(PUBLIC_DIR, 'icons/icon-192.png'), icon192),
-  writeFile(join(PUBLIC_DIR, 'icons/icon-512.png'), icon512),
-  writeFile(join(PUBLIC_DIR, 'icons/maskable-512.png'), maskable512),
+  writeFile(join(PUBLIC_DIR, 'app-icons/icon-192.png'), icon192),
+  writeFile(join(PUBLIC_DIR, 'app-icons/icon-512.png'), icon512),
+  writeFile(join(PUBLIC_DIR, 'app-icons/maskable-512.png'), maskable512),
   writeFile(join(PUBLIC_DIR, 'og/default.png'), openGraph),
 ]);
 
