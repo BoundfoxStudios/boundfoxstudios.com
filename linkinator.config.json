@@ -1,0 +1,7 @@
+{
+  "recurse": true,
+  "retry": true,
+  "retryErrors": true,
+  "timeout": 20000,
+  "skip": ["/cdn-cgi/l/email-protection", "^https://dg-datenschutz\\.de/"]
+}
