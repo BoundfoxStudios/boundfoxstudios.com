@@ -726,5 +726,10 @@
         <source>Markdown-Vorschau direkt aus dem Terminal — gerendert wie auf GitHub, inklusive Mermaid, KaTeX und Syntax-Highlighting. Kein Server, keine Konfiguration: so beiläufig wie cat.</source>
       </segment>
     </unit>
+    <unit id="home.github.card.link-aria">
+      <segment>
+        <source><ph id="0" equiv="TITLE" disp="this.title()"/> – zum Repository auf GitHub</source>
+      </segment>
+    </unit>
   </file>
 </xliff>
