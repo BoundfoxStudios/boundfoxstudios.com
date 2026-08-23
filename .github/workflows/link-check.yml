@@ -1,0 +1,29 @@
+name: Link check
+
+on:
+  schedule:
+    # Deploy runs at 03:00 and then waits for Plesk to pull the branch, so the site can still be
+    # serving the previous build for a while. 05:00 leaves that enough room.
+    - cron: '0 5 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: link-check
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  link-check:
+    name: Link check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ./.github/actions/read-node-version-from-nvmrc
+        id: node-version
+      - uses: ./.github/actions/prepare-node
+        with:
+          version: ${{ steps.node-version.outputs.version }}
+          run-install: 'false'
+      - run: npx --yes linkinator@8.0.4 https://boundfoxstudios.com

@@ -21,6 +21,10 @@ name is `Boundfox Studios`, one word.
   CSS and no error. That is what `eslint-plugin-better-tailwindcss` is for.
 - Application code imports `./generated/github-data.json` and never anything under `tools/`.
   `process.env` has no esbuild shim and becomes a runtime `ReferenceError` in the browser.
+- Link checkers built on `html5gum` (lychee, hyperlink) only ever see the `<head>` of a
+  prerendered page. They stop at Angular's inline `ng-event-dispatch-contract` script,
+  where `o<n.length` reads as the start of a tag, and then report every page as clean.
+  That is why the nightly link check runs linkinator.
 
 ## Conventions
 
