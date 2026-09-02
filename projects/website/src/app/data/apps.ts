@@ -1,7 +1,7 @@
 import { SITE } from '../seo/site.config';
 
 export type AppSlug =
-  'lehrgrapht' | 'mat' | 'flugwacht' | 'flutter-sdk-sync-companion' | 'bug-a-ball';
+  'lehrgrapht' | 'mat' | 'flugwacht' | 'flutter-sdk-sync-companion' | 'geodart' | 'bug-a-ball';
 
 export interface AppEntry {
   readonly slug: AppSlug;
@@ -46,7 +46,7 @@ export const APPS: readonly AppEntry[] = [
     type: 'SoftwareApplication',
     applicationCategory: 'TravelApplication',
     operatingSystem: 'iOS, Android',
-    url: 'https://github.com/BoundfoxStudios/flugwacht',
+    url: 'https://flugwacht.app/',
     codeRepository: 'https://github.com/BoundfoxStudios/flugwacht',
   },
   {
@@ -58,6 +58,15 @@ export const APPS: readonly AppEntry[] = [
     operatingSystem: 'Windows, macOS, Linux',
     url: 'https://plugins.jetbrains.com/plugin/34117-flutter-sdk-sync-companion',
     codeRepository: 'https://github.com/BoundfoxStudios/flutter-sdk-sync-companion',
+  },
+  {
+    slug: 'geodart',
+    name: 'Geodart',
+    description: $localize`:@@apps-and-games.games.geodart.description:Geographie-Quiz mit Dartwurf: Ein Ziel wird genannt (Stadt, Fluss, Gipfel oder See), und du tippst die Stelle innerhalb der Zeit auf der Karte an. Punkte gibt es für Genauigkeit, Kategorie und Tempo. Zehn Fragen pro Runde, komplett offline.`,
+    type: 'VideoGame',
+    applicationCategory: 'GameApplication',
+    operatingSystem: 'iOS, Android',
+    url: 'https://geodart.app/',
   },
   {
     slug: 'bug-a-ball',

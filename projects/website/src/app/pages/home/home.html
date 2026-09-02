@@ -20,6 +20,49 @@
 
   <div class="grid grid-cols-[repeat(auto-fit,minmax(min(420px,100%),1fr))] gap-6">
     <bfs-project-card
+      density="roomy"
+      media="cover"
+      kicker="Spiel"
+      i18n-kicker="@@common.project-type.game"
+      title="Geodart"
+      platforms="iOS &amp; Android"
+      i18n-platforms="@@home.projects.geodart.platforms"
+    >
+      <!-- eslint-disable @angular-eslint/template/prefer-ngsrc -- an SVG has no resolution variants for the directive to generate -->
+      <img
+        class="h-full w-full object-cover"
+        card-media
+        src="images/geodart-key-art-1200x600.svg"
+        width="1200"
+        height="600"
+        loading="eager"
+        fetchpriority="high"
+        alt="Geodart: ein Dart steckt im Zentrum konzentrischer Ringe über einer stilisierten Landkarte."
+        i18n-alt="@@common.geodart.key-art-alt"
+      />
+      <!-- eslint-enable @angular-eslint/template/prefer-ngsrc -->
+      <bfs-badge
+        card-badge
+        variant="outline"
+        i18n="@@common.badge.in-development"
+        >In Entwicklung</bfs-badge
+      >
+      <ng-container i18n="@@home.projects.geodart.description"
+        >Geographie-Quiz mit Dartwurf: Ein Ziel wird genannt, du triffst die Stelle auf der Karte.
+        Zehn Fragen pro Runde, komplett offline.</ng-container
+      >
+      <bfs-arrow-link
+        [newTab]="true"
+        [href]="geodart.url"
+        card-links
+        ariaLabel="Geodart – zur Website"
+        i18n-ariaLabel="@@home.projects.geodart.link-aria"
+        i18n="@@home.projects.geodart.link"
+        >Zur Website</bfs-arrow-link
+      >
+    </bfs-project-card>
+
+    <bfs-project-card
       [version]="versions.lehrgrapht"
       density="roomy"
       media="pattern"
@@ -54,48 +97,6 @@
         i18n-ariaLabel="@@home.projects.lehrgrapht.link-aria"
         i18n="@@home.projects.lehrgrapht.link"
         >Zur Website</bfs-arrow-link
-      >
-    </bfs-project-card>
-
-    <bfs-project-card
-      [version]="versions.flugwacht"
-      density="roomy"
-      media="contain"
-      kicker="App"
-      i18n-kicker="@@common.project-type.app"
-      title="Flugwacht"
-      platforms="iOS &amp; Android"
-      i18n-platforms="@@home.projects.flugwacht.platforms"
-    >
-      <!-- Decorative: the card's own <h2> names the product right below it. -->
-      <!-- eslint-disable @angular-eslint/template/prefer-ngsrc -- an SVG has no resolution variants for the directive to generate -->
-      <img
-        class="h-auto w-[56%] max-w-[300px]"
-        card-media
-        src="images/flugwacht-wordmark.svg"
-        width="231"
-        height="42"
-        alt=""
-      />
-      <!-- eslint-enable @angular-eslint/template/prefer-ngsrc -->
-      <bfs-badge
-        card-badge
-        variant="outline"
-        i18n="@@common.badge.in-development"
-        >In Entwicklung</bfs-badge
-      >
-      <ng-container i18n="@@home.projects.flugwacht.description"
-        >Bewusst minimaler Flug-Tracker: Flugnummer eintragen und am Reisetag live auf der Karte
-        verfolgen, wo der Flieger gerade ist — ganz ohne Konto.</ng-container
-      >
-      <bfs-arrow-link
-        [newTab]="true"
-        [href]="flugwachtRepository"
-        card-links
-        ariaLabel="Flugwacht – zum Repository auf GitHub"
-        i18n-ariaLabel="@@home.projects.flugwacht.link-aria"
-        i18n="@@home.projects.flugwacht.link"
-        >Zum Repository</bfs-arrow-link
       >
     </bfs-project-card>
 

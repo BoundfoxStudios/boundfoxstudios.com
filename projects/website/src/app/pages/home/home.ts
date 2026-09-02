@@ -21,8 +21,8 @@ export class Home {
   protected readonly versions = repositoryVersions;
   protected readonly socialLinks = SOCIAL_LINKS;
   protected readonly githubOrganization = socialLink('github');
+  protected readonly geodart = appEntry('geodart');
   protected readonly lehrgrapht = appEntry('lehrgrapht');
   protected readonly matRepository = repositoryUrl('mat');
-  protected readonly flugwachtRepository = repositoryUrl('flugwacht');
   protected readonly bugABall = appEntry('bug-a-ball');
 }
