@@ -57,8 +57,8 @@
     </unit>
     <unit id="seo.apps-and-games.description">
       <segment state="translated">
-        <source>Alle Apps und Spiele von Boundfox Studios: LehrGrapht, MAT, Flugwacht und Bug-A-Ball — kostenlos, vieles davon Open Source.</source>
-        <target>Every app and game by Boundfox Studios: LehrGrapht, MAT, Flugwacht and Bug-A-Ball — free, and much of it open source.</target>
+        <source>Alle Apps und Spiele von Boundfox Studios: LehrGrapht, MAT, Flugwacht, Geodart und Bug-A-Ball — kostenlos, vieles davon Open Source.</source>
+        <target>Every app and game by Boundfox Studios: LehrGrapht, MAT, Flugwacht, Geodart and Bug-A-Ball — free, and much of it open source.</target>
       </segment>
     </unit>
     <unit id="seo.support.title">
@@ -373,12 +373,6 @@
         <target>A deliberately minimal tracker for individual flights: enter the flight number and date, then follow it live on the map on the day you travel — with arrival times in both time zones. No account, everything stays on your device.</target>
       </segment>
     </unit>
-    <unit id="apps-and-games.apps.flugwacht.repository-aria">
-      <segment state="translated">
-        <source>Flugwacht – zum Repository auf GitHub</source>
-        <target>Flugwacht – go to the repository on GitHub</target>
-      </segment>
-    </unit>
     <unit id="apps-and-games.games.section-title">
       <segment state="translated">
         <source>Spiele</source>
@@ -475,28 +469,10 @@
         <target>Visit the website</target>
       </segment>
     </unit>
-    <unit id="home.projects.flugwacht.platforms">
+    <unit id="home.projects.geodart.platforms">
       <segment state="translated">
         <source>iOS &amp; Android</source>
         <target>iOS &amp; Android</target>
-      </segment>
-    </unit>
-    <unit id="home.projects.flugwacht.description">
-      <segment state="translated">
-        <source>Bewusst minimaler Flug-Tracker: Flugnummer eintragen und am Reisetag live auf der Karte verfolgen, wo der Flieger gerade ist — ganz ohne Konto.</source>
-        <target>A deliberately minimal flight tracker: enter a flight number and follow it live on the map on the day you travel — no account needed.</target>
-      </segment>
-    </unit>
-    <unit id="home.projects.flugwacht.link-aria">
-      <segment state="translated">
-        <source>Flugwacht – zum Repository auf GitHub</source>
-        <target>Flugwacht – go to the repository on GitHub</target>
-      </segment>
-    </unit>
-    <unit id="home.projects.flugwacht.link">
-      <segment state="translated">
-        <source>Zum Repository</source>
-        <target>Go to the repository</target>
       </segment>
     </unit>
     <unit id="home.projects.mat.platforms">
@@ -875,6 +851,72 @@
       <segment state="translated">
         <source><ph id="0" equiv="TITLE" disp="this.title()"/> – zum Repository auf GitHub</source>
         <target><ph id="0" equiv="TITLE" disp="this.title()"/> – go to the repository on GitHub</target>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.games.geodart.description">
+      <segment state="translated">
+        <source>Geographie-Quiz mit Dartwurf: Ein Ziel wird genannt (Stadt, Fluss, Gipfel oder See), und du tippst die Stelle innerhalb der Zeit auf der Karte an. Punkte gibt es für Genauigkeit, Kategorie und Tempo. Zehn Fragen pro Runde, komplett offline.</source>
+        <target>A geography quiz with a dart throw: a target is named (a city, river, peak or lake) and you tap the spot on the map before time runs out. Points come from accuracy, category and speed. Ten questions per round, fully offline.</target>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.apps.flugwacht.website-aria">
+      <segment state="translated">
+        <source>Flugwacht – zur Website</source>
+        <target>Flugwacht – visit the website</target>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.apps.flugwacht.source-aria">
+      <segment state="translated">
+        <source>Flugwacht – Source Code auf GitHub</source>
+        <target>Flugwacht – source code on GitHub</target>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.games.geodart.kicker">
+      <segment state="translated">
+        <source>Spiel</source>
+        <target>Game</target>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.games.geodart.platforms">
+      <segment state="translated">
+        <source>Für iOS &amp; Android, aktuell in Entwicklung.</source>
+        <target>For iOS &amp; Android, currently in development.</target>
+      </segment>
+    </unit>
+    <unit id="common.geodart.key-art-alt">
+      <segment state="translated">
+        <source>Geodart: ein Dart steckt im Zentrum konzentrischer Ringe über einer stilisierten Landkarte.</source>
+        <target>Geodart: a dart sits at the centre of concentric rings above a stylised map.</target>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.games.geodart.cta-aria">
+      <segment state="translated">
+        <source>Geodart – zur Website</source>
+        <target>Geodart – visit the website</target>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.games.geodart.cta">
+      <segment state="translated">
+        <source>Zur Website</source>
+        <target>Visit the website</target>
+      </segment>
+    </unit>
+    <unit id="home.projects.geodart.description">
+      <segment state="translated">
+        <source>Geographie-Quiz mit Dartwurf: Ein Ziel wird genannt, du triffst die Stelle auf der Karte. Zehn Fragen pro Runde, komplett offline.</source>
+        <target>A geography quiz with a dart throw: a target is named and you hit the spot on the map. Ten questions per round, fully offline.</target>
+      </segment>
+    </unit>
+    <unit id="home.projects.geodart.link-aria">
+      <segment state="translated">
+        <source>Geodart – zur Website</source>
+        <target>Geodart – visit the website</target>
+      </segment>
+    </unit>
+    <unit id="home.projects.geodart.link">
+      <segment state="translated">
+        <source>Zur Website</source>
+        <target>Visit the website</target>
       </segment>
     </unit>
   </file>

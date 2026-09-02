@@ -34,7 +34,7 @@ const GRIDS = [
   {
     route: 'apps-and-games',
     selector: 'bfs-feature-card article',
-    name: 'Bug-A-Ball feature card',
+    name: 'games feature card',
     columns: { 320: 1, 768: 2, 1152: 2, 1440: 2 },
   },
   {

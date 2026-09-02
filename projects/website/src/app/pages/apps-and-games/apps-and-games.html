@@ -130,9 +130,9 @@
       <!-- eslint-enable @angular-eslint/template/prefer-ngsrc -->
       <bfs-badge
         card-badge
-        variant="outline"
-        i18n="@@common.badge.in-development"
-        >In Entwicklung</bfs-badge
+        variant="amber"
+        i18n="@@common.badge.available"
+        >Verfügbar</bfs-badge
       >
       <ng-container i18n="@@apps-and-games.apps.flugwacht.description"
         >Bewusst minimaler Flug-Tracker für einzelne Flüge: Flugnummer und Datum eintragen, am
@@ -140,12 +140,20 @@
         alles bleibt auf deinem Gerät.</ng-container
       >
       <bfs-arrow-link
+        [href]="flugwacht.url"
+        card-links
+        ariaLabel="Flugwacht – zur Website"
+        i18n-ariaLabel="@@apps-and-games.apps.flugwacht.website-aria"
+        i18n="@@common.link.website"
+        >Zur Website</bfs-arrow-link
+      >
+      <bfs-arrow-link
         [href]="flugwachtRepository"
         card-links
-        ariaLabel="Flugwacht – zum Repository auf GitHub"
-        i18n-ariaLabel="@@apps-and-games.apps.flugwacht.repository-aria"
-        i18n="@@common.link.repository"
-        >Zum Repository</bfs-arrow-link
+        ariaLabel="Flugwacht – Source Code auf GitHub"
+        i18n-ariaLabel="@@apps-and-games.apps.flugwacht.source-aria"
+        i18n="@@common.link.source-code"
+        >Source Code</bfs-arrow-link
       >
     </bfs-project-card>
   </div>
@@ -159,50 +167,93 @@
     i18n-heading="@@apps-and-games.games.section-title"
   />
 
-  <bfs-feature-card
-    kicker="Spiel"
-    i18n-kicker="@@apps-and-games.games.bug-a-ball.kicker"
-    title="Bug-A-Ball"
-    platforms="Für iOS &amp; Android — auf fast allen Geräten."
-    i18n-platforms="@@apps-and-games.games.bug-a-ball.platforms"
-  >
-    <!-- eslint-disable @angular-eslint/template/prefer-ngsrc -- inside <picture> the <source> element picks the file, not the directive -->
-    <picture card-media>
-      <source
-        srcset="images/bug-a-ball-feature-1200x600.webp"
-        type="image/webp"
-      />
+  <div class="flex flex-col gap-6">
+    <bfs-feature-card
+      kicker="Spiel"
+      i18n-kicker="@@apps-and-games.games.geodart.kicker"
+      title="Geodart"
+      platforms="Für iOS &amp; Android, aktuell in Entwicklung."
+      i18n-platforms="@@apps-and-games.games.geodart.platforms"
+    >
+      <!-- eslint-disable @angular-eslint/template/prefer-ngsrc -- an SVG has no resolution variants for the directive to generate -->
       <img
         class="absolute inset-0 h-full w-full object-cover"
-        src="images/bug-a-ball-feature-1200x600.jpg"
+        card-media
+        src="images/geodart-key-art-1200x600.svg"
         width="1200"
         height="600"
         loading="eager"
         fetchpriority="high"
-        alt="Bug-A-Ball: eine grinsende grüne Kugel rollt über eine blaue Bahn an rot-weißen Hindernissen vorbei."
-        i18n-alt="@@common.bug-a-ball.key-art-alt"
+        alt="Geodart: ein Dart steckt im Zentrum konzentrischer Ringe über einer stilisierten Landkarte."
+        i18n-alt="@@common.geodart.key-art-alt"
       />
-    </picture>
-    <!-- eslint-enable @angular-eslint/template/prefer-ngsrc -->
-    <bfs-badge
-      card-badge
-      variant="amber"
-      i18n="@@common.badge.available"
-      >Verfügbar</bfs-badge
+      <!-- eslint-enable @angular-eslint/template/prefer-ngsrc -->
+      <bfs-badge
+        card-badge
+        variant="outline"
+        i18n="@@common.badge.in-development"
+        >In Entwicklung</bfs-badge
+      >
+      <ng-container i18n="@@apps-and-games.games.geodart.description"
+        >Geographie-Quiz mit Dartwurf: Ein Ziel wird genannt (Stadt, Fluss, Gipfel oder See), und du
+        tippst die Stelle innerhalb der Zeit auf der Karte an. Punkte gibt es für Genauigkeit,
+        Kategorie und Tempo. Zehn Fragen pro Runde, komplett offline.</ng-container
+      >
+      <bfs-button-primary
+        class="mt-2"
+        [href]="geodart.url"
+        card-cta
+        ariaLabel="Geodart – zur Website"
+        i18n-ariaLabel="@@apps-and-games.games.geodart.cta-aria"
+        i18n="@@apps-and-games.games.geodart.cta"
+        >Zur Website</bfs-button-primary
+      >
+    </bfs-feature-card>
+
+    <bfs-feature-card
+      kicker="Spiel"
+      i18n-kicker="@@apps-and-games.games.bug-a-ball.kicker"
+      title="Bug-A-Ball"
+      platforms="Für iOS &amp; Android — auf fast allen Geräten."
+      i18n-platforms="@@apps-and-games.games.bug-a-ball.platforms"
     >
-    <ng-container i18n="@@apps-and-games.games.bug-a-ball.description"
-      >In Bug-A-Ball rollst du dich durch verschiedene Level und Welten, vorbei an kniffligen
-      Hindernissen. Schalte exklusive Skins frei und zeig allen auf der Bestenliste, wer hier der
-      Profi ist.</ng-container
-    >
-    <bfs-button-primary
-      class="mt-2"
-      [href]="bugABall.url"
-      card-cta
-      ariaLabel="Bug-A-Ball – zur Website"
-      i18n-ariaLabel="@@apps-and-games.games.bug-a-ball.cta-aria"
-      i18n="@@apps-and-games.games.bug-a-ball.cta"
-      >Zur Website</bfs-button-primary
-    >
-  </bfs-feature-card>
+      <!-- eslint-disable @angular-eslint/template/prefer-ngsrc -- inside <picture> the <source> element picks the file, not the directive -->
+      <picture card-media>
+        <source
+          srcset="images/bug-a-ball-feature-1200x600.webp"
+          type="image/webp"
+        />
+        <img
+          class="absolute inset-0 h-full w-full object-cover"
+          src="images/bug-a-ball-feature-1200x600.jpg"
+          width="1200"
+          height="600"
+          loading="lazy"
+          alt="Bug-A-Ball: eine grinsende grüne Kugel rollt über eine blaue Bahn an rot-weißen Hindernissen vorbei."
+          i18n-alt="@@common.bug-a-ball.key-art-alt"
+        />
+      </picture>
+      <!-- eslint-enable @angular-eslint/template/prefer-ngsrc -->
+      <bfs-badge
+        card-badge
+        variant="amber"
+        i18n="@@common.badge.available"
+        >Verfügbar</bfs-badge
+      >
+      <ng-container i18n="@@apps-and-games.games.bug-a-ball.description"
+        >In Bug-A-Ball rollst du dich durch verschiedene Level und Welten, vorbei an kniffligen
+        Hindernissen. Schalte exklusive Skins frei und zeig allen auf der Bestenliste, wer hier der
+        Profi ist.</ng-container
+      >
+      <bfs-button-primary
+        class="mt-2"
+        [href]="bugABall.url"
+        card-cta
+        ariaLabel="Bug-A-Ball – zur Website"
+        i18n-ariaLabel="@@apps-and-games.games.bug-a-ball.cta-aria"
+        i18n="@@apps-and-games.games.bug-a-ball.cta"
+        >Zur Website</bfs-button-primary
+      >
+    </bfs-feature-card>
+  </div>
 </section>
