@@ -26,7 +26,7 @@ export const routes: Routes = [
       import('./pages/apps-and-games/apps-and-games').then(module => module.AppsAndGames),
     data: seo({
       title: $localize`:@@seo.apps-and-games.title:Apps & Spiele – Boundfox Studios`,
-      description: $localize`:@@seo.apps-and-games.description:Alle Apps und Spiele von Boundfox Studios: LehrGrapht, MAT, Flugwacht und Bug-A-Ball — kostenlos, vieles davon Open Source.`,
+      description: $localize`:@@seo.apps-and-games.description:Alle Apps und Spiele von Boundfox Studios: LehrGrapht, MAT, Flugwacht, Geodart und Bug-A-Ball — kostenlos, vieles davon Open Source.`,
     }),
   },
   {
