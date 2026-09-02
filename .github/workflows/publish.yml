@@ -1,0 +1,151 @@
+name: Publish
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        description: The GitHub environment this deployment is recorded under
+        type: string
+        required: true
+      url:
+        description: >-
+          Where the published output is served. It is also the base the edge-cache purge polls,
+          so it carries no trailing slash and no path.
+        type: string
+        required: true
+      branch:
+        description: The branch Netcup pulls the published output from
+        type: string
+        required: true
+      ref:
+        description: >-
+          What to build. Empty builds the commit that triggered the run; a deployment that must
+          not follow the trigger pins a branch here.
+        type: string
+        default: ''
+      lastmod:
+        description: >-
+          Whether the sitemap's lastmod database is restored before the build and written back
+          after it. One switch for both on purpose: the persist step only resolves the
+          remote-tracking ref that the restore step creates.
+        type: boolean
+        default: false
+      purge-edge-cache:
+        description: Whether Cloudflare's cache is purged once the origin serves the new build
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    name: Publish
+    runs-on: ubuntu-latest
+    environment:
+      name: ${{ inputs.environment }}
+      url: ${{ inputs.url }}
+    steps:
+      - uses: actions/create-github-app-token@v3
+        id: app-token
+        with:
+          client-id: ${{ vars.BFS_APP_BOT_CLIENT_ID }}
+          private-key: ${{ secrets.BFS_APP_BOT_PRIVATE_KEY }}
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ inputs.ref }}
+          token: ${{ steps.app-token.outputs.token }}
+      # `./.github/actions/*` resolves against the runner workspace, which the checkout above filled
+      # from this repository — not against the checkout of whatever called this workflow.
+      - uses: ./.github/actions/read-node-version-from-nvmrc
+        id: node-version
+      - uses: ./.github/actions/prepare-node
+        with:
+          version: ${{ steps.node-version.outputs.version }}
+      - run: npm run fetch:github
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Restore the lastmod database
+        if: inputs.lastmod
+        run: |
+          # The database is build output, not source: keeping it on its own branch means a deploy
+          # no longer depends on someone having built locally and committed the refreshed file.
+          if git fetch --depth 1 origin '+refs/heads/deployment/state:refs/remotes/origin/deployment/state'; then
+            git show refs/remotes/origin/deployment/state:lastmod.json > tools/seo/lastmod.json
+          else
+            echo "no lastmod database yet, every URL gets today's date"
+          fi
+      - run: npx ng build
+      - run: npm run postbuild
+      - name: Publish to the deployment branch
+        id: publish
+        env:
+          APP_SLUG: ${{ steps.app-token.outputs.app-slug }}
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          BRANCH: ${{ inputs.branch }}
+          # On a pull request GITHUB_SHA is the ephemeral test merge commit and does not say which
+          # commit is being published; the head sha does.
+          PUBLISH_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          user_id=$(gh api "/users/${APP_SLUG}[bot]" --jq .id)
+          git config user.name "${APP_SLUG}[bot]"
+          git config user.email "${user_id}+${APP_SLUG}[bot]@users.noreply.github.com"
+          git fetch --depth 1 origin "$BRANCH"
+          git worktree add published -B "$BRANCH" FETCH_HEAD
+          # Replacing the contents outright rather than syncing them: rsync's quick check compares
+          # size and mtime, so an edit that keeps the byte count within the same second is skipped.
+          find published -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+          cp --archive dist/website/browser/. published/
+          git -C published add --all
+          # The marker is the tree hash of the output itself, so an unchanged build keeps its id
+          # and produces no commit. Anything else would republish nightly for no reason.
+          build_id=$(git -C published write-tree)
+          echo "$build_id" > published/build-id.txt
+          git -C published add --all
+          if git -C published diff --cached --quiet HEAD; then
+            echo "build output unchanged, nothing to publish"
+          else
+            git -C published commit -m "chore: publish ${PUBLISH_SHA}"
+            git -C published push origin "$BRANCH"
+            echo "build-id=$build_id" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Persist the lastmod database
+        if: inputs.lastmod
+        run: |
+          if git rev-parse --verify --quiet refs/remotes/origin/deployment/state >/dev/null; then
+            git worktree add state -B deployment/state refs/remotes/origin/deployment/state
+          else
+            git worktree add --orphan -b deployment/state state
+          fi
+          cp tools/seo/lastmod.json state/lastmod.json
+          git -C state add lastmod.json
+          if git -C state diff --cached --quiet HEAD 2>/dev/null; then
+            echo "lastmod database unchanged"
+          else
+            git -C state commit -m "chore: update the lastmod database"
+            git -C state push origin deployment/state
+          fi
+      - name: Purge the edge cache
+        if: inputs.purge-edge-cache && steps.publish.outputs.build-id != ''
+        env:
+          BUILD_ID: ${{ steps.publish.outputs.build-id }}
+          POLL_URL: ${{ inputs.url }}
+          CF_ZONE_ID: ${{ secrets.CF_ZONE_ID }}
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+        run: |
+          # Plesk pulls the branch on its own schedule, so the purge has to wait for the new output
+          # to actually be served — purging earlier would pull the old pages back into the edge.
+          # A unique query string per attempt keeps Cloudflare from answering the poll from cache.
+          for attempt in $(seq 1 60); do
+            live=$(curl -fsS --max-time 10 "${POLL_URL}/build-id.txt?poll=${attempt}" || true)
+            if [ "$live" = "$BUILD_ID" ]; then
+              curl -fsS -X POST "https://api.cloudflare.com/client/v4/zones/${CF_ZONE_ID}/purge_cache" \
+                -H "Authorization: Bearer ${CF_API_TOKEN}" \
+                -H "Content-Type: application/json" \
+                --data '{"purge_everything":true}'
+              exit 0
+            fi
+            sleep 10
+          done
+          echo "::error::the origin never served build ${BUILD_ID} — the edge cache was not purged"
+          exit 1

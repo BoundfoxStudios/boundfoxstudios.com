@@ -16,7 +16,6 @@ permissions:
 jobs:
   deploy:
     name: Deploy
-    runs-on: ubuntu-latest
     # Neither a fork's pull request nor Dependabot's can reach the secrets, so neither gets a
     # preview. Skipping beats failing on the token step; pull_request_target would build foreign
     # code with the secrets in reach.
@@ -24,64 +23,13 @@ jobs:
       github.event_name == 'workflow_dispatch'
       || (github.event.pull_request.head.repo.full_name == github.repository
       && github.actor != 'dependabot[bot]')
-    environment:
-      name: preview
+    uses: ./.github/workflows/publish.yml
+    with:
+      environment: preview
+      # No ref: on a pull request that leaves the checkout on the merge commit the preview is
+      # meant to show, and a manual run builds the default branch.
       url: https://preview.boundfoxstudios.com
-    steps:
-      - uses: actions/create-github-app-token@v3
-        id: app-token
-        with:
-          client-id: ${{ vars.BFS_APP_BOT_CLIENT_ID }}
-          private-key: ${{ secrets.BFS_APP_BOT_PRIVATE_KEY }}
-      # No `ref` here, unlike the production deploy: on a pull request the checkout lands on the
-      # merge commit the preview is meant to show, and a manual run builds the default branch.
-      - uses: actions/checkout@v7
-        with:
-          token: ${{ steps.app-token.outputs.token }}
-      - uses: ./.github/actions/read-node-version-from-nvmrc
-        id: node-version
-      - uses: ./.github/actions/prepare-node
-        with:
-          version: ${{ steps.node-version.outputs.version }}
-      - run: npm run fetch:github
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      # The lastmod database is deliberately neither restored nor written here: it belongs to the
-      # production sitemap, and feeding it from throwaway preview builds would date the live URLs
-      # from commits that never shipped. Without it every preview URL gets today's date.
-      - run: npx ng build
-      - run: npm run postbuild
-      - name: Publish to the deployment branch
-        env:
-          APP_SLUG: ${{ steps.app-token.outputs.app-slug }}
-          GH_TOKEN: ${{ steps.app-token.outputs.token }}
-          # On a pull request GITHUB_SHA is the ephemeral test merge commit and does not say which
-          # commit the preview is showing; the head sha does.
-          PUBLISH_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
-        run: |
-          user_id=$(gh api "/users/${APP_SLUG}[bot]" --jq .id)
-          git config user.name "${APP_SLUG}[bot]"
-          git config user.email "${user_id}+${APP_SLUG}[bot]@users.noreply.github.com"
-          # The orphan fallback covers the very first run, before the branch exists.
-          if git fetch --depth 1 origin deployment/preview; then
-            git worktree add published -B deployment/preview FETCH_HEAD
-          else
-            git worktree add --orphan -b deployment/preview published
-          fi
-          # Replacing the contents outright rather than syncing them: rsync's quick check compares
-          # size and mtime, so an edit that keeps the byte count within the same second is skipped.
-          find published -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
-          cp --archive dist/website/browser/. published/
-          git -C published add --all
-          # The marker is the tree hash of the output itself, so an unchanged build keeps its id
-          # and produces no commit. Served alongside the site, it also tells whether Plesk has
-          # already pulled the newest build.
-          build_id=$(git -C published write-tree)
-          echo "$build_id" > published/build-id.txt
-          git -C published add --all
-          if git -C published diff --cached --quiet HEAD 2>/dev/null; then
-            echo "build output unchanged, nothing to publish"
-          else
-            git -C published commit -m "chore: publish ${PUBLISH_SHA}"
-            git -C published push origin deployment/preview
-          fi
+      branch: deployment/preview
+      # lastmod stays off: the database belongs to the production sitemap, and feeding it from
+      # throwaway preview builds would date the live URLs from commits that never shipped.
+    secrets: inherit
