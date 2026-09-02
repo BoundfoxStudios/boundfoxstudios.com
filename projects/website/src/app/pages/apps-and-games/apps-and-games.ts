@@ -21,7 +21,9 @@ export class AppsAndGames {
   protected readonly lehrgrapht = appEntry('lehrgrapht');
   protected readonly lehrgraphtRepository = repositoryUrl('lehrgrapht');
   protected readonly matRepository = repositoryUrl('mat');
+  protected readonly flugwacht = appEntry('flugwacht');
   protected readonly flugwachtRepository = repositoryUrl('flugwacht');
+  protected readonly geodart = appEntry('geodart');
   protected readonly bugABall = appEntry('bug-a-ball');
 
   constructor() {
@@ -29,7 +31,7 @@ export class AppsAndGames {
 
     seo.setJsonLd('apps', appsItemListJsonLd());
     // The list describes this page only; without this the block would survive a client-side
-    // navigation and claim four products on /support/.
+    // navigation and claim five products on /support/.
     inject(DestroyRef).onDestroy(() => {
       seo.removeJsonLd('apps');
     });

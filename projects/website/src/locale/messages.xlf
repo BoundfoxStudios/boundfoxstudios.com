@@ -291,11 +291,6 @@
         <source>Bewusst minimaler Flug-Tracker für einzelne Flüge: Flugnummer und Datum eintragen, am Reisetag live auf der Karte verfolgen — mit Ankunftszeit in beiden Zeitzonen. Ohne Konto, alles bleibt auf deinem Gerät.</source>
       </segment>
     </unit>
-    <unit id="apps-and-games.apps.flugwacht.repository-aria">
-      <segment>
-        <source>Flugwacht – zum Repository auf GitHub</source>
-      </segment>
-    </unit>
     <unit id="apps-and-games.games.section-title">
       <segment>
         <source>Spiele</source>
@@ -376,24 +371,9 @@
         <source>Zur Website</source>
       </segment>
     </unit>
-    <unit id="home.projects.flugwacht.platforms">
+    <unit id="home.projects.geodart.platforms">
       <segment>
         <source>iOS &amp; Android</source>
-      </segment>
-    </unit>
-    <unit id="home.projects.flugwacht.description">
-      <segment>
-        <source>Bewusst minimaler Flug-Tracker: Flugnummer eintragen und am Reisetag live auf der Karte verfolgen, wo der Flieger gerade ist — ganz ohne Konto.</source>
-      </segment>
-    </unit>
-    <unit id="home.projects.flugwacht.link-aria">
-      <segment>
-        <source>Flugwacht – zum Repository auf GitHub</source>
-      </segment>
-    </unit>
-    <unit id="home.projects.flugwacht.link">
-      <segment>
-        <source>Zum Repository</source>
       </segment>
     </unit>
     <unit id="home.projects.mat.platforms">
@@ -729,6 +709,61 @@
     <unit id="home.github.card.link-aria">
       <segment>
         <source><ph id="0" equiv="TITLE" disp="this.title()"/> – zum Repository auf GitHub</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.apps.flugwacht.source-aria">
+      <segment>
+        <source>Flugwacht – Source Code auf GitHub</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.apps.flugwacht.website-aria">
+      <segment>
+        <source>Flugwacht – zur Website</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.games.geodart.cta">
+      <segment>
+        <source>Zur Website</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.games.geodart.cta-aria">
+      <segment>
+        <source>Geodart – zur Website</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.games.geodart.description">
+      <segment>
+        <source>Geographie-Quiz mit Dartwurf: Ein Ziel wird genannt (Stadt, Fluss, Gipfel oder See), und du tippst die Stelle innerhalb der Zeit auf der Karte an. Punkte gibt es für Genauigkeit, Kategorie und Tempo. Zehn Fragen pro Runde, komplett offline.</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.games.geodart.kicker">
+      <segment>
+        <source>Spiel</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.games.geodart.platforms">
+      <segment>
+        <source>Für iOS &amp; Android, aktuell in Entwicklung.</source>
+      </segment>
+    </unit>
+    <unit id="common.geodart.key-art-alt">
+      <segment>
+        <source>Geodart: ein Dart steckt im Zentrum konzentrischer Ringe über einer stilisierten Landkarte.</source>
+      </segment>
+    </unit>
+    <unit id="home.projects.geodart.description">
+      <segment>
+        <source>Geographie-Quiz mit Dartwurf: Ein Ziel wird genannt, du triffst die Stelle auf der Karte. Zehn Fragen pro Runde, komplett offline.</source>
+      </segment>
+    </unit>
+    <unit id="home.projects.geodart.link">
+      <segment>
+        <source>Zur Website</source>
+      </segment>
+    </unit>
+    <unit id="home.projects.geodart.link-aria">
+      <segment>
+        <source>Geodart – zur Website</source>
       </segment>
     </unit>
   </file>
