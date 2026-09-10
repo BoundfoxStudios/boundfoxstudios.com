@@ -22,6 +22,10 @@ export class AppsAndGames {
   protected readonly lehrgraphtRepository = repositoryUrl('lehrgrapht');
   protected readonly matRepository = repositoryUrl('mat');
   protected readonly flugwachtRepository = repositoryUrl('flugwacht');
+  protected readonly flutterSdkSyncCompanion = appEntry('flutter-sdk-sync-companion');
+  protected readonly flutterSdkSyncCompanionRepository = repositoryUrl(
+    'flutter-sdk-sync-companion',
+  );
   protected readonly bugABall = appEntry('bug-a-ball');
 
   constructor() {
@@ -29,7 +33,7 @@ export class AppsAndGames {
 
     seo.setJsonLd('apps', appsItemListJsonLd());
     // The list describes this page only; without this the block would survive a client-side
-    // navigation and claim four products on /support/.
+    // navigation and claim five products on /support/.
     inject(DestroyRef).onDestroy(() => {
       seo.removeJsonLd('apps');
     });

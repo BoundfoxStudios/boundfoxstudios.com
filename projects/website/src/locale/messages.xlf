@@ -28,7 +28,7 @@
     </unit>
     <unit id="seo.apps-and-games.description">
       <segment>
-        <source>Alle Apps und Spiele von Boundfox Studios: LehrGrapht, MAT, Flugwacht und Bug-A-Ball — kostenlos, vieles davon Open Source.</source>
+        <source>Alle Apps und Spiele von Boundfox Studios: LehrGrapht, MAT, Flugwacht, Flutter SDK Sync Companion und Bug-A-Ball — kostenlos, vieles davon Open Source.</source>
       </segment>
     </unit>
     <unit id="seo.support.title">
@@ -729,6 +729,41 @@
     <unit id="home.github.card.link-aria">
       <segment>
         <source><ph id="0" equiv="TITLE" disp="this.title()"/> – zum Repository auf GitHub</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.apps.flutter-sdk-sync-companion.description">
+      <segment>
+        <source>Hält die Flutter-SDK-Auswahl der IDE mit FVM im Gleichklang: Wechselst du bei laufender IDE die Version, zieht das SDK nach, die Pakete werden neu aufgelöst und der Device-Daemon startet neu. Ohne IDE-Neustart, ohne Pfade von Hand.</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.apps.flutter-sdk-sync-companion.kicker">
+      <segment>
+        <source>IDE-Plugin</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.apps.flutter-sdk-sync-companion.marketplace-aria">
+      <segment>
+        <source>Flutter SDK Sync Companion – zum Marketplace bei JetBrains</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.apps.flutter-sdk-sync-companion.platforms">
+      <segment>
+        <source>IntelliJ IDEA &amp; Android Studio · kostenfrei · Open Source</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.apps.flutter-sdk-sync-companion.source-aria">
+      <segment>
+        <source>Flutter SDK Sync Companion – Source Code auf GitHub</source>
+      </segment>
+    </unit>
+    <unit id="common.link.marketplace">
+      <segment>
+        <source>Zum Marketplace</source>
+      </segment>
+    </unit>
+    <unit id="home.github.flutter-sdk-sync-companion.description">
+      <segment>
+        <source>IntelliJ-Plugin, das die Flutter-SDK-Auswahl eines Projekts mit FVM synchron hält.</source>
       </segment>
     </unit>
   </file>
