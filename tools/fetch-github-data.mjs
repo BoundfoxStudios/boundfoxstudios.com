@@ -53,22 +53,35 @@ const latestTag = async fullName => {
   return tags[0] ? { name: tags[0].name } : null;
 };
 
-const [lehrgrapht, mat, flugwacht, lehrgraphtTag, matRelease, flugwachtRelease] = await Promise.all(
-  [
-    repositoryCard('BoundfoxStudios/lehrgrapht'),
-    repositoryCard('BoundfoxStudios/mat'),
-    repositoryCard('BoundfoxStudios/flugwacht'),
-    latestTag('BoundfoxStudios/lehrgrapht'),
-    latestRelease('BoundfoxStudios/mat'),
-    latestRelease('BoundfoxStudios/flugwacht'),
-  ],
-);
+const [
+  lehrgrapht,
+  mat,
+  flugwacht,
+  flutterSdkSyncCompanion,
+  lehrgraphtTag,
+  matRelease,
+  flugwachtRelease,
+  flutterSdkSyncCompanionRelease,
+] = await Promise.all([
+  repositoryCard('BoundfoxStudios/lehrgrapht'),
+  repositoryCard('BoundfoxStudios/mat'),
+  repositoryCard('BoundfoxStudios/flugwacht'),
+  repositoryCard('BoundfoxStudios/flutter-sdk-sync-companion'),
+  latestTag('BoundfoxStudios/lehrgrapht'),
+  latestRelease('BoundfoxStudios/mat'),
+  latestRelease('BoundfoxStudios/flugwacht'),
+  latestRelease('BoundfoxStudios/flutter-sdk-sync-companion'),
+]);
 
 const data = {
   generatedAt: new Date().toISOString(),
   lehrgrapht: { ...lehrgrapht, latestTag: lehrgraphtTag },
   mat: { ...mat, latestRelease: matRelease },
   flugwacht: { ...flugwacht, latestRelease: flugwachtRelease },
+  flutterSdkSyncCompanion: {
+    ...flutterSdkSyncCompanion,
+    latestRelease: flutterSdkSyncCompanionRelease,
+  },
 };
 
 if (!data.lehrgrapht.latestTag) {
@@ -79,6 +92,11 @@ mkdirSync(dirname(OUTPUT_PATH), { recursive: true });
 writeFileSync(OUTPUT_PATH, `${JSON.stringify(data, null, 2)}\n`);
 
 console.log(`Wrote ${OUTPUT_PATH}`);
-console.log(`  lehrgrapht tag:    ${data.lehrgrapht.latestTag?.name ?? '(none)'}`);
-console.log(`  mat release:       ${data.mat.latestRelease?.tagName ?? '(none)'}`);
-console.log(`  flugwacht release: ${data.flugwacht.latestRelease?.tagName ?? '(none)'}`);
+console.log(`  lehrgrapht tag:                     ${data.lehrgrapht.latestTag?.name ?? '(none)'}`);
+console.log(`  mat release:                        ${data.mat.latestRelease?.tagName ?? '(none)'}`);
+console.log(
+  `  flugwacht release:                  ${data.flugwacht.latestRelease?.tagName ?? '(none)'}`,
+);
+console.log(
+  `  flutter-sdk-sync-companion release: ${data.flutterSdkSyncCompanion.latestRelease?.tagName ?? '(none)'}`,
+);

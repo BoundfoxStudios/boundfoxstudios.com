@@ -15,7 +15,11 @@ export class RepositoryCards {
   protected readonly lehrgrapht = gitHubData.lehrgrapht;
   protected readonly mat = gitHubData.mat;
   protected readonly flugwacht = gitHubData.flugwacht;
+  protected readonly flutterSdkSyncCompanion = gitHubData.flutterSdkSyncCompanion;
   protected readonly lehrgraphtRepository = repositoryUrl('lehrgrapht');
   protected readonly matRepository = repositoryUrl('mat');
   protected readonly flugwachtRepository = repositoryUrl('flugwacht');
+  protected readonly flutterSdkSyncCompanionRepository = repositoryUrl(
+    'flutter-sdk-sync-companion',
+  );
 }

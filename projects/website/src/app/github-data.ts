@@ -17,6 +17,7 @@ export interface GitHubData {
   lehrgrapht: RepositoryCard & { latestTag: { name: string } | null };
   mat: RepositoryCard & { latestRelease: ReleaseInfo | null };
   flugwacht: RepositoryCard & { latestRelease: ReleaseInfo | null };
+  flutterSdkSyncCompanion: RepositoryCard & { latestRelease: ReleaseInfo | null };
 }
 
 // The annotation is load-bearing: without it the JSON's inferred literal type absorbs any
@@ -32,4 +33,5 @@ export const repositoryVersions = {
   lehrgrapht: versionLabel(gitHubData.lehrgrapht.latestTag?.name),
   mat: versionLabel(gitHubData.mat.latestRelease?.tagName),
   flugwacht: versionLabel(gitHubData.flugwacht.latestRelease?.tagName),
+  flutterSdkSyncCompanion: versionLabel(gitHubData.flutterSdkSyncCompanion.latestRelease?.tagName),
 } as const;

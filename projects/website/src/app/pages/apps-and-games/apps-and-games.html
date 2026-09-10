@@ -148,6 +148,52 @@
         >Zum Repository</bfs-arrow-link
       >
     </bfs-project-card>
+
+    <bfs-project-card
+      [headingLevel]="3"
+      [version]="versions.flutterSdkSyncCompanion"
+      density="compact"
+      media="pattern"
+      kicker="IDE-Plugin"
+      i18n-kicker="@@apps-and-games.apps.flutter-sdk-sync-companion.kicker"
+      title="Flutter SDK Sync Companion"
+      platforms="IntelliJ IDEA &amp; Android Studio · kostenfrei · Open Source"
+      i18n-platforms="@@apps-and-games.apps.flutter-sdk-sync-companion.platforms"
+    >
+      <span
+        class="px-6 text-center font-display text-[30px] leading-[1.05] tracking-wide text-neutral-900 uppercase"
+        card-media
+        aria-hidden="true"
+        translate="no"
+        >Flutter SDK<br />Sync Companion</span
+      >
+      <bfs-badge
+        card-badge
+        variant="amber"
+        i18n="@@common.badge.available"
+        >Verfügbar</bfs-badge
+      >
+      <ng-container i18n="@@apps-and-games.apps.flutter-sdk-sync-companion.description"
+        >Hält die Flutter-SDK-Auswahl der IDE mit FVM im Gleichklang: Wechselst du bei laufender IDE
+        die Version, zieht das SDK nach.</ng-container
+      >
+      <bfs-arrow-link
+        [href]="flutterSdkSyncCompanion.url"
+        card-links
+        ariaLabel="Flutter SDK Sync Companion – zum Marketplace bei JetBrains"
+        i18n-ariaLabel="@@apps-and-games.apps.flutter-sdk-sync-companion.marketplace-aria"
+        i18n="@@common.link.marketplace"
+        >Zum Marketplace</bfs-arrow-link
+      >
+      <bfs-arrow-link
+        [href]="flutterSdkSyncCompanionRepository"
+        card-links
+        ariaLabel="Flutter SDK Sync Companion – Source Code auf GitHub"
+        i18n-ariaLabel="@@apps-and-games.apps.flutter-sdk-sync-companion.source-aria"
+        i18n="@@common.link.source-code"
+        >Source Code</bfs-arrow-link
+      >
+    </bfs-project-card>
   </div>
 </section>
 
