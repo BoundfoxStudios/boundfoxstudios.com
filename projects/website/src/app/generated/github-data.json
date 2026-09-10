@@ -1,29 +1,42 @@
 {
-  "generatedAt": "2026-08-18T17:12:12.607Z",
+  "generatedAt": "2026-09-10T02:57:01.285Z",
   "lehrgrapht": {
     "description": "LehrGrapht is a little math plotter as a word addin for teachers",
     "language": "TypeScript",
-    "pushedAt": "2026-08-06T19:51:33Z",
+    "pushedAt": "2026-09-05T20:24:41Z",
     "stars": 3,
     "latestTag": {
-      "name": "1.7.0"
+      "name": "1.8.0"
     }
   },
   "mat": {
     "description": "Preview a Markdown file in your browser, the way GitHub renders it. A single binary, no server, no runtime to install.",
     "language": "TypeScript",
-    "pushedAt": "2026-08-17T20:28:29Z",
+    "pushedAt": "2026-08-22T22:02:18Z",
     "stars": 0,
     "latestRelease": {
-      "tagName": "v1.0.0",
-      "publishedAt": "2026-08-12T17:54:03Z"
+      "tagName": "v1.1.0",
+      "publishedAt": "2026-08-21T16:36:34Z"
     }
   },
   "flugwacht": {
     "description": "A deliberately minimal flight tracker for individual, manually added flights — where are they right now, and when will they arrive? (Flutter, iOS + Android)",
     "language": "Dart",
-    "pushedAt": "2026-08-18T05:55:35Z",
+    "pushedAt": "2026-09-03T19:15:57Z",
     "stars": 0,
-    "latestRelease": null
+    "latestRelease": {
+      "tagName": "v1.0.0",
+      "publishedAt": "2026-09-02T06:20:30Z"
+    }
+  },
+  "flutterSdkSyncCompanion": {
+    "description": "An IntelliJ Platform plugin that keeps a project's Flutter SDK in sync with FVM",
+    "language": "Kotlin",
+    "pushedAt": "2026-09-09T19:26:45Z",
+    "stars": 0,
+    "latestRelease": {
+      "tagName": "v1.0.0",
+      "publishedAt": "2026-09-09T18:47:30Z"
+    }
   }
 }
