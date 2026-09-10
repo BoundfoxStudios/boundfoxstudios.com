@@ -879,8 +879,8 @@
     </unit>
     <unit id="apps-and-games.apps.flutter-sdk-sync-companion.description">
       <segment state="translated">
-        <source>Hält die Flutter-SDK-Auswahl der IDE mit FVM im Gleichklang: Wechselst du bei laufender IDE die Version, zieht das SDK nach, die Pakete werden neu aufgelöst und der Device-Daemon startet neu. Ohne IDE-Neustart, ohne Pfade von Hand.</source>
-        <target>Keeps the IDE&apos;s Flutter SDK selection in step with FVM: switch versions while the IDE is running and the SDK follows, packages are resolved again and the device daemon is restarted. No IDE restart, no paths edited by hand.</target>
+        <source>Hält die Flutter-SDK-Auswahl der IDE mit FVM im Gleichklang: Wechselst du bei laufender IDE die Version, zieht das SDK nach.</source>
+        <target>Keeps the IDE&apos;s Flutter SDK selection in step with FVM: switch versions while the IDE is running and the SDK follows.</target>
       </segment>
     </unit>
     <unit id="apps-and-games.apps.flutter-sdk-sync-companion.kicker">

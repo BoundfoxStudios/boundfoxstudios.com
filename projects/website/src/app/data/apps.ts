@@ -52,7 +52,7 @@ export const APPS: readonly AppEntry[] = [
   {
     slug: 'flutter-sdk-sync-companion',
     name: 'Flutter SDK Sync Companion',
-    description: $localize`:@@apps-and-games.apps.flutter-sdk-sync-companion.description:Hält die Flutter-SDK-Auswahl der IDE mit FVM im Gleichklang: Wechselst du bei laufender IDE die Version, zieht das SDK nach, die Pakete werden neu aufgelöst und der Device-Daemon startet neu. Ohne IDE-Neustart, ohne Pfade von Hand.`,
+    description: $localize`:@@apps-and-games.apps.flutter-sdk-sync-companion.description:Hält die Flutter-SDK-Auswahl der IDE mit FVM im Gleichklang: Wechselst du bei laufender IDE die Version, zieht das SDK nach.`,
     type: 'SoftwareApplication',
     applicationCategory: 'DeveloperApplication',
     operatingSystem: 'Windows, macOS, Linux',
