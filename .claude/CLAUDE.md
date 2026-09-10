@@ -1,13 +1,14 @@
 # boundfoxstudios.com
 
 Fully static, prerendered, bilingual Angular site. German at `/`, English at `/en/`, both
-produced by a single `ng build` and uploaded to Apache over FTP by GitHub Actions.
+produced by a single `ng build`, finished by `npm run postbuild` and published by GitHub Actions
+to the `deployment/production` branch, which Plesk on Netcup pulls onto the Apache host.
 
 ## Brand facts that are not negotiable
 
-`#ffeb3b`, `#ffc107` and `#ffa726` never change. The orange kicker's contrast failure is a
-documented deviation, not a bug to fix — `tools/a11y/run-axe.mjs` excludes it by name. The brand
-name is `Boundfox Studios`, one word.
+`#ffeb3b`, `#ffc107` and `#ffa726` never change. The orange kicker's contrast failure is an
+accepted deviation, not a bug to fix: `tools/a11y/run-axe.mjs` excludes it and the script accent
+by name. The brand name is `Boundfox Studios`, one word.
 
 ## Traps that have already cost time
 
