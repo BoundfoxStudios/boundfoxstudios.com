@@ -66,7 +66,21 @@
                   "maximumError": "8kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              // Critical-CSS inlining is off on purpose: beasties 0.5 (Angular 22.2) inlines none
+              // of the @font-face rules, because Tailwind's font utilities only reference
+              // var(--font-*). The header then wraps in the fallback font and shifts once the
+              // stylesheet applies (CLS 0.075 on /en/). In this object form every omitted key is
+              // off, so the other optimizations stay spelled out.
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false,
+                  "removeSpecialComments": true
+                },
+                "fonts": true
+              }
             },
             "development": {
               "optimization": false,
