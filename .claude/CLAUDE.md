@@ -14,6 +14,10 @@ by name. The brand name is `Boundfox Studios`, one word.
 
 - Removing `"server"` from `angular.json` silently disables prerendering. The build still
   exits 0 and ships an empty client-side shell.
+- Critical-CSS inlining is off in `angular.json` on purpose. Turned back on, beasties 0.5 drops
+  the web-font `@font-face` rules, the header wraps in the fallback font and Lighthouse fails on
+  CLS. The `optimization` object form turns every omitted key off, so dropping `scripts` or
+  `minify` there silently ships unminified output.
 - `ng serve` serves one locale flat at `/`. The `/en/` prefix and the language switcher can
   only be verified against a real build — `npm run preview`.
 - Assets are duplicated per locale, so template asset paths must be relative. An absolute

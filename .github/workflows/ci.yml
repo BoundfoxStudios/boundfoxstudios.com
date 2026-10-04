@@ -75,7 +75,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Nothing is measured
         run: |
-          if grep -rniE 'cloudflareinsights|beacon\.min\.js|googletagmanager|google-analytics|plausible\.io|matomo' dist/website/browser; then
+          if grep -rniE 'cloudflareinsights|beacon\.min\.js|googletagmanager|google-analytics|plausible\.io|matomo\.(js|php)|piwik\.(js|php)|_paq' dist/website/browser; then
             echo "::error::an analytics script reached the build"
             exit 1
           fi
