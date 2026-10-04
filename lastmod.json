@@ -1,50 +1,50 @@
 {
   "apps-and-games/index.html": {
-    "hash": "fcb65f6b0e28bd37c449000214e51f8e54572efe651e12c02fdca82d3e9bd3d3",
+    "hash": "22fe290880735aa9eeb5c552974e8b566fbab806fb506471f638a38aa5201ecd",
     "lastmod": "2026-10-04"
   },
   "en/apps-and-games/index.html": {
-    "hash": "bccacae1733627fe37b8b910ee94053c9c260c98cd76b1df9646f4d7935b3d0c",
+    "hash": "8d3c4fe19d4de0fa56e8a22289a8caba6ae295a444c7732b2ed4461aa2d9bafc",
     "lastmod": "2026-10-04"
   },
   "en/index.html": {
-    "hash": "32a33a6b9ec62c420ddd33614b824638e3bd62a8c4a3953b4198f7869bf2b0a4",
+    "hash": "1f211f112e291d96f279b36530d594df089786ab5509612c0e989963b38b5b99",
     "lastmod": "2026-10-04"
   },
   "en/legal-details-imprint/index.html": {
-    "hash": "4a032389ceb7c7b28dc32c8bed1af7636e4d780320dc53a4909dca659096f28b",
-    "lastmod": "2026-08-23"
+    "hash": "9c7b184658df37a39d9a5ae564977adb5960500a6644f91e9f29b62103f51f31",
+    "lastmod": "2026-10-04"
   },
   "en/privacy-policy/index.html": {
-    "hash": "af22257e7e14a94d2a2127bede03b28e549dc4cf5e677631f5ecd012924910d0",
-    "lastmod": "2026-08-23"
+    "hash": "4b22c6db0a3fd322f0ecbcb177ea001ea5e381b28670305956a43efd205c7edb",
+    "lastmod": "2026-10-04"
   },
   "en/socials/index.html": {
-    "hash": "39868c906f430ab2af40e0244f21ae21b54dcd43e3022effdaf6f2ff6359377e",
-    "lastmod": "2026-08-23"
+    "hash": "0cfd41d0a3f1b9119074525756a3cca5d790648b04a3a5f83d2396c78b0ee731",
+    "lastmod": "2026-10-04"
   },
   "en/support/index.html": {
-    "hash": "c6aab8a0b965d6d77980f0854899a0a62c4ec2e834a46c34216b335ef2110dd2",
-    "lastmod": "2026-08-23"
+    "hash": "fb3f752efa0f4ea31be4a68b80937a52d3c7b76f4a79e9e0fbaf0ef801553cf7",
+    "lastmod": "2026-10-04"
   },
   "index.html": {
-    "hash": "796b1fa2e7eaa0a728fe33b161198fc8722d8f3ccc564f4dd452bd924c5e8a96",
+    "hash": "01539255f8599eb7bb77956e14e4685c66a46d5f918c1e836041f5e6c144be2e",
     "lastmod": "2026-10-04"
   },
   "legal-details-imprint/index.html": {
-    "hash": "57679add6e607cddcf7a4756138e6dffae2c179fccb74b999b8e5896b047c20d",
-    "lastmod": "2026-08-23"
+    "hash": "0d38c47ff97c08ef07dc098ce36acd7fe23ec08f778a439ee83d75828634ceb0",
+    "lastmod": "2026-10-04"
   },
   "privacy-policy/index.html": {
-    "hash": "c77fdf1b00acbeb59e0ac751dca801172943483091151b958839846c286a9140",
-    "lastmod": "2026-08-23"
+    "hash": "c1c100cf5ae85ea70b6f3bcbba10157b981281e0ddbf17f5b854b27912c098be",
+    "lastmod": "2026-10-04"
   },
   "socials/index.html": {
-    "hash": "cf05181b9d10f984a0aa8e7da8e7613f83333e8e6366c1f7c63a1cc98bdd6a85",
-    "lastmod": "2026-08-23"
+    "hash": "d84e1ae0bd69cc865c713737b20e5441695dab00bfbffce904f13a7cc3cc2f15",
+    "lastmod": "2026-10-04"
   },
   "support/index.html": {
-    "hash": "686b234bbc2eb7b19812d73995dc7bf1e965245b18b9a0b756a10c208fff1a47",
-    "lastmod": "2026-08-23"
+    "hash": "b433f6b291e3289228cdbd0aed81097d57370bd473bf82b05a5307a7a17bd9d6",
+    "lastmod": "2026-10-04"
   }
 }
