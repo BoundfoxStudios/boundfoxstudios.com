@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-09-10T02:57:01.285Z",
+  "generatedAt": "2026-10-04T16:17:42.117Z",
   "lehrgrapht": {
     "description": "LehrGrapht is a little math plotter as a word addin for teachers",
     "language": "TypeScript",
-    "pushedAt": "2026-09-05T20:24:41Z",
+    "pushedAt": "2026-10-04T07:13:20Z",
     "stars": 3,
     "latestTag": {
-      "name": "1.8.0"
+      "name": "1.9.0"
     }
   },
   "mat": {
@@ -22,7 +22,7 @@
   "flugwacht": {
     "description": "A deliberately minimal flight tracker for individual, manually added flights — where are they right now, and when will they arrive? (Flutter, iOS + Android)",
     "language": "Dart",
-    "pushedAt": "2026-09-03T19:15:57Z",
+    "pushedAt": "2026-10-04T10:38:40Z",
     "stars": 0,
     "latestRelease": {
       "tagName": "v1.0.0",
@@ -32,7 +32,7 @@
   "flutterSdkSyncCompanion": {
     "description": "An IntelliJ Platform plugin that keeps a project's Flutter SDK in sync with FVM",
     "language": "Kotlin",
-    "pushedAt": "2026-09-09T19:26:45Z",
+    "pushedAt": "2026-09-10T06:22:13Z",
     "stars": 0,
     "latestRelease": {
       "tagName": "v1.0.0",
