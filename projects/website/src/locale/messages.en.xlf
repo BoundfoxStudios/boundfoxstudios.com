@@ -153,8 +153,8 @@
     </unit>
     <unit id="footer.tagline">
       <segment state="translated">
-        <source> Spiele und Apps — mit Liebe in Stuttgart entwickelt. Kostenlos und Open Source. </source>
-        <target>Games and apps — built with love in Stuttgart. Free and open source.</target>
+        <source> Spiele und Apps – mit Liebe in Stuttgart entwickelt. </source>
+        <target>Games and apps – built with love in Stuttgart.</target>
       </segment>
     </unit>
     <unit id="footer.pages.title">
@@ -429,8 +429,8 @@
     </unit>
     <unit id="home.projects.subtitle">
       <segment state="translated">
-        <source>Woran wir gerade bauen — und was du schon heute spielen und benutzen kannst. Kostenlos und Open Source.</source>
-        <target>What we&apos;re building right now — and what you can already play and use today. Free and open source.</target>
+        <source>Woran wir gerade bauen – und was du schon heute spielen und benutzen kannst.</source>
+        <target>What we&apos;re building right now – and what you can already play and use today.</target>
       </segment>
     </unit>
     <unit id="home.projects.all-link">
@@ -537,8 +537,8 @@
     </unit>
     <unit id="home.support.text">
       <segment state="translated">
-        <source> Unsere Projekte sind kostenlos und Open Source. Wenn du magst, gib etwas zurück — vieles davon kostet dich keinen Cent. </source>
-        <target>Our projects are free and open source. If you&apos;d like to give something back, plenty of the ways cost you nothing at all.</target>
+        <source> Wenn du magst, gib etwas zurück – vieles davon kostet dich keinen Cent. </source>
+        <target>If you&apos;d like to give something back, plenty of the ways cost you nothing at all.</target>
       </segment>
     </unit>
     <unit id="home.support.all-options-link">
