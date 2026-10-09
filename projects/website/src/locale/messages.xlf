@@ -28,7 +28,7 @@
     </unit>
     <unit id="seo.apps-and-games.description">
       <segment>
-        <source>Alle Apps und Spiele von Boundfox Studios: LehrGrapht, MAT, Flugwacht, Flutter SDK Sync Companion, Geodart und Bug-A-Ball — kostenlos, vieles davon Open Source.</source>
+        <source>Alle Apps und Spiele von Boundfox Studios: LehrGrapht, MAT, Flugwacht, Flutter SDK Sync Companion, „Is it on GeForce NOW?“, Geodart und Bug-A-Ball – kostenlos, vieles davon Open Source.</source>
       </segment>
     </unit>
     <unit id="seo.support.title">
@@ -799,6 +799,31 @@
     <unit id="home.projects.geodart.link-aria">
       <segment>
         <source>Geodart – zur Website</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.apps.is-it-on-geforce-now.chrome-web-store-aria">
+      <segment>
+        <source>Is it on GeForce NOW? – zum Chrome Web Store</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.apps.is-it-on-geforce-now.description">
+      <segment>
+        <source>Zeigt im Steam-Shop ein kleines Badge neben jedem Spiel, das du auch auf GeForce NOW spielen kannst. Inoffiziell: weder mit NVIDIA noch mit Valve verbunden.</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.apps.is-it-on-geforce-now.kicker">
+      <segment>
+        <source>Browser-Erweiterung</source>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.apps.is-it-on-geforce-now.platforms">
+      <segment>
+        <source>Chrome · kostenfrei</source>
+      </segment>
+    </unit>
+    <unit id="common.link.chrome-web-store">
+      <segment>
+        <source>Zum Chrome Web Store</source>
       </segment>
     </unit>
   </file>

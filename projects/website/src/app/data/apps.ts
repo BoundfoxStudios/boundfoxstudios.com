@@ -1,7 +1,13 @@
 import { SITE } from '../seo/site.config';
 
 export type AppSlug =
-  'lehrgrapht' | 'mat' | 'flugwacht' | 'flutter-sdk-sync-companion' | 'geodart' | 'bug-a-ball';
+  | 'lehrgrapht'
+  | 'mat'
+  | 'flugwacht'
+  | 'flutter-sdk-sync-companion'
+  | 'is-it-on-geforce-now'
+  | 'geodart'
+  | 'bug-a-ball';
 
 export interface AppEntry {
   readonly slug: AppSlug;
@@ -58,6 +64,15 @@ export const APPS: readonly AppEntry[] = [
     operatingSystem: 'Windows, macOS, Linux',
     url: 'https://plugins.jetbrains.com/plugin/34117-flutter-sdk-sync-companion',
     codeRepository: 'https://github.com/BoundfoxStudios/flutter-sdk-sync-companion',
+  },
+  {
+    slug: 'is-it-on-geforce-now',
+    name: 'Is it on GeForce NOW?',
+    description: $localize`:@@apps-and-games.apps.is-it-on-geforce-now.description:Zeigt im Steam-Shop ein kleines Badge neben jedem Spiel, das du auch auf GeForce NOW spielen kannst. Inoffiziell: weder mit NVIDIA noch mit Valve verbunden.`,
+    type: 'SoftwareApplication',
+    applicationCategory: 'BrowserApplication',
+    operatingSystem: 'Windows, macOS, Linux, ChromeOS',
+    url: 'https://chromewebstore.google.com/detail/is-it-on-geforce-now/oefpkgdjjaieddgfollcodhkfpfanlbp',
   },
   {
     slug: 'geodart',
