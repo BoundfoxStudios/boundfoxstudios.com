@@ -57,8 +57,8 @@
     </unit>
     <unit id="seo.apps-and-games.description">
       <segment state="translated">
-        <source>Alle Apps und Spiele von Boundfox Studios: LehrGrapht, MAT, Flugwacht, Flutter SDK Sync Companion, Geodart und Bug-A-Ball — kostenlos, vieles davon Open Source.</source>
-        <target>Every app and game by Boundfox Studios: LehrGrapht, MAT, Flugwacht, Flutter SDK Sync Companion, Geodart and Bug-A-Ball — free, and much of it open source.</target>
+        <source>Alle Apps und Spiele von Boundfox Studios: LehrGrapht, MAT, Flugwacht, Flutter SDK Sync Companion, „Is it on GeForce NOW?“, Geodart und Bug-A-Ball – kostenlos, vieles davon Open Source.</source>
+        <target>Every app and game by Boundfox Studios: LehrGrapht, MAT, Flugwacht, Flutter SDK Sync Companion, &quot;Is it on GeForce NOW?&quot;, Geodart and Bug-A-Ball – free, and much of it open source.</target>
       </segment>
     </unit>
     <unit id="seo.support.title">
@@ -153,8 +153,8 @@
     </unit>
     <unit id="footer.tagline">
       <segment state="translated">
-        <source> Spiele und Apps — mit Liebe in Stuttgart entwickelt. Kostenlos und Open Source. </source>
-        <target>Games and apps — built with love in Stuttgart. Free and open source.</target>
+        <source> Spiele und Apps – mit Liebe in Stuttgart entwickelt. </source>
+        <target>Games and apps – built with love in Stuttgart.</target>
       </segment>
     </unit>
     <unit id="footer.pages.title">
@@ -429,8 +429,8 @@
     </unit>
     <unit id="home.projects.subtitle">
       <segment state="translated">
-        <source>Woran wir gerade bauen — und was du schon heute spielen und benutzen kannst. Kostenlos und Open Source.</source>
-        <target>What we&apos;re building right now — and what you can already play and use today. Free and open source.</target>
+        <source>Woran wir gerade bauen – und was du schon heute spielen und benutzen kannst.</source>
+        <target>What we&apos;re building right now – and what you can already play and use today.</target>
       </segment>
     </unit>
     <unit id="home.projects.all-link">
@@ -537,8 +537,8 @@
     </unit>
     <unit id="home.support.text">
       <segment state="translated">
-        <source> Unsere Projekte sind kostenlos und Open Source. Wenn du magst, gib etwas zurück — vieles davon kostet dich keinen Cent. </source>
-        <target>Our projects are free and open source. If you&apos;d like to give something back, plenty of the ways cost you nothing at all.</target>
+        <source> Wenn du magst, gib etwas zurück – vieles davon kostet dich keinen Cent. </source>
+        <target>If you&apos;d like to give something back, plenty of the ways cost you nothing at all.</target>
       </segment>
     </unit>
     <unit id="home.support.all-options-link">
@@ -959,6 +959,36 @@
       <segment state="translated">
         <source>Zur Website</source>
         <target>Visit the website</target>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.apps.is-it-on-geforce-now.description">
+      <segment state="translated">
+        <source>Zeigt im Steam-Shop ein kleines Badge neben jedem Spiel, das du auch auf GeForce NOW spielen kannst. Inoffiziell: weder mit NVIDIA noch mit Valve verbunden.</source>
+        <target>Shows a small badge in the Steam store next to every game you can also play on GeForce NOW. Unofficial: not affiliated with NVIDIA or Valve.</target>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.apps.is-it-on-geforce-now.kicker">
+      <segment state="translated">
+        <source>Browser-Erweiterung</source>
+        <target>Browser extension</target>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.apps.is-it-on-geforce-now.platforms">
+      <segment state="translated">
+        <source>Chrome · kostenfrei</source>
+        <target>Chrome · free</target>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.apps.is-it-on-geforce-now.chrome-web-store-aria">
+      <segment state="translated">
+        <source>Is it on GeForce NOW? – zum Chrome Web Store</source>
+        <target>Is it on GeForce NOW? – go to the Chrome Web Store</target>
+      </segment>
+    </unit>
+    <unit id="common.link.chrome-web-store">
+      <segment state="translated">
+        <source>Zum Chrome Web Store</source>
+        <target>Go to the Chrome Web Store</target>
       </segment>
     </unit>
   </file>

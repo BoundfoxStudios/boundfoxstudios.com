@@ -27,6 +27,7 @@ export class AppsAndGames {
   protected readonly flutterSdkSyncCompanionRepository = repositoryUrl(
     'flutter-sdk-sync-companion',
   );
+  protected readonly isItOnGeForceNow = appEntry('is-it-on-geforce-now');
   protected readonly geodart = appEntry('geodart');
   protected readonly bugABall = appEntry('bug-a-ball');
 
@@ -35,7 +36,7 @@ export class AppsAndGames {
 
     seo.setJsonLd('apps', appsItemListJsonLd());
     // The list describes this page only; without this the block would survive a client-side
-    // navigation and claim six products on /support/.
+    // navigation and claim seven products on /support/.
     inject(DestroyRef).onDestroy(() => {
       seo.removeJsonLd('apps');
     });

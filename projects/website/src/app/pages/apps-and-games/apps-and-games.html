@@ -202,6 +202,45 @@
         >Source Code</bfs-arrow-link
       >
     </bfs-project-card>
+
+    <bfs-project-card
+      [headingLevel]="3"
+      density="compact"
+      media="icon"
+      kicker="Browser-Erweiterung"
+      i18n-kicker="@@apps-and-games.apps.is-it-on-geforce-now.kicker"
+      title="Is it on GeForce NOW?"
+      platforms="Chrome · kostenfrei"
+      i18n-platforms="@@apps-and-games.apps.is-it-on-geforce-now.platforms"
+    >
+      <!-- eslint-disable @angular-eslint/template/prefer-ngsrc -- an SVG has no resolution variants for the directive to generate -->
+      <img
+        card-media
+        src="images/is-it-on-geforce-now-icon.svg"
+        width="104"
+        height="104"
+        alt=""
+      />
+      <!-- eslint-enable @angular-eslint/template/prefer-ngsrc -->
+      <bfs-badge
+        card-badge
+        variant="amber"
+        i18n="@@common.badge.available"
+        >Verfügbar</bfs-badge
+      >
+      <ng-container i18n="@@apps-and-games.apps.is-it-on-geforce-now.description"
+        >Zeigt im Steam-Shop ein kleines Badge neben jedem Spiel, das du auch auf GeForce NOW
+        spielen kannst. Inoffiziell: weder mit NVIDIA noch mit Valve verbunden.</ng-container
+      >
+      <bfs-arrow-link
+        [href]="isItOnGeForceNow.url"
+        card-links
+        ariaLabel="Is it on GeForce NOW? – zum Chrome Web Store"
+        i18n-ariaLabel="@@apps-and-games.apps.is-it-on-geforce-now.chrome-web-store-aria"
+        i18n="@@common.link.chrome-web-store"
+        >Zum Chrome Web Store</bfs-arrow-link
+      >
+    </bfs-project-card>
   </div>
 </section>
 
