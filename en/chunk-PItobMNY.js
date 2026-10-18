@@ -1,0 +1,1 @@
+var e={origin:`https://boundfoxstudios.com`,name:`Boundfox Studios`,defaultImage:`/og/default.png`};var o=[{code:`de`,hreflang:`de`,subPath:``,ogLocale:`de_DE`},{code:`en`,hreflang:`en`,subPath:`en`,ogLocale:`en_US`}];var n=o[0];export{n,o as r,e as t};
