@@ -1,4 +1,12 @@
-import { afterNextRender, Component, computed, inject, signal } from '@angular/core';
+import {
+  afterNextRender,
+  Component,
+  computed,
+  ElementRef,
+  inject,
+  signal,
+  viewChild,
+} from '@angular/core';
 
 import { AnalyticsService, TrackingStatus } from '../analytics.service';
 
@@ -27,6 +35,8 @@ export class TrackingOptOut {
   private readonly analytics = inject(AnalyticsService);
   private readonly rendered = signal(false);
   private readonly clicked = signal(false);
+  private readonly statusParagraph =
+    viewChild.required<ElementRef<HTMLParagraphElement>>('statusParagraph');
 
   protected readonly shownStatus = computed(() =>
     this.rendered() ? this.analytics.status() : 'unknown',
@@ -46,6 +56,7 @@ export class TrackingOptOut {
       this.analytics.optOut();
     } else {
       this.analytics.revokeOptOut();
+      this.statusParagraph().nativeElement.focus();
     }
 
     this.clicked.set(true);
