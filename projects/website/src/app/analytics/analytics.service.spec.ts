@@ -27,6 +27,7 @@ describe('AnalyticsService', () => {
 
   beforeEach(() => {
     delete trackerWindow._paq;
+    document.cookie = 'mtm_consent_removed=; path=/; max-age=0';
 
     TestBed.configureTestingModule({
       providers: [
@@ -90,5 +91,14 @@ describe('AnalyticsService', () => {
     await router.navigateByUrl('/support');
 
     expect(replacementQueue).toContainEqual(['trackPageView']);
+  });
+
+  it('withdrawing the objection deletes the opt-out cookie without forgetUserOptOut', () => {
+    document.cookie = 'mtm_consent_removed=1792345678901; path=/';
+
+    TestBed.inject(AnalyticsService).revokeOptOut();
+
+    expect(document.cookie).not.toContain('mtm_consent_removed');
+    expect(commandsNamed('forgetUserOptOut')).toEqual([]);
   });
 });

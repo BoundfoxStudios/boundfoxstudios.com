@@ -1,12 +1,13 @@
 import { DatePipe } from '@angular/common';
 import { Component, inject, LOCALE_ID } from '@angular/core';
 
+import { TrackingOptOut } from '../../analytics/tracking-opt-out/tracking-opt-out';
 import { LegalPage } from '../../ui/legal-page/legal-page';
 import { PRIVACY_LAST_UPDATED } from './privacy-last-updated';
 
 @Component({
   selector: 'bfs-privacy-policy',
-  imports: [DatePipe, LegalPage],
+  imports: [DatePipe, LegalPage, TrackingOptOut],
   templateUrl: './privacy-policy.html',
 })
 export class PrivacyPolicy {

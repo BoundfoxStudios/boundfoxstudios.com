@@ -1,6 +1,7 @@
 import { notFoundTitle, pageViewUrl, trackingState } from './tracking-rules';
 
 const PRODUCTION_ORIGIN = 'https://boundfoxstudios.com';
+const STORED_OBJECTION = 'theme=dark; mtm_consent_removed=1792345678901';
 
 describe('trackingState', () => {
   it('allows tracking only on the production origin', () => {
@@ -12,17 +13,28 @@ describe('trackingState', () => {
       'http://boundfoxstudios.com',
     ];
 
-    expect(trackingState(PRODUCTION_ORIGIN, {})).toBe('allowed');
-    expect(otherOrigins.filter(origin => trackingState(origin, {}) !== 'off')).toEqual([]);
+    expect(trackingState(PRODUCTION_ORIGIN, {}, '')).toBe('allowed');
+    expect(otherOrigins.filter(origin => trackingState(origin, {}, '') !== 'off')).toEqual([]);
   });
 
   it('does not track when Do Not Track is set', () => {
-    expect(trackingState(PRODUCTION_ORIGIN, { doNotTrack: '1' })).toBe('off');
-    expect(trackingState(PRODUCTION_ORIGIN, { doNotTrack: '0' })).toBe('allowed');
+    expect(trackingState(PRODUCTION_ORIGIN, { doNotTrack: '1' }, '')).toBe('off');
+    expect(trackingState(PRODUCTION_ORIGIN, { doNotTrack: '0' }, '')).toBe('allowed');
   });
 
   it('does not track when Global Privacy Control is set', () => {
-    expect(trackingState(PRODUCTION_ORIGIN, { globalPrivacyControl: true })).toBe('off');
+    expect(trackingState(PRODUCTION_ORIGIN, { globalPrivacyControl: true }, '')).toBe('off');
+  });
+
+  it('keeps a visitor who objected untracked on the production origin', () => {
+    expect(trackingState(PRODUCTION_ORIGIN, {}, STORED_OBJECTION)).toBe('opted-out');
+    expect(trackingState(PRODUCTION_ORIGIN, {}, 'theme=dark')).toBe('allowed');
+  });
+
+  it('renews a stored objection even when Do Not Track is set', () => {
+    expect(trackingState(PRODUCTION_ORIGIN, { doNotTrack: '1' }, STORED_OBJECTION)).toBe(
+      'opted-out',
+    );
   });
 });
 

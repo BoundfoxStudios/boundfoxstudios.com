@@ -12,7 +12,7 @@
 
   <!-- The H1 and the "Stand" line are the only translated elements inside the lang="de" wrapper,
        so each names its own language. Everything between them is the supplied German text and
-       carries no i18n attribute at all — see docs/legal/README.md. -->
+       carries no i18n attribute at all – see .claude/CLAUDE.md, "Conventions". -->
   <h1
     class="m-0 font-display text-[clamp(40px,5.5vw,60px)] leading-none font-normal tracking-wide break-words hyphens-auto text-neutral-900"
     [attr.lang]="isGermanLocale ? null : 'en'"
@@ -298,8 +298,11 @@
     c) Cookielose Analyse
   </h3>
   <p class="m-0 text-base leading-relaxed">
-    Wir haben Matomo so konfiguriert, dass Matomo keine Cookies in Ihrem Browser speichert.
+    Wir haben Matomo so konfiguriert, dass Matomo keine Cookies in Ihrem Browser speichert. Einzige
+    Ausnahme auf dieser Internetseite: Widersprechen Sie unten der Erfassung, wird das Cookie
+    „mtm_consent_removed“ gespeichert, damit Ihr Widerspruch bestehen bleibt.
   </p>
+  <bfs-tracking-opt-out />
   <h3
     class="mt-6 mb-2 font-display text-lg leading-none font-normal tracking-wide text-neutral-900"
   >

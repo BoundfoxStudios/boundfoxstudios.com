@@ -54,6 +54,11 @@ by name. The brand name is `Boundfox Studios`, one word.
 - Once loaded, `matomo.js` replaces the `window._paq` array with its own proxy. Every command
   reads `window._paq` at call time; a stored reference silently drops all later page views and
   the opt-out.
+- `forgetUserOptOut` exists but must not be used: it calls `setConsentGiven`, which re-enables
+  browser feature detection and flushes the hits queued while the visitor was opted out.
+  Withdrawing an objection deletes `mtm_consent_removed` instead.
+- A stored objection keeps `matomo.js` from loading and is rewritten on every load: Safari caps
+  cookies written by script at seven days, so an objection written once would lapse silently.
 - `NavigationEnd` fires before the title strategy updates `document.title`. Page views take their
   title from the route's `seo` data.
 - A future CSP needs `script-src`, `connect-src` and `img-src` for
@@ -66,4 +71,6 @@ by name. The brand name is `Boundfox Studios`, one word.
 
 Code style, testing, branches, commit messages and pull requests follow the general
 conventions. In short: no comments that paraphrase code, no abbreviations in identifiers,
-English code and commits, German only in translatable strings.
+English code and commits, German only in translatable strings. Exception: the legal prose and
+`bfs-tracking-opt-out` are German without i18n on purpose and appear under `/en/` inside the
+`lang="de"` wrapper.
