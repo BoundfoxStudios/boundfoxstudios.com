@@ -42,6 +42,13 @@ const routes = await prerenderedPages(DIST);
 // assemble the result, which a context created implicitly by `browser.newPage()` forbids.
 const analyse = async (route, configure) => {
   const context = await browser.newContext();
+  await context.route(
+    url => url.protocol.startsWith('http') && url.host !== `127.0.0.1:${PORT}`,
+    interceptedRoute => {
+      violations.push(`${route} · outbound request · ${interceptedRoute.request().url()}`);
+      return interceptedRoute.abort();
+    },
+  );
   const page = await context.newPage();
   await page.goto(`http://127.0.0.1:${PORT}${route}`, { waitUntil: 'networkidle' });
 
