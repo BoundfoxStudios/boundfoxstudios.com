@@ -37,13 +37,14 @@ by name. The brand name is `Boundfox Studios`, one word.
 
 ## Measurement
 
-- Production page views go to the self-hosted Matomo at `werhettdoneigeguggd.de` in the
-  configuration the privacy policy describes: no cookies, no browser feature detection, no
-  performance timings, no outlink tracking (outbound traffic is visible on the target services),
-  only campaign query parameters, 404 titles without query or full referrer. Do Not Track and
-  Global Privacy Control keep `matomo.js` from loading at all. Changing what the tracker sends is
-  a privacy policy change and moves `PRIVACY_LAST_UPDATED`. Until this change the site ran no
-  client-side measurement (issue #53).
+- Production page views go to the self-hosted Matomo at `werhettdoneigeguggd.de`, configured
+  with: no cookies apart from the objection cookie `mtm_consent_removed`, no browser feature
+  detection, no performance timings, no outlink tracking (outbound traffic is visible on the
+  target services), only campaign query parameters, 404 titles without query or full referrer.
+  Of these, the privacy policy covers only the cookies. Do Not Track and Global Privacy Control
+  keep `matomo.js` from loading at all. Changing what the tracker sends is a privacy policy
+  change and moves `PRIVACY_LAST_UPDATED`. Until this change the site ran no client-side
+  measurement (issue #53).
 - Only the production origin tracks, decided at runtime against `SITE.origin` in the
   browser-only `app.config.browser.ts`. CI, preview and production ship the identical build, so a
   build flag was rejected: it would rest on a workflow input.
