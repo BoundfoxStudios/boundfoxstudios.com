@@ -105,8 +105,8 @@
     </unit>
     <unit id="seo.privacy-policy.description">
       <segment state="translated">
-        <source>Datenschutzerklärung von Boundfox Studios: ohne Cookies, ohne Tracking, ohne Analyse-Skripte – und was beim Aufruf der Website trotzdem verarbeitet wird.</source>
-        <target>Boundfox Studios&apos; privacy policy: no cookies, no tracking, no analytics scripts – and what is processed anyway when you open the site.</target>
+        <source>Datenschutzerklärung von Boundfox Studios: welche Daten beim Aufruf der Website verarbeitet werden, inklusive der cookielosen Reichweitenmessung mit selbst gehostetem Matomo.</source>
+        <target>Boundfox Studios&apos; privacy policy: which data is processed when you visit the website, including the cookieless audience measurement with self-hosted Matomo.</target>
       </segment>
     </unit>
     <unit id="site-header.menu.close">

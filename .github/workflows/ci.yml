@@ -73,10 +73,11 @@ jobs:
       - run: npm run build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Nothing is measured
+      - name: No third-party analytics, and no Matomo tracker in prerendered HTML
         run: |
-          if grep -rniE 'cloudflareinsights|beacon\.min\.js|googletagmanager|google-analytics|plausible\.io|matomo\.(js|php)|piwik\.(js|php)|_paq' dist/website/browser; then
-            echo "::error::an analytics script reached the build"
+          if grep -rniE 'cloudflareinsights|beacon\.min\.js|googletagmanager|google-analytics|plausible\.io' dist/website/browser \
+            || grep -rniE --include='*.html' 'matomo\.(js|php)|piwik\.(js|php)|_paq' dist/website/browser; then
+            echo "::error::a third-party analytics script or a prerendered Matomo tracker reached the build"
             exit 1
           fi
       - run: npm run lighthouse

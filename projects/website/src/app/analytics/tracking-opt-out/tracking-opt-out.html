@@ -1,0 +1,21 @@
+<p
+  class="mt-4 text-base leading-relaxed"
+  #statusParagraph
+  tabindex="-1"
+>
+  {{ statusText() }}
+</p>
+@if (buttonLabel()) {
+  <button
+    class="mt-4 inline-block cursor-pointer rounded-lg bg-amber px-5 py-2.5 font-display text-base tracking-wider text-neutral-900 uppercase shadow-accent focus-ring transition-colors duration-150 ease-in-out hover:bg-orange hover:text-neutral-900 active:translate-y-px"
+    (click)="changeObjection()"
+    type="button"
+  >
+    {{ buttonLabel() }}
+  </button>
+}
+<p
+  class="sr-only"
+  [textContent]="announcement()"
+  role="status"
+></p>

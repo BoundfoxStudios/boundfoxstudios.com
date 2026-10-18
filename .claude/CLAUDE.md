@@ -35,8 +35,43 @@ by name. The brand name is `Boundfox Studios`, one word.
   where `o<n.length` reads as the start of a tag, and then report every page as clean.
   That is why the nightly link check runs linkinator.
 
+## Measurement
+
+- Production page views go to the self-hosted Matomo at `werhettdoneigeguggd.de`, configured
+  with: no cookies apart from the objection cookie `mtm_consent_removed`, no browser feature
+  detection, no performance timings, no outlink tracking (outbound traffic is visible on the
+  target services), only campaign query parameters, 404 titles without query or full referrer.
+  Of these, the privacy policy covers only the cookies. Do Not Track and Global Privacy Control
+  keep `matomo.js` from loading at all. Changing what the tracker sends is a privacy policy
+  change and moves `PRIVACY_LAST_UPDATED`. Until this change the site ran no client-side
+  measurement (issue #53).
+- Only the production origin tracks, decided at runtime against `SITE.origin` in the
+  browser-only `app.config.browser.ts`. CI, preview and production ship the identical build, so a
+  build flag was rejected: it would rest on a workflow input.
+- The tracker is never written during prerender. CI fails on `matomo.js`, `matomo.php` or `_paq`
+  in prerendered HTML, so the privacy prose names no tracker file; the JS bundles contain them on
+  purpose. `npm run axe` aborts and fails on any request that leaves the local server, which is
+  what proves the inactive path.
+- Once loaded, `matomo.js` replaces the `window._paq` array with its own proxy. Every command
+  reads `window._paq` at call time; a stored reference silently drops all later page views and
+  the opt-out.
+- `forgetUserOptOut` exists but must not be used: it calls `setConsentGiven`, which re-enables
+  browser feature detection and flushes the hits queued while the visitor was opted out.
+  Withdrawing an objection deletes `mtm_consent_removed` instead.
+- A stored objection keeps `matomo.js` from loading and is rewritten on every load: Safari caps
+  cookies written by script at seven days, so an objection written once would lapse silently.
+- `NavigationEnd` fires before the title strategy updates `document.title`. Page views take their
+  title from the route's `seo` data.
+- A future CSP needs `script-src`, `connect-src` and `img-src` for
+  `https://werhettdoneigeguggd.de`.
+- Rejected: ngx-matomo-client (peer range pinned to the Angular major, no cookieless or
+  feature-detection options), the inline snippet (lands in every prerendered page, previews
+  included), a first-party proxy (EasyPrivacy blocks by path, not host).
+
 ## Conventions
 
 Code style, testing, branches, commit messages and pull requests follow the general
 conventions. In short: no comments that paraphrase code, no abbreviations in identifiers,
-English code and commits, German only in translatable strings.
+English code and commits, German only in translatable strings. Exception: the legal prose and
+`bfs-tracking-opt-out` are German without i18n on purpose and appear under `/en/` inside the
+`lang="de"` wrapper.

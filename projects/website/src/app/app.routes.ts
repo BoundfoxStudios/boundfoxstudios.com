@@ -59,7 +59,7 @@ export const routes: Routes = [
       import('./pages/privacy-policy/privacy-policy').then(module => module.PrivacyPolicy),
     data: seo({
       title: $localize`:@@seo.privacy-policy.title:Datenschutzerklärung – Boundfox Studios`,
-      description: $localize`:@@seo.privacy-policy.description:Datenschutzerklärung von Boundfox Studios: ohne Cookies, ohne Tracking, ohne Analyse-Skripte – und was beim Aufruf der Website trotzdem verarbeitet wird.`,
+      description: $localize`:@@seo.privacy-policy.description:Datenschutzerklärung von Boundfox Studios: welche Daten beim Aufruf der Website verarbeitet werden, inklusive der cookielosen Reichweitenmessung mit selbst gehostetem Matomo.`,
     }),
   },
   {

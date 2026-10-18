@@ -1,9 +1,9 @@
 /// <reference types="@angular/localize" />
 
 import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
+import { browserConfig } from './app/app.config.browser';
 import { App } from './app/app';
 
-bootstrapApplication(App, appConfig).catch((error: unknown) => {
+bootstrapApplication(App, browserConfig).catch((error: unknown) => {
   console.error(error);
 });
