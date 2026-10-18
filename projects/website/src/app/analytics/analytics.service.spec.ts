@@ -93,7 +93,20 @@ describe('AnalyticsService', () => {
     expect(replacementQueue).toContainEqual(['trackPageView']);
   });
 
+  it('objecting stops Matomo through optUserOut', () => {
+    const analytics = TestBed.inject(AnalyticsService);
+
+    analytics.optOut();
+
+    expect(commandsNamed('optUserOut')).toEqual([['optUserOut']]);
+    expect(analytics.status()).toBe('opted-out');
+  });
+
   it('withdrawing the objection deletes the opt-out cookie without forgetUserOptOut', () => {
+    history.replaceState(null, '', '/privacy-policy/');
+    onTestFinished(() => {
+      history.replaceState(null, '', '/');
+    });
     document.cookie = 'mtm_consent_removed=1792345678901; path=/';
 
     TestBed.inject(AnalyticsService).revokeOptOut();
