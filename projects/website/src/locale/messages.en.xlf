@@ -897,8 +897,8 @@
     </unit>
     <unit id="apps-and-games.games.geodart.description">
       <segment state="translated">
-        <source>Geographie-Quiz mit Dartwurf: Ein Ziel wird genannt (Stadt, Fluss, Gipfel oder See), und du tippst die Stelle innerhalb der Zeit auf der Karte an. Punkte gibt es für Genauigkeit, Kategorie und Tempo. Zehn Fragen pro Runde, komplett offline.</source>
-        <target>A geography quiz with a dart throw: a target is named (a city, river, peak or lake) and you tap the spot on the map before time runs out. Points come from accuracy, category and speed. Ten questions per round, fully offline.</target>
+        <source>Geographie-Quiz mit Dartwurf: Ein Ziel wird genannt (Stadt, Fluss, Gipfel oder See), und du tippst die Stelle innerhalb der Zeit auf der Karte an. Punkte gibt es für Genauigkeit, Kategorie und Tempo. Zehn Fragen pro Runde, auch offline spielbar.</source>
+        <target>A geography quiz with a dart throw: a target is named (a city, river, peak or lake) and you tap the spot on the map before time runs out. Points come from accuracy, category and speed. Ten questions per round, playable offline too.</target>
       </segment>
     </unit>
     <unit id="apps-and-games.apps.flugwacht.website-aria">
@@ -945,8 +945,8 @@
     </unit>
     <unit id="home.projects.geodart.description">
       <segment state="translated">
-        <source>Geographie-Quiz mit Dartwurf: Ein Ziel wird genannt, du triffst die Stelle auf der Karte. Zehn Fragen pro Runde, komplett offline.</source>
-        <target>A geography quiz with a dart throw: a target is named and you hit the spot on the map. Ten questions per round, fully offline.</target>
+        <source>Geographie-Quiz mit Dartwurf: Ein Ziel wird genannt, du triffst die Stelle auf der Karte. Zehn Fragen pro Runde, auch offline spielbar.</source>
+        <target>A geography quiz with a dart throw: a target is named and you hit the spot on the map. Ten questions per round, playable offline too.</target>
       </segment>
     </unit>
     <unit id="home.projects.geodart.link-aria">
