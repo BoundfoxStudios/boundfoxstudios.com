@@ -68,6 +68,38 @@ by name. The brand name is `Boundfox Studios`, one word.
   feature-detection options), the inline snippet (lands in every prerendered page, previews
   included), a first-party proxy (EasyPrivacy blocks by path, not host).
 
+## Privacy policy: websites, apps and in-game ads
+
+- The privacy policy covers boundfoxstudios.com and bugaball.com (Cloudflare in front of netcup),
+  geodart.app and flugwacht.app (netcup only) in 3 a), and the apps in section 5: a) Bug-A-Ball,
+  b) Geodart, c) Flugwacht. Section 5 describes the store releases, not the app repos' heads:
+  Bug-A-Ball tag `v1.4.1` (its `main`), Geodart 1.0.0 with ads, Flugwacht's `main`. A new
+  recipient, SDK or consent change in any of them is a privacy policy change and moves
+  `PRIVACY_LAST_UPDATED`.
+- Every processing names its legal basis where it is described, and section 8 repeats all of them
+  as an overview list; section 10 holds the retention criteria and the objection cookie's lifetime.
+  Adding a processing means updating both. Cross references are plain numbers ("Abschnitt 7" =
+  rights, "Abschnitt 4 e)" = ads), and nothing tests them, so renumber by hand.
+- 3 a) says only boundfoxstudios.com measures reach. bugaball.com is a WordPress site outside this
+  repo, where a plugin can add third-party scripts or cookies, so re-check its rendered page
+  whenever 3 a) changes.
+- Bug-A-Ball has no ad SDK, so 4 e) and section 12 name Geodart only. Do not add Bug-A-Ball back
+  there.
+- Geodart's in-app Matomo rests on Art. 6 Abs. 1 lit. f DSGVO (cookieless, no identifier), as 5 b)
+  says. Do not add consent wording.
+- Geodart shows ads through Unity LevelPlay with Unity Ads and the ironSource Exchange, started only
+  after the in-game consent dialog. 4 e) describes exactly this setup, so enabling another network
+  in LevelPlay is a privacy policy change.
+- The sentence that we "können … gemeinsam mit Unity verantwortlich sein" is hedged on purpose
+  (CJEU Fashion ID, C-40/17). Never reword it into an exclusion.
+- The data list in 4 e) follows Unity's disclosures for the Unity Ads and LevelPlay SDKs. The longer
+  list in Unity's player FAQ (IDFV, CPU, GPU, sensor flags) describes the Unity engine, not the ad
+  SDKs.
+- Unity is not certified under the EU-US Data Privacy Framework (checked on 2026-10-21), so 4 e) and
+  5 a) name the Standard Contractual Clauses. Re-check the DPF list before changing that.
+- Geodart shows ads after consent, so its copy says "auch offline spielbar", never
+  "komplett offline".
+
 ## Conventions
 
 Code style, testing, branches, commit messages and pull requests follow the general
