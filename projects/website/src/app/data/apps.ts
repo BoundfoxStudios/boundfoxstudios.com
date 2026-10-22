@@ -77,7 +77,7 @@ export const APPS: readonly AppEntry[] = [
   {
     slug: 'geodart',
     name: 'Geodart',
-    description: $localize`:@@apps-and-games.games.geodart.description:Geographie-Quiz mit Dartwurf: Ein Ziel wird genannt (Stadt, Fluss, Gipfel oder See), und du tippst die Stelle innerhalb der Zeit auf der Karte an. Punkte gibt es für Genauigkeit, Kategorie und Tempo. Zehn Fragen pro Runde, komplett offline.`,
+    description: $localize`:@@apps-and-games.games.geodart.description:Geographie-Quiz mit Dartwurf: Ein Ziel wird genannt (Stadt, Fluss, Gipfel oder See), und du tippst die Stelle innerhalb der Zeit auf der Karte an. Punkte gibt es für Genauigkeit, Kategorie und Tempo. Zehn Fragen pro Runde, auch offline spielbar.`,
     type: 'VideoGame',
     applicationCategory: 'GameApplication',
     operatingSystem: 'iOS, Android',
