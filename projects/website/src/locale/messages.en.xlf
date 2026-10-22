@@ -105,8 +105,8 @@
     </unit>
     <unit id="seo.privacy-policy.description">
       <segment state="translated">
-        <source>Datenschutzerklärung von Boundfox Studios: welche Daten beim Aufruf der Website und bei der Werbung in unseren Spielen verarbeitet werden, inklusive der cookielosen Reichweitenmessung mit selbst gehostetem Matomo.</source>
-        <target>Boundfox Studios&apos; privacy policy: which data is processed when you visit the website and when our games show ads, including the cookieless audience measurement with self-hosted Matomo.</target>
+        <source>Datenschutzerklärung von Boundfox Studios: welche Daten unsere Websites, Spiele und Apps verarbeiten, von der Werbung in Geodart bis zur cookielosen Reichweitenmessung mit Matomo.</source>
+        <target>Boundfox Studios&apos; privacy policy: which data our websites, games and apps process, from the ads in Geodart to the cookieless audience measurement with Matomo.</target>
       </segment>
     </unit>
     <unit id="site-header.menu.close">
