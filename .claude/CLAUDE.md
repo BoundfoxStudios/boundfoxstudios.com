@@ -71,9 +71,11 @@ by name. The brand name is `Boundfox Studios`, one word.
 ## Privacy policy: websites, apps and in-game ads
 
 - The privacy policy covers boundfoxstudios.com and bugaball.com (Cloudflare in front of netcup),
-  geodart.app and flugwacht.app (netcup only) in 3 a), and the apps in section 5: a) Bug-A-Ball,
-  b) Geodart, c) Flugwacht. Section 5 describes the store releases, not the app repos' heads:
-  Bug-A-Ball tag `v1.4.1` (its `main`), Geodart 1.0.0 with ads, Flugwacht's `main`. A new
+  geodart.app and flugwacht.app (netcup only) in 3 a), and the apps in section 5: a) Bug-A-Ball, b)
+  Geodart, c) Flugwacht, plus d) Game Center and Google Play Spiele across the games. Sections 5 a)
+  to c) describe the store releases, not the app repos' heads: Bug-A-Ball tag `v1.4.1` (its `main`),
+  Geodart with ads since 1.1, Flugwacht's `main`. 5 d) is ahead of the stores: Geodart uses these
+  services from 1.2.0 (its `main`), and this sentence goes once 1.2.0 is in both stores. A new
   recipient, SDK or consent change in any of them is a privacy policy change and moves
   `PRIVACY_LAST_UPDATED`.
 - Every processing names its legal basis where it is described, and section 8 repeats all of them
@@ -95,8 +97,19 @@ by name. The brand name is `Boundfox Studios`, one word.
 - The data list in 4 e) follows Unity's disclosures for the Unity Ads and LevelPlay SDKs. The longer
   list in Unity's player FAQ (IDFV, CPU, GPU, sensor flags) describes the Unity engine, not the ad
   SDKs.
-- Unity is not certified under the EU-US Data Privacy Framework (checked on 2026-10-21), so 4 e) and
-  5 a) name the Standard Contractual Clauses. Re-check the DPF list before changing that.
+- 5 d) says the games "eventuell" use Game Center or Google Play Spiele and names no game. That is
+  Manu's decision of 2026-11-06, made knowing that WP260 para 13 discourages the qualifier and that
+  only Geodart uses them, from 1.2.0 and for achievements only. Do not name games or drop the
+  qualifier without asking.
+- 5 d) rests on Art. 6 Abs. 1 lit. f DSGVO and § 25 Abs. 2 Nr. 2 TDDDG although the sign-in runs at
+  every start without a player action. That is arguable under the DSK's strict reading of
+  "ausdrücklich gewünscht", and it is also Manu's decision. The passage promises that we store no
+  player id, run no server for it and forward nothing to Unity or Matomo, so a game that breaks this
+  (Geodart #194 plans a backend with identity signatures) is a privacy policy change. Its "können
+  ... gemeinsam ... verantwortlich sein" is hedged like the Unity sentence, for the same reason.
+- Unity and Apple are not certified under the EU-US Data Privacy Framework (Unity checked on
+  2026-10-21, Apple on 2026-11-06), so 4 e), 5 a) and 5 d) name the Standard Contractual Clauses.
+  Re-check the DPF list before changing that.
 - Geodart shows ads after consent, so its copy says "auch offline spielbar", never
   "komplett offline".
 
