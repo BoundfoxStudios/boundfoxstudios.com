@@ -1,5 +1,5 @@
 Contact: mailto:info@boundfoxstudios.com
 Contact: https://github.com/BoundfoxStudios/boundfoxstudios.com/security/advisories/new
-Expires: 2027-11-08T09:48:50Z
+Expires: 2027-11-08T12:42:36Z
 Preferred-Languages: de, en
 Canonical: https://boundfoxstudios.com/.well-known/security.txt
