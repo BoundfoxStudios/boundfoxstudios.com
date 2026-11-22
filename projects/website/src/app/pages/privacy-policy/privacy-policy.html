@@ -768,22 +768,25 @@
     b) Geodart
   </h3>
   <p class="m-0 text-base leading-relaxed">
-    Geodart lässt sich ohne Konto und ohne Internetverbindung spielen. Ihre Runden, Bestwerte und
-    Einstellungen speichert das Spiel auf Ihrem Gerät; das ist für das Spiel unbedingt erforderlich
-    (§ 25 Abs. 2 Nr. 2 TDDDG). Mit Internetverbindung übermittelt es Daten wie folgt.
+    Geodart lässt sich ohne Konto spielen und, bis auf die Tagesrunde, ohne Internetverbindung. Ihre
+    Runden, Bestwerte und Einstellungen speichert das Spiel auf Ihrem Gerät; das ist für das Spiel
+    unbedingt erforderlich (§ 25 Abs. 2 Nr. 2 TDDDG). Erinnerungen an die Tagesrunde, die Sie auf
+    Wunsch erhalten, sind Benachrichtigungen, die das Spiel allein auf Ihrem Gerät plant und
+    auslöst, ohne Server; abschalten können Sie sie in Geodart über den Schalter „Erinnerungen“ oder
+    in den Einstellungen Ihres Geräts. Mit Internetverbindung übermittelt Geodart Daten wie folgt.
   </p>
   <p class="mt-4 text-base leading-relaxed">
     <strong>Nutzungsstatistik:</strong> Geodart meldet an unsere eigene Matomo-Installation
     (Abschnitt 4 a) bis d)), welche Bildschirme Sie aufrufen und wann Sie eine Runde beginnen,
     beenden oder abbrechen, eine Frage unbeantwortet ablaufen lassen oder ein Ergebnis teilen. Zu
-    jeder Runde übermittelt die App die gespielte Region, die Kategorien, die genutzten Hilfen und
-    den Spielmodus, bei Mehrspielerrunden außerdem Spielerzahl, Fragen pro Spieler, Reihenfolge und
-    Art der Fragen, bei beendeten Einzelrunden und geteilten Ergebnissen die Punktzahl. Dazu kommen
-    Betriebssystem und Version, Hersteller und Modell Ihres Geräts, Bildschirmauflösung,
-    Systemsprache, die Uhrzeit Ihres Geräts und Ihre IP-Adresse, die Matomo kürzt (Abschnitt 4 b)).
-    Eine Kennung für Sie oder Ihr Gerät sendet die App nicht, Cookies setzt sie keine. Ohne
-    Internetverbindung speichert sie die Daten auf Ihrem Gerät und sendet sie später; Daten, die
-    älter als einen Tag sind, verwirft sie.
+    jeder Runde übermittelt die App die gespielte Region, die Kategorien, die genutzten Hilfen, den
+    Spielmodus und die Angabe, ob die Runde zur Tagesrunde gehört, bei Mehrspielerrunden außerdem
+    Spielerzahl, Fragen pro Spieler, Reihenfolge und Art der Fragen, bei beendeten Einzelrunden und
+    geteilten Ergebnissen die Punktzahl. Dazu kommen Betriebssystem und Version, Hersteller und
+    Modell Ihres Geräts, Bildschirmauflösung, Systemsprache, die Uhrzeit Ihres Geräts und Ihre
+    IP-Adresse, die Matomo kürzt (Abschnitt 4 b)). Eine Kennung für Sie oder Ihr Gerät sendet die
+    App nicht, Cookies setzt sie keine. Ohne Internetverbindung speichert sie die Daten auf Ihrem
+    Gerät und sendet sie später; Daten, die älter als einen Tag sind, verwirft sie.
   </p>
   <p class="mt-4 text-base leading-relaxed">
     Zweck ist, zu erkennen, welche Bildschirme, Regionen, Kategorien, Hilfen und Spielmodi wie oft
@@ -793,6 +796,51 @@
     wir dafür nicht ein, und eine Einstellung zum Abschalten der Statistik bietet Geodart nicht. Wo
     und wie lange wir diese Daten speichern, steht in Abschnitt 4 d). Da die Daten keine Kennung
     enthalten, können wir sie in der Regel keiner Person zuordnen (Art. 11 DSGVO).
+  </p>
+  <p class="mt-4 text-base leading-relaxed">
+    <strong>Tagesrunde:</strong> Solange Sie die Tagesrunde geöffnet haben, ruft Geodart den Plan
+    des Tages von unserem Server api.geodart.app ab: beim Öffnen der Tagesrunde, wenn Sie in die App
+    zurückkehren, wenn Sie auf „Erneut versuchen“ tippen, vor dem Start jeder Region, vor jeder
+    Meldung an eine Tagesbestenliste und beim Tageswechsel. Beim Start der App fragt Geodart den
+    Server nicht ab. Der Server erhält dabei technisch bedingt Ihre IP-Adresse sowie die Kennung der
+    Programmbibliothek, mit der Geodart die Anfrage sendet (User-Agent), und die Angabe, welche
+    Komprimierung Geodart unterstützt. Eine Kennung für Sie oder Ihr Gerät, die Version der App oder
+    Cookies sendet Geodart nicht, und Daten von Game Center oder Google Play Spiele erhält der
+    Server nicht. Er antwortet nur mit seiner Uhrzeit und dem Plan des Tages. Unser Server
+    verarbeitet diese Angaben nur für die Dauer der Anfrage und protokolliert weder Ihre IP-Adresse
+    noch die übrigen Angaben der Anfrage.
+  </p>
+  <p class="mt-4 text-base leading-relaxed">
+    Den Server betreiben wir bei Microsoft Azure, einem Dienst der in Abschnitt 5 a) genannten
+    Microsoft, in einem Rechenzentrum in Frankreich (Region France Central, Paris). Microsoft
+    verarbeitet die Daten in unserem Auftrag (Art. 28 DSGVO). Soweit Microsoft die Daten im
+    Einzelfall außerhalb des Europäischen Wirtschaftsraums verarbeitet, gilt: Microsoft ist nach dem
+    EU-US Data Privacy Framework zertifiziert; die Übermittlung in die USA stützt sich daher auf den
+    Angemessenheitsbeschluss der EU-Kommission vom 10. Juli 2023 (Art. 45 Abs. 1 DSGVO). Für
+    Übermittlungen in andere Drittländer gelten die Standardvertragsklauseln der EU-Kommission (Art.
+    46 Abs. 2 lit. c DSGVO), die Teil unseres Vertrags mit Microsoft sind. Eine Kopie der
+    Standardvertragsklauseln können Sie bei uns anfordern (Abschnitt 2).
+  </p>
+  <p class="mt-4 text-base leading-relaxed">
+    Zweck ist, Ihnen die Tagesrunde bereitzustellen. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO,
+    da die Abfrage für die von Ihnen genutzte Tagesrunde erforderlich ist. Die Abfrage vor jeder
+    Meldung an eine Tagesbestenliste stützen wir auf Art. 6 Abs. 1 lit. f DSGVO; unser berechtigtes
+    Interesse liegt darin, Punktzahlen nur innerhalb der Tagesrunde zu melden, gemessen an einer
+    Uhrzeit, die sich nicht durch Verstellen der Geräteuhr manipulieren lässt. Da unser Server die
+    Anfragen nicht speichert und sie keine Kennung für Sie oder Ihr Gerät enthalten, können wir sie
+    in der Regel keiner Person zuordnen (Art. 11 DSGVO).
+  </p>
+  <p class="mt-4 text-base leading-relaxed">
+    <strong>Tagesbestenlisten:</strong> Sind Sie bei Game Center bzw. Google Play Spiele angemeldet
+    (Abschnitt 5 d)), meldet Geodart nach jeder zu Ende gespielten Region der Tagesrunde Ihre
+    Punktzahl an die Tagesbestenliste ihrer Stufe (Leicht, Mittel oder Schwer). Der Dienst ordnet
+    Ihnen den Eintrag anhand Ihres Kontos zu. Gemeldet wird nur mit Internetverbindung und nur bis
+    zwei Minuten vor dem Ende der Tagesrunde. Punktzahlen, die Geodart nicht melden konnte, etwa
+    weil Sie offline oder nicht angemeldet waren, meldet es auch später nicht. Zur Anzeige ruft
+    Geodart die besten 25 Einträge mit Rang, Spielernamen und Punktzahl sowie Ihren eigenen Eintrag
+    ab, ohne sie zu speichern. Die Programmbibliothek, über die Geodart den Dienst anbindet, lädt
+    dabei auch die Profilbilder der Spieler; Geodart zeigt sie nicht an und speichert sie nicht.
+    Rechtsgrundlage und Einzelheiten, auch dazu, wer Ihren Eintrag sieht, stehen in Abschnitt 5 d).
   </p>
   <p class="mt-4 text-base leading-relaxed">
     <strong>Werbung:</strong> Nach Ihrer Einwilligung zeigt Geodart Werbung über Unity LevelPlay an.
@@ -806,7 +854,8 @@
   </p>
   <p class="mt-4 text-base leading-relaxed">
     Ihre Rechte aus Abschnitt 7 können Sie per E-Mail an uns geltend machen (Abschnitt 2). Für die
-    Daten bei Unity gilt Abschnitt 4 e).
+    Daten bei Unity gilt Abschnitt 4 e), für die Daten bei Game Center und Google Play Spiele
+    Abschnitt 5 d).
   </p>
   <h3
     class="mt-6 mb-2 font-display text-lg leading-none font-normal tracking-wide text-neutral-900"
@@ -908,11 +957,11 @@
   <p class="m-0 text-base leading-relaxed">
     Unsere Spiele verwenden eventuell Game Center von Apple (unter iOS) oder Google Play Spiele von
     Google (unter Android). In der Regel erkennen Sie das daran, dass ein Spiel beim Start eine
-    Begrüßung oder Anmeldeaufforderung des Dienstes anzeigt oder Erfolge dieses Dienstes anbietet.
-    Verantwortlich für Nutzer im Europäischen Wirtschaftsraum sind nach eigenen Angaben die Apple
-    Distribution International Limited, Hollyhill Industrial Estate, Hollyhill, Cork, Irland (im
-    Folgenden „Apple“), und die Google Ireland Limited, Gordon House, Barrow Street, Dublin 4,
-    Irland (im Folgenden „Google“).
+    Begrüßung oder Anmeldeaufforderung des Dienstes anzeigt oder Erfolge oder Bestenlisten dieses
+    Dienstes anbietet. Verantwortlich für Nutzer im Europäischen Wirtschaftsraum sind nach eigenen
+    Angaben die Apple Distribution International Limited, Hollyhill Industrial Estate, Hollyhill,
+    Cork, Irland (im Folgenden „Apple“), und die Google Ireland Limited, Gordon House, Barrow
+    Street, Dublin 4, Irland (im Folgenden „Google“).
   </p>
   <p class="mt-4 text-base leading-relaxed">
     Verwendet ein Spiel einen dieser Dienste, werden Sie bei jedem Start dort angemeldet, ohne dass
@@ -936,9 +985,13 @@
       Vom Dienst erhält das Spiel Ihren dort gespeicherten Fortschritt und kann Ihre für dieses
       Spiel geltende Kennung, Ihren Spielernamen und Ihr Profilbild erhalten, unter iOS außerdem
       eine für alle unsere Spiele geltende Kennung und Angaben dazu, ob Ihr Konto als minderjährig
-      gilt und ob Mehrspielerfunktionen oder persönliche Kommunikation eingeschränkt sind. Diese vom
-      Dienst erhaltenen Angaben speichern wir nicht, und wir geben sie nicht weiter, auch nicht an
-      Unity oder unsere Matomo-Installation. Einen eigenen Server betreiben wir dafür nicht.
+      gilt und ob Mehrspielerfunktionen oder persönliche Kommunikation eingeschränkt sind. Bietet
+      ein Spiel Bestenlisten des Dienstes an, erhält es zu deren Anzeige außerdem die obersten
+      Einträge mit Rang, Spielernamen und Punktzahl sowie Ihren eigenen Eintrag; die
+      Programmbibliothek, über die ein Spiel den Dienst anbindet, kann dabei auch die Profilbilder
+      dieser Spieler laden. Diese vom Dienst erhaltenen Angaben speichern wir nicht, und wir geben
+      sie nicht weiter, auch nicht an Unity oder unsere Matomo-Installation. Einen eigenen Server
+      betreiben wir dafür nicht.
     </li>
     <li>
       Unabhängig davon ermittelt das Spiel den Fortschritt Ihrer Erfolge selbst aus Ihrem
@@ -1000,9 +1053,10 @@
       Anmeldung erhebt, gibt Google nicht an. Google nutzt die Daten auch, um Google Play Spiele zu
       verbessern und weiterzuentwickeln, die Nutzung auszuwerten und gegen Betrug und Missbrauch
       vorzugehen. Neue Profile sind standardmäßig privat; auch dann sehen andere Spieler Ihr
-      Profilbild und Ihren Spielernamen. Follower, deren Anfrage Sie genehmigt haben, sehen außerdem
-      Ihre Erfolge und Spielerstatistiken, etwa welche Spiele Sie gespielt haben; ist Ihr Profil
-      öffentlich, sehen das alle. Das legen Sie in den Datenschutzeinstellungen Ihres Play
+      Profilbild und Ihren Spielernamen. In Bestenlisten erscheinen Sie für andere Spieler dagegen
+      nur, wenn Ihr Profil öffentlich ist. Follower, deren Anfrage Sie genehmigt haben, sehen
+      außerdem Ihre Erfolge und Spielerstatistiken, etwa welche Spiele Sie gespielt haben; ist Ihr
+      Profil öffentlich, sehen das alle. Das legen Sie in den Datenschutzeinstellungen Ihres Play
       Spiele-Profils fest. Eine feste Speicherdauer nennt Google für Google Play Spiele nicht; Daten
       zu einem Spiel oder Ihr ganzes Profil können Sie selbst in Ihrem Play Spiele-Profil löschen.
       Je nach Ihren Aktivitätseinstellungen speichert Google bestimmte Spielaktivitäten auch in
@@ -1427,12 +1481,16 @@
     </li>
     <li>Nutzungsstatistik in Geodart (Abschnitt 5 b)): Art. 6 Abs. 1 lit. f DSGVO</li>
     <li>
+      Abruf des Tagesplans in Geodart (Abschnitt 5 b)): Art. 6 Abs. 1 lit. b DSGVO; Abfrage vor dem
+      Melden an eine Tagesbestenliste: Art. 6 Abs. 1 lit. f DSGVO
+    </li>
+    <li>
       Abruf von Flugdaten, Flugrouten und Karten in Flugwacht (Abschnitt 5 c)): Art. 6 Abs. 1 lit. b
       DSGVO; Abfrage der Kartenversion beim Start: Art. 6 Abs. 1 lit. f DSGVO
     </li>
     <li>
       Anmeldung bei Game Center bzw. Google Play Spiele, Übermittlung an diese Dienste und Abruf von
-      dort (Abschnitt 5 d)): Art. 6 Abs. 1 lit. f DSGVO und § 25 Abs. 2 Nr. 2 TDDDG
+      dort (Abschnitte 5 b) und 5 d)): Art. 6 Abs. 1 lit. f DSGVO und § 25 Abs. 2 Nr. 2 TDDDG
     </li>
     <li>
       Einsehen von Auswertungen und Bestenlisten in unseren Entwicklerkonten bei Apple und Google
@@ -1483,6 +1541,10 @@
       Daten, die zu Ihrem Spielerkonto in Bug-A-Ball gehören (z. B. Spielername,
       Bestenlisteneinträge und Online-Spielstand), speichern wir, solange wir diese Funktionen
       anbieten, oder bis Sie uns um die Löschung bitten (Abschnitt 5 a)).
+    </li>
+    <li>
+      Ihre IP-Adresse und die übrigen Angaben, die unser Server beim Abruf des Tagesplans in Geodart
+      erhält (Abschnitt 5 b)), verarbeitet er nur für die Dauer der Anfrage und speichert sie nicht.
     </li>
     <li>
       Müssen wir Daten aufgrund gesetzlicher Aufbewahrungspflichten aufbewahren, etwa Zahlungsbelege
