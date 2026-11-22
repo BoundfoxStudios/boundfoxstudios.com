@@ -72,12 +72,12 @@ by name. The brand name is `Boundfox Studios`, one word.
 
 - The privacy policy covers boundfoxstudios.com and bugaball.com (Cloudflare in front of netcup),
   geodart.app and flugwacht.app (netcup only) in 3 a), and the apps in section 5: a) Bug-A-Ball, b)
-  Geodart, c) Flugwacht, plus d) Game Center and Google Play Spiele across the games. Sections 5 a)
-  to c) describe the store releases, not the app repos' heads: Bug-A-Ball tag `v1.4.1` (its `main`),
-  Geodart with ads since 1.1, Flugwacht's `main`. 5 d) is ahead of the stores: Geodart uses these
-  services from 1.2.0 (its `main`), and this sentence goes once 1.2.0 is in both stores. A new
-  recipient, SDK or consent change in any of them is a privacy policy change and moves
-  `PRIVACY_LAST_UPDATED`.
+  Geodart, c) Flugwacht, plus d) Game Center and Google Play Spiele across the games. Section 5
+  describes the store releases, not the app repos' heads: Bug-A-Ball tag `v1.4.1` (its `main`),
+  Geodart 1.2.0, Flugwacht's `main`. 5 b) is ahead of the stores: it already describes Geodart 1.3's
+  Tagesrunde (plan request, daily leaderboards, reminders), and this sentence goes once 1.3 is in
+  both stores. A new recipient, SDK or consent change in any of them is a privacy policy change and
+  moves `PRIVACY_LAST_UPDATED`.
 - Every processing names its legal basis where it is described, and section 8 repeats all of them
   as an overview list; section 10 holds the retention criteria and the objection cookie's lifetime.
   Adding a processing means updating both. Cross references are plain numbers ("Abschnitt 7" =
@@ -89,6 +89,15 @@ by name. The brand name is `Boundfox Studios`, one word.
   there.
 - Geodart's in-app Matomo rests on Art. 6 Abs. 1 lit. f DSGVO (cookieless, no identifier), as 5 b)
   says. Do not add consent wording.
+- The Tagesrunde fetches the day's plan from our own API `api.geodart.app` on Azure Container Apps
+  in France Central, with no proxy or CDN in front, so 3 a)'s netcup hosting does not cover it. 5 b)
+  names it as Art. 28 processing by the "Microsoft" defined in 5 a) and promises: no player or
+  device id, app version or cookie in the request, requests only while the Tagesrunde is open and
+  never at app start, nothing from Game Center or Google Play Spiele, no IP or header logging,
+  nothing kept beyond the request. The Log Analytics workspace (France Central, 30 days) holds only
+  console and system logs without IPs, and there is no IP rate limiting. Breaking any of this is a
+  privacy policy change. The plan request rests on lit. b, the request before a leaderboard
+  submission on lit. f (server time against a tampered device clock): Manu's decision of 2026-11-22.
 - Geodart shows ads through Unity LevelPlay with Unity Ads and the ironSource Exchange, started only
   after the in-game consent dialog. 4 e) describes exactly this setup, so enabling another network
   in LevelPlay is a privacy policy change.
@@ -98,18 +107,25 @@ by name. The brand name is `Boundfox Studios`, one word.
   list in Unity's player FAQ (IDFV, CPU, GPU, sensor flags) describes the Unity engine, not the ad
   SDKs.
 - 5 d) says the games "eventuell" use Game Center or Google Play Spiele and names no game. That is
-  Manu's decision of 2026-11-06, made knowing that WP260 para 13 discourages the qualifier and that
-  only Geodart uses them, from 1.2.0 and for achievements only. Do not name games or drop the
+  Manu's decision of 2026-11-06, made knowing that WP260 para 13 discourages the qualifier, and
+  reaffirmed on 2026-11-22 knowing that only Geodart uses them, for achievements from 1.2.0 and
+  daily leaderboards from 1.3. Since then 5 b) describes Geodart's daily leaderboards with a pointer
+  to 5 d), and 5 d) gets only game-neutral additions. Do not name games in 5 d) or drop the
   qualifier without asking.
 - 5 d) rests on Art. 6 Abs. 1 lit. f DSGVO and § 25 Abs. 2 Nr. 2 TDDDG although the sign-in runs at
   every start without a player action. That is arguable under the DSK's strict reading of
   "ausdrücklich gewünscht", and it is also Manu's decision. The passage promises that we store no
   player id, run no server for it and forward nothing to Unity or Matomo, so a game that breaks this
-  (Geodart #194 plans a backend with identity signatures) is a privacy policy change. Its "können
-  ... gemeinsam ... verantwortlich sein" is hedged like the Unity sentence, for the same reason.
+  (Geodart #194 plans a backend with identity signatures) is a privacy policy change.
+  `api.geodart.app` receives nothing from the game services, which keeps the no-server promise true.
+  5 d)'s "können ... gemeinsam ... verantwortlich sein" is hedged like the Unity sentence, for the
+  same reason.
 - Unity and Apple are not certified under the EU-US Data Privacy Framework (Unity checked on
   2026-10-21, Apple on 2026-11-06), so 4 e), 5 a) and 5 d) name the Standard Contractual Clauses.
-  Re-check the DPF list before changing that.
+  Microsoft is certified (checked on 2026-11-22), which 5 a) and 5 b) rely on. Re-check the DPF list
+  before changing that. 5 b) deliberately does not copy 5 a)'s PlayFab transfer wording: it names
+  France Central first and DPF/SCC only for processing outside the EEA in individual cases, with the
+  SCC as part of our contract with Microsoft (Manu's decision of 2026-11-22).
 - Geodart shows ads after consent, so its copy says "auch offline spielbar", never
   "komplett offline".
 
