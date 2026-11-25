@@ -257,7 +257,7 @@
       kicker="Spiel"
       i18n-kicker="@@apps-and-games.games.geodart.kicker"
       title="Geodart"
-      platforms="Für iOS &amp; Android, aktuell in Entwicklung."
+      platforms="Kostenlos für iOS &amp; Android."
       i18n-platforms="@@apps-and-games.games.geodart.platforms"
     >
       <!-- eslint-disable @angular-eslint/template/prefer-ngsrc -- an SVG has no resolution variants for the directive to generate -->
@@ -275,24 +275,41 @@
       <!-- eslint-enable @angular-eslint/template/prefer-ngsrc -->
       <bfs-badge
         card-badge
-        variant="outline"
-        i18n="@@common.badge.in-development"
-        >In Entwicklung</bfs-badge
+        variant="amber"
+        i18n="@@common.badge.available"
+        >Verfügbar</bfs-badge
       >
       <ng-container i18n="@@apps-and-games.games.geodart.description"
         >Geographie-Quiz mit Dartwurf: Ein Ziel wird genannt (Stadt, Fluss, Gipfel oder See), und du
         tippst die Stelle innerhalb der Zeit auf der Karte an. Punkte gibt es für Genauigkeit,
         Kategorie und Tempo. Zehn Fragen pro Runde, auch offline spielbar.</ng-container
       >
-      <bfs-button-primary
-        class="mt-2"
-        [href]="geodart.url"
+      <div
+        class="mt-2 flex flex-wrap items-center gap-x-5 gap-y-3"
         card-cta
-        ariaLabel="Geodart – zur Website"
-        i18n-ariaLabel="@@apps-and-games.games.geodart.cta-aria"
-        i18n="@@apps-and-games.games.geodart.cta"
-        >Zur Website</bfs-button-primary
       >
+        <bfs-button-primary
+          [href]="geodart.url"
+          ariaLabel="Geodart – zur Website"
+          i18n-ariaLabel="@@apps-and-games.games.geodart.cta-aria"
+          i18n="@@apps-and-games.games.geodart.cta"
+          >Zur Website</bfs-button-primary
+        >
+        <div class="flex flex-wrap items-center gap-x-5 gap-y-3">
+          <bfs-arrow-link
+            [href]="geodartStores.appStore"
+            ariaLabel="Geodart – zum App Store"
+            i18n-ariaLabel="@@apps-and-games.games.geodart.app-store-aria"
+            >App Store</bfs-arrow-link
+          >
+          <bfs-arrow-link
+            [href]="geodartStores.googlePlay"
+            ariaLabel="Geodart – zu Google Play"
+            i18n-ariaLabel="@@apps-and-games.games.geodart.google-play-aria"
+            >Google Play</bfs-arrow-link
+          >
+        </div>
+      </div>
     </bfs-feature-card>
 
     <bfs-feature-card

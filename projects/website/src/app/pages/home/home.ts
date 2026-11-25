@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import { RouterLink } from '@angular/router';
 
-import { appEntry, repositoryUrl } from '../../data/apps';
+import { appEntry, repositoryUrl, storeLinks } from '../../data/apps';
 import { SOCIAL_LINKS, socialLink } from '../../data/social-links';
 import { repositoryVersions } from '../../github-data';
 import { ArrowLink } from '../../ui/arrow-link/arrow-link';
@@ -22,6 +22,7 @@ export class Home {
   protected readonly socialLinks = SOCIAL_LINKS;
   protected readonly githubOrganization = socialLink('github');
   protected readonly geodart = appEntry('geodart');
+  protected readonly geodartStores = storeLinks('geodart');
   protected readonly lehrgrapht = appEntry('lehrgrapht');
   protected readonly matRepository = repositoryUrl('mat');
   protected readonly bugABall = appEntry('bug-a-ball');

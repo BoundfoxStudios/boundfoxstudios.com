@@ -921,8 +921,8 @@
     </unit>
     <unit id="apps-and-games.games.geodart.platforms">
       <segment state="translated">
-        <source>Für iOS &amp; Android, aktuell in Entwicklung.</source>
-        <target>For iOS &amp; Android, currently in development.</target>
+        <source>Kostenlos für iOS &amp; Android.</source>
+        <target>Free for iOS &amp; Android.</target>
       </segment>
     </unit>
     <unit id="common.geodart.key-art-alt">
@@ -989,6 +989,30 @@
       <segment state="translated">
         <source>Zum Chrome Web Store</source>
         <target>Go to the Chrome Web Store</target>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.games.geodart.app-store-aria">
+      <segment state="translated">
+        <source>Geodart – zum App Store</source>
+        <target>Geodart – go to the App Store</target>
+      </segment>
+    </unit>
+    <unit id="apps-and-games.games.geodart.google-play-aria">
+      <segment state="translated">
+        <source>Geodart – zu Google Play</source>
+        <target>Geodart – go to Google Play</target>
+      </segment>
+    </unit>
+    <unit id="home.projects.geodart.app-store-aria">
+      <segment state="translated">
+        <source>Geodart – zum App Store</source>
+        <target>Geodart – go to the App Store</target>
+      </segment>
+    </unit>
+    <unit id="home.projects.geodart.google-play-aria">
+      <segment state="translated">
+        <source>Geodart – zu Google Play</source>
+        <target>Geodart – go to Google Play</target>
       </segment>
     </unit>
   </file>

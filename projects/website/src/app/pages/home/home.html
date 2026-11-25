@@ -43,23 +43,41 @@
       <!-- eslint-enable @angular-eslint/template/prefer-ngsrc -->
       <bfs-badge
         card-badge
-        variant="outline"
-        i18n="@@common.badge.in-development"
-        >In Entwicklung</bfs-badge
+        variant="amber"
+        i18n="@@common.badge.available"
+        >Verfügbar</bfs-badge
       >
       <ng-container i18n="@@home.projects.geodart.description"
         >Geographie-Quiz mit Dartwurf: Ein Ziel wird genannt, du triffst die Stelle auf der Karte.
         Zehn Fragen pro Runde, auch offline spielbar.</ng-container
       >
-      <bfs-arrow-link
-        [newTab]="true"
-        [href]="geodart.url"
+      <div
+        class="flex flex-wrap gap-x-4 gap-y-1"
         card-links
-        ariaLabel="Geodart – zur Website"
-        i18n-ariaLabel="@@home.projects.geodart.link-aria"
-        i18n="@@home.projects.geodart.link"
-        >Zur Website</bfs-arrow-link
       >
+        <bfs-arrow-link
+          [newTab]="true"
+          [href]="geodart.url"
+          ariaLabel="Geodart – zur Website"
+          i18n-ariaLabel="@@home.projects.geodart.link-aria"
+          i18n="@@home.projects.geodart.link"
+          >Zur Website</bfs-arrow-link
+        >
+        <bfs-arrow-link
+          [newTab]="true"
+          [href]="geodartStores.appStore"
+          ariaLabel="Geodart – zum App Store"
+          i18n-ariaLabel="@@home.projects.geodart.app-store-aria"
+          >App Store</bfs-arrow-link
+        >
+        <bfs-arrow-link
+          [newTab]="true"
+          [href]="geodartStores.googlePlay"
+          ariaLabel="Geodart – zu Google Play"
+          i18n-ariaLabel="@@home.projects.geodart.google-play-aria"
+          >Google Play</bfs-arrow-link
+        >
+      </div>
     </bfs-project-card>
 
     <bfs-project-card
