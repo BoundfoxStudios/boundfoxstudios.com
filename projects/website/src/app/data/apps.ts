@@ -9,6 +9,11 @@ export type AppSlug =
   | 'geodart'
   | 'bug-a-ball';
 
+export interface StoreLinks {
+  readonly appStore: string;
+  readonly googlePlay: string;
+}
+
 export interface AppEntry {
   readonly slug: AppSlug;
   readonly name: string;
@@ -18,6 +23,7 @@ export interface AppEntry {
   readonly operatingSystem: string;
   readonly url: string;
   readonly codeRepository?: string;
+  readonly stores?: StoreLinks;
 }
 
 // Product names are never translated (Conventions › Brand and typography); the descriptions reuse
@@ -82,6 +88,10 @@ export const APPS: readonly AppEntry[] = [
     applicationCategory: 'GameApplication',
     operatingSystem: 'iOS, Android',
     url: 'https://geodart.app/',
+    stores: {
+      appStore: 'https://apps.apple.com/app/geodart/id6806917757',
+      googlePlay: 'https://play.google.com/store/apps/details?id=com.boundfoxstudios.games.geodart',
+    },
   },
   {
     slug: 'bug-a-ball',
@@ -112,6 +122,16 @@ export const repositoryUrl = (slug: AppSlug): string => {
   }
 
   return codeRepository;
+};
+
+export const storeLinks = (slug: AppSlug): StoreLinks => {
+  const { stores } = appEntry(slug);
+
+  if (!stores) {
+    throw new Error(`apps.ts has no store links for ${slug}`);
+  }
+
+  return stores;
 };
 
 export const appId = (slug: AppSlug): string => `${SITE.origin}/apps-and-games/#${slug}`;

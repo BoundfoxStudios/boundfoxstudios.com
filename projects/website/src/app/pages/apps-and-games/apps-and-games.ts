@@ -1,6 +1,6 @@
 import { Component, DestroyRef, inject } from '@angular/core';
 
-import { appEntry, repositoryUrl } from '../../data/apps';
+import { appEntry, repositoryUrl, storeLinks } from '../../data/apps';
 import { repositoryVersions } from '../../github-data';
 import { appsItemListJsonLd } from '../../seo/json-ld';
 import { SeoService } from '../../seo/seo.service';
@@ -29,6 +29,7 @@ export class AppsAndGames {
   );
   protected readonly isItOnGeForceNow = appEntry('is-it-on-geforce-now');
   protected readonly geodart = appEntry('geodart');
+  protected readonly geodartStores = storeLinks('geodart');
   protected readonly bugABall = appEntry('bug-a-ball');
 
   constructor() {
