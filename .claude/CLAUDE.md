@@ -74,10 +74,8 @@ by name. The brand name is `Boundfox Studios`, one word.
   geodart.app and flugwacht.app (netcup only) in 3 a), and the apps in section 5: a) Bug-A-Ball, b)
   Geodart, c) Flugwacht, plus d) Game Center and Google Play Spiele across the games. Section 5
   describes the store releases, not the app repos' heads: Bug-A-Ball tag `v1.4.1` (its `main`),
-  Geodart 1.2.0, Flugwacht's `main`. 5 b) is ahead of the stores: it already describes Geodart 1.3's
-  Tagesrunde (plan request, daily leaderboards, reminders), and this sentence goes once 1.3 is in
-  both stores. A new recipient, SDK or consent change in any of them is a privacy policy change and
-  moves `PRIVACY_LAST_UPDATED`.
+  Geodart 1.3.0, Flugwacht's `main`. A new recipient, SDK or consent change in any of them is a
+  privacy policy change and moves `PRIVACY_LAST_UPDATED`.
 - Every processing names its legal basis where it is described, and section 8 repeats all of them
   as an overview list; section 10 holds the retention criteria and the objection cookie's lifetime.
   Adding a processing means updating both. Cross references are plain numbers ("Abschnitt 7" =
